@@ -15,23 +15,24 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="32*"/>
             <RowDefinition Height="34*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="34*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="45*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
             <RowDefinition Height="266*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="loginbtn" Content="login" Click="loginbtn_Click" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="57,7,57,1.333" Foreground="White" Background="#FF195695"/>
+        <Button x:Name="loginBtn" Content="login" Click="loginbtn_Click" Grid.Row="6" Grid.Column="1" Foreground="White" Background="#FF195695" HorizontalAlignment="Stretch"/>
         <TextBlock TextWrapping="Wrap" Text="login" Grid.Column="1" FontSize="18.667" RenderTransformOrigin="0.738,0.919" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF195695" Margin="63,3.333,63,1.667"/>
-        <TextBlock Margin="52,6.333,52,5.667" TextWrapping="Wrap" Text="username" VerticalAlignment="Center" Grid.Column="1" Height="20" Width="64" Grid.Row="2" FontSize="14" HorizontalAlignment="Center" Foreground="#FFA3CBE8"/>
-        <TextBlock TextWrapping="Wrap" Text="password" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Height="20" Margin="53,5.333" HorizontalAlignment="Center" Width="62" FontSize="14" Foreground="#FFA3CBE8"/>
+        <TextBlock TextWrapping="Wrap" Text="gebruikersnaam" Grid.Column="1" Grid.Row="2" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock TextWrapping="Wrap" Text="wachtwoord" Grid.Row="4" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox TextWrapping="Wrap" TextAlignment="Center" Text="" RenderTransformOrigin="-0.493,0.844" Grid.Row="3" Grid.Column="1" Foreground="#FF195695" Margin="0,0.333,0,30.333" Grid.RowSpan="2"/>
         <PasswordBox Grid.Column="1" Grid.Row="5" Foreground="#FF195695" RenderTransformOrigin="0.524,0.263"/>
-        <Button x:Name="createAccount_btn" Content="create account" Click="createAccount_Click" Grid.Row="7" Grid.Column="1" Foreground="White" Background="#FF195695" HorizontalAlignment="Center"/>
+        <Button x:Name="createAccountBtn" Content="registreren" Click="createAccount_Click" Grid.Row="7" Grid.Column="1" Foreground="White" Background="#FF195695" HorizontalAlignment="Stretch"/>
+        <Button x:Name="forgotPassBtn" Content="wachtwoord vergeten?" Click="createAccount_Click" Grid.Row="8" Grid.Column="1" Foreground="White" Background="#FF195695" HorizontalAlignment="Stretch" FontSize="14.667"/>
 
     </Grid>
 </Page>
