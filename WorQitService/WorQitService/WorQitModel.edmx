@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorQitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" />
+          <Property Name="industry" Type="varchar" MaxLength="50" />
+          <Property Name="specialities" Type="varchar" MaxLength="200" />
+          <Property Name="positions" Type="varchar" MaxLength="200" />
+          <Property Name="interests" Type="varchar" MaxLength="200" />
+          <Property Name="languages" Type="varchar" MaxLength="100" />
+          <Property Name="skills" Type="varchar" MaxLength="200" />
+          <Property Name="educations" Type="varchar" MaxLength="200" />
+          <Property Name="volunteer" Type="varchar" MaxLength="200" />
+          <Property Name="dob" Type="date" />
+          <Property Name="location" Type="varchar" MaxLength="100" />
+          <Property Name="hours" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="passwod" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="employeeCount" Type="int" />
+          <Property Name="location" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Vacancy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employerID" Type="int" />
+          <Property Name="jobfunction" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="500" />
+          <Property Name="salary" Type="int" />
+          <Property Name="hours" Type="int" />
+          <Property Name="requirements" Type="varchar" MaxLength="200" />
+          <Property Name="tags" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VacancyEmployee">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vacancyID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Vacancy_Employer">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vacancy">
+              <PropertyRef Name="employerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancyEmployee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VacancyEmployee">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancyEmployee_Vacancy">
+          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="0..1" />
+          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VacancyEmployee">
+              <PropertyRef Name="vacancyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorQitModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vacancy" EntityType="Self.Vacancy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacancyEmployee" EntityType="Self.VacancyEmployee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VacancyEmployee].[employeeID] AS [employeeID], 
+    [VacancyEmployee].[vacancyID] AS [vacancyID]
+    FROM [dbo].[VacancyEmployee] AS [VacancyEmployee]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Vacancy_Employer" Association="Self.FK_Vacancy_Employer">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="Vacancy" EntitySet="Vacancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancyEmployee_Employee" Association="Self.FK_vacancyEmployee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancyEmployee_Vacancy" Association="Self.FK_vacancyEmployee_Vacancy">
+            <End Role="Vacancy" EntitySet="Vacancy" />
+            <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorQitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="industry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="specialities" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="positions" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="interests" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="languages" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="skills" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="educations" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="volunteer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hours" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="passwod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VacancyEmployee" Relationship="Self.FK_vacancyEmployee_Employee" FromRole="Employee" ToRole="VacancyEmployee" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="employeeCount" Type="Int32" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vacancy" Relationship="Self.FK_Vacancy_Employer" FromRole="Employer" ToRole="Vacancy" />
+        </EntityType>
+        <EntityType Name="Vacancy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employerID" Type="Int32" />
+          <Property Name="jobfunction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="hours" Type="Int32" />
+          <Property Name="requirements" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employer" Relationship="Self.FK_Vacancy_Employer" FromRole="Vacancy" ToRole="Employer" />
+          <NavigationProperty Name="VacancyEmployee" Relationship="Self.FK_vacancyEmployee_Vacancy" FromRole="Vacancy" ToRole="VacancyEmployee" />
+        </EntityType>
+        <EntityType Name="VacancyEmployee">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vacancyID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_vacancyEmployee_Employee" FromRole="VacancyEmployee" ToRole="Employee" />
+          <NavigationProperty Name="Vacancy" Relationship="Self.FK_vacancyEmployee_Vacancy" FromRole="VacancyEmployee" ToRole="Vacancy" />
+        </EntityType>
+        <Association Name="FK_vacancyEmployee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VacancyEmployee">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacancy_Employer">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vacancy">
+              <PropertyRef Name="employerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancyEmployee_Vacancy">
+          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="0..1" />
+          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacancy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VacancyEmployee">
+              <PropertyRef Name="vacancyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Employer" EntityType="Self.Employer" />
+          <EntitySet Name="Vacancy" EntityType="Self.Vacancy" />
+          <EntitySet Name="VacancyEmployee" EntityType="Self.VacancyEmployee" />
+          <AssociationSet Name="FK_vacancyEmployee_Employee" Association="Self.FK_vacancyEmployee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacancy_Employer" Association="Self.FK_Vacancy_Employer">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="Vacancy" EntitySet="Vacancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancyEmployee_Vacancy" Association="Self.FK_vacancyEmployee_Vacancy">
+            <End Role="Vacancy" EntitySet="Vacancy" />
+            <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="WorQitModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="industry" ColumnName="industry" />
+                <ScalarProperty Name="specialities" ColumnName="specialities" />
+                <ScalarProperty Name="positions" ColumnName="positions" />
+                <ScalarProperty Name="interests" ColumnName="interests" />
+                <ScalarProperty Name="languages" ColumnName="languages" />
+                <ScalarProperty Name="skills" ColumnName="skills" />
+                <ScalarProperty Name="educations" ColumnName="educations" />
+                <ScalarProperty Name="volunteer" ColumnName="volunteer" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="passwod" ColumnName="passwod" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employer">
+            <EntityTypeMapping TypeName="WorQitModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="employeeCount" ColumnName="employeeCount" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacancy">
+            <EntityTypeMapping TypeName="WorQitModel.Vacancy">
+              <MappingFragment StoreEntitySet="Vacancy">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="employerID" ColumnName="employerID" />
+                <ScalarProperty Name="jobfunction" ColumnName="jobfunction" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="requirements" ColumnName="requirements" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VacancyEmployee">
+            <EntityTypeMapping TypeName="WorQitModel.VacancyEmployee">
+              <MappingFragment StoreEntitySet="VacancyEmployee">
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="vacancyID" ColumnName="vacancyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
