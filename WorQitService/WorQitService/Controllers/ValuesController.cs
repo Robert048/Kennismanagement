@@ -4,22 +4,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WorQitService.Models;
 
 namespace WorQitService.Controllers
 {
-    [Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Employee> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new List<Employee>()
+                {
+                    new Employee() {EmployeeID = 1, EmployeeName = "Generic Indian Female" },
+                    new Employee() {EmployeeID = 2, EmployeeName = "Generic Indian Male" },
+                };
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public Employee Get(int id)
         {
-            return "value";
+            if (id == 1)
+            {
+                return new Employee() { EmployeeID = 1, EmployeeName = "Generic Indian Man" };
+            }
+            return new Employee() { EmployeeID = 2, EmployeeName = "Generic Indian Man" };
         }
 
         // POST api/values
