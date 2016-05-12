@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Web.Http;
 
 namespace WorQitService.Controllers
@@ -8,31 +8,68 @@ namespace WorQitService.Controllers
     {
         public List<Vacancy> getAllVacancies()
         {
-            string connectionString = "Data Source=worqit.database.windows.net;Initial Catalog=WorQit;User id=WorQit; Password=Stenden123";
-            string queryString = "SELECT * FROM Vacancy";
+            WorQitEntities wqdb = new WorQitEntities();
+            wqdb.Configuration.ProxyCreationEnabled = false;
             List<Vacancy> list = new List<Vacancy>();
-            using (SqlConnection connection = new SqlConnection(
-               connectionString))
+            foreach (var item in wqdb.Vacancies)
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Vacancy vacancy = new Vacancy(){
-                        ID = (int)reader.GetValue(0),
-                        employerID = (int)reader.GetValue(1),
-                        jobfunction = (string)reader.GetValue(2),
-                        description = (string)reader.GetValue(3),
-                        salary = (int)reader.GetValue(4),
-                        hours = (int)reader.GetValue(5),
-                        requirements = (string)reader.GetValue(6),
-                        tags = (string)reader.GetValue(7)
-                    };
-                    list.Add(vacancy);
-                }
+               list.Add(item);
             }
             return list;
+        }
+
+        public List<Vacancy> getVacancies(int ID)
+        {
+            WorQitEntities wqdb = new WorQitEntities();
+            wqdb.Configuration.ProxyCreationEnabled = false;
+            List<Vacancy> list = new List<Vacancy>();
+            foreach (var item in wqdb.Vacancies)
+            {
+                if (item.employerID == ID) list.Add(item);
+            }
+            return list;
+        }
+
+        public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements, string tags)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                Vacancy vacancy = new Vacancy()
+                {
+                    employerID = employerID,
+                    jobfunction = function,
+                    description = description,
+                    salary = salary,
+                    hours = hours,
+                    requirements = requirements,
+                    tags = tags
+                };
+                wqdb.Vacancies.Add(vacancy);
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful"});
+            }
+            catch(System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+        public object deleteVacancy(int ID)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                wqdb.Vacancies.Remove(wqdb.Vacancies.First(x => x.ID == ID));
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
         }
     }
 }
