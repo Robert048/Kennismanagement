@@ -227,7 +227,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WorQitEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WorQitEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Employers" EntityType="Self.Employer" />
           <EntitySet Name="Vacancies" EntityType="Self.Vacancy" />
@@ -250,7 +250,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities">
+        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities1">
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="WorQitModel.Employee">
               <MappingFragment StoreEntitySet="Employee">

@@ -16,7 +16,7 @@ namespace WorQitService
     public partial class WorQitEntities : DbContext
     {
         public WorQitEntities()
-            : base("name=WorQitEntities")
+            : base("name=WorQitEntities1")
         {
         }
     
