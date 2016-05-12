@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Web.Http;
 
 namespace WorQitService.Controllers
@@ -14,26 +15,51 @@ namespace WorQitService.Controllers
         /// <returns>employee object</returns>
         public object logIn(string userName, string password)
         {
-            string connectionString = "Data Source=worqit.database.windows.net;Initial Catalog=WorQit;User id=WorQit; Password=Stenden123";
-            string queryString = "SELECT * FROM Employee";
-            Employer employer = new Employer();
-            bool result = false;
-            using (SqlConnection connection = new SqlConnection(
-               connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                var values = from Employer in wqdb.Employers
+                             where Employer.username == userName
+                             select Employer;
+                var valuelist = values.ToList<Employer>();
+                if (valuelist.Exists(x => x.username == userName))
                 {
-                    if (password == reader.GetValue(2).ToString()) ;
+                    if (password != valuelist[0].password.ToString())
                     {
-                        employer.ID = Convert.ToInt32(reader.GetValue(0));
-                        employer.name = reader.GetValue(1).ToString();
+                        return Json(new { Result = "failed", Error = "Verkeerd wachtwoord" });
+                    }
+                    else
+                    {
+                        return Json(new { Result = "successful", User = valuelist });
                     }
                 }
+                else
+                {
+                    return Json(new { Result = "failed", Error = "Deze username bestaat niet" });
+                }
             }
-            return Json(new { Result = result, Gerbuiker = employer });
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+        public object deleteEmployer(int ID)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                wqdb.Employers.Remove(wqdb.Employers.First(x => x.ID == ID));
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
         }
     }
 }
