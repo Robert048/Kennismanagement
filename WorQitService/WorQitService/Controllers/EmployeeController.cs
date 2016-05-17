@@ -90,37 +90,40 @@ namespace WorQitService.Controllers
 
         public object editEmployee(int ID, string firstName, string lastName, string industry, string specialities, 
             string positions, string interests, string languages, string skills, string educations, string volunteer,
-            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string password, string email)
+            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string password, string oldPassword, string email)
         {
             try
             {
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
-                var columnnames = typeof(Employee).GetProperties().Select(t => t.Name);
+               
                 Employee emp = wqdb.Employees.First(x => x.ID == ID);
-                foreach(string name in columnnames)
-                {
-
-                }
-                
-                emp.firstName = firstName;
-                emp.lastName = lastName;
-                emp.industry = industry;
-                emp.specialities = specialities;
-                emp.positions = positions;
-                emp.interests = interests;
-                emp.languages = languages;
-                emp.skills = skills;
-                emp.educations = educations;
-                emp.volunteer = volunteer;
-                emp.dob = dob;
-                emp.location = location;
-                emp.hours = hours;
-                emp.username = username;
-                emp.password = password;
-                emp.email = email;
                
                 
+                emp.firstName = (firstName != null) ? firstName : emp.firstName;
+                emp.lastName = (lastName != null) ? lastName : emp.lastName;
+                emp.industry = (industry != null) ? industry : emp.industry;
+                emp.specialities = (specialities != null) ? specialities : emp.specialities;
+                emp.positions = (positions != null) ? positions : emp.positions;
+                emp.interests = (interests != null) ? interests : emp.interests;
+                emp.languages = (languages != null) ? languages : emp.languages;
+                emp.skills = (skills != null) ? skills : emp.skills;
+                emp.educations = (educations != null) ? educations : emp.educations;
+                emp.volunteer = (volunteer != null) ? volunteer : emp.volunteer;
+                emp.dob = (dob != null) ? dob : emp.dob;
+                emp.location = (location != null) ? location : emp.location;
+                emp.hours = (hours != null) ? hours : emp.hours;
+                emp.username = (username != null) ? username : emp.username;
+                if (password != null && emp.password == oldPassword)
+                {
+                    emp.password = password;
+                }
+                else if (emp.password != oldPassword){
+                    return Json (new { Result = "failed", Error = "Verkeerd oud wachtwoord wachtwoord ingevoerd, uw wijzigingen zijn niet opgeslagen" });
+                }
+                emp.email = (email != null) ? email : emp.email;
+
+
                 wqdb.SaveChanges();
                 return Json(new { Result = "successful" });
             }
