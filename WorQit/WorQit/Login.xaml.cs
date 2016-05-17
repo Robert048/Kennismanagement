@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.Web.Http;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -12,8 +16,6 @@ namespace WorQit
     /// </summary>
     public sealed partial class Login : Page
     {
-        //private ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
-        //public static ServiceReference1.User user = new ServiceReference1.User();
         ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         public Login()
@@ -28,17 +30,43 @@ namespace WorQit
 		/// <param name="e"></param>
         private async void loginbtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            try
+            using (var client = new Windows.Web.Http.HttpClient())
             {
-                //user = await client.InlogMethodeAsync(usrTxt.Text, pswTxt.Password);
-                //User currentUser = new User() { gebruikersID = user.GebruikerID, gebruikersNaam = user.GebruikerNaam, gebruikersPW = user.GebruikersPW };
-                //localSettings.Values["currentUser"] = currentUser.gebruikersID;
-                Frame.Navigate(typeof(Main));
-            }
-            catch (Exception ex)
-            {
-                var dialog = new MessageDialog("Niet gelukt in te loggen! Verkeerde gebruiker en/of wachtwoord!" + ex);
-                await dialog.ShowAsync();
+                try
+                {
+                    Dictionary<string, string> pairs = new Dictionary<string, string>();
+                    pairs.Add("username", "henk");
+                    pairs.Add("password", "henk");
+                    HttpFormUrlEncodedContent stringContent =
+                        new HttpFormUrlEncodedContent(pairs);
+                    var uri = new Uri("http://localhost:48627/api/Employee/logIn");
+                    var response = await client.PostAsync(uri, stringContent);
+                    var result = await response.Content.ReadAsStringAsync();
+                    var zooi = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
+                    try
+                    {
+                        if (zooi["success"])
+                        {
+                            //put zooi[gebruiker?] in model
+                            Frame.Navigate(typeof(Main));
+                        }
+                        else
+                        {
+                            var dialog = new MessageDialog("Verkeerde gebruikersnaam/wachtwoord");
+                            await dialog.ShowAsync();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        var dialog = new MessageDialog("Error: " + ex);
+                        await dialog.ShowAsync();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var dialog = new MessageDialog("Geen connectie" + ex);
+                    await dialog.ShowAsync();
+                }
             }
         }
 
