@@ -191,10 +191,8 @@
                 </div>
                 <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
                 <div class="col-lg-6">
-                    <form method="get" action="profiel.php">
-                        <div class="col-lg-1"> <p> <button class="btn btn-success btn-xs" type="submit"><i class="fa fa-check"></i></button></p></div>
-                    </form>
-                    <div class="col-lg-1"> <p> <button class="btn btn-danger btn-xs" type="submit"><i class="fa fa-trash-o"></i></button></p></div>
+                    <div class="col-lg-3"> <p><button value="sla op" formaction="wijzigProfiel.php">Sla op</button></p></div>
+                    <div class="col-lg-3"> <p><button value="Delete">Verwijder</button></p></div>
                 </div>
             </div>
 

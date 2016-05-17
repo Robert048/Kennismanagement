@@ -180,26 +180,28 @@
           	<h3><i class="fa fa-angle-right"></i> Profiel van ..... </h3>
           	<div class="row mt">
           		<div class="col-lg-2">
-          		    <p>Bedrijfsnaam</p>
+          		    <p>Naam</p>
           		</div>
                 <br/>  <br/>  <br/>
                 <div class="col-lg-2">
-                    <p>Bedsrijfslocatie</p>
+                    <p>Locatie</p>
                 </div>
                 <br/>  <br/>  <br/>
                 <div class="col-lg-4">
-                    <p>Bedrijfsomschrijving</p>
+                    <p>Omschrijving</p>
                 </div>
                 <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
                 <div class="col-lg-6">
-                    <div class="col-lg-1">
+                    <div class="col-lg-3">
                         <form method="get" action="wijzigProfiel.php">
-                            <button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-pencil"></i></button>
+                            <button type="submit">Wijzig</button>
                         </form>
-                    </div>
-          	    </div>
+                </div>
+          	</div>
+			
 		</section><! --/wrapper -->
       </section><!-- /MAIN CONTENT -->
+
       <!--main content end-->
       <!--footer start-->
       <footer class="site-footer">
