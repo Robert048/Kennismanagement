@@ -3,6 +3,7 @@ using System.Data;
 using System.Web.Http;
 using System.Linq;
 using System;
+using WorQitService;
 
 namespace WorQitService.Controllers
 {
@@ -29,7 +30,7 @@ namespace WorQitService.Controllers
                 var valuelist = values.ToList<Employee>();
                 if (valuelist.Exists(x => x.username == userName))
                 {
-                    if (password != valuelist[0].passwod.ToString())
+                    if (password != valuelist[0].password.ToString())
                     {
                         return Json(new { Result = "failed", Error = "Verkeerd wachtwoord" });
                     }
@@ -75,7 +76,7 @@ namespace WorQitService.Controllers
                 {
                     username = username,
                     email = email,
-                    passwod = password
+                    password = password
                 };
                 wqdb.Employees.Add(employee);
                 wqdb.SaveChanges();
@@ -89,7 +90,7 @@ namespace WorQitService.Controllers
 
         public object editEmployee(int ID, string firstName, string lastName, string industry, string specialities, 
             string positions, string interests, string languages, string skills, string educations, string volunteer,
-            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string passwod, string email)
+            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string password, string email)
         {
             try
             {
@@ -116,7 +117,7 @@ namespace WorQitService.Controllers
                 emp.location = location;
                 emp.hours = hours;
                 emp.username = username;
-                emp.passwod = passwod;
+                emp.password = password;
                 emp.email = email;
                
                 

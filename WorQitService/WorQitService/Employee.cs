@@ -29,8 +29,8 @@ namespace WorQitService
         public string location { get; set; }
         public Nullable<int> hours { get; set; }
         public string username { get; set; }
-        public string passwod { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
     
         public virtual VacancyEmployee VacancyEmployee { get; set; }
     }
