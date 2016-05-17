@@ -3,6 +3,8 @@ using System.Data;
 using System.Web.Http;
 using System.Linq;
 using System;
+using WorQitService;
+using System.Collections.Generic;
 
 namespace WorQitService.Controllers
 {
@@ -29,7 +31,7 @@ namespace WorQitService.Controllers
                 var valuelist = values.ToList<Employee>();
                 if (valuelist.Exists(x => x.username == userName))
                 {
-                    if (password != valuelist[0].passwod.ToString())
+                    if (password != valuelist[0].password.ToString())
                     {
                         return Json(new { Result = "failed", Error = "Verkeerd wachtwoord" });
                     }
@@ -75,7 +77,7 @@ namespace WorQitService.Controllers
                 {
                     username = username,
                     email = email,
-                    passwod = password
+                    password = password
                 };
                 wqdb.Employees.Add(employee);
                 wqdb.SaveChanges();
@@ -89,37 +91,49 @@ namespace WorQitService.Controllers
 
         public object editEmployee(int ID, string firstName, string lastName, string industry, string specialities, 
             string positions, string interests, string languages, string skills, string educations, string volunteer,
-            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string passwod, string email)
+            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string password, string oldPassword, string email)
         {
+            object[] values = { ID, firstName, lastName, industry, specialities, positions, interests, languages, skills, educations, volunteer,
+                                     dob, location, hours, username, password, email };
+           
             try
             {
+                
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
-                var columnnames = typeof(Employee).GetProperties().Select(t => t.Name);
+                
+                
                 Employee emp = wqdb.Employees.First(x => x.ID == ID);
-                foreach(string name in columnnames)
-                {
 
+                object[] employee = { emp.firstName,
+                                        emp.lastName,
+                                        emp.industry,
+                                        emp.specialities,
+                                        emp.positions,
+                                        emp.interests,
+                                        emp.languages,
+                                        emp.skills,
+                                        emp.educations,
+                                        emp.volunteer,
+                                        emp.dob,
+                                        emp.location,
+                                        emp.hours,
+                                        emp.username,
+                                        emp.password,
+                                        emp.email };
+                
+
+                for (int j = 0; j < employee.Length; j++)
+                {
+                    Console.WriteLine(employee[j]);
+                    if (values[j] != null && values[j].ToString() != employee[j].ToString())
+                    {
+                        employee[j] = values[j];
+                        
+                    }
+                  
                 }
-                
-                emp.firstName = firstName;
-                emp.lastName = lastName;
-                emp.industry = industry;
-                emp.specialities = specialities;
-                emp.positions = positions;
-                emp.interests = interests;
-                emp.languages = languages;
-                emp.skills = skills;
-                emp.educations = educations;
-                emp.volunteer = volunteer;
-                emp.dob = dob;
-                emp.location = location;
-                emp.hours = hours;
-                emp.username = username;
-                emp.passwod = passwod;
-                emp.email = email;
-               
-                
+
                 wqdb.SaveChanges();
                 return Json(new { Result = "successful" });
             }
