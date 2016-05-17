@@ -30,6 +30,36 @@ namespace WorQitService.Controllers
             return list;
         }
 
+        public List<Vacancy> getVacancies(string function = null, int salary  = 0, int hours = 0 , string requirements = null, string tags = null, string location = null)
+        {
+            WorQitEntities wqdb = new WorQitEntities();
+            wqdb.Configuration.ProxyCreationEnabled = false;
+
+            var test = wqdb.Vacancies;
+            List<Vacancy> alles = wqdb.Vacancies.ToList();
+            if (function != null)
+            {
+                alles = alles.Where(v => v.jobfunction.Contains(function)).ToList();
+            }
+            if (salary != 0)
+            {
+                alles = alles.Where(v => v.salary.Equals(salary)).ToList();
+            }
+            if (hours != 0)
+            {
+                alles = alles.Where(v => v.hours.Equals(hours)).ToList();
+            }
+            if (requirements != null)
+            {
+                alles = alles.Where(v => v.requirements.Contains(requirements)).ToList();
+            }
+            if (tags != null)
+            {
+                alles = alles.Where(v => v.requirements.Contains(tags)).ToList();
+            }
+            return alles;
+        }
+
         public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements, string tags)
         {
             try
