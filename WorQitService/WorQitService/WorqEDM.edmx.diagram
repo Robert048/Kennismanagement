@@ -4,11 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8179a84c154d4283bc6c198e6699078c" Name="Diagram1">
-        <EntityTypeShape EntityType="WorQitModel.Employee" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+      <Diagram DiagramId="f3fb801909654b68a7139adee103d497" Name="Diagram1">
+        <EntityTypeShape EntityType="WorQitModel.Employee" Width="1.5" PointX="6.875" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WorQitModel.Employer" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorQitModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WorQitModel.Vacancy" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WorQitModel.VacancyEmployee" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorQitModel.VacancyEmployee" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="WorQitModel.FK_vacancyEmployee_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="WorQitModel.FK_Vacancy_Employer" ManuallyRouted="false" />
         <AssociationConnector Association="WorQitModel.FK_vacancyEmployee_Vacancy" ManuallyRouted="false" />

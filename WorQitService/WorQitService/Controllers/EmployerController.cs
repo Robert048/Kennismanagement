@@ -17,7 +17,6 @@ namespace WorQitService.Controllers
         {
             try
             {
-
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 var values = from Employer in wqdb.Employers
