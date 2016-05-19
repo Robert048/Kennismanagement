@@ -9,29 +9,32 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="32*"/>
+            <RowDefinition Height="113*"/>
             <RowDefinition Height="34*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="34*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="44*"/>
-            <RowDefinition Height="170*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="142*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
             <ColumnDefinition Width="350*"/>
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="usernametxt" TextAlignment="Center" TextWrapping="Wrap" Text="" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Foreground="#FF195695"/>
-        <PasswordBox x:Name="passwordtxt" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Foreground="#FF195695" PlaceholderText="password"/>
-        <Button x:Name="registerbtn" Content="register" Click="registerbtn_Click" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Background="#FF195695" Foreground="White"/>
-        <TextBlock TextWrapping="Wrap" Text="username" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Height="20" Width="67" FontSize="14" Foreground="#FFA3CBE8"/>
-        <TextBlock TextWrapping="Wrap" Text="password" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Height="20" Width="62" FontSize="14" Foreground="#FFA3CBE8"/>
-        <Button x:Name="backbtn" Content="back" Grid.Column="1" Grid.Row="7" Click="bk_Click" HorizontalAlignment="Center" Background="#FF195695" Foreground="White"/>
-        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18.667" Foreground="#FF195695"/>
+        <TextBox x:Name="usernametxt" TextAlignment="Center" TextWrapping="Wrap" Text="" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Foreground="#FF195695" Margin="0,2.667,0,3.667"/>
+        <PasswordBox x:Name="passwordtxt" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Foreground="#FF195695" PlaceholderText="password" Margin="0,3.333,0,3"/>
+        <Button x:Name="registerbtn" Content="registreer" Click="registerbtn_Click" Grid.Row="8" Grid.Column="1" Background="#FF195695" Foreground="White" HorizontalAlignment="Stretch"/>
+        <TextBlock TextWrapping="Wrap" Text="gebruikersnaam" Grid.Row="2" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock TextWrapping="Wrap" Text="wachtwoord" Grid.Row="4" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="backbtn" Content="terug" Grid.Column="1" Grid.Row="9" Click="bk_Click" Background="#FF195695" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="registreer account" FontSize="18.667" Foreground="#FF195695" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock TextWrapping="Wrap" Text="e-mailadres" Grid.Row="6" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox x:Name="emailtxt" TextAlignment="Center" TextWrapping="Wrap" Text="" Grid.Column="1" Grid.Row="7" Foreground="#FF195695" VerticalAlignment="Center"/>
 
     </Grid>
 </Page>
