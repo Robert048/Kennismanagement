@@ -163,7 +163,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Vacancy" Relationship="Self.FK_Vacancy_Employer" FromRole="Employer" ToRole="Vacancy" />
+          <NavigationProperty Name="Vacancies" Relationship="Self.FK_Vacancy_Employer" FromRole="Employer" ToRole="Vacancy" />
         </EntityType>
         <EntityType Name="Vacancy">
           <Key>
@@ -178,7 +178,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           <Property Name="requirements" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employer" Relationship="Self.FK_Vacancy_Employer" FromRole="Vacancy" ToRole="Employer" />
-          <NavigationProperty Name="VacancyEmployee" Relationship="Self.FK_vacancyEmployee_Vacancy" FromRole="Vacancy" ToRole="VacancyEmployee" />
+          <NavigationProperty Name="VacancyEmployees" Relationship="Self.FK_vacancyEmployee_Vacancy" FromRole="Vacancy" ToRole="VacancyEmployee" />
         </EntityType>
         <EntityType Name="VacancyEmployee">
           <Key>
@@ -227,22 +227,22 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="Employer" EntityType="Self.Employer" />
-          <EntitySet Name="Vacancy" EntityType="Self.Vacancy" />
-          <EntitySet Name="VacancyEmployee" EntityType="Self.VacancyEmployee" />
+        <EntityContainer Name="WorQitEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <EntitySet Name="Vacancies" EntityType="Self.Vacancy" />
+          <EntitySet Name="VacancyEmployees" EntityType="Self.VacancyEmployee" />
           <AssociationSet Name="FK_vacancyEmployee_Employee" Association="Self.FK_vacancyEmployee_Employee">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="VacancyEmployee" EntitySet="VacancyEmployees" />
           </AssociationSet>
           <AssociationSet Name="FK_Vacancy_Employer" Association="Self.FK_Vacancy_Employer">
-            <End Role="Employer" EntitySet="Employer" />
-            <End Role="Vacancy" EntitySet="Vacancy" />
+            <End Role="Employer" EntitySet="Employers" />
+            <End Role="Vacancy" EntitySet="Vacancies" />
           </AssociationSet>
           <AssociationSet Name="FK_vacancyEmployee_Vacancy" Association="Self.FK_vacancyEmployee_Vacancy">
-            <End Role="Vacancy" EntitySet="Vacancy" />
-            <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
+            <End Role="Vacancy" EntitySet="Vacancies" />
+            <End Role="VacancyEmployee" EntitySet="VacancyEmployees" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -250,8 +250,8 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Employee">
+        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities1">
+          <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="WorQitModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -274,7 +274,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Employer">
+          <EntitySetMapping Name="Employers">
             <EntityTypeMapping TypeName="WorQitModel.Employer">
               <MappingFragment StoreEntitySet="Employer">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -288,7 +288,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vacancy">
+          <EntitySetMapping Name="Vacancies">
             <EntityTypeMapping TypeName="WorQitModel.Vacancy">
               <MappingFragment StoreEntitySet="Vacancy">
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -302,7 +302,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VacancyEmployee">
+          <EntitySetMapping Name="VacancyEmployees">
             <EntityTypeMapping TypeName="WorQitModel.VacancyEmployee">
               <MappingFragment StoreEntitySet="VacancyEmployee">
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
@@ -324,7 +324,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

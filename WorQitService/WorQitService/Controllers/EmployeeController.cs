@@ -1,12 +1,15 @@
-﻿using System;
+﻿
 using System.Data;
-using System.Data.SqlClient;
 using System.Web.Http;
+using System.Linq;
+using System;
 
 namespace WorQitService.Controllers
 {
     public class EmployeeController : ApiController
     {
+        
+
         /// <summary>
         /// Log in method
         /// </summary>
@@ -15,72 +18,117 @@ namespace WorQitService.Controllers
         /// <returns>employee object</returns>
         public object logIn(string userName, string password)
         {
-            string connectionString = "Data Source=worqit.database.windows.net;Initial Catalog=WorQit;User id=WorQit; Password=Stenden123";
-            string queryString = "SELECT * FROM Employee";
-            Employee employee = new Employee();
-            bool result = false;
-            using (SqlConnection connection = new SqlConnection(
-               connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                var values = from Employee in wqdb.Employees
+                             where Employee.username == userName
+                             select Employee;
+                var valuelist = values.ToList<Employee>();
+                if (valuelist.Exists(x => x.username == userName))
                 {
-                    if (password == reader.GetValue(2).ToString()) ;
+                    if (password != valuelist[0].passwod.ToString())
                     {
-                        employee.ID = Convert.ToInt32(reader.GetValue(0));
-                        employee.firstName = reader.GetValue(1).ToString();
+                        return Json(new { Result = "failed", Error = "Verkeerd wachtwoord" });
+                    }
+                    else
+                    {
+                        return Json(new { Result = "successful", User = valuelist });
                     }
                 }
+                else
+                {
+                   return Json(new { Result = "failed", Error = "Deze username bestaat niet" });
+                }
             }
-            return Json(new { Result = result, Gerbuiker = employee });
-        }
-
-        [HttpGet]
-        [ActionName("GetEmployeeByID")]
-        public Employee Get(int id)
-        {
-            //return listEmp.First(e => e.ID == id);  
-            SqlDataReader reader = null;
-            SqlConnection myConnection = new SqlConnection();
-            myConnection.ConnectionString = @"Server=tcp:worqit.database.windows.net;Database=WorQit;
-            User ID=WorQit@WorQit;Password=Stenden123;Trusted_Connection=False;
-            Encrypt=True;";
-
-            SqlCommand sqlCmd = new SqlCommand();
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "Select * from Employee where ID=" + id + "";
-            sqlCmd.Connection = myConnection;
-            myConnection.Open();
-            reader = sqlCmd.ExecuteReader();
-            Employee emp = null;
-            while (reader.Read())
+            catch (System.Exception ex)
             {
-                emp = new Employee();
-                emp.ID = Convert.ToInt32(reader.GetValue(0));
-                emp.firstName = reader.GetValue(1).ToString();
+                return Json(new { Result = "failed", Error = ex });
             }
-            return emp;
-            myConnection.Close();
         }
 
-        [HttpPost]
-        [ActionName("Add")]
-        public void AddEmployee(string name)
+        public object deleteEmployee(int ID)
         {
-
-            SqlConnection myConnection = new SqlConnection();
-            myConnection.ConnectionString = @"Server=tcp:worqit.database.windows.net;Database=WorQit;
-                User ID=WorQit@WorQit;Password=Stenden123;Trusted_Connection=False;Encrypt=True;";
-            SqlCommand sqlCmd = new SqlCommand();
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.CommandText = "INSERT INTO Employee (FirstName) Values (@Name)";
-            sqlCmd.Connection = myConnection;
-            sqlCmd.Parameters.AddWithValue("@Name", name);
-            myConnection.Open();
-            int rowInserted = sqlCmd.ExecuteNonQuery();
-            myConnection.Close();
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                wqdb.Employees.Remove(wqdb.Employees.First(x => x.ID == ID));
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
         }
+
+        public object addEmployee(string username, string email, string password)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                Employee employee = new Employee()
+                {
+                    username = username,
+                    email = email,
+                    passwod = password
+                };
+                wqdb.Employees.Add(employee);
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+        public object editEmployee(int ID, string firstName, string lastName, string industry, string specialities, 
+            string positions, string interests, string languages, string skills, string educations, string volunteer,
+            Nullable<System.DateTime> dob, string location, Nullable<int> hours, string username, string passwod, string email)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                var columnnames = typeof(Employee).GetProperties().Select(t => t.Name);
+                Employee emp = wqdb.Employees.First(x => x.ID == ID);
+                foreach(string name in columnnames)
+                {
+
+                }
+                
+                emp.firstName = firstName;
+                emp.lastName = lastName;
+                emp.industry = industry;
+                emp.specialities = specialities;
+                emp.positions = positions;
+                emp.interests = interests;
+                emp.languages = languages;
+                emp.skills = skills;
+                emp.educations = educations;
+                emp.volunteer = volunteer;
+                emp.dob = dob;
+                emp.location = location;
+                emp.hours = hours;
+                emp.username = username;
+                emp.passwod = passwod;
+                emp.email = email;
+               
+                
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+
     }
 }
