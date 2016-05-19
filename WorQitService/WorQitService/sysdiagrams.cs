@@ -12,16 +12,12 @@ namespace WorQitService
     using System;
     using System.Collections.Generic;
     
-    public partial class VacancyEmployee
+    public partial class sysdiagrams
     {
-        public int matchID { get; set; }
-        public int employeeID { get; set; }
-        public int vacancyID { get; set; }
-        public int rating { get; set; }
-        public int matchingValue { get; set; }
-        public string reaction { get; set; }
-    
-        public virtual Employee Employee { get; set; }
-        public virtual Vacancy Vacancy { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

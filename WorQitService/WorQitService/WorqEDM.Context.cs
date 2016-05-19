@@ -25,9 +25,10 @@ namespace WorQitService
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Employer> Employers { get; set; }
-        public virtual DbSet<Vacancy> Vacancies { get; set; }
-        public virtual DbSet<VacancyEmployee> VacancyEmployees { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Employer> Employer { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Vacancy> Vacancy { get; set; }
+        public virtual DbSet<VacancyEmployee> VacancyEmployee { get; set; }
     }
 }
