@@ -29,7 +29,7 @@ namespace WorQitService.Controllers
                 var valuelist = values.ToList<Employee>();
                 if (valuelist.Exists(x => x.username == userName))
                 {
-                    if (password != valuelist[0].passwod.ToString())
+                    if (password != valuelist[0].password.ToString())
                     {
                         return Json(new { Result = "failed", Error = "Verkeerd wachtwoord" });
                     }
@@ -75,7 +75,7 @@ namespace WorQitService.Controllers
                 {
                     username = username,
                     email = email,
-                    passwod = password
+                    password = password
                 };
                 wqdb.Employees.Add(employee);
                 wqdb.SaveChanges();
@@ -116,7 +116,7 @@ namespace WorQitService.Controllers
                 emp.location = location;
                 emp.hours = hours;
                 emp.username = username;
-                emp.passwod = passwod;
+                emp.password = passwod;
                 emp.email = email;
                
                 

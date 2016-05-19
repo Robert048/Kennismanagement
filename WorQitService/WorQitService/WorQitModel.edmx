@@ -24,7 +24,7 @@
           <Property Name="location" Type="varchar" MaxLength="100" />
           <Property Name="hours" Type="int" />
           <Property Name="username" Type="varchar" MaxLength="100" />
-          <Property Name="passwod" Type="varchar" MaxLength="100" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
           <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Employer">
@@ -53,14 +53,16 @@
           <Property Name="requirements" Type="varchar" MaxLength="200" />
           <Property Name="tags" Type="varchar" MaxLength="200" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VacancyEmployee">
           <Key>
-            <PropertyRef Name="employeeID" />
+            <PropertyRef Name="matchID" />
           </Key>
-          <Property Name="employeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="vacancyID" Type="int" />
+          <Property Name="matchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employeeID" Type="int" Nullable="false" />
+          <Property Name="vacancyID" Type="int" Nullable="false" />
+          <Property Name="rating" Type="int" Nullable="false" />
+          <Property Name="matchingValue" Type="int" Nullable="false" />
+          <Property Name="reaction" Type="varchar" MaxLength="1000" />
         </EntityType>
         <Association Name="FK_Vacancy_Employer">
           <End Role="Employer" Type="Self.Employer" Multiplicity="0..1">
@@ -78,7 +80,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
         </Association>
         <Association Name="FK_vacancyEmployee_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="0..1" />
+          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="ID" />
@@ -89,7 +91,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_vacancyEmployee_Vacancy">
-          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="0..1" />
+          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="1" />
           <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vacancy">
@@ -104,12 +106,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacancy" EntityType="Self.Vacancy" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VacancyEmployee" EntityType="Self.VacancyEmployee" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VacancyEmployee].[employeeID] AS [employeeID], 
-    [VacancyEmployee].[vacancyID] AS [vacancyID]
-    FROM [dbo].[VacancyEmployee] AS [VacancyEmployee]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="VacancyEmployee" EntityType="Self.VacancyEmployee" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Vacancy_Employer" Association="Self.FK_Vacancy_Employer">
             <End Role="Employer" EntitySet="Employer" />
             <End Role="Vacancy" EntitySet="Vacancy" />
@@ -147,9 +144,9 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="hours" Type="Int32" />
           <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="passwod" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="VacancyEmployee" Relationship="Self.FK_vacancyEmployee_Employee" FromRole="Employee" ToRole="VacancyEmployee" />
+          <NavigationProperty Name="VacancyEmployees" Relationship="Self.FK_vacancyEmployee_Employee" FromRole="Employee" ToRole="VacancyEmployee" />
         </EntityType>
         <EntityType Name="Employer">
           <Key>
@@ -182,16 +179,20 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
         </EntityType>
         <EntityType Name="VacancyEmployee">
           <Key>
-            <PropertyRef Name="employeeID" />
+            <PropertyRef Name="matchID" />
           </Key>
-          <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="vacancyID" Type="Int32" />
+          <Property Name="matchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <Property Name="vacancyID" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <Property Name="matchingValue" Type="Int32" Nullable="false" />
+          <Property Name="reaction" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_vacancyEmployee_Employee" FromRole="VacancyEmployee" ToRole="Employee" />
           <NavigationProperty Name="Vacancy" Relationship="Self.FK_vacancyEmployee_Vacancy" FromRole="VacancyEmployee" ToRole="Vacancy" />
         </EntityType>
         <Association Name="FK_vacancyEmployee_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="0..1" />
+          <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="ID" />
@@ -216,7 +217,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_vacancyEmployee_Vacancy">
-          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="0..1" />
+          <End Role="Vacancy" Type="Self.Vacancy" Multiplicity="1" />
           <End Role="VacancyEmployee" Type="Self.VacancyEmployee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vacancy">
@@ -227,7 +228,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WorQitEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WorQitEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Employers" EntityType="Self.Employer" />
           <EntitySet Name="Vacancies" EntityType="Self.Vacancy" />
@@ -250,7 +251,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities1">
+        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities">
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="WorQitModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
@@ -269,7 +270,7 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
                 <ScalarProperty Name="location" ColumnName="location" />
                 <ScalarProperty Name="hours" ColumnName="hours" />
                 <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="passwod" ColumnName="passwod" />
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -305,8 +306,12 @@ warning 6002: The table/view 'WorQit.dbo.VacancyEmployee' does not have a primar
           <EntitySetMapping Name="VacancyEmployees">
             <EntityTypeMapping TypeName="WorQitModel.VacancyEmployee">
               <MappingFragment StoreEntitySet="VacancyEmployee">
+                <ScalarProperty Name="matchID" ColumnName="matchID" />
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
                 <ScalarProperty Name="vacancyID" ColumnName="vacancyID" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="matchingValue" ColumnName="matchingValue" />
+                <ScalarProperty Name="reaction" ColumnName="reaction" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
