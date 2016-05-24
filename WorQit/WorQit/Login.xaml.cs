@@ -39,7 +39,7 @@ namespace WorQit
                     pairs.Add("password", "henk");
                     HttpFormUrlEncodedContent stringContent =
                         new HttpFormUrlEncodedContent(pairs);
-                    var uri = new Uri("http://localhost:48627/api/Employee/logIn");
+                    var uri = new Uri("http://worqit.azurewebsites.net/api/Employee/logIn");
                     var response = await client.PostAsync(uri, stringContent);
                     var result = await response.Content.ReadAsStringAsync();
                     var zooi = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
