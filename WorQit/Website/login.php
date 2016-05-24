@@ -58,7 +58,6 @@
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.php#forgotPassModal"> Wachtwoord vergeten?</a>
-
 		                </span>
 		            </label>
 		            <button class="btn btn-theme btn-block" id="login_button" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
