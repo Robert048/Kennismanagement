@@ -22,12 +22,9 @@ namespace WorQitService.Controllers
         {
             try
             {
-<<<<<<< HEAD
-=======
                 var headers = Request.Headers;
                 string userName = (headers.Contains("userName")) ? headers.GetValues("userName").First() : null;
                 string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
->>>>>>> refs/remotes/origin/Falco
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 var values = from Employer in wqdb.Employers

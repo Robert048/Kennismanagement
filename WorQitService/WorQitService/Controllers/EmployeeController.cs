@@ -107,15 +107,6 @@ namespace WorQitService.Controllers
                 Employee emailCheck = null;
                 try
                 {
-<<<<<<< HEAD
-                    username = username,
-                    email = email,
-                    password = password
-                };
-                wqdb.Employees.Add(employee);
-                wqdb.SaveChanges();
-                return Json(new { Result = "successful" });
-=======
                     usernameCheck = wqdb.Employees.First(x => x.username == username );
                     emailCheck = wqdb.Employees.First(x => x.email == email);
                 }
@@ -148,8 +139,6 @@ namespace WorQitService.Controllers
                     }
                     return Json(new { Result = "failed", Error = errorString });
                 }
-                
->>>>>>> refs/remotes/origin/Falco
             }
             catch (System.Exception ex)
             {
@@ -185,31 +174,6 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
                
                 Employee emp = wqdb.Employees.First(x => x.ID == ID);
-<<<<<<< HEAD
-                foreach(string name in columnnames)
-                {
-
-                }
-                
-                emp.firstName = firstName;
-                emp.lastName = lastName;
-                emp.industry = industry;
-                emp.specialities = specialities;
-                emp.positions = positions;
-                emp.interests = interests;
-                emp.languages = languages;
-                emp.skills = skills;
-                emp.educations = educations;
-                emp.volunteer = volunteer;
-                emp.dob = dob;
-                emp.location = location;
-                emp.hours = hours;
-                emp.username = username;
-                emp.password = passwod;
-                emp.email = email;
-=======
->>>>>>> refs/remotes/origin/Falco
-               
                 
                 emp.firstName = (firstName != null) ? firstName : emp.firstName;
                 emp.lastName = (lastName != null) ? lastName : emp.lastName;
