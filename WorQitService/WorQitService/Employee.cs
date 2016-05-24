@@ -35,8 +35,12 @@ namespace WorQitService
         public string location { get; set; }
         public Nullable<int> hours { get; set; }
         public string username { get; set; }
+<<<<<<< HEAD
         public string password { get; set; }
+=======
+>>>>>>> refs/remotes/origin/Falco
         public string email { get; set; }
+        public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VacancyEmployee> VacancyEmployees { get; set; }
