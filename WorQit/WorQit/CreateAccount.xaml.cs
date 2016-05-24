@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.Web.Http;
 
 namespace WorQit
 {
@@ -21,32 +24,44 @@ namespace WorQit
         {
             if (!String.IsNullOrWhiteSpace(passwordtxt.Password) && !String.IsNullOrWhiteSpace(usernametxt.Text))
             {
-                bool check = false;
-
-                //var gebruikers = await client.GetAllGebruikersAsync();
-                //foreach (var user in gebruikers)
+                using (var client = new Windows.Web.Http.HttpClient())
                 {
-                    //if (usernametxt.Text == user.GebruikerNaam)
+                    try
                     {
-                        check = true;
+                        Dictionary<string, string> pairs = new Dictionary<string, string>();
+                        pairs.Add("username", "henk");
+                        pairs.Add("password", "henk");
+                        pairs.Add("email", "henk@mail.nl");
+                        HttpFormUrlEncodedContent stringContent =
+                            new HttpFormUrlEncodedContent(pairs);
+                        var uri = new Uri("http://worqit.azurewebsites.net/api/Employee/addEmployee");
+                        var response = await client.PostAsync(uri, stringContent);
+                        var result = await response.Content.ReadAsStringAsync();
+                        var zooi = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
+                        try
+                        {
+                            if (zooi["success"])
+                            {
+                                //put zooi[gebruiker?] in model
+                                Frame.Navigate(typeof(Main));
+                            }
+                            else
+                            {
+                                var dialog = new MessageDialog("Faal");
+                                await dialog.ShowAsync();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            var dialog = new MessageDialog("Error: " + ex);
+                            await dialog.ShowAsync();
+                        }
                     }
-                }
-
-                if (!check)
-                {
-                    //ServiceReference1.User newUser = new ServiceReference1.User();
-                    //newUser.GebruikerNaam = usernametxt.Text;
-                    //newUser.GebruikersPW = passwordtxt.Password;
-
-                    //await client.AddGebruikerAsync(newUser);
-
-                    var dialogCreated = new MessageDialog("User: " + usernametxt.Text + " successfully created");
-                    await dialogCreated.ShowAsync();
-                }
-                else
-                {
-                    var dialog = new MessageDialog("Username bestaat al");
-                    await dialog.ShowAsync();
+                    catch (Exception ex)
+                    {
+                        var dialog = new MessageDialog("Geen connectie" + ex);
+                        await dialog.ShowAsync();
+                    }
                 }
             }
             else

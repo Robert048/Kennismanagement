@@ -29,8 +29,8 @@
         <TextBlock TextWrapping="Wrap" Text="login" Grid.Column="1" FontSize="18.667" RenderTransformOrigin="0.738,0.919" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF195695" Margin="63,3.333,63,1.667"/>
         <TextBlock TextWrapping="Wrap" Text="gebruikersnaam" Grid.Column="1" Grid.Row="2" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock TextWrapping="Wrap" Text="wachtwoord" Grid.Row="4" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox TextWrapping="Wrap" TextAlignment="Center" Text="" RenderTransformOrigin="-0.493,0.844" Grid.Row="3" Grid.Column="1" Foreground="#FF195695" Margin="0,0.333,0,30.333" Grid.RowSpan="2"/>
-        <PasswordBox Grid.Column="1" Grid.Row="5" Foreground="#FF195695" RenderTransformOrigin="0.524,0.263"/>
+        <TextBox x:Name="txtUsername" TextWrapping="Wrap" TextAlignment="Center" Text="" RenderTransformOrigin="-0.493,0.844" Grid.Row="3" Grid.Column="1" Foreground="#FF195695" Margin="0,0.333,0,30.333" Grid.RowSpan="2"/>
+        <PasswordBox x:Name="txtPassword" Grid.Column="1" Grid.Row="5" Foreground="#FF195695" RenderTransformOrigin="0.524,0.263"/>
         <Button x:Name="createAccountBtn" Content="registreren" Click="createAccount_Click" Grid.Row="7" Grid.Column="1" Foreground="White" Background="#FF195695" HorizontalAlignment="Stretch"/>
         <Button x:Name="forgotPassBtn" Content="wachtwoord vergeten?" Click="createAccount_Click" Grid.Row="8" Grid.Column="1" Foreground="White" Background="#FF195695" HorizontalAlignment="Stretch" FontSize="14.667"/>
 
