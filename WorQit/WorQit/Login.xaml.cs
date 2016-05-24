@@ -8,8 +8,8 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 using Windows.Web.Http;
 using WorQit.Models;
-using ServiceStack;
-using ServiceStack.Text;
+
+
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -52,14 +52,19 @@ namespace WorQit
                         if (jsonresult["Result"] == "successful")
                         {
                             //put zooi[gebruiker?] in model
-                            var r = jsonresult["User"];
-                            var i = JsonConvert.SerializeObject(r);
-                            var f = JsonConvert.DeserializeObject(i);
+                            string r = jsonresult["User"];
+                            int s = r.IndexOf("}");
+                            r = r.Substring(2, s-2);
+                            
+
+                            //loggedInUser.ID = r["ID"].ToString();
+                            //var i = JsonConvert.SerializeObject(r);
+                            //var f = JsonConvert.DeserializeObject(i);
                            
 
-                            loggedInUser.ID = f.JsonTo<int>("ID");
+                            //loggedInUser.ID = f.JsonTo<int>("ID");
 
-                            loggedInUser = jsonresult["User"];
+                            //loggedInUser = jsonresult["User"];
                             Frame.Navigate(typeof(Main));
                         }
                         else
