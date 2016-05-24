@@ -10,12 +10,15 @@ namespace WorQitService.Controllers
         {
             WorQitEntities wqdb = new WorQitEntities();
             wqdb.Configuration.ProxyCreationEnabled = false;
-            List<Vacancy> list = new List<Vacancy>();
-            foreach (var item in wqdb.Vacancies)
-            {
-               list.Add(item);
-            }
-            return list;
+            return wqdb.Vacancies.ToList();
+
+        }
+
+        public List<VacancyEmployee> getAllVacancyEmployees()
+        {
+            WorQitEntities wqdb = new WorQitEntities();
+            wqdb.Configuration.ProxyCreationEnabled = false;
+            return wqdb.VacancyEmployees.ToList();
         }
 
         public List<Vacancy> getVacancies(int ID)
@@ -99,6 +102,43 @@ namespace WorQitService.Controllers
             catch (System.Exception ex)
             {
                 return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+        public void setMatchScore(int employeeID, int vacancyID)
+        {
+            int bedrijfsScore = 0;
+            WorQitEntities wqdb = new WorQitEntities();
+            wqdb.Configuration.ProxyCreationEnabled = false;
+            Vacancy vacancy = wqdb.Vacancies.Where(x => x.ID == vacancyID).First();
+            Employee employee = wqdb.Employees.Where(x => x.ID == employeeID).First();
+            List<Vacancy> vacancies = wqdb.Vacancies.Where(x => x.employerID == vacancy.employerID).ToList();
+            foreach (Vacancy v in vacancies)
+            {
+                List<VacancyEmployee> vList = wqdb.VacancyEmployees.Where(x => x.vacancyID == v.ID).ToList();
+                foreach (VacancyEmployee ve in vList)
+                {
+                    bedrijfsScore = bedrijfsScore + ve.rating;
+                }
+                
+                if (bedrijfsScore > -5)
+                {
+                    int matchScore = 0;
+                    if (employee.industry == v.jobfunction) matchScore = matchScore + 5;
+                    if (employee.location == v.tags) matchScore = matchScore + 4;
+                    if (employee.industry == v.requirements) matchScore = matchScore + 2;
+                    var ve = wqdb.VacancyEmployees.Where(x => x.employeeID == employee.ID).Where(x => x.vacancyID == v.ID).FirstOrDefault();
+                    if(ve == null)
+                    {
+                        VacancyEmployee newVE = new VacancyEmployee() { employeeID = employee.ID, vacancyID = v.ID, matchingValue = matchScore };
+                        wqdb.VacancyEmployees.Add(newVE);
+                        wqdb.SaveChanges();
+                    }
+                    else
+                    {
+                        ve.matchingValue = matchScore;
+                    }
+                }
             }
         }
     }

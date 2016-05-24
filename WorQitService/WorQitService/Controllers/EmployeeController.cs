@@ -139,7 +139,6 @@ namespace WorQitService.Controllers
                     }
                     return Json(new { Result = "failed", Error = errorString });
                 }
-                
             }
             catch (System.Exception ex)
             {
@@ -175,7 +174,6 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
                
                 Employee emp = wqdb.Employees.First(x => x.ID == ID);
-               
                 
                 emp.firstName = (firstName != null) ? firstName : emp.firstName;
                 emp.lastName = (lastName != null) ? lastName : emp.lastName;
