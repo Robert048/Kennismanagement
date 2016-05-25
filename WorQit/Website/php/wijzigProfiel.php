@@ -1,10 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Thom
- * Date: 10-5-2016
- */
+$vars = array("username => 'test', password => 'test'");
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL,"http://worqit.azurewebsites.net/api/Employer/logIn");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$vars);  //Post Fields
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$headers = array();
+$headers[] = 'username: test';
+$headers[] = 'password: test';
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+$server_output = curl_exec ($ch);
+curl_close ($ch);
+
+$var = json_decode($server_output, true);
+
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +47,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
 <section id="container" >
     <!-- **********************************************************************************************************************************************************
     TOP BAR CONTENT & NOTIFICATIONS
@@ -137,21 +150,18 @@
 
                 <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                 <h5 class="centered">Bedrijfs naam</h5>
-
                 <li class="mt">
                     <a href="../index.php">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-
                 <li class="sub-menu">
                     <a class="active" href="profiel.php" >
                         <i class="fa fa-desktop"></i>
                         <span>Profiel</span>
                     </a>
                 </li>
-
                 <li class="sub-menu">
                     <a href="vacatures.php" >
                         <i class="fa fa-cogs"></i>
@@ -177,27 +187,119 @@
     <section id="main-content">
         <section class="wrapper site-min-height">
             <h3><i class="fa fa-angle-right"></i> Profiel </h3>
+            <form action="wijzigProfiel.php" method="post">
             <div class="row mt">
                 <div class="col-lg-2">
-                    <p><input type="text" class="form-control" placeholder="naam"></p>
+                    <p><input type="text" class="form-control" name="name" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?>" ></p>
                 </div>
                 <br/>  <br/>  <br/>
                 <div class="col-lg-2">
-                    <p><input type="text" class="form-control" placeholder="locatie"></p>
+                    <p><input type="text" class="form-control" name="location" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["location"];} else {} ?>"></p>
                 </div>
                 <br/>  <br/>  <br/>
                 <div class="col-lg-4">
-                    <p><textarea style="overflow:auto;resize:none" rows="5" cols="300" class="form-control" placeholder="omschrijving"></textarea></p>
+                    <p><textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["description"];} else {} ?>"></textarea></p>
                 </div>
+                </form>
                 <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
-                <div class="col-lg-6">
-                    <div class="col-lg-3"> <p><button value="sla op" formaction="wijzigProfiel.php">Sla op</button></p></div>
-                    <div class="col-lg-3"> <p><button value="Delete">Verwijder</button></p></div>
+                <div class="col-lg-2">
+                    <button class="btn btn-primary btn-xs" type="submit" name="submitbutton"><i class="fa fa-pencil"></i></button>
+                    <a data-toggle="modal" href="wijzigProfiel.php.html#deleteAccount">Verwijder account</a>
                 </div>
+            </form>
+
             </div>
+            </div>
+
+
+            <?php
+            if(isset($_POST['submitbutton'])){
+
+                $name = $_POST["name"];
+                $location = $_POST["location"];
+                $description = $_POST["description"];
+
+                echo $name;
+                $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '11', firstName => '$name', location => '$location', lastName => '$description'");
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL,"http://worqit.azurewebsites.net/api/Employer/editEmployer");
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS,$editVars);  //Post Fields
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                $editHeaders = array();
+                $editHeaders[] = 'industry: test';
+                $editHeaders[] = 'id: 11';
+                $editHeaders[] = 'firstName:'.$name;
+                $editHeaders[] = 'location:'.$location;
+                $editHeaders[] = 'lastName:'.$description;
+                $editHeaders[] = 'username: test';
+                $editHeaders[] = 'password: test';
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
+                $server_output = curl_exec ($ch);
+                curl_close ($ch);
+
+                $var = json_decode($server_output, true);
+                echo $server_output;
+
+
+
+            }
+            ?>
 
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
+
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel role="dialog" tabindex="-1" id="deleteAccount" class="modal fade">
+    <div class="modal-dialog">"
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Account verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u het account wilt verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" id="bevestigVerwijderen" onclick="delete()">Ja</button>
+                <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
+                <?php
+
+
+
+                if($var["Result"] == "successful") {
+                    $ID = $var["User"][0]["ID"];
+
+                    $vars = array("id => '$ID'");
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Employer/deleteEmployer');
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    //curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: DELETE') );
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Set curl to return the data instead of printing it to the browser.
+
+                    $data = curl_exec($ch);
+                    curl_close($ch);
+                }
+
+                ?>
+                <script>
+                    var box = document.getElementById("bevestigVerwijderen");
+                    box.onclick = function() {
+                        $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
+                        location.reload();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <!--main content end-->
     <!--footer start-->
@@ -210,7 +312,6 @@
     </footer>
     <!--footer end-->
 </section>
-
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="../dashgum/Theme/assets/js/jquery.js"></script>
 <script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
@@ -220,20 +321,8 @@
 <script src="../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
 <script src="../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
-
 <!--common script for all pages-->
 <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
 
-<!--script for this page-->
 
-<script>
-    //custom select box
 
-    $(function(){
-        $('select.styled').customSelect();
-    });
-
-</script>
-
-</body>
-</html>
