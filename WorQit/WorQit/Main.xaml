@@ -18,18 +18,7 @@
             <RowDefinition Height="543*"/>
         </Grid.RowDefinitions>
 
-        <GridView x:Name="control" Grid.Row="1" ItemsSource="{Binding vacatureLijst}" Margin="0,0,0,0" Grid.ColumnSpan="3">
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="128" Width="128">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="60*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock TextWrapping="Wrap" Text="{Binding functie}"/>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+        <GridView x:Name="control" Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
     </Grid>
 </Page>

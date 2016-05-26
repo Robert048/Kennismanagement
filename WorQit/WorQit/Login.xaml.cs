@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -22,7 +23,7 @@ namespace WorQit
     public sealed partial class Login : Page
     {
         ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-        Employee loggedInUser = new Employee();
+        public static Employee loggedInUser = new Employee();
 
         public Login()
         {
@@ -52,15 +53,18 @@ namespace WorQit
                         if (jsonresult["Result"] == "successful")
                         {
                             //put zooi[gebruiker?] in model
-                            string r = jsonresult["User"];
-                            int s = r.IndexOf("}");
-                            r = r.Substring(2, s-2);
+                            var r = jsonresult;
+                            //int s = r.IndexOf("}");
+                            //r = r.Substring(2, s-2);
                             
 
                             //loggedInUser.ID = r["ID"].ToString();
-                            //var i = JsonConvert.SerializeObject(r);
+                            var i = JsonConvert.SerializeObject(r);
                             //var f = JsonConvert.DeserializeObject(i);
-                           
+
+                            var user = JObject.Parse(i).SelectToken("User").ToString();
+                            loggedInUser = (JsonConvert.DeserializeObject<List<Employee>>(user))[0] as Employee;
+
 
                             //loggedInUser.ID = f.JsonTo<int>("ID");
 
