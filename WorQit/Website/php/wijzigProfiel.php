@@ -1,26 +1,3 @@
-<?php
-$vars = array("username => 'test', password => 'test'");
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,"http://worqit.azurewebsites.net/api/Employer/logIn");
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,$vars);  //Post Fields
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-$headers = array();
-$headers[] = 'username: test';
-$headers[] = 'password: test';
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-$server_output = curl_exec ($ch);
-curl_close ($ch);
-
-$var = json_decode($server_output, true);
-
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,9 +124,8 @@ $var = json_decode($server_output, true);
         <div id="sidebar"  class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-
                 <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered">Bedrijfs naam</h5>
+                <h5 class="centered"><?php include("getUser.php"); echo $GLOBALS["bedrijfsnaam"] ?></h5>
                 <li class="mt">
                     <a href="../index.php">
                         <i class="fa fa-dashboard"></i>
@@ -186,72 +162,37 @@ $var = json_decode($server_output, true);
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Profiel </h3>
+            <h3><i class="fa fa-angle-right"></i> Profiel wijzigen </h3>
             <form action="wijzigProfiel.php" method="post">
             <div class="row mt">
                 <div class="col-lg-2">
-                    <p><input type="text" class="form-control" name="name" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?>" ></p>
+                    <p style="font-weight:bold;font-size: 14pt;";>Naam</p> <input type="text" class="form-control" name="name" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?>" >
                 </div>
-                <br/>  <br/>  <br/>
+                <br/>  <br/>  <br/> <br/>
                 <div class="col-lg-2">
-                    <p><input type="text" class="form-control" name="location" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["location"];} else {} ?>"></p>
+                    <p style="font-weight:bold;font-size: 14pt;";>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["employeeCount"];} else {} ?>" >
                 </div>
-                <br/>  <br/>  <br/>
+                <br/>  <br/>  <br/> <br/>
+                <div class="col-lg-2">
+                    <p style="font-weight:bold;font-size: 14pt;";>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["location"];} else {} ?>">
+                </div>
+                <br/>  <br/>  <br/> <br/>
                 <div class="col-lg-4">
-                    <p><textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["description"];} else {} ?>"></textarea></p>
+                    <p style="font-weight:bold;font-size: 14pt;";>Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["description"];} else {} ?>"></textarea>
                 </div>
                 </form>
-                <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
+                <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/><br/><br/><br/>
                 <div class="col-lg-2">
-                    <button class="btn btn-primary btn-xs" type="submit" name="submitbutton"><i class="fa fa-pencil"></i></button>
-                    <a data-toggle="modal" href="wijzigProfiel.php.html#deleteAccount">Verwijder account</a>
+                    <button class="btn btn-success btn-xs" type="submit" name="submitbutton""><i class="fa fa-pencil"></i></button>
+                    <a data-toggle="modal"  class="btn btn-danger btn-xs" href="wijzigProfiel.php.html#deleteAccount"><i class="fa fa-trash-o"></i></a>
                 </div>
             </form>
-
             </div>
             </div>
 
-
-            <?php
-            if(isset($_POST['submitbutton'])){
-
-                $name = $_POST["name"];
-                $location = $_POST["location"];
-                $description = $_POST["description"];
-
-                echo $name;
-                $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '11', firstName => '$name', location => '$location', lastName => '$description'");
-
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL,"http://worqit.azurewebsites.net/api/Employer/editEmployer");
-                curl_setopt($ch, CURLOPT_POST, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS,$editVars);  //Post Fields
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-                $editHeaders = array();
-                $editHeaders[] = 'industry: test';
-                $editHeaders[] = 'id: 11';
-                $editHeaders[] = 'firstName:'.$name;
-                $editHeaders[] = 'location:'.$location;
-                $editHeaders[] = 'lastName:'.$description;
-                $editHeaders[] = 'username: test';
-                $editHeaders[] = 'password: test';
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
-                $server_output = curl_exec ($ch);
-                curl_close ($ch);
-
-                $var = json_decode($server_output, true);
-                echo $server_output;
-
-
-
-            }
-            ?>
 
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
-
-
 
     <div aria-hidden="true" aria-labelledby="myModalLabel role="dialog" tabindex="-1" id="deleteAccount" class="modal fade">
     <div class="modal-dialog">"
@@ -264,27 +205,26 @@ $var = json_decode($server_output, true);
                 <p>Weet u zeker dat u het account wilt verwijderen?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" type="button" id="bevestigVerwijderen" onclick="delete()">Ja</button>
+                <button class="btn btn-theme" type="button" id="bevestigVerwijderen"  onclick="deleteEmployer()">Ja</button>
                 <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
                 <?php
 
+                function deleteEmployer(){
+                $ID = $GLOBALS["user"];
 
+                $deleteVars = array("ID => '$ID', password => 'onzin'");
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Employer/deleteEmployer');
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $deleteVars);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-                if($var["Result"] == "successful") {
-                    $ID = $var["User"][0]["ID"];
-
-                    $vars = array("id => '$ID'");
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Employer/deleteEmployer');
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-                    curl_setopt($ch, CURLOPT_POST, true);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    //curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: DELETE') );
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Set curl to return the data instead of printing it to the browser.
-
-                    $data = curl_exec($ch);
-                    curl_close($ch);
+                $deleteHeaders = array();
+                $deleteHeaders[] = 'ID:'.$ID;
+                $deleteHeaders[] = 'password: test';
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $deleteHeaders);
+                $server_output = curl_exec($ch);
+                curl_close($ch);
                 }
 
                 ?>
@@ -300,6 +240,70 @@ $var = json_decode($server_output, true);
     </div>
     </div>
 
+
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel role="dialog" tabindex="-1" id="changeAccount" class="modal fade">
+    <div class="modal-dialog">"
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Wijzigingen opslaan</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u deze wijzigingen wil opslaan</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-theme" type="button" id="bevestigWijzig"  onclick="editEmployer()">Ja</button>
+                <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
+
+                <?php
+
+                if(isset($_POST['submitbutton'])) {
+                    $name = $_POST["name"];
+                    $location = $_POST["location"];
+                    $description = $_POST["description"];
+                    $employeeCount = $_POST["employeeCount"];
+                    $id = $var["User"][0]["ID"];
+
+                    $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '$id', firstName => '$name', location => '$location', lastName => '$description', employeeCount => $employeeCount");
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/editEmployer");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $editVars);  //Post Fields
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                    $editHeaders = array();
+                    $editHeaders[] = 'industry: test';
+                    $editHeaders[] = 'id:' . $id;
+                    $editHeaders[] = 'firstName:' . $name;
+                    $editHeaders[] = 'location:' . $location;
+                    $editHeaders[] = 'lastName:' . $description;
+                    $editHeaders[] = 'username: test';
+                    $editHeaders[] = 'password: test';
+                    $editHeaders[] = 'employeeCount:' . $employeeCount;
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
+                    $server_output = curl_exec($ch);
+
+                    curl_close($ch);
+
+
+                    $var = json_decode($server_output, true);
+
+                }
+                ?>
+
+                <script>
+                    var box = document.getElementById("bevestigWijzig");
+                    box.onclick = function() {
+                        $('#bevestigWijzig').attr('data-dismiss', 'modal');
+
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <!--main content end-->
     <!--footer start-->

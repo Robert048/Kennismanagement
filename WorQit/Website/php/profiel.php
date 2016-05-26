@@ -1,23 +1,6 @@
 <?php
-$vars = array("username => 'test', password => 'test'");
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,"http://worqit.azurewebsites.net/api/Employer/logIn");
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,$vars);  //Post Fields
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-$headers = array();
-$headers[] = 'username: test';
-$headers[] = 'password: test';
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-$server_output = curl_exec ($ch);
-curl_close ($ch);
-
-$var = json_decode($server_output, true);
-
+include("getUser.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,11 +130,8 @@ $var = json_decode($server_output, true);
         <div id="sidebar"  class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-
                 <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered">Bedrijfs naam</h5>
-
-
+                <h5 class="centered"><?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?></h5>
                 <li class="mt">
                     <a href="../index.php">
                         <i class="fa fa-dashboard"></i>
@@ -190,27 +170,36 @@ $var = json_decode($server_output, true);
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Profiel van ..... </h3>
+            <h3><i class="fa fa-angle-right"></i> Profiel van <?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?> </h3>
             <div class="row mt">
                 <div class="col-lg-1">
-                    <p>Bedrijfsnaam</p>
+                    <p style="font-weight:bold;font-size: 14pt;";>Bedrijfsnaam</p>
                 </div>
                 <br/>  <br/>
                 <div class="col-lg-4">
                     <p><?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?></p>
                 </div>
 
-                <br/>  <br/>  <br/>
+                <br/>  <br/>
+                <div class="col-lg-1">
+                    <p style="font-weight:bold;font-size: 14pt;";>Medewerkersaantal</p>
+                </div>
+                <br/>  <br/>
                 <div class="col-lg-4">
-                    <p>Bedrijfslocatie</p>
+                    <p><?php if($var["Result"] == "successful") { echo $var["User"][0]["employeeCount"];} else {} ?></p>
+                </div>
+
+                <br/>  <br/>
+                <div class="col-lg-4">
+                    <p style="font-weight:bold;font-size: 14pt;";>Bedrijfslocatie</p>
                 </div>
                 <br/>  <br/>
                 <div class="col-lg-1">
                     <p><?php if($var["Result"] == "successful") { echo $var["User"][0]["location"];} else {} ?></p>
                 </div>
-                <br/>  <br/>  <br/>
+                <br/>  <br/>
                 <div class="col-lg-4">
-                    <p>Bedrijfsomschrijving</p>
+                    <p style="font-weight:bold;font-size: 14pt;";>Bedrijfsomschrijving</p>
                 </div>
                 <br/>  <br/>
                 <div class="col-lg-6">
@@ -218,11 +207,9 @@ $var = json_decode($server_output, true);
                 </div>
                 <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
                 <div class="col-lg-6">
-                    <div class="col-lg-1">
                         <form method="get" action="wijzigProfiel.php">
                             <button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-pencil"></i></button>
                         </form>
-                    </div>
                 </div>
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
