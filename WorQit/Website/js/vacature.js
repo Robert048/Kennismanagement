@@ -23,7 +23,6 @@ function deleteVacancy(){
     
     var parameter = 
         $('#delete').data('levelid');
-    
 
     var request = $.ajax({
         type: "GET",
@@ -31,11 +30,12 @@ function deleteVacancy(){
         data: "id="+parameter
     });
     request.done(function () {
-        $('#parameter').animate({
-            backgroundColor: '#FF8585'
-        }, 1000, function () {
-            $(this).fadeOut(1000);
-        });
+        $(this).closest('tr').find('td').fadeOut( "slow" );
+        //animate({
+        //    backgroundColor: '#FF8585'
+       // }, 1000, function () {
+        //    $(this).fadeOut(1000);
+        //});
         //location.reload();
     });
     request.fail(function (jqXHR, textStatus) {

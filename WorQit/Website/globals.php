@@ -7,3 +7,4 @@
  */
 
 define('BASE_URL','C:\Users\maaike\Kennismanagement\WorQit\Website');
+define('loggedin',$_GET['bool']);

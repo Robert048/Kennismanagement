@@ -6,6 +6,17 @@
  * Time: 11:16
  */
 
+
+function login(){
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Vacancy/getVacancies/9');
+    $content = curl_exec($curl);
+    curl_close($curl);
+    return json_decode($content);
+}
+
 session_start();
 
 // Headers om een JSON response te genereren

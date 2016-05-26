@@ -152,7 +152,7 @@ require_once ('../../globals.php');
                                                 <?php
                                                 $vacancies = showVacancies();
                                                 foreach($vacancies as $vacancy){?>
-                                                <tr id="<?php $vacancy->ID?>">
+                                                <tr class="vacancyRow">
                                                     <td>
                                                         <a href=><?php echo $vacancy->jobfunction?></a>
                                                     </td>
