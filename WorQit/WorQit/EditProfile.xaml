@@ -17,5 +17,6 @@
             <RowDefinition Height="97*"/>
             <RowDefinition Height="543*"/>
         </Grid.RowDefinitions>
+        <Button x:Name="button" Content="Button" Grid.Column="1" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" Padding="8,4"/>
     </Grid>
 </Page>
