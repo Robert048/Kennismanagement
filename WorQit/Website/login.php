@@ -35,8 +35,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-	  <!--js file voor login-->
-	  <script src= "js/login.js"></script>
     <![endif]-->
   </head>
 
@@ -49,19 +47,18 @@
 	  <div id="login-page">
 	  	<div class="container" id="login">
 
-		      <form class="form-login" action="index.php">
+		      <form class="form-login">
 		        <h2 class="form-login-heading">log in</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="Username">
+		            <input type="text" id="username" class="form-control" placeholder="Username">
 		            <br>
-		            <input type="password" class="form-control" placeholder="Password">
+		            <input type="password" id="password" class="form-control" placeholder="Password">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.php#forgotPassModal"> Wachtwoord vergeten?</a>
-
 		                </span>
 		            </label>
-		            <button class="btn btn-theme btn-block" id="login_button" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
+		            <button class="btn btn-theme btn-block" id="login_button" type="submit" ><i class="fa fa-lock"></i> LOG IN</button>
 		            <hr>
 		            <div class="registration">
 						Nog geen account?<br/>
@@ -132,6 +129,7 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="dashgum/Theme/assets/js/jquery.js"></script>
     <script src="dashgum/Theme/assets/js/bootstrap.min.js"></script>
+	  <script src= "js/login.js"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
