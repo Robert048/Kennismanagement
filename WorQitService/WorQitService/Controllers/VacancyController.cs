@@ -16,7 +16,7 @@ namespace WorQitService.Controllers
 
         }
 
-        [HttpPost]
+     
         public object getCandidates()
         {
             try
@@ -26,24 +26,19 @@ namespace WorQitService.Controllers
                 int vacancyID = (headers.Contains("vacancyID")) ? Int32.Parse(headers.GetValues("vacancyID").First()) : -99;
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
+             
+                var vaEmps = new List<Employee>(from VacancyEmployee in wqdb.VacancyEmployees
+                                                where VacancyEmployee.vacancyID == vacancyID && VacancyEmployee.rating == 1
+                                                select VacancyEmployee.Employee).ToList();
 
-                List<object> vaEmps = new List<object>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                      where VacancyEmployee.vacancyID == vacancyID
-                                                      select VacancyEmployee);
 
-                foreach(VacancyEmployee vaEmp in vaEmps )
-                {
-
-                    vaEmp.Employee = wqdb.Employees.First(x => x.ID == vaEmp.employeeID);
-                    
-                }
-
-                return vaEmps;
+                return Json(new { Result = "successful", Users = vaEmps });
 
             }
             catch (Exception ex)
             {
-                return Json(new { Result = "failed", Error = ex });
+                //return Json(new { Result = "failed", Error = ex });
+                return null;
             }
         }
 
