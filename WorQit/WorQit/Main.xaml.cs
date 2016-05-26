@@ -29,7 +29,7 @@ namespace WorQit
         public Main()
         {
             this.InitializeComponent();
-            textBlock.Text = "Welcome my FRIEND " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
+            textBlock.Text = "Welcome " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
 
         }
 
@@ -65,6 +65,10 @@ namespace WorQit
             double distance = test.Distance(sCoord, eCoord, DistanceType.Kilometers);
         }
 
+        private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+        }
     }
     public enum DistanceType { Miles, Kilometers };
     /// <summary>  

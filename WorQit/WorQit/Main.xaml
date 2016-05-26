@@ -14,11 +14,20 @@
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="97*"/>
-            <RowDefinition Height="543*"/>
+            <RowDefinition Height="108*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="310*"/>
+            <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
 
-        <GridView x:Name="control" Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="1"/>
+        <GridView x:Name="control" Grid.Row="2" Margin="0,0.333,0,1.333" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+        <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png"/>
+        <Button x:Name="btnEditProfile" Content="wijzig profiel" Grid.Row="2" FontSize="12" Background="#FFA3CBE8" Foreground="#FF195695" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5"/>
+        <Button x:Name="btnSettings" Content="instellingen" Grid.Row="2" FontSize="12" Background="#FFA3CBE8" Foreground="#FF195695" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,5,5"/>
+        <Button x:Name="btnLogout" Content="uitloggen" Grid.Row="2" FontSize="12" Background="#FFA3CBE8" Foreground="#FF195695" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,0,5" Click="btnSettings_Copy_Click"/>
+        <TextBlock x:Name="textBlock" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="Welcome" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="#FF195695" Height="16" Margin="60,8,59,8.667" Width="49"/>
+        <Button x:Name="btnMatch" Content="match vacatures" Grid.Row="3" FontSize="12" Background="#FFA3CBE8" Foreground="#FF195695" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,5" VerticalAlignment="Stretch"/>
     </Grid>
 </Page>
