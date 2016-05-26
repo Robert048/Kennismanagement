@@ -7,6 +7,7 @@ using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Services.Maps;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,8 @@ namespace WorQit
         public Main()
         {
             this.InitializeComponent();
+            textBlock.Text = "Welcome " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
+
         }
 
         public async void geoTest()
@@ -62,6 +65,10 @@ namespace WorQit
             double distance = test.Distance(sCoord, eCoord, DistanceType.Kilometers);
         }
 
+        private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+        }
     }
     public enum DistanceType { Miles, Kilometers };
     /// <summary>  
