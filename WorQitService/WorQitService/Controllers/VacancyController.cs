@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
@@ -12,6 +14,37 @@ namespace WorQitService.Controllers
             wqdb.Configuration.ProxyCreationEnabled = false;
             return wqdb.Vacancies.ToList();
 
+        }
+
+        [HttpPost]
+        public object getCandidates()
+        {
+            try
+            {
+               
+                var headers = Request.Headers;
+                int vacancyID = (headers.Contains("vacancyID")) ? Int32.Parse(headers.GetValues("vacancyID").First()) : -99;
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+
+                List<object> vaEmps = new List<object>(from VacancyEmployee in wqdb.VacancyEmployees
+                                                      where VacancyEmployee.vacancyID == vacancyID
+                                                      select VacancyEmployee);
+
+                foreach(VacancyEmployee vaEmp in vaEmps )
+                {
+
+                    vaEmp.Employee = wqdb.Employees.First(x => x.ID == vaEmp.employeeID);
+                    
+                }
+
+                return vaEmps;
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
         }
 
         public List<VacancyEmployee> getAllVacancyEmployees()
