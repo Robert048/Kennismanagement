@@ -8,6 +8,11 @@ namespace WorQitService.Controllers
 {
     public class VacancyController : ApiController
     {
+
+        /// <summary>
+        /// Get all vacancys
+        /// </summary>
+        /// <returns>vacancy list</returns>
         public List<Vacancy> getAllVacancies()
         {
             WorQitEntities wqdb = new WorQitEntities();
@@ -16,19 +21,21 @@ namespace WorQitService.Controllers
 
         }
 
-     
-        public object getCandidates()
+        /// <summary>
+        /// Get all candidates on a vacancy
+        /// </summary>
+        /// <param>vacancyID</param>
+        /// <returns>vacancy list</returns>
+        public object getCandidates(int ID)
         {
             try
             {
                
-                var headers = Request.Headers;
-                int vacancyID = (headers.Contains("vacancyID")) ? Int32.Parse(headers.GetValues("vacancyID").First()) : -99;
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
              
                 var vaEmps = new List<Employee>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                where VacancyEmployee.vacancyID == vacancyID && VacancyEmployee.rating == 1
+                                                where VacancyEmployee.vacancyID == ID && VacancyEmployee.rating == 1
                                                 select VacancyEmployee.Employee).ToList();
 
 
@@ -42,6 +49,10 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// Get all results from VacancyEmployees
+        /// </summary>
+        /// <returns>vacancyEmployees list</returns>
         public List<VacancyEmployee> getAllVacancyEmployees()
         {
             WorQitEntities wqdb = new WorQitEntities();
@@ -49,6 +60,11 @@ namespace WorQitService.Controllers
             return wqdb.VacancyEmployees.ToList();
         }
 
+        /// <summary>
+        /// Get vacancies from employer
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>vacancy list</returns>
         public List<Vacancy> getVacancies(int ID)
         {
             WorQitEntities wqdb = new WorQitEntities();
@@ -61,6 +77,16 @@ namespace WorQitService.Controllers
             return list;
         }
 
+        /// <summary>
+        /// Get vacancys with specified requirements
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="salary"></param>
+        /// <param name="hours"></param>
+        /// <param name="requirements"></param>
+        /// <param name="tags"></param>
+        /// <param name="location"></param>
+        /// <returns>vacancy list</returns>
         public List<Vacancy> getVacancies(string function = null, int salary  = 0, int hours = 0 , string requirements = null, string tags = null, string location = null)
         {
             WorQitEntities wqdb = new WorQitEntities();
@@ -91,6 +117,17 @@ namespace WorQitService.Controllers
             return alles;
         }
 
+        /// <summary>
+        /// Create new Vacancy
+        /// </summary>
+        /// <param name="employerID"></param>
+        /// <param name="function"></param>
+        /// <param name="description"></param>
+        /// <param name="salary"></param>
+        /// <param name="hours"></param>
+        /// <param name="requirements"></param>
+        /// <param name="tags"></param>
+        /// <returns>json sucessfull or failed with error</returns>
         public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements, string tags)
         {
             try
