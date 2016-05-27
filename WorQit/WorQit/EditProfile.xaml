@@ -9,14 +9,40 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="350*"/>
-            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="97*"/>
-            <RowDefinition Height="543*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="259*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="button" Content="Button" Grid.Column="1" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Stretch" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" Padding="8,4"/>
+        <Image x:Name="image" Grid.Column="2" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Profiel aanpassen" FontSize="12" Foreground="#FF195695" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="Naam" FontSize="12" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Leeftijd" FontSize="12" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+        <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="Locatie" FontSize="12" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="Werkervaring" FontSize="12" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="Opleiding" FontSize="12" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="Werkveld" FontSize="12" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
+        <TextBlock Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="Werkuren" FontSize="12" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox" Grid.Column="3" Grid.Row="2" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
+        <TextBox x:Name="textBox_Copy" Grid.Column="3" Grid.Row="3" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
+        <TextBox x:Name="textBox_Copy1" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
+        <TextBox x:Name="textBox_Copy2" Grid.Column="3" Grid.Row="5" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
+        <TextBox x:Name="textBox_Copy3" Grid.Column="3" Grid.Row="6" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
+        <TextBox x:Name="textBox_Copy4" Grid.Column="3" Grid.Row="7" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
+        <TextBox x:Name="textBox_Copy5" Grid.Column="3" Grid.Row="8" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
     </Grid>
 </Page>
