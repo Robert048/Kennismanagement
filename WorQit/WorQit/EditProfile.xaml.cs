@@ -5,7 +5,6 @@ using System.Net.Http;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using
 
 namespace WorQit
 {
@@ -21,7 +20,7 @@ namespace WorQit
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            using (var client = new System.Net.Http.HttpClient())
+            using (var client = new HttpClient())
             {
                 try
                 {
@@ -41,7 +40,7 @@ namespace WorQit
                     stringContent.Headers.Add("location", txtLocatie.Text);
                     stringContent.Headers.Add("hours", txtUren.Text);
 
-                    stringContent.Headers.Add("password", txtUren.Text);
+                    //stringContent.Headers.Add("password", txtUren.Text);
                     stringContent.Headers.Add("oldpassword", Login.loggedInUser.password);
                     stringContent.Headers.Add("email", txtEmail.Text);
 
