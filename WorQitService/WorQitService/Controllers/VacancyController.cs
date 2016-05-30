@@ -44,8 +44,37 @@ namespace WorQitService.Controllers
             }
             catch (Exception ex)
             {
-                //return Json(new { Result = "failed", Error = ex });
-                return null;
+                return Json(new { Result = "failed", Error = ex });
+            
+            }
+        }
+
+        /// <summary>
+        /// Get all vacancys with score
+        /// </summary>
+        /// <param>employeeID</param>
+        /// <returns>vacancy list</returns>
+        public object geVacanciesByRating(int employeeID)
+        {
+            try
+            {
+
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+
+                var vaEmps = new List<Vacancy>(from VacancyEmployee in wqdb.VacancyEmployees
+                                                where VacancyEmployee.employeeID == employeeID && VacancyEmployee.matchingValue == 0 && VacancyEmployee.rating < 0
+                                                orderby VacancyEmployee.rating
+                                                select VacancyEmployee.Vacancy).ToList();
+
+
+                return Json(new { Result = "successful", Vacancys = vaEmps });
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+               
             }
         }
 
