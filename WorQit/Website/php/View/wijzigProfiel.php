@@ -133,41 +133,39 @@ if($_SESSION['isloggedin']) {
 *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu" id="nav-accordion">
-
-                <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
-
-                <li class="mt">
-                    <a href="../../index.php">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-
-                <li class="sub-menu">
-                    <a class="active" href="profiel.php" >
-                        <i class="fa fa-desktop"></i>
-                        <span>Profiel</span>
-                    </a>
-                </li>
-
-                <li class="sub-menu">
-                    <a href="vacancies.php" >
-                        <i class="fa fa-cogs"></i>
-                        <span>Vacatures</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="berichten.php" >
-                        <i class="fa fa-book"></i>
-                        <span>Berichten</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
+        <div id="sidebar" class="nav-collapse ">
+            <div id="wrapper">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                    <h5 class="centered"><?php include("../Controller/getUser.php"); echo $GLOBALS["bedrijfsnaam"] ?></h5>
+                    <li class="mt">
+                        <a href="../index.php">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a class="active" href="profiel.php">
+                            <i class="fa fa-desktop"></i>
+                            <span>Profiel</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="vacatures.php">
+                            <i class="fa fa-cogs"></i>
+                            <span>Vacatures</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="berichten.php">
+                            <i class="fa fa-book"></i>
+                            <span>Berichten</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
         </div>
     </aside>
     <!--sidebar end-->
@@ -175,37 +173,137 @@ if($_SESSION['isloggedin']) {
     <!-- **********************************************************************************************************************************************************
     MAIN CONTENT
 *********************************************************************************************************************************************************** -->
+
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Profiel </h3>
-            <div class="row mt">
-                <div class="col-lg-2">
-                    <p><input type="text" class="form-control" placeholder="naam"></p>
-                </div>
-                <br/>  <br/>  <br/>
-                <div class="col-lg-2">
-                    <p><input type="text" class="form-control" placeholder="locatie"></p>
-                </div>
-                <br/>  <br/>  <br/>
-                <div class="col-lg-4">
-                    <p><textarea style="overflow:auto;resize:none" rows="5" cols="300" class="form-control" placeholder="omschrijving"></textarea></p>
-                </div>
-                <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
-                <div class="col-lg-6">
-                    <div class="col-lg-3"> <p><button value="sla op" formaction="wijzigProfiel.php">Sla op</button></p></div>
-                    <div class="col-lg-3"> <p><button value="Delete">Verwijder</button></p></div>
-                </div>
+            <h3><i class="fa fa-angle-right"></i> Profiel wijzigen </h3>
+
+            <form action="wijzigProfiel.php" method="post" id="form">
+                <div id="form2">
+                    <div class="row mt">
+                        <div class="col-lg-2">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["name"];} else {} ?>">
+                        </div>
+                        <br/> <br/> <br/> <br/>
+
+                        <div class="col-lg-2">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["employeeCount"];} else {} ?>">
+                        </div>
+                        <br/> <br/> <br/> <br/>
+
+                        <div class="col-lg-2">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["location"];} else {} ?>">
+                        </div>
+                        <br/> <br/> <br/> <br/>
+
+                        <div class="col-lg-4">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea
+                                style="overflow:auto;resize:none" rows="5" cols="300" name="description"
+                                class="form-control" placeholder="<?php if ($var["Result"] == "successful") {
+                                echo $var["User"][0]["description"];
+                            } else {
+                            } ?>"></textarea>
+                        </div>
+            </form>
+            <br/> <br/> <br/><br/> <br/> <br/><br/> <br/><br/><br/><br/>
+
+            <div class="col-lg-2">
+                <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig"
+                "><i class="fa fa-pencil"></i></button>
+                <a data-toggle="modal" class="btn btn-danger btn-xs" href="wijzigProfiel.php.html#deleteAccount"><i
+                        class="fa fa-trash-o"></i></a>
+            </div>
+            </div>
+            <p id="saveChanges"></p>
+            </form>
+            </div>
             </div>
 
-        </section><! --/wrapper -->
-    </section><!-- /MAIN CONTENT -->
+        </section>
+        <! --/wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog
+    " tabindex="-1" id="deleteAccount" class="modal fade">
+    <div class="modal-dialog">"
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Account verwijderen</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u het account wilt verwijderen?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja
+                </button>
+                <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
+                <?php
+
+                function deleteEmployer()
+                {
+                    $ID = $GLOBALS["user"];
+
+                    $deleteVars = array("ID => '$ID', password => 'onzin'");
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Employer/deleteEmployer');
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $deleteVars);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                    $deleteHeaders = array();
+                    $deleteHeaders[] = 'ID:' . $ID;
+                    $deleteHeaders[] = 'password: test';
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, $deleteHeaders);
+                    $server_output = curl_exec($ch);
+                    curl_close($ch);
+                }
+
+                ?>
+                <script>
+                    var box = document.getElementById("bevestigVerwijderen");
+                    box.onclick = function () {
+                        $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
+
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog
+    " tabindex="-1" id="changeAccount" class="modal fade">
+    <div class="modal-dialog">"
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Wijzigingen opslaan</h4>
+            </div>
+            <div class="modal-body">
+                <p>Weet u zeker dat u deze wijzigingen wil opslaan</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-theme" type="button" id="bevestigWijzig" onclick="editEmployer()">Ja</button>
+                <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
+                <script>
+                    var box = document.getElementById("bevestigWijzig");
+                    box.onclick = function () {
+                        $('#bevestigWijzig').attr('data-dismiss', 'modal');
+                    };
+                </script>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <!--main content end-->
     <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
-            <a href="../../dashgum/Theme/blank.html#" class="go-top">
+            <a href="../dashgum/Theme/blank.html#" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
         </div>
@@ -213,35 +311,61 @@ if($_SESSION['isloggedin']) {
     <!--footer end-->
 </section>
 
-<!-- js placed at the end of the document so the pages load faster -->
-<script src="../../dashgum/Theme/assets/js/jquery.js"></script>
-<script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
-<script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
-<script class="include" type="text/javascript" src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
-<script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="../dashgum/Theme/assets/js/jquery.js"></script>
+    <script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
+    <script src="../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
+    <!--common script for all pages-->
+    <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
 
-<!--common script for all pages-->
-<script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
-
-<!--script for this page-->
-
-<script>
-    //custom select box
-
-    $(function(){
-        $('select.styled').customSelect();
-    });
-
-</script>
-
-</body>
-</html>
     <?php
+
+    if (isset($_POST['submitbutton'])) {
+        $name = $_POST["name"];
+        $location = $_POST["location"];
+        $description = $_POST["description"];
+        $employeeCount = $_POST["employeeCount"];
+        $id = $var["User"][0]["ID"];
+
+        $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '$id', firstName => '$name', location => '$location', lastName => '$description', employeeCount => $employeeCount");
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/editEmployer");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $editVars);  //Post Fields
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $editHeaders = array();
+        $editHeaders[] = 'industry: test';
+        $editHeaders[] = 'id:' . $id;
+        $editHeaders[] = 'firstName:' . $name;
+        $editHeaders[] = 'location:' . $location;
+        $editHeaders[] = 'lastName:' . $description;
+        $editHeaders[] = 'username: test';
+        $editHeaders[] = 'password: test';
+        $editHeaders[] = 'employeeCount:' . $employeeCount;
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+        $var = json_decode($server_output, true);
+        ?>
+        <script>
+            var url = 'wijzigProfiel.php'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+            $('#form').load(url + ' #form2'); //note: the space before #div1 is very important
+            document.getElementById("saveChanges").innerHTML = "Wijzigingen opgeslagen";
+            $('#sidebar').load(url + ' #wrapper'); //note: the space before #div1 is very important
+
+        </script>
+        <?php
+    }
 }
 else{
-    header("location: login.php");
+    header("location: http://localhost:63342/Kennismanagement/WorQit/Website/login.php");
 }
+
 ?>
