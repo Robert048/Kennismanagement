@@ -133,10 +133,8 @@ if($_SESSION['isloggedin']) {
             <div id="wrapper">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg"
-                                                                   class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php include("Controller/getUser.php");
-                        echo $GLOBALS["bedrijfsnaam"] ?></h5>
+                    <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                    <h5 class="centered"><?php include("Controller/getUser.php"); echo $GLOBALS["bedrijfsnaam"] ?></h5>
                     <li class="mt">
                         <a href="../index.php">
                             <i class="fa fa-dashboard"></i>
@@ -181,35 +179,17 @@ if($_SESSION['isloggedin']) {
                 <div id="form2">
                     <div class="row mt">
                         <div class="col-lg-2">
-                            <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text"
-                                                                                           class="form-control"
-                                                                                           name="name"
-                                                                                           placeholder="<?php if ($var["Result"] == "successful") {
-                                                                                               echo $var["User"][0]["name"];
-                                                                                           } else {
-                                                                                           } ?>">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["name"];} else {} ?>">
                         </div>
                         <br/> <br/> <br/> <br/>
 
                         <div class="col-lg-2">
-                            <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text"
-                                                                                                  class="form-control"
-                                                                                                  name="employeeCount"
-                                                                                                  placeholder="<?php if ($var["Result"] == "successful") {
-                                                                                                      echo $var["User"][0]["employeeCount"];
-                                                                                                  } else {
-                                                                                                  } ?>">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["employeeCount"];} else {} ?>">
                         </div>
                         <br/> <br/> <br/> <br/>
 
                         <div class="col-lg-2">
-                            <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text"
-                                                                                                      class="form-control"
-                                                                                                      name="location"
-                                                                                                      placeholder="<?php if ($var["Result"] == "successful") {
-                                                                                                          echo $var["User"][0]["location"];
-                                                                                                      } else {
-                                                                                                      } ?>">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["location"];} else {} ?>">
                         </div>
                         <br/> <br/> <br/> <br/>
 
