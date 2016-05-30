@@ -4,6 +4,8 @@
  * User: Thom
  * Date: 10-5-2016
  */
+session_start();
+if($_SESSION['isloggedin']) {
 ?>
 
 <!DOCTYPE html>
@@ -136,7 +138,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
 
                 <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered">Bedrijfs naam</h5>
+                <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
 
                 <li class="mt">
                     <a href="../../index.php">
@@ -237,3 +239,9 @@
 
 </body>
 </html>
+    <?php
+}
+else{
+    header("location: login.php");
+}
+?>
