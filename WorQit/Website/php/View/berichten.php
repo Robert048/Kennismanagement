@@ -5,7 +5,9 @@
  * Date: 28-4-2016
  * Time: 13:59
  */
-?>
+session_start();
+if($_SESSION['isloggedin']) {
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -137,7 +139,7 @@
             <ul class="sidebar-menu" id="nav-accordion">
 
                 <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered">Bedrijfs naam</h5>
+                <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
 
                 <li class="mt">
                     <a href="../../index.php">
@@ -225,3 +227,9 @@
 
 </body>
 </html>
+<?php
+}
+else{
+    header("location: login.php");
+}
+?>

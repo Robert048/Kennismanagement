@@ -5,11 +5,9 @@
  * Date: 26-4-2016
  * Time: 09:40
  */
-
-require_once('globals.php');
-
-if(loggedin == true) {
-    ?>
+session_start();
+if($_SESSION['isloggedin']) {
+   ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -146,7 +144,8 @@ if(loggedin == true) {
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
-                    <h5 class="centered">Company Name</h5>
+                    <p class="centered"><a href="php/View/profiel.php"><img src="dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                    <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
 
                     <li class="mt">
                         <a class="active" href="index.php">
@@ -309,7 +308,7 @@ if(loggedin == true) {
 
     </body>
     </html>
-    <?php
+<?php
 }
 else{
     header("location: login.php");
