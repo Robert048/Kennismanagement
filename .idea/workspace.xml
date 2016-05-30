@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cbc0fb3-133a-4ccc-9756-1435058f0a7c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WorQit/Website/js/employer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WorQit/Website/php/berichten.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WorQit/Website/php/profiel.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WorQit/Website/php/wijzigProfiel.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WorQit/Website/php/Controller/getUser.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/globals.php" afterPath="$PROJECT_DIR$/WorQit/Website/globals.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/index.php" afterPath="$PROJECT_DIR$/WorQit/Website/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/js/login.js" afterPath="$PROJECT_DIR$/WorQit/Website/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/login.php" afterPath="$PROJECT_DIR$/WorQit/Website/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" />
     </list>
     <ignored path="Kennismanagement.iws" />
@@ -38,92 +27,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="149">
               <caret line="147" column="87" selection-start-line="147" selection-start-column="87" selection-end-line="147" selection-end-column="87" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="false" />
-                <marker date="1464604767294" expanded="true" signature="192:215" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="192:1602" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="1376:1588" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="1644:12078" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="1658:2012" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2083:6829" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2128:2266" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2442:6607" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2529:6545" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2642:6475" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2735:2891" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="2957:6449" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3070:3183" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3216:3972" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3270:3938" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3327:3455" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3345:3448" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3518:3718" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="3781:3901" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4005:4769" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4059:4735" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4116:4246" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4134:4239" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4309:4511" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4574:4698" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4802:5555" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4856:5521" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4913:5043" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="4931:5036" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="5106:5304" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="5367:5484" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="5588:6278" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="5642:6244" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="5833:6031" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="6094:6207" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="6311:6419" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="6642:6811" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="6695:6792" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="6870:7210" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="7257:8805" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="7310:8788" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="7414:8728" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="7696:7922" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="7756:7896" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="7965:8183" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="8021:8157" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="8226:8445" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="8284:8419" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="8487:8706" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="8545:8680" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="8847:9182" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9254:11739" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9292:11720" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9327:11710" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9381:11663" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9430:9836" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9511:9804" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9562:9714" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="9899:11623" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10020:11574" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10093:11486" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10156:10260" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10314:10569" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10393:10526" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10713:11447" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="10774:11250" ph="[...]" />
-                <marker date="1464604767294" expanded="true" signature="10820:10991" ph="{&quot;value&quot;: 70...}" />
-                <marker date="1464604767294" expanded="true" signature="11037:11208" ph="{&quot;value&quot;: 30...}" />
-                <marker date="1464604767294" expanded="true" signature="11837:12037" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="11875:12019" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="11928:12000" ph="..." />
-                <marker date="1464604767294" expanded="true" signature="13286:14106" ph="{...}" />
-                <marker date="1464604767294" expanded="true" signature="13450:13497" ph="{...}" />
-                <marker date="1464604767294" expanded="true" signature="13547:14094" ph="{...}" />
-                <marker date="1464604767294" expanded="true" signature="13585:13663" ph="{...}" />
-                <marker date="1464604767294" expanded="true" signature="13705:13775" ph="{...}" />
-                <marker date="1464604767294" expanded="true" signature="13799:13901" ph="{&quot;url&quot;: &quot;show_data.php?action=1&quot;...}" />
-                <marker date="1464604767294" expanded="true" signature="13927:14080" ph="[...]" />
-                <marker date="1464604767294" expanded="true" signature="14146:14310" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -132,7 +42,7 @@
       <file leaf-file-name="berichten.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/berichten.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
+            <state relative-caret-position="2312">
               <caret line="141" column="78" selection-start-line="141" selection-start-column="78" selection-end-line="141" selection-end-column="78" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="false" />
@@ -144,11 +54,9 @@
       <file leaf-file-name="profiel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/profiel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
-              <folding>
-                <element signature="e#6#87#0#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="166">
+              <caret line="129" column="17" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -165,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wijzigProfiel.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="wijzigProfiel.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="149" />
+            <state relative-caret-position="438">
+              <caret line="370" column="1" selection-start-line="370" selection-start-column="1" selection-end-line="370" selection-end-column="1" />
               <folding>
                 <element signature="e#6#70#0#PHP" expanded="false" />
               </folding>
@@ -190,7 +98,7 @@
       <file leaf-file-name="addEmployer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
+            <state relative-caret-position="799">
               <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
@@ -202,7 +110,7 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="595">
               <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
@@ -215,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/login.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1258">
-              <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
               </folding>
@@ -256,11 +164,11 @@
         <option value="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/js/login.js" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/globals.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/index.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" />
       </list>
     </option>
   </component>
@@ -283,10 +191,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP7" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="10" />
+    <option name="y" value="9" />
+    <option name="width" value="1378" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -433,8 +341,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -501,34 +409,35 @@
       <workItem from="1461829459099" duration="6971000" />
       <workItem from="1464598893216" duration="45000" />
       <workItem from="1464598976798" duration="4223000" />
+      <workItem from="1464607181408" duration="204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48274000" />
+    <option name="totallyTimeSpent" value="48478000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
+    <frame x="10" y="9" width="1378" height="780" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24743778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24816446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39614242" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39614242" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -779,7 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -796,7 +704,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
+        <state relative-caret-position="799">
           <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
@@ -815,7 +723,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="595">
           <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
@@ -823,24 +731,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/employer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/profiel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/employer.php" />
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -855,33 +746,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1258">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="139" column="16" selection-start-line="139" selection-start-column="16" selection-end-line="139" selection-end-column="149" />
-          <folding>
-            <element signature="e#6#70#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/berichten.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
+        <state relative-caret-position="2312">
           <caret line="141" column="78" selection-start-line="141" selection-start-column="78" selection-end-line="141" selection-end-column="78" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="false" />
@@ -895,85 +775,24 @@
           <caret line="147" column="87" selection-start-line="147" selection-start-column="87" selection-end-line="147" selection-end-column="87" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="false" />
-            <marker date="1464604767294" expanded="true" signature="192:215" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="192:1602" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="1376:1588" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="1644:12078" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="1658:2012" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2083:6829" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2128:2266" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2442:6607" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2529:6545" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2642:6475" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2735:2891" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="2957:6449" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3070:3183" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3216:3972" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3270:3938" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3327:3455" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3345:3448" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3518:3718" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="3781:3901" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4005:4769" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4059:4735" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4116:4246" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4134:4239" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4309:4511" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4574:4698" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4802:5555" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4856:5521" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4913:5043" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="4931:5036" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="5106:5304" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="5367:5484" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="5588:6278" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="5642:6244" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="5833:6031" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="6094:6207" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="6311:6419" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="6642:6811" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="6695:6792" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="6870:7210" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="7257:8805" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="7310:8788" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="7414:8728" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="7696:7922" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="7756:7896" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="7965:8183" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="8021:8157" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="8226:8445" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="8284:8419" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="8487:8706" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="8545:8680" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="8847:9182" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9254:11739" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9292:11720" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9327:11710" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9381:11663" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9430:9836" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9511:9804" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9562:9714" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="9899:11623" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10020:11574" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10093:11486" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10156:10260" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10314:10569" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10393:10526" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10713:11447" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="10774:11250" ph="[...]" />
-            <marker date="1464604767294" expanded="true" signature="10820:10991" ph="{&quot;value&quot;: 70...}" />
-            <marker date="1464604767294" expanded="true" signature="11037:11208" ph="{&quot;value&quot;: 30...}" />
-            <marker date="1464604767294" expanded="true" signature="11837:12037" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="11875:12019" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="11928:12000" ph="..." />
-            <marker date="1464604767294" expanded="true" signature="13286:14106" ph="{...}" />
-            <marker date="1464604767294" expanded="true" signature="13450:13497" ph="{...}" />
-            <marker date="1464604767294" expanded="true" signature="13547:14094" ph="{...}" />
-            <marker date="1464604767294" expanded="true" signature="13585:13663" ph="{...}" />
-            <marker date="1464604767294" expanded="true" signature="13705:13775" ph="{...}" />
-            <marker date="1464604767294" expanded="true" signature="13799:13901" ph="{&quot;url&quot;: &quot;show_data.php?action=1&quot;...}" />
-            <marker date="1464604767294" expanded="true" signature="13927:14080" ph="[...]" />
-            <marker date="1464604767294" expanded="true" signature="14146:14310" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/profiel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="129" column="17" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="370" column="1" selection-start-line="370" selection-start-column="1" selection-end-line="370" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#70#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
