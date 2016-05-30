@@ -130,7 +130,7 @@ if($_SESSION['isloggedin']) {
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.php">Logout</a></li>
+                    <li><a class="logout" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
         </header>
@@ -268,6 +268,7 @@ if($_SESSION['isloggedin']) {
     <!--script for this page-->
     <script src="dashgum/Theme/assets/js/sparkline-chart.js"></script>
     <script src="dashgum/Theme/assets/js/zabuto_calendar.js"></script>
+    <script src= "js/login.js"></script>
 
 
     <script type="application/javascript">
