@@ -63,9 +63,9 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
 
                 var vaEmps = new List<Vacancy>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                where VacancyEmployee.employeeID == employeeID && VacancyEmployee.matchingValue == 0 && VacancyEmployee.rating < 0
-                                                orderby VacancyEmployee.rating
-                                                select VacancyEmployee.Vacancy).ToList();
+                                                where VacancyEmployee.employeeID == employeeID && VacancyEmployee.matchingValue  < 0 
+                                                orderby VacancyEmployee.matchingValue
+                                               select VacancyEmployee.Vacancy).ToList();
 
 
                 return Json(new { Result = "successful", Vacancys = vaEmps });
