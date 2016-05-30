@@ -1,5 +1,5 @@
 <?php
-include("getUser.php");
+include("Controller/getUser.php");
 ?>
 
 <!DOCTYPE html>

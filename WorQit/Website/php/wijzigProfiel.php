@@ -126,7 +126,7 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered"><?php include("getUser.php"); echo $GLOBALS["bedrijfsnaam"] ?></h5>
+                <h5 class="centered"><?php include("Controller/getUser.php"); echo $GLOBALS["bedrijfsnaam"] ?></h5>
                 <li class="mt">
                     <a href="../index.php">
                         <i class="fa fa-dashboard"></i>
@@ -295,15 +295,6 @@
 <?php
 
 if(isset($_POST['submitbutton'])) {
-?>
-    <script>
-        var url = 'wijzigProfiel.php'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
-        $('#form').load(url + ' #form2'); //note: the space before #div1 is very important
-        document.getElementById("saveChanges").innerHTML = "Wijzigingen opgeslagen";
-        $('#sidebar').load(url + ' #wrapper'); //note: the space before #div1 is very important
-
-    </script>
-    <?php
     $name = $_POST["name"];
     $location = $_POST["location"];
     $description = $_POST["description"];
@@ -331,6 +322,15 @@ if(isset($_POST['submitbutton'])) {
     $server_output = curl_exec($ch);
     curl_close($ch);
     $var = json_decode($server_output, true);
+    ?>
+    <script>
+        var url = 'wijzigProfiel.php'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+        $('#form').load(url + ' #form2'); //note: the space before #div1 is very important
+        document.getElementById("saveChanges").innerHTML = "Wijzigingen opgeslagen";
+        $('#sidebar').load(url + ' #wrapper'); //note: the space before #div1 is very important
+
+    </script>
+<?php
 }
 ?>
 
