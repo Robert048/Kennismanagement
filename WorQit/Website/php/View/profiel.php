@@ -123,9 +123,9 @@ if($_SESSION['isloggedin']) {
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="../../login.php">Logout</a></li>
-                </ul>
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" onclick="logout()">Logout</a></li>
+            	</ul>
             </div>
         </header>
         <!--header end-->
@@ -278,6 +278,13 @@ if($_SESSION['isloggedin']) {
     <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
+<<<<<<< HEAD
+  <script src= "../../js/login.js"></script>
+    
+  <script>
+//custom select box
+=======
+>>>>>>> refs/remotes/origin/master
 
     <script>
         //custom select box

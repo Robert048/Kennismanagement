@@ -122,7 +122,7 @@ if($_SESSION['isloggedin']) {
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="../../login.php">Logout</a></li>
+                <li><a class="logout" onclick="logout()">Logout</a></li>
             </ul>
         </div>
     </header>
@@ -323,8 +323,12 @@ if($_SESSION['isloggedin']) {
     <!--common script for all pages-->
     <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
 
-    <?php
 
+
+<!--script for this page-->
+<script src= "../../js/login.js"></script>
+    //custom select box
+<?php
     if (isset($_POST['submitbutton'])) {
         $name = $_POST["name"];
         $location = $_POST["location"];
@@ -354,6 +358,7 @@ if($_SESSION['isloggedin']) {
         curl_close($ch);
         $var = json_decode($server_output, true);
         ?>
+
         <script>
             var url = 'wijzigProfiel.php'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
             $('#form').load(url + ' #form2'); //note: the space before #div1 is very important

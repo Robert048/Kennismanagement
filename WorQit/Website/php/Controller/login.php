@@ -34,7 +34,9 @@
                     $aResult['result'] = loggedin($_GET['arguments']);
                 }
                 break;
-
+            case 'logout':
+                    $aResult['result'] = logout();
+                break;
             default:
                 $aResult['error'] = 'Not found function '.$_GET['functionname'].'!';
                 break;
@@ -75,6 +77,12 @@ function loggedin($data){
     $_SESSION['user']= $data;
     $_SESSION['isloggedin']= true;
     return "yolo!";
+}
+function logout(){
+    session_start();
+    session_unset();
+    session_destroy();
+    return "logged out!";
 }
 
 
