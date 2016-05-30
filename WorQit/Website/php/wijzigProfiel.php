@@ -122,6 +122,7 @@
     <!--sidebar start-->
     <aside>
         <div id="sidebar"  class="nav-collapse ">
+            <div id="wrapper">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
@@ -153,17 +154,20 @@
             </ul>
             <!-- sidebar menu end-->
         </div>
+        </div>
     </aside>
     <!--sidebar end-->
 
     <!-- **********************************************************************************************************************************************************
     MAIN CONTENT
 *********************************************************************************************************************************************************** -->
+
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
             <h3><i class="fa fa-angle-right"></i> Profiel wijzigen </h3>
-            <form action="wijzigProfiel.php" method="post">
+            <form action="wijzigProfiel.php" method="post"id="form">
+                <div id="form2">
             <div class="row mt">
                 <div class="col-lg-2">
                     <p style="font-weight:bold;font-size: 14pt;";>Naam</p> <input type="text" class="form-control" name="name" placeholder="<?php if($var["Result"] == "successful") { echo $var["User"][0]["name"];} else {} ?>" >
@@ -183,13 +187,14 @@
                 </form>
                 <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/><br/><br/><br/>
                 <div class="col-lg-2">
-                    <button class="btn btn-success btn-xs" type="submit" name="submitbutton""><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
                     <a data-toggle="modal"  class="btn btn-danger btn-xs" href="wijzigProfiel.php.html#deleteAccount"><i class="fa fa-trash-o"></i></a>
                 </div>
+            </div>
+            <p id="saveChanges"></p>
             </form>
             </div>
             </div>
-
 
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
@@ -226,21 +231,18 @@
                 $server_output = curl_exec($ch);
                 curl_close($ch);
                 }
-
                 ?>
                 <script>
                     var box = document.getElementById("bevestigVerwijderen");
                     box.onclick = function() {
                         $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
-                        location.reload();
+
                     }
                 </script>
             </div>
         </div>
     </div>
     </div>
-
-
 
     <div aria-hidden="true" aria-labelledby="myModalLabel role="dialog" tabindex="-1" id="changeAccount" class="modal fade">
     <div class="modal-dialog">"
@@ -255,50 +257,11 @@
             <div class="modal-footer">
                 <button class="btn btn-theme" type="button" id="bevestigWijzig"  onclick="editEmployer()">Ja</button>
                 <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
-
-                <?php
-
-                if(isset($_POST['submitbutton'])) {
-                    $name = $_POST["name"];
-                    $location = $_POST["location"];
-                    $description = $_POST["description"];
-                    $employeeCount = $_POST["employeeCount"];
-                    $id = $var["User"][0]["ID"];
-
-                    $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '$id', firstName => '$name', location => '$location', lastName => '$description', employeeCount => $employeeCount");
-
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/editEmployer");
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $editVars);  //Post Fields
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-                    $editHeaders = array();
-                    $editHeaders[] = 'industry: test';
-                    $editHeaders[] = 'id:' . $id;
-                    $editHeaders[] = 'firstName:' . $name;
-                    $editHeaders[] = 'location:' . $location;
-                    $editHeaders[] = 'lastName:' . $description;
-                    $editHeaders[] = 'username: test';
-                    $editHeaders[] = 'password: test';
-                    $editHeaders[] = 'employeeCount:' . $employeeCount;
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
-                    $server_output = curl_exec($ch);
-
-                    curl_close($ch);
-
-
-                    $var = json_decode($server_output, true);
-
-                }
-                ?>
-
                 <script>
                     var box = document.getElementById("bevestigWijzig");
                     box.onclick = function() {
                         $('#bevestigWijzig').attr('data-dismiss', 'modal');
-
-                    }
+                    };
                 </script>
             </div>
         </div>
@@ -316,6 +279,7 @@
     </footer>
     <!--footer end-->
 </section>
+
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="../dashgum/Theme/assets/js/jquery.js"></script>
 <script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
@@ -328,5 +292,45 @@
 <!--common script for all pages-->
 <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
 
+<?php
 
+if(isset($_POST['submitbutton'])) {
+?>
+    <script>
+        var url = 'wijzigProfiel.php'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+        $('#form').load(url + ' #form2'); //note: the space before #div1 is very important
+        document.getElementById("saveChanges").innerHTML = "Wijzigingen opgeslagen";
+        $('#sidebar').load(url + ' #wrapper'); //note: the space before #div1 is very important
+
+    </script>
+    <?php
+    $name = $_POST["name"];
+    $location = $_POST["location"];
+    $description = $_POST["description"];
+    $employeeCount = $_POST["employeeCount"];
+    $id = $var["User"][0]["ID"];
+
+    $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '$id', firstName => '$name', location => '$location', lastName => '$description', employeeCount => $employeeCount");
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/editEmployer");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $editVars);  //Post Fields
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $editHeaders = array();
+    $editHeaders[] = 'industry: test';
+    $editHeaders[] = 'id:' . $id;
+    $editHeaders[] = 'firstName:' . $name;
+    $editHeaders[] = 'location:' . $location;
+    $editHeaders[] = 'lastName:' . $description;
+    $editHeaders[] = 'username: test';
+    $editHeaders[] = 'password: test';
+    $editHeaders[] = 'employeeCount:' . $employeeCount;
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
+    $server_output = curl_exec($ch);
+    curl_close($ch);
+    $var = json_decode($server_output, true);
+}
+?>
 
