@@ -6,5 +6,5 @@
  * Time: 13:16
  */
 
-define('BASE_URL','C:\Users\maaike\Kennismanagement\WorQit\Website');
-define('loggedin',$_GET['bool']);
+define('BASE_URL','C:/Users/maaike/Kennismanagement/WorQit/Website/');
+

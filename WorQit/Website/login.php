@@ -7,7 +7,7 @@
  */
 
 //require_once('functions.php');
-//require_once('globals.php');
+//include_once('globals.php');
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +94,7 @@
 					<!--signup modal-->
 				  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="signupModal" class="modal fade">
 					  <div class="modal-dialog">
-						  <form class = "form-signup">
+						  <form class = "form-signup" id="newEmployer">
 							  <div class="modal-content">
 								  <div class="modal-header">
 									  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -108,7 +108,7 @@
 										  <br>
 										  <input type="password" class="form-control" placeholder="Password">
 										  <br>
-										  <button class="btn btn-theme btn-block" id="signup_button" type="submit"><i class="fa fa-lock"></i> Maak account</button>
+										  <button class="btn btn-theme btn-block" id="signup_button" onclick="addEmployer()" type="submit"><i class="fa fa-lock"></i> Maak account</button>
 									  </div>
 									</div>
 								  <div class="modal-footer">
@@ -130,6 +130,7 @@
     <script src="dashgum/Theme/assets/js/jquery.js"></script>
     <script src="dashgum/Theme/assets/js/bootstrap.min.js"></script>
 	  <script src= "js/login.js"></script>
+	  <script src= "js/employer.js"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->

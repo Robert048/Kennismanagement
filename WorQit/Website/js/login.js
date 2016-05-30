@@ -1,6 +1,7 @@
 /**
  * Created by maaike on 25-4-2016.
  */
+
 $(document).ready(function() {
     $('#login_button').click(function(event) {
 
@@ -12,7 +13,7 @@ $(document).ready(function() {
             url: 'php/Controller/login.php',
             type: "GET",
             cache: false,
-            data: {"userName" : $('#username').val(), "password" : $('#password').val()}
+            data: {functionname: 'login', arguments : [$('#username').val(), $('#password').val()]}
     
         });
             request.success(function(data) {
@@ -30,18 +31,20 @@ function login(result){
     var data =  JSON.parse(result);
 
     if(data["Result"] == "successful") {
-
-        var bool = true;
-        $.post({
-            url: '../../globals.php',
-            type: "POST",
-            data: {"bool":bool},
+        
+        var request = $.ajax({
+            url: 'php/Controller/login.php',
+            type: "GET",
+            data: {functionname: 'loggedin', arguments : data['User']},
             cache: false
 
-        })
-        .success(function() {
         });
-        window.location.href = 'index.php';
+        request.success(function() {
+            window.location.href = 'index.php';
+        });
+        request.fail(function(){
+            console.log("LOSER!");
+            });
     }
     else{
         if(data["Error"]== "Verkeerd wachtwoord") {

@@ -5,9 +5,11 @@
  * Date: 28-4-2016
  * Time: 13:52
  */
-
+session_start();
+if($_SESSION['isloggedin']) {
+    
 include ('../Controller/vacancies.php');
-require_once ('../../globals.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +91,7 @@ require_once ('../../globals.php');
                     <ul class="sidebar-menu" id="nav-accordion">
 
                         <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                        <h5 class="centered">Bedrijfs naam</h5>
+                        <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
 
                         <li class="mt">
                             <a href="../../index.php">
@@ -242,3 +244,9 @@ require_once ('../../globals.php');
         </script>
     </body>
 </html>
+<?php
+}
+else{
+    header("location: login.php");
+}
+?>
