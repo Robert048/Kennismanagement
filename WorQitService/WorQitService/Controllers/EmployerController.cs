@@ -7,6 +7,7 @@ using System.Data;
 using System.Web.Http;
 using System.Linq;
 using System;
+using System.Web;
 
 namespace WorQitService.Controllers
 {
@@ -99,9 +100,9 @@ namespace WorQitService.Controllers
             {
                 var headers = Request.Headers;
                 
-                string username = (headers.Contains("username")) ? headers.GetValues("username").First() : null;
-                string email = (headers.Contains("email")) ? headers.GetValues("email").First() : null;
-                string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
+                string username = HttpUtility.UrlDecode((headers.Contains("username")) ? headers.GetValues("username").First() : null);
+                string email = HttpUtility.UrlDecode((headers.Contains("email")) ? headers.GetValues("email").First() : null);
+                string password = HttpUtility.UrlDecode((headers.Contains("password")) ? headers.GetValues("password").First() : null);
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 Employer usernameCheck = null;
