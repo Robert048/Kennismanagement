@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WorQit.Models;
 
 namespace WorQit
 {
@@ -23,7 +24,7 @@ namespace WorQit
     /// </summary>
     public sealed partial class Main : Page
     {
-        private List<Vacature> vacatureLijst { get; set; }
+        private List<Vacancy> vacatureLijst { get; set; }
         //private ServiceReference1.Service1Client client = new Service1Client();
 
         public Main()

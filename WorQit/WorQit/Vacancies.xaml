@@ -9,18 +9,20 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="194*"/>
-            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="133*"/>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="498*"/>
+            <RowDefinition Height="39*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png"/>
-        <ListView x:Name="listVacancies" Grid.Column="1" Grid.Row="1">
-            <Button x:Name="button" Content="Button" Click="button_Click"/>
-        </ListView>
+        <Image x:Name="image" Grid.Column="2" Source="Assets/logo WorQit.png" Margin="0.333,0,68.333,0" Grid.ColumnSpan="2"/>
+        <Grid Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Background="White" BorderBrush="#FF195695" BorderThickness="3"/>
 
     </Grid>
 </Page>

@@ -45,8 +45,8 @@ namespace WorQit
                     List<Vacancy> jsonresult = JsonConvert.DeserializeObject<List<Vacancy>>(result);
                     try
                     {
-               
-                        
+
+
                         foreach (var item in jsonresult)
                         {
                             int i = 0;
@@ -69,7 +69,7 @@ namespace WorQit
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-             fillVacancies();
+            fillVacancies();
         }
     }
 }
