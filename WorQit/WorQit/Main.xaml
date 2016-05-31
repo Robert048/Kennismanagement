@@ -28,6 +28,6 @@
         <Button x:Name="btnSettings" Content="instellingen" Grid.Row="2" FontSize="12" Background="#FFA3CBE8" Foreground="White" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,5,5" Style="{StaticResource ButtonStyle}"/>
         <Button x:Name="btnLogout" Content="uitloggen" Grid.Row="2" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,0,5" Click="btnSettings_Copy_Click" Style="{StaticResource ButtonStyle}"/>
         <TextBlock x:Name="textBlock" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="Welcome" FontSize="12" Foreground="#FF195695" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="btnMatch" Content="match vacatures" Grid.Row="3" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,5" VerticalAlignment="Stretch" FontWeight="Bold" Style="{StaticResource ButtonStyle}"/>
+        <Button x:Name="btnMatch" Content="match vacatures" Grid.Row="3" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,5" VerticalAlignment="Stretch" FontWeight="Bold" Style="{StaticResource ButtonStyle}" Click="btnMatch_Click"/>
     </Grid>
 </Page>
