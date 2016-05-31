@@ -6,8 +6,7 @@
  */
 session_start();
 if($_SESSION['isloggedin']) {
-        ?>
-
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -23,7 +22,7 @@ if($_SESSION['isloggedin']) {
         <!-- Bootstrap core CSS -->
         <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
-        <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
 
         <!-- Custom styles for this template -->
         <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
@@ -36,9 +35,8 @@ if($_SESSION['isloggedin']) {
         <![endif]-->
     </head>
 
-<body>
-
-    <section id="container" >
+    <body>
+    <section id="container">
         <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
     *********************************************************************************************************************************************************** -->
@@ -66,7 +64,8 @@ if($_SESSION['isloggedin']) {
                             </li>
                             <li>
                                 <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-zac.jpg"></span>
+                                    <span class="photo"><img alt="avatar"
+                                                             src="../../dashgum/Theme/assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
@@ -78,7 +77,8 @@ if($_SESSION['isloggedin']) {
                             </li>
                             <li>
                                 <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-divya.jpg"></span>
+                                    <span class="photo"><img alt="avatar"
+                                                             src="../../dashgum/Theme/assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
@@ -90,7 +90,8 @@ if($_SESSION['isloggedin']) {
                             </li>
                             <li>
                                 <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-danro.jpg"></span>
+                                    <span class="photo"><img alt="avatar"
+                                                             src="../../dashgum/Theme/assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
@@ -102,7 +103,8 @@ if($_SESSION['isloggedin']) {
                             </li>
                             <li>
                                 <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
+                                    <span class="photo"><img alt="avatar"
+                                                             src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
@@ -128,45 +130,45 @@ if($_SESSION['isloggedin']) {
             </div>
         </header>
         <!--header end-->
-
         <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
     *********************************************************************************************************************************************************** -->
         <!--sidebar start-->
+        <!--sidebar start-->
         <aside>
             <div id="sidebar" class="nav-collapse ">
-                <div id="wrapper">
-                    <!-- sidebar menu start-->
-                    <ul class="sidebar-menu" id="nav-accordion">
-                        <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                        <h5 class="centered"><?php echo $_SESSION['user'][0]['name'] ?></h5>
-                        <li class="mt">
-                            <a href="../index.php">
-                                <i class="fa fa-dashboard"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sub-menu">
-                            <a class="active" href="profiel.php">
-                                <i class="fa fa-desktop"></i>
-                                <span>Profiel</span>
-                            </a>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="vacancies.php">
-                                <i class="fa fa-cogs"></i>
-                                <span>Vacatures</span>
-                            </a>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="berichten.php">
-                                <i class="fa fa-book"></i>
-                                <span>Berichten</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- sidebar menu end-->
-                </div>
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
+                                                                   class="img-circle" width="60"></a></p>
+                    <h5 class="centered"><?php echo $_SESSION['user'][0]['name'] ?></h5>
+                    <li class="mt">
+                        <a href="../../index.php">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a class="active" href="profiel.php">
+                            <i class="fa fa-desktop"></i>
+                            <span>Profiel</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="vacancies.php">
+                            <i class="fa fa-cogs"></i>
+                            <span>Vacatures</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="berichten.php">
+                            <i class="fa fa-book"></i>
+                            <span>Berichten</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
             </div>
         </aside>
         <!--sidebar end-->
@@ -174,69 +176,49 @@ if($_SESSION['isloggedin']) {
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
     *********************************************************************************************************************************************************** -->
-
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <h3><i class="fa fa-angle-right"></i> Profiel </h3>
-
-                <form action="profiel.php" method="post" id="form">
+                <form method="post" action="profiel.php" id="form">
                     <div id="form2">
                         <div class="row mt">
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name'] ?>">
                             </div>
-
-
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user'][0]['employeeCount'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
-
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user'][0]['location'] ?>">
                             </div>
-
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" ;>Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['user'][0]['username'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
-
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" ;>Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user'][0]['password'] ?>">
                             </div>
-
-
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" ;>email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user'][0]['email'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
-
-                            <div class="col-lg-4">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea
-                                    style="overflow:auto;resize:none" rows="5" cols="300" name="description"
-                                    class="form-control"><?php
-                                    echo $_SESSION["user"][0]["description"];
-                                    ?></textarea>
-                            </div>
+                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"][0]["description"]; ?></textarea></div>
                 </form>
-                <br/> <br/> <br/><br/> <br/> <br/><br/> <br/><br/><br/><br/>
-
+                <br/> <br/> <br/><br/> <br/> <br/><br/> <br/></br>
                 <div class="col-lg-2">
                     <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
-                    <a data-toggle="modal" class="btn btn-danger btn-xs" href="wijzigProfiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
+                    <a data-toggle="modal" class="btn btn-danger btn-xs" href="profiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
                 </div>
                 </div>
-                <p id="saveChanges"></p>
                 </div>
                 </div>
-
             </section>
             <! --/wrapper -->
         </section>
         <!-- /MAIN CONTENT -->
-
-        <div aria-hidden="true" aria-labelledby="myModalLabel"  id="deleteAccount" class="modal fade">
+        <div aria-hidden="true" aria-labelledby="myModalLabel" id="deleteAccount" class="modal fade">
             <div class="modal-dialog">"
                 <div class="modal-content">
                     <div class="modal-header">
@@ -247,8 +229,7 @@ if($_SESSION['isloggedin']) {
                         <p>Weet u zeker dat u het account wilt verwijderen?</p>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja
-                        </button>
+                        <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja</button>
                         <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
                         <?php
 
@@ -276,7 +257,6 @@ if($_SESSION['isloggedin']) {
                             var box = document.getElementById("bevestigVerwijderen");
                             box.onclick = function () {
                                 $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
-
                             }
                         </script>
                     </div>
@@ -284,7 +264,8 @@ if($_SESSION['isloggedin']) {
             </div>
         </div>
 
-        <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog" tabindex="-1" id="changeAccount" class="modal fade">
+        <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog
+        " tabindex="-1" id="changeAccount" class="modal fade">
         <div class="modal-dialog">"
             <div class="modal-content">
                 <div class="modal-header">
@@ -321,28 +302,22 @@ if($_SESSION['isloggedin']) {
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="../dashgum/Theme/assets/js/jquery.js"></script>
-    <script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script class="include" type="text/javascript" src="../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
+    <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript"
+            src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
 
     <!--common script for all pages-->
-    <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
+    <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 
 
-
-    <!--script for this page-->
-    <script src= "../../js/login.js"></script>
-    //custom select box
     <?php
-
-
     if (isset($_POST['submitbutton'])) {
-
-        echo $_POST["password"];
         $name = $_POST["name"];
         $location = $_POST["location"];
         $description = $_POST["description"];
@@ -350,11 +325,9 @@ if($_SESSION['isloggedin']) {
         $username = $_POST["username"];
         $password = $_POST["password"];
         $id = $_SESSION["user"][0]["ID"];
+        $email = $_POST["email"];
 
-        echo $location;
-
-       $editVars = array("industry  => 'test', username => '$username', password => '$password', id => '$id', name => '$name', location => '$location', description => '$description', employeeCount => $employeeCount");
-
+        $editVars = array("email => '$email', industry  => 'test', username => '$username', password => '$password', id => '$id', name => '$name', location => '$location', description => '$description', employeeCount => $employeeCount");
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/editEmployer");
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -369,11 +342,11 @@ if($_SESSION['isloggedin']) {
         $editHeaders[] = 'description:' . $description;
         $editHeaders[] = 'username:' . $username;
         $editHeaders[] = 'password:' . $password;
+        $editHeaders[] = 'email:' . $email;
         $editHeaders[] = 'employeeCount:' . $employeeCount;
         curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
         $server_output = curl_exec($ch);
         curl_close($ch);
-        $var = json_decode($server_output, true);
 
         $_SESSION["user"][0]["name"] = $name;
         $_SESSION["user"][0]["location"] = $location;
@@ -381,20 +354,17 @@ if($_SESSION['isloggedin']) {
         $_SESSION["user"][0]["employeeCount"] = $employeeCount;
         $_SESSION["user"][0]["password"] = $password;
         $_SESSION["user"][0]["username"] = $username;
-
+        $_SESSION["user"][0]["email"] = $email;
         ?>
-
         <script>
             var url = "profiel.php"; //please insert the url of the your current page here, we are assuming the url is 'index.php'
-            $('#form').load(url + ' #form2'); //note: the space before #div1 is very important
-            document.getElementById("form2").innerHTML = "Wijzigingen opgeslagen";
-            $('#sidebar').load(url + ' #wrapper'); //note: the space before #div1 is very important
+            $('#form2').load(url + ' #form2'); //note: the space before #div1 is very important
+            $('#sidebar').load(url + ' #sidebar'); //note: the space before #div1 is very important
         </script>
         <?php
     }
-}
-else{
-    header("location: http://localhost:63342/Kennismanagement/WorQit/Website/login.php");
-}
-
-?>
+    }
+    else{
+        header("location: login.php");
+    }
+    ?>

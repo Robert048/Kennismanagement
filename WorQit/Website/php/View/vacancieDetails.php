@@ -1,21 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maaike
- * Date: 28-4-2016
- * Time: 13:52
- */
 session_start();
 if($_SESSION['isloggedin']) {
-
-
     include  ('../Controller/vacancies.php');
-
-
     $allVacances = showVacancies($_SESSION["user"][0]["ID"]);
-
-
-
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -26,7 +13,7 @@ if($_SESSION['isloggedin']) {
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Vacatures</title>
+        <title>Vacaturedetails</title>
 
         <!-- Bootstrap core CSS -->
         <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
@@ -45,7 +32,6 @@ if($_SESSION['isloggedin']) {
     </head>
 
     <body>
-
     <section id="container" >
         <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
@@ -94,24 +80,20 @@ if($_SESSION['isloggedin']) {
             <div id="sidebar"  class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
-
                     <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                     <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
-
                     <li class="mt">
                         <a href="../../index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-
                     <li class="sub-menu">
                         <a href="profiel.php" >
                             <i class="fa fa-desktop"></i>
                             <span>Profiel</span>
                         </a>
                     </li>
-
                     <li class="sub-menu">
                         <a class="active" href="vacancies.php" >
                             <i class="fa fa-cogs"></i>
@@ -148,12 +130,8 @@ if($_SESSION['isloggedin']) {
                             <table id="vacancyTable" class="table table-striped table-advance table-hover">
                                 <thead>
                                 <tr>
-
-
                                     <th>
-                                        <?php
-                                        foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"][0]["ID"])
-                                           {?>
+                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"][0]["ID"]){?>
                                 <tr class="vacancyRow">
                                     <th></i> Functie</th>
                                     <th class=hidden-phone><?php echo $vacancy->jobfunction?></th>
@@ -184,9 +162,10 @@ if($_SESSION['isloggedin']) {
                                 ?>
                                 </thead>
                             </table>
-                        </div><!-- /content-panel -->
+                    </div><!-- /content-panel -->
                     </div><!-- /col-md-12 -->
-                </div>
+                </div><br/>
+                <a type="button" class="btn btn-round btn-danger" href="vacancies.php"><- Terug</a>
             </section><! --/wrapper -->
         </section><!-- /MAIN CONTENT -->
         <!--main content end-->
@@ -209,7 +188,6 @@ if($_SESSION['isloggedin']) {
     <script class="include" type="text/javascript" src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
 
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
