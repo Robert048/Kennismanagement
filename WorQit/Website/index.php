@@ -145,7 +145,14 @@ if($_SESSION['isloggedin']) {
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="php/View/profiel.php"><img src="dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
+                    <h5 class="centered">
+                        <?php if(array_key_exists("username",$_SESSION['user'])){
+                                echo $_SESSION['user']['username'];
+                            }else{
+                                echo $_SESSION['user'][0]['name'];
+                            }
+                        ?>
+                    </h5>
 
                     <li class="mt">
                         <a class="active" href="index.php">

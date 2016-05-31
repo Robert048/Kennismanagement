@@ -1,7 +1,5 @@
 <?php
 
-include("../Controller/getUser.php");
-
 session_start();
 if($_SESSION['isloggedin']) {
     ?>
@@ -140,10 +138,12 @@ if($_SESSION['isloggedin']) {
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
                                                                    class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php if ($var["Result"] == "successful") {
+                    <h5 class="centered"><?php if(array_key_exists("username",$_SESSION['user'])){
+                            echo $_SESSION['user']['username'];
+                        }else{
                             echo $_SESSION['user'][0]['name'];
-                        } else {
-                        } ?></h5>
+                        }
+                        ?></h5>
                     <li class="mt">
                         <a href="../index.php">
                             <i class="fa fa-dashboard"></i>
