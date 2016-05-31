@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Services.Maps;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace WorQit
 {
@@ -28,6 +18,8 @@ namespace WorQit
         public Main()
         {
             this.InitializeComponent();
+            textBlock.Text = "Welcome " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
+
         }
 
         public async void geoTest()
@@ -62,6 +54,15 @@ namespace WorQit
             double distance = test.Distance(sCoord, eCoord, DistanceType.Kilometers);
         }
 
+        private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+        }
+
+        private void btnEditProfile_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(EditProfile));
+        }
     }
     public enum DistanceType { Miles, Kilometers };
     /// <summary>  

@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.Web.Http;
 
 namespace WorQit
 {
@@ -19,34 +23,45 @@ namespace WorQit
 
         private async void registerbtn_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(passwordtxt.Password) && !String.IsNullOrWhiteSpace(usernametxt.Text))
+            if (!String.IsNullOrWhiteSpace(txtPassword.Password) && !String.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                bool check = false;
-
-                //var gebruikers = await client.GetAllGebruikersAsync();
-                //foreach (var user in gebruikers)
+                using (var client = new System.Net.Http.HttpClient())
                 {
-                    //if (usernametxt.Text == user.GebruikerNaam)
+                    try
                     {
-                        check = true;
+                        StringContent stringContent = new StringContent("content");
+                        stringContent.Headers.Add("username", txtUsername.Text);
+                        stringContent.Headers.Add("password", txtPassword.Password);
+                        stringContent.Headers.Add("email", txtEmail.Text);
+                        var uri = new Uri("http://worqit.azurewebsites.net/api/Employee/addEmployee");
+                        var response = await client.PostAsync(uri, stringContent);
+                        var result = await response.Content.ReadAsStringAsync();
+                        var jsonresult = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
+                        try
+                        {
+                            if (jsonresult["Result"] == "successful")
+                            {
+                                var dialog = new MessageDialog("Account has been created");
+                                await dialog.ShowAsync();
+                                Frame.Navigate(typeof(Login));
+                            }
+                            else
+                            {
+                                var dialog = new MessageDialog("Failed to create account");
+                                await dialog.ShowAsync();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            var dialog = new MessageDialog("Error: " + ex);
+                            await dialog.ShowAsync();
+                        }
                     }
-                }
-
-                if (!check)
-                {
-                    //ServiceReference1.User newUser = new ServiceReference1.User();
-                    //newUser.GebruikerNaam = usernametxt.Text;
-                    //newUser.GebruikersPW = passwordtxt.Password;
-
-                    //await client.AddGebruikerAsync(newUser);
-
-                    var dialogCreated = new MessageDialog("User: " + usernametxt.Text + " successfully created");
-                    await dialogCreated.ShowAsync();
-                }
-                else
-                {
-                    var dialog = new MessageDialog("Username bestaat al");
-                    await dialog.ShowAsync();
+                    catch (Exception ex)
+                    {
+                        var dialog = new MessageDialog("Geen connectie" + ex);
+                        await dialog.ShowAsync();
+                    }
                 }
             }
             else
