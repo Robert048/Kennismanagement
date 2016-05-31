@@ -9,10 +9,10 @@ session_start();
 if($_SESSION['isloggedin']) {
 
 
-    include  ('../Controller/getVacancie.php');
+    include  ('../Controller/vacancies.php');
 
 
-    $allVacances = showVacancie($_SESSION["user"][0]["ID"]);
+    $allVacances = showVacancies($_SESSION["user"][0]["ID"]);
 
 
 
