@@ -3,6 +3,7 @@ using System.Data;
 using System.Web.Http;
 using System.Linq;
 using System;
+using System.Web;
 using WorQitService;
 using System.Threading.Tasks;
 using System.Net.Http;
@@ -98,10 +99,11 @@ namespace WorQitService.Controllers
         {
             try
             {
+                
                 var headers = Request.Headers;
-                string username = (headers.Contains("userName")) ? headers.GetValues("userName").First() : null;
-                string email = (headers.Contains("email")) ? headers.GetValues("email").First() : null;
-                string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
+                string username = HttpUtility.UrlDecode((headers.Contains("userName")) ? headers.GetValues("userName").First() : null);
+                string email = HttpUtility.UrlDecode((headers.Contains("email")) ? headers.GetValues("email").First() : null);
+                string password = HttpUtility.UrlDecode((headers.Contains("password")) ? headers.GetValues("password").First() : null);
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 Employee usernameCheck = null;
@@ -152,6 +154,7 @@ namespace WorQitService.Controllers
             try
             {
                 var headers = Request.Headers;
+                
                 int ID = (headers.Contains("ID")) ? Int32.Parse(headers.GetValues("ID").First()) : -1;
                 string firstName = (headers.Contains("firstName")) ? headers.GetValues("firstName").First() : null;
                 string lastName = (headers.Contains("lastName")) ? headers.GetValues("lastName").First() : null;
@@ -162,10 +165,11 @@ namespace WorQitService.Controllers
                 string languages = (headers.Contains("languages")) ? headers.GetValues("languages").First() : null;
                 string skills = (headers.Contains("skills")) ? headers.GetValues("skills").First() : null;
                 string educations = (headers.Contains("educations")) ? headers.GetValues("educations").First() : null;
+                string experience = (headers.Contains("experience")) ? headers.GetValues("experience").First() : null; // werkervaring
                 string volunteer = (headers.Contains("volunteer")) ? headers.GetValues("volunteer").First() : null;
-                Nullable< System.DateTime > dob = (headers.Contains("dob")) ? DateTime.Parse(headers.GetValues("dob").First()) : DateTime.Parse(null);
+                Nullable< System.DateTime > dob = (headers.Contains("dob") && headers.GetValues("dob").First() != null) ? DateTime.Parse(headers.GetValues("dob").First()) : DateTime.Parse(null);
                 string location = (headers.Contains("location")) ? headers.GetValues("location").First() : null;
-                Nullable< int > hours = (headers.Contains("hours")) ? Int32.Parse(headers.GetValues("hours").First()) : Int32.Parse(null);
+                Nullable< int > hours = (headers.Contains("hours")) ? Int32.Parse(headers.GetValues("hours").First()) : -1;
                 
                 string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
                 string oldPassword = (headers.Contains("oldPassword")) ? headers.GetValues("oldPassword").First() : null;
@@ -189,7 +193,9 @@ namespace WorQitService.Controllers
                 emp.dob = (dob != DateTime.Parse(null)) ? dob : emp.dob;
                 emp.location = (location != null) ? location : emp.location;
                 emp.hours = (hours != Int32.Parse(null)) ? hours : emp.hours;
-              
+                emp.educations = (educations != null) ? educations : emp.educations;
+
+
                 if (password != null && emp.password == oldPassword)
                 {
                     emp.password = password;
@@ -201,7 +207,7 @@ namespace WorQitService.Controllers
 
 
                 wqdb.SaveChanges();
-                return Json(new { Result = "successful" });
+                return Json(new { Result = "successful", User = emp });
             }
             catch (System.Exception ex)
             {
