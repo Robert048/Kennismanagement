@@ -35,7 +35,7 @@ function login(result){
         var request = $.ajax({
             url: 'php/Controller/login.php',
             type: "GET",
-            data: {functionname: 'loggedin', arguments : data['User']},
+            data: {functionname: 'loggedin', arguments : result},
             cache: false
 
         });
