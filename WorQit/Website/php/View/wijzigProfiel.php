@@ -10,30 +10,31 @@ if($_SESSION['isloggedin']) {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <title>Vacatures</title>
 
-    <title>WorQit</title>
+        <!-- Bootstrap core CSS -->
+        <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
+        <!--external css-->
+        <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
-    <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <!-- Custom styles for this template -->
+        <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
+        <link href="../../dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
-    <link href="../../dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
 <body>
 
@@ -138,7 +139,7 @@ if($_SESSION['isloggedin']) {
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php include("../Controller/getUser.php"); echo $GLOBALS["bedrijfsnaam"] ?></h5>
+                    <h5 class="centered"><?php echo $_SESSION['user'][0]['name'] ?></h5>
                     <li class="mt">
                         <a href="../index.php">
                             <i class="fa fa-dashboard"></i>
@@ -183,40 +184,36 @@ if($_SESSION['isloggedin']) {
                 <div id="form2">
                     <div class="row mt">
                         <div class="col-lg-2">
-                            <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["name"];} else {} ?>">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name'] ?>">
                         </div>
                         <br/> <br/> <br/> <br/>
 
                         <div class="col-lg-2">
-                            <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["employeeCount"];} else {} ?>">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user'][0]['employeeCount'] ?>">
                         </div>
                         <br/> <br/> <br/> <br/>
 
                         <div class="col-lg-2">
-                            <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" placeholder="<?php if ($var["Result"] == "successful") {echo $var["User"][0]["location"];} else {} ?>">
+                            <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user'][0]['location'] ?>">
                         </div>
                         <br/> <br/> <br/> <br/>
 
                         <div class="col-lg-4">
                             <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea
                                 style="overflow:auto;resize:none" rows="5" cols="300" name="description"
-                                class="form-control" placeholder="<?php if ($var["Result"] == "successful") {
-                                echo $var["User"][0]["description"];
-                            } else {
-                            } ?>"></textarea>
+                                class="form-control"><?php
+                                echo $_SESSION["user"][0]["description"];
+                                ?></textarea>
                         </div>
             </form>
             <br/> <br/> <br/><br/> <br/> <br/><br/> <br/><br/><br/><br/>
 
             <div class="col-lg-2">
-                <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig"
-                "><i class="fa fa-pencil"></i></button>
-                <a data-toggle="modal" class="btn btn-danger btn-xs" href="wijzigProfiel.php.html#deleteAccount"><i
-                        class="fa fa-trash-o"></i></a>
+                <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
+                <a data-toggle="modal" class="btn btn-danger btn-xs" href="wijzigProfiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
             </div>
             </div>
             <p id="saveChanges"></p>
-            </form>
             </div>
             </div>
 
@@ -225,8 +222,7 @@ if($_SESSION['isloggedin']) {
     </section>
     <!-- /MAIN CONTENT -->
 
-    <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog
-    " tabindex="-1" id="deleteAccount" class="modal fade">
+    <div aria-hidden="true" aria-labelledby="myModalLabel"  id="deleteAccount" class="modal fade">
     <div class="modal-dialog">"
         <div class="modal-content">
             <div class="modal-header">
@@ -244,7 +240,7 @@ if($_SESSION['isloggedin']) {
 
                 function deleteEmployer()
                 {
-                    $ID = $GLOBALS["user"];
+                    $ID = $_SESSION["user"][0]["ID"];
 
                     $deleteVars = array("ID => '$ID', password => 'onzin'");
                     $ch = curl_init();
@@ -274,8 +270,7 @@ if($_SESSION['isloggedin']) {
     </div>
     </div>
 
-    <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog
-    " tabindex="-1" id="changeAccount" class="modal fade">
+    <div aria-hidden="true" aria-labelledby="myModalLabel role=" dialog" tabindex="-1" id="changeAccount" class="modal fade">
     <div class="modal-dialog">"
         <div class="modal-content">
             <div class="modal-header">
@@ -334,9 +329,11 @@ if($_SESSION['isloggedin']) {
         $location = $_POST["location"];
         $description = $_POST["description"];
         $employeeCount = $_POST["employeeCount"];
-        $id = $var["User"][0]["ID"];
+        $username = $_SESSION["user"][0]["username"];
+        $password = $_SESSION["user"][0]["password"];
+        $id = $_SESSION["user"][0]["ID"];
 
-        $editVars = array("industry  => 'test', username => 'test', password => 'test', id => '$id', firstName => '$name', location => '$location', lastName => '$description', employeeCount => $employeeCount");
+        $editVars = array("industry  => 'test', username => '$username', password => 'test', id => '$id', firstName => '$name', location => '$location', lastName => '$description', employeeCount => $employeeCount");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/editEmployer");
@@ -350,21 +347,26 @@ if($_SESSION['isloggedin']) {
         $editHeaders[] = 'firstName:' . $name;
         $editHeaders[] = 'location:' . $location;
         $editHeaders[] = 'lastName:' . $description;
-        $editHeaders[] = 'username: test';
-        $editHeaders[] = 'password: test';
+        $editHeaders[] = 'username:' . $username;
+        $editHeaders[] = 'password:' . $password;
         $editHeaders[] = 'employeeCount:' . $employeeCount;
         curl_setopt($ch, CURLOPT_HTTPHEADER, $editHeaders);
         $server_output = curl_exec($ch);
         curl_close($ch);
         $var = json_decode($server_output, true);
+
+        $_SESSION["user"][0]["name"] = $name;
+        $_SESSION["user"][0]["location"] = $location;
+        $_SESSION["user"][0]["description"] = $description;
+        $_SESSION["user"][0]["employeeCount"] = $employeeCount;
+
         ?>
 
         <script>
-            var url = 'wijzigProfiel.php'; //please insert the url of the your current page here, we are assuming the url is 'index.php'
+            var url = "wijzigProfiel.php"; //please insert the url of the your current page here, we are assuming the url is 'index.php'
             $('#form').load(url + ' #form2'); //note: the space before #div1 is very important
-            document.getElementById("saveChanges").innerHTML = "Wijzigingen opgeslagen";
+            document.getElementById("form2").innerHTML = "Wijzigingen opgeslagen";
             $('#sidebar').load(url + ' #wrapper'); //note: the space before #div1 is very important
-
         </script>
         <?php
     }
