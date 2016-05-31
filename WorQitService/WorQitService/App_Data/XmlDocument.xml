@@ -510,7 +510,7 @@
             <param>vacancyID</param>
             <returns>vacancy list</returns>
         </member>
-        <member name="M:WorQitService.Controllers.VacancyController.geVacanciesByScore(System.Int32)">
+        <member name="M:WorQitService.Controllers.VacancyController.getVacanciesByScore(System.Int32)">
             <summary>
             Get all vacancys with score
             </summary>

@@ -126,7 +126,7 @@ namespace WorQitService.Controllers
                     };
                     wqdb.Employers.Add(employer);
                     wqdb.SaveChanges();
-                    return Json(new { Result = "successful" });
+                    return Json(new { Result = "successful" , employer = employer});
                 }
                 else
                 {
