@@ -54,7 +54,8 @@ namespace WorQitService.Controllers
         /// </summary>
         /// <param>employeeID</param>
         /// <returns>vacancy list</returns>
-        public object geVacanciesByRating(int employeeID)
+        [HttpGet]
+        public object geVacanciesByScore(int employeeID)
         {
             try
             {
@@ -62,13 +63,13 @@ namespace WorQitService.Controllers
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
 
-                var vaEmps = new List<Vacancy>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                where VacancyEmployee.employeeID == employeeID && VacancyEmployee.matchingValue  < 0 
-                                                orderby VacancyEmployee.matchingValue
+                var vacancies = new List<Vacancy>(from VacancyEmployee in wqdb.VacancyEmployees
+                                                where VacancyEmployee.employeeID == employeeID && VacancyEmployee.rating == 0
+                                                orderby VacancyEmployee.matchingValue descending
                                                select VacancyEmployee.Vacancy).ToList();
 
 
-                return Json(new { Result = "successful", Vacancys = vaEmps });
+                return Json(new { Result = "successful", Vacancys = vacancies });
 
             }
             catch (Exception ex)
