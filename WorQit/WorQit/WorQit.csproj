@@ -111,8 +111,12 @@
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Vacancy.cs" />
+    <Compile Include="Models\VacancyEmployee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vacature.cs" />
+    <Compile Include="Vacancies.xaml.cs">
+      <DependentUpon>Vacancies.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -149,6 +153,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vacancies.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
