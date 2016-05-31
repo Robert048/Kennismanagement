@@ -10,7 +10,7 @@ function showVacancies(){
 
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Vacancy/getVacancies/9');
+    curl_setopt($curl, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Vacancy/getVacancies/11');
     $content = curl_exec($curl);
     curl_close($curl);
     return json_decode($content);
