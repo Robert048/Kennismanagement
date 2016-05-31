@@ -2,19 +2,24 @@
  * Created by maaike on 26-5-2016.
  */
 
-function addEmployer() {
+$(document).ready(function() {
+    $('#signup_button').click(function (event) {
 
-    var request = $.ajax({
-        type: "GET",
-        url: '../Controller/addVacancy.php',
-        data: $('#newEmployer').serializeArray()
-    });
-    request.success(function () {
-        $('#signupModal').attr('aria-hidden', 'true');
-        location.reload();
-    });
-    request.fail(function (jqXHR, textStatus) {
-        alert("Request failed: " + textStatus);
-    });
+        event.preventDefault();
 
-}
+        var request = $.ajax({
+            type: "GET",
+            url: 'php/Controller/addEmployer.php',
+            data: {username: $('#newusername').val(), password: $('#newpassword').val(), email: $('#newemail').val()}
+        });
+        request.success(function() {
+            $('#signupModal').attr('aria-hidden', 'true');
+            window.location.href = 'index.php';
+
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+        });
+
+    });
+});

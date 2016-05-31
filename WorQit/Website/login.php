@@ -102,13 +102,13 @@
 								  </div>
 								  <div class="modal-body">
 									  <div class="login-wrap">
-										  <input type="text" class="form-control" placeholder="username">
+										  <input type="text" id='newusername' class="form-control" placeholder="username">
 										  <br>
-										  <input type="text" class="form-control" placeholder="email">
+										  <input type="text" id='newemail' class="form-control" placeholder="email">
 										  <br>
-										  <input type="password" class="form-control" placeholder="Password">
+										  <input type="password" id='newpassword' class="form-control" placeholder="Password">
 										  <br>
-										  <button class="btn btn-theme btn-block" id="signup_button" onclick="addEmployer()" type="submit"><i class="fa fa-lock"></i> Maak account</button>
+										  <button class="btn btn-theme btn-block" id="signup_button" type="submit"><i class="fa fa-lock"></i> Maak account</button>
 									  </div>
 									</div>
 								  <div class="modal-footer">
