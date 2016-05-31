@@ -140,10 +140,7 @@ if($_SESSION['isloggedin']) {
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
                                                                    class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php if ($var["Result"] == "successful") {
-                            echo $_SESSION['user'][0]['name'];
-                        } else {
-                        } ?></h5>
+                    <h5 class="centered"><?php echo $_SESSION['user'][0]['name'] ?></h5>
                     <li class="mt">
                         <a href="../index.php">
                             <i class="fa fa-dashboard"></i>
@@ -182,10 +179,7 @@ if($_SESSION['isloggedin']) {
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-angle-right"></i> Profiel van <?php if ($var["Result"] == "successful") {
-                        echo $var["User"][0]["name"];
-                    } else {
-                    } ?> </h3>
+                <h3><i class="fa fa-angle-right"></i> Profiel van <?php echo $_SESSION['user'][0]['name'] ?> </h3>
 
                 <div class="row mt">
                     <div class="col-lg-1">
@@ -194,10 +188,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-4">
-                        <p><?php if ($var["Result"] == "successful") {
-                                echo $var["User"][0]["name"];
-                            } else {
-                            } ?></p>
+                        <p><?php echo $_SESSION['user'][0]['name'] ?></p>
                     </div>
 
                     <br/> <br/>
@@ -208,10 +199,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-4">
-                        <p><?php if ($var["Result"] == "successful") {
-                                echo $var["User"][0]["employeeCount"];
-                            } else {
-                            } ?></p>
+                        <p><?php echo $_SESSION['user'][0]['employeeCount'] ?></p>
                     </div>
 
                     <br/> <br/>
@@ -222,10 +210,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-1">
-                        <p><?php if ($var["Result"] == "successful") {
-                                echo $var["User"][0]["location"];
-                            } else {
-                            } ?></p>
+                        <p><?php echo $_SESSION['user'][0]['location']?></p>
                     </div>
                     <br/> <br/>
 
@@ -235,10 +220,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-6">
-                        <p><?php if ($var["Result"] == "successful") {
-                                echo $var["User"][0]["description"];
-                            } else {
-                            } ?></p>
+                        <p><?php echo $_SESSION['user'][0]['description']?></p>
                     </div>
                     <br/> <br/> <br/><br/> <br/> <br/><br/> <br/>
 

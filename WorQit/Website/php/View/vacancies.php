@@ -156,7 +156,7 @@ include ('../Controller/vacancies.php');
                                                 foreach($vacancies as $vacancy){?>
                                                 <tr class="vacancyRow">
                                                     <td>
-                                                        <a href=><?php echo $vacancy->jobfunction?></a>
+                                                        <a href="vacancieDetails.php?<?php echo "ID=".$vacancy->ID?>"><?php echo $vacancy->jobfunction?></a>
                                                     </td>
                                                     <td class=hidden-phone><?php echo $vacancy->description?></td>
                                                     <td>
