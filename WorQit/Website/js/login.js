@@ -84,4 +84,19 @@ function forgotPass() {
         });
     });
 }
+function logout(){
+    var request = $.ajax({
+        url: 'php/Controller/login.php',
+        type: "GET",
+        data: {functionname: 'logout'},
+        cache: false
+
+    });
+    request.success(function() {
+        window.location.href = 'login.php';
+    });
+    request.fail(function(){
+        console.log("LOSER!");
+    });
+}
 
