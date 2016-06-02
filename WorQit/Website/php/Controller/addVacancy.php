@@ -50,3 +50,9 @@
     //close connection
     curl_close($ch);
 
+    //echo result to page for js to retrieve
+    $Result = json_decode($result);
+    if($Result->Result == "successful"){
+        echo $data;
+    }
+

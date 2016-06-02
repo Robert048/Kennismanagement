@@ -96,7 +96,7 @@ include ('../Controller/vacancies.php');
                             }else{
                                 echo $_SESSION['user']->name;
                             }
-                            ?>></h5>
+                            ?></h5>
 
                         <li class="mt">
                             <a href="../../index.php">
@@ -157,7 +157,7 @@ include ('../Controller/vacancies.php');
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Omschrijving</th>
                                             <th>
                                                 <?php
-                                                $vacancies = showVacancies($_SESSION["user"][0]["ID"]);
+                                                $vacancies = showVacancies($_SESSION['user']->ID);
                                                 foreach($vacancies as $vacancy) {?>
                                                 <tr class="vacancyRow">
                                                     <td>
