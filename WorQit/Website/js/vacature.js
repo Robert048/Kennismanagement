@@ -9,9 +9,14 @@ function addVacancy() {
         url: '../Controller/addVacancy.php',
         data: $('#newVacancy').serializeArray()
     });
-    request.done(function () {
+    request.done(function(data) {
         $('#newVacModal').attr('aria-hidden', 'true');
-        location.reload();
+        $('#vacancyTable').append('<tr class="vacancyRow">' +
+            '<td><a href="vacancieDetails.php?ID=" + data->ID">data->jobfunction?></a></td>' +
+            '<td class=hidden-phone>data->description</td>' +
+            '<td><button id="delete" class="btn btn-danger btn-xs" data-levelid= data->ID onclick="deleteVacancy()"><i class="fa fa-trash-o "></i></button></td>' +
+            '</tr>');
+        //location.reload();
     });
     request.fail(function (jqXHR, textStatus) {
         alert("Request failed: " + textStatus);
