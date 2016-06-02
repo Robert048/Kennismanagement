@@ -70,11 +70,13 @@ function login($data)
     //echo serialize($server_output);
     //echo $server_output;
     return $server_output;
+
 }
 
-function loggedin($data){
+function loggedin($result){
+    $data = json_decode($result);
     session_start();
-    $_SESSION['user']= $data;
+    $_SESSION['user']= $data->User[0];
     $_SESSION['isloggedin']= true;
     return "yolo!";
 }
