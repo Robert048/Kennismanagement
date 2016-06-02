@@ -157,8 +157,8 @@ include ('../Controller/vacancies.php');
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Omschrijving</th>
                                             <th>
                                                 <?php
-                                                $vacancies = showVacancies();
-                                                foreach($vacancies as $vacancy){?>
+                                                $vacancies = showVacancies($_SESSION["user"][0]["ID"]);
+                                                foreach($vacancies as $vacancy) {?>
                                                 <tr class="vacancyRow">
                                                     <td>
                                                         <a href="vacancieDetails.php?<?php echo "ID=".$vacancy->ID?>"><?php echo $vacancy->jobfunction?></a>
