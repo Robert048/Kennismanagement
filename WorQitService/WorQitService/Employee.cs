@@ -37,6 +37,7 @@ namespace WorQitService
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
+        public string experience { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VacancyEmployee> VacancyEmployees { get; set; }

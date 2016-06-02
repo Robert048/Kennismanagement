@@ -1,9 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.Services.Maps;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using WorQit.Models;
 
 namespace WorQit
 {
@@ -12,7 +24,7 @@ namespace WorQit
     /// </summary>
     public sealed partial class Main : Page
     {
-        private List<Vacature> vacatureLijst { get; set; }
+        private List<Vacancy> vacatureLijst { get; set; }
         //private ServiceReference1.Service1Client client = new Service1Client();
 
         public Main()
@@ -57,11 +69,6 @@ namespace WorQit
         private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));
-        }
-
-        private void btnEditProfile_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(EditProfile));
         }
     }
     public enum DistanceType { Miles, Kilometers };
