@@ -2,8 +2,10 @@
 
 session_start();
 if($_SESSION['isloggedin']) {
-    ?>
 
+    include("../Controller/deleteEmployer.php");
+    include("../Controller/editEmployer.php");
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -73,45 +75,6 @@ if($_SESSION['isloggedin']) {
                                 </a>
                             </li>
                             <li>
-                                <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar"
-                                                             src="../../dashgum/Theme/assets/img/ui-divya.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi, I need your help with this.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar"
-                                                             src="../../dashgum/Theme/assets/img/ui-danro.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../index.php#">
-                                    <span class="photo"><img alt="avatar"
-                                                             src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Please, answer asap.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="../../index.php#">See all messages</a>
                             </li>
                         </ul>
@@ -127,39 +90,39 @@ if($_SESSION['isloggedin']) {
             </div>
         </header>
         <!--header end-->
-
         <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
   *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
         <!--sidebar start-->
         <aside>
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
-                                                                   class="img-circle" width="60"></a></p>
+                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                     <h5 class="centered"><?php if($_SESSION['user']->name == null){
                             echo $_SESSION['user']->username;
                         }else{
                             echo $_SESSION['user']->name;
                         }
-                        ?></h5>
+                        ?>
+                    </h5>
                     <li class="mt">
                         <a href="../../index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-
                     <li class="sub-menu">
                         <a class="active" href="profiel.php">
                             <i class="fa fa-desktop"></i>
                             <span>Profiel</span>
                         </a>
                     </li>
-
                     <li class="sub-menu">
-                        <a href="vacatures.php">
+                        <a href="vacancies.php">
+                    <li class="sub-menu">
+                        <a href="vacancies.php">
                             <i class="fa fa-cogs"></i>
                             <span>Vacatures</span>
                         </a>
@@ -208,6 +171,61 @@ if($_SESSION['isloggedin']) {
 
                     <div class="col-lg-1">
                         <p style="font-weight:bold;font-size: 14pt;">Medewerkersaantal</p>
+                <h3><i class="fa fa-angle-right"></i> Profiel </h3>
+                <form method="post" action="profiel.php" id="form">
+                    <div id="form2">
+                        <div class="row mt">
+                            <div class="col-lg-2">
+                                <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name'] ?>">
+                            </div>
+                            <div class="col-lg-2">
+                                <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user'][0]['employeeCount'] ?>">
+                            </div>
+                            <br/> <br/> <br/> <br/>
+                            <div class="col-lg-2">
+                                <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user'][0]['location'] ?>">
+                            </div>
+                            <div class="col-lg-2">
+                                <p style="font-weight:bold;font-size: 14pt;" ;>Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['user'][0]['username'] ?>">
+                            </div>
+                            <br/> <br/> <br/> <br/>
+                            <div class="col-lg-2">
+                                <p style="font-weight:bold;font-size: 14pt;" ;>Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user'][0]['password'] ?>">
+                            </div>
+                            <div class="col-lg-2">
+                                <p style="font-weight:bold;font-size: 14pt;" ;>email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user'][0]['email'] ?>">
+                            </div>
+                            <br/> <br/> <br/> <br/>
+                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"][0]["description"]; ?></textarea></div>
+                </form>
+                <br/> <br/> <br/><br/> <br/> <br/><br/> <br/></br>
+                <div class="col-lg-2">
+                    <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
+                    <a data-toggle="modal" class="btn btn-danger btn-xs" href="profiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
+                </div>
+                </div>
+                </div>
+                </div>
+            </section>
+            <! --/wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" id="deleteAccount" class="modal fade">
+            <div class="modal-dialog">"
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Account verwijderen</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja</button>
+                        <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
+                        <script>
+                            var box = document.getElementById("bevestigVerwijderen");
+                            box.onclick = function () {
+                                $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
+                            }
+                        </script>
                     </div>
                     <br/> <br/>
 
@@ -219,7 +237,6 @@ if($_SESSION['isloggedin']) {
                             }
                             ?></p>
                     </div>
-
                     <br/> <br/>
 
                     <div class="col-lg-4">
@@ -232,9 +249,8 @@ if($_SESSION['isloggedin']) {
                                 echo $_SESSION['user']->location;
                             }else{
                                 echo " ";
-                            }
-                            ?></p>
-                    </div>
+                            ?>
+                        </p>
                     <br/> <br/>
 
                     <div class="col-lg-4">
@@ -288,15 +304,9 @@ if($_SESSION['isloggedin']) {
     <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
-<<<<<<< HEAD
   <script src= "../../js/login.js"></script>
     
   <script>
-//custom select box
-=======
->>>>>>> refs/remotes/origin/master
-
-    <script>
         //custom select box
 
         $(function () {
@@ -311,3 +321,22 @@ if($_SESSION['isloggedin']) {
     <?php
 }
 ?>
+    <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
+    <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript"
+            src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
+
+<?php
+    }
+    else{
+        header("location: login.php");
+    }
+    ?>
