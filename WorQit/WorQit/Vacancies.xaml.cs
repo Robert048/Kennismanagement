@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,14 +26,44 @@ namespace WorQit
     /// </summary>
     public sealed partial class Vacancies : Page
     {
-        private List<Vacancies> vacancyList;
+        private List<Vacancy> vacancyList;
+        private List<Vacancy> matchedList;
+        private int currentVacancy = 0;
 
         public Vacancies()
         {
             this.InitializeComponent();
+            init();
         }
 
-        public async void fillVacancies()
+        public async void init()
+        {
+            await fillVacancies();
+            getCurrentHighestVacancy();
+        }
+
+        public async void getVacancy()
+        {
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getVacanciesByScore/" + 1);
+                var response = await client.GetAsync(uri);
+                var result = await response.Content.ReadAsStringAsync();
+                matchedList = JsonConvert.DeserializeObject<List<Vacancy>>(result);
+            }
+        }
+
+        public void getCurrentHighestVacancy()
+        {
+            Vacancy vac = vacancyList[currentVacancy];
+            textBlock.Text = vac.description;
+            txtEisen.Text = vac.requirements;
+            txtFunction.Text = vac.jobfunction;
+            txtSalaris.Text = vac.salaray.ToString();
+            txtUren.Text = vac.salaray.ToString();
+        }
+
+        public async Task fillVacancies()
         {
             using (var client = new System.Net.Http.HttpClient())
             {
@@ -42,16 +73,16 @@ namespace WorQit
                     var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getAllVacancies");
                     var response = await client.GetAsync(uri);
                     var result = await response.Content.ReadAsStringAsync();
-                    List<Vacancy> jsonresult = JsonConvert.DeserializeObject<List<Vacancy>>(result);
+                    vacancyList = JsonConvert.DeserializeObject<List<Vacancy>>(result);
                     try
                     {
-
-
-                        foreach (var item in jsonresult)
+                        foreach (Vacancy v in vacancyList)
                         {
-                            int i = 0;
+                            var uri2 = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setMatchScore?employeeID=" + 1 + "&vacancyID=" + v.ID );
+                            var response2 = await client.PostAsync(uri2, null);
                         }
-                        var g = listVacancies;
+
+                       
                     }
                     catch (Exception ex)
                     {
@@ -67,9 +98,20 @@ namespace WorQit
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
-            fillVacancies();
+        }
+
+        private void btnLike_Click(object sender, RoutedEventArgs e)
+        {
+            currentVacancy = currentVacancy + 1;
+            getCurrentHighestVacancy();
+        }
+
+        private void btnDislike_Click(object sender, RoutedEventArgs e)
+        {
+            currentVacancy = currentVacancy + 1;
+            getCurrentHighestVacancy();
         }
     }
 }

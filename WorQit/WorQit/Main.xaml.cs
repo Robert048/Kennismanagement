@@ -70,6 +70,11 @@ namespace WorQit
         {
             Frame.Navigate(typeof(Login));
         }
+
+        private void btnMatch_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Vacancies));
+        }
     }
     public enum DistanceType { Miles, Kilometers };
     /// <summary>  
