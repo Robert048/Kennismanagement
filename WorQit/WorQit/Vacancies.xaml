@@ -46,9 +46,9 @@
             <TextBlock x:Name="txtFunction" TextWrapping="Wrap" Text="" Grid.Column="1" UseLayoutRounding="True" Foreground="#FF195695" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18"/>
             <TextBlock x:Name="txtBlockDesc" TextWrapping="Wrap" Text="Beschrijving" FontSize="14" Grid.Column="1" Grid.Row="1" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="75,3,75,9.667"/>
             <TextBlock x:Name="textBlock" Grid.Row="2" TextWrapping="Wrap" Text="" FontSize="13" RenderTransformOrigin="0.468,-0.014" Grid.ColumnSpan="4" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock1" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Eisen" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
-            <TextBlock x:Name="textBlock2" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="Uren" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
-            <TextBlock x:Name="textBlock3" Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="Salaris" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock x:Name="textBlock1" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock x:Name="textBlock2" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock x:Name="textBlock3" Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
             <TextBlock x:Name="txtEisen" Grid.Row="4" TextWrapping="Wrap" Text="" FontSize="13" TextAlignment="Center" Grid.ColumnSpan="4"/>
             <TextBlock x:Name="txtUren" Grid.Row="6" TextWrapping="Wrap" Text="" FontSize="13" RenderTransformOrigin="0.377,-0.961" TextAlignment="Center" Grid.ColumnSpan="4"/>
             <TextBlock x:Name="txtSalaris" Grid.Row="8" TextWrapping="Wrap" Text="" FontSize="13" TextAlignment="Center" Grid.ColumnSpan="4"/>

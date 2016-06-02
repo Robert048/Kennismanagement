@@ -28,11 +28,13 @@ namespace WorQit
     {
         private List<Vacancy> vacancyList;
         private List<Vacancy> matchedList;
-        private int currentVacancy = 0;
+        private int currentVacancyIndex = 0;
+        private Vacancy currentVacancy;
 
         public Vacancies()
         {
             this.InitializeComponent();
+            txtFunction.Text = "Vacatures ophalen, even geduld alstublieft.";
             init();
         }
 
@@ -55,12 +57,33 @@ namespace WorQit
 
         public void getCurrentHighestVacancy()
         {
-            Vacancy vac = vacancyList[currentVacancy];
-            textBlock.Text = vac.description;
-            txtEisen.Text = vac.requirements;
-            txtFunction.Text = vac.jobfunction;
-            txtSalaris.Text = vac.salaray.ToString();
-            txtUren.Text = vac.salaray.ToString();
+            currentVacancy = vacancyList[currentVacancyIndex];
+            textBlock.Text = currentVacancy.description;
+            txtEisen.Text = currentVacancy.requirements;
+            txtFunction.Text = currentVacancy.jobfunction;
+            txtSalaris.Text = currentVacancy.salaray.ToString();
+            txtUren.Text = currentVacancy.salaray.ToString();
+        }
+
+        public async void setRating(int empID, int vacID, int rating)
+        {
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                try
+                {
+                    StringContent stringContent = new StringContent("content");
+                    stringContent.Headers.Add("employeeID", empID.ToString());
+                    stringContent.Headers.Add("vacancyID", vacID.ToString());
+                    stringContent.Headers.Add("rating", rating.ToString());
+                    var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setRating");
+                    var response = await client.PostAsync(uri, stringContent);
+                    var result = await response.Content.ReadAsStringAsync();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
 
         public async Task fillVacancies()
@@ -104,14 +127,22 @@ namespace WorQit
 
         private void btnLike_Click(object sender, RoutedEventArgs e)
         {
-            currentVacancy = currentVacancy + 1;
-            getCurrentHighestVacancy();
+            if (currentVacancyIndex != vacancyList.Count())
+            {
+                currentVacancyIndex = currentVacancyIndex + 1;
+                getCurrentHighestVacancy();
+            }
+            setRating(Login.loggedInUser.ID, currentVacancy.ID, 1);
         }
 
         private void btnDislike_Click(object sender, RoutedEventArgs e)
         {
-            currentVacancy = currentVacancy + 1;
-            getCurrentHighestVacancy();
+            if (currentVacancyIndex != vacancyList.Count())
+            {
+                currentVacancyIndex = currentVacancyIndex - 1;
+                getCurrentHighestVacancy();
+            }
+            setRating(Login.loggedInUser.ID, currentVacancy.ID, -1);
         }
     }
 }
