@@ -20,47 +20,86 @@
             <RowDefinition Height="120*"/>
             <RowDefinition Height="32*"/>
             <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
+            <RowDefinition Height="384*"/>
             <RowDefinition Height="32*"/>
             <RowDefinition Height="40*"/>
         </Grid.RowDefinitions>
         <Image x:Name="image" Grid.Column="2" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2"/>
         <TextBlock Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Profiel aanpassen" FontSize="12" Foreground="#FF195695" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="32,8,30,8" Height="16" Width="92"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="Voornaam" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="Geboortejaar" FontSize="12" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,8" Height="16"/>
-        <TextBlock Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="Locatie" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBlock Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="Werkervaring" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBlock Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="Opleiding" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBlock Grid.Column="1" Grid.Row="9" TextWrapping="Wrap" Text="Werkveld" FontSize="12" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,8" Height="16"/>
-        <TextBlock Grid.Column="1" Grid.Row="10" TextWrapping="Wrap" Text="Werkuren" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBox x:Name="txtNaam" Grid.Column="3" Grid.Row="3" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBox x:Name="txtLeeftijd" Grid.Column="3" Grid.Row="5" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBox x:Name="txtLocatie" Grid.Column="3" Grid.Row="6" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBox x:Name="txtWerkervaring" Grid.Column="3" Grid.Row="7" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBox x:Name="txtOpleiding" Grid.Column="3" Grid.Row="8" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBox x:Name="txtWerkveld" Grid.Column="3" Grid.Row="9" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBox x:Name="txtUren" Grid.Column="3" Grid.Row="10" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="Achternaam" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBox x:Name="txtAchternaam" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBlock Grid.Column="1" Grid.Row="11" TextWrapping="Wrap" Text="Specialties" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBox x:Name="txtSpecialties" Grid.Column="3" Grid.Row="11" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBlock Grid.Column="1" Grid.Row="12" TextWrapping="Wrap" Text="Positie" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBox x:Name="txtPositie" Grid.Column="3" Grid.Row="12" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBlock Grid.Column="1" Grid.Row="13" TextWrapping="Wrap" Text="Interesses" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBox x:Name="txtInteresses" Grid.Column="3" Grid.Row="13" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <TextBlock Grid.Column="1" Grid.Row="14" TextWrapping="Wrap" Text="Email" FontSize="12" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,8" Height="16"/>
-        <TextBox x:Name="txtEmail" Grid.Column="3" Grid.Row="14" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" MinWidth="50" FontSize="12"/>
-        <Button x:Name="btnSave" Content="Opslaan" Grid.Column="2" Grid.Row="15" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Click="btnSave_Click"/>
+        <Grid x:Name="gridSettings" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="83*"/>
+                <ColumnDefinition Width="225*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Voornaam" FontSize="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtNaam" Grid.Column="1" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Achternaam" FontSize="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtAchternaam" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Geboortejaar" FontSize="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtLeeftijd" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Woonplaats" FontSize="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtLocatie" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="4" TextWrapping="Wrap" Text="Opleiding" FontSize="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtOpleiding" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="5" TextWrapping="Wrap" Text="Email" FontSize="12" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="6" TextWrapping="Wrap" Text="Password" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtPassword" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <Button x:Name="btnNext" Content="Volgende" Grid.Column="1" Grid.Row="11" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnNext_Click"/>
+        </Grid>
+        <Grid x:Name="gridSettingsNext" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="83*"/>
+                <ColumnDefinition Width="225*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock TextWrapping="Wrap" Text="Vaardigheden" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtVaardigheden" Grid.Column="1" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="Specialiteiten" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtSpecialties" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Werkveld" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtWerkveld" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="3" TextWrapping="Wrap" Text="Werkuren" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtUren" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="4" TextWrapping="Wrap" Text="Positie" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtPositie" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="5" TextWrapping="Wrap" Text="Interesses" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
+            <TextBox x:Name="txtInteresses" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <Button x:Name="btnPrevious" Content="Vorige" Grid.Column="1" Grid.Row="11" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnPrevious_Click"/>
+            <TextBlock Grid.Row="6" TextWrapping="Wrap" Text="Ervaring" FontSize="12" VerticalAlignment="Center" Margin="0,8.04,0,7.96"/>
+            <TextBox x:Name="txtErvaring" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="7" TextWrapping="Wrap" Text="Talen" FontSize="12" VerticalAlignment="Center" Margin="0,8.04,0,7.96"/>
+            <TextBox x:Name="txtTalen" Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+            <TextBlock Grid.Row="8" TextWrapping="Wrap" Text="Vrijwillerswerk" FontSize="12" VerticalAlignment="Center" Margin="0,8.06,0,7.94"/>
+            <TextBox x:Name="txtVolunteer" Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
+        </Grid>
+        <Button x:Name="btnSave" Content="Opslaan" Grid.Column="2" Grid.Row="5" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Click="btnSave_Click" Margin="0,5"/>
     </Grid>
 </Page>

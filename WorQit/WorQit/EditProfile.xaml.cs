@@ -32,15 +32,16 @@ namespace WorQit
                     stringContent.Headers.Add("specialties", txtSpecialties.Text);
                     stringContent.Headers.Add("positions", txtPositie.Text);
                     stringContent.Headers.Add("interests", txtInteresses.Text);
-                    //stringContent.Headers.Add("languages", txtWerkveld.Text);
-                    stringContent.Headers.Add("skills", txtWerkervaring.Text);
+                    stringContent.Headers.Add("languages", txtTalen.Text);
+                    stringContent.Headers.Add("skills", txtVaardigheden.Text);
                     stringContent.Headers.Add("educations", txtOpleiding.Text);
-                    //stringContent.Headers.Add("volunteer", txtOpleiding.Text);
+                    stringContent.Headers.Add("volunteer", txtVolunteer.Text); //wat heb je gdn qua vrijwillerswerk
                     stringContent.Headers.Add("dob", txtLeeftijd.Text);
                     stringContent.Headers.Add("location", txtLocatie.Text);
                     stringContent.Headers.Add("hours", txtUren.Text);
+                    stringContent.Headers.Add("experience", txtErvaring.Text);
 
-                    //stringContent.Headers.Add("password", txtUren.Text);
+                    stringContent.Headers.Add("password", txtPassword.Text);
                     stringContent.Headers.Add("oldpassword", Login.loggedInUser.password);
                     stringContent.Headers.Add("email", txtEmail.Text);
 
@@ -52,7 +53,7 @@ namespace WorQit
                     {
                         if (jsonresult["Result"] == "successful")
                         {
-                            //krijg verder niets terug, mss loggedinuser bijwerken?
+                            Login.loggedInUser = jsonresult["User"];
                         }
                         else
                         {
@@ -72,6 +73,18 @@ namespace WorQit
                     await dialog.ShowAsync();
                 }
             }
+        }
+
+        private void btnNext_Click(object sender, RoutedEventArgs e)
+        {
+            gridSettings.Visibility = Visibility.Collapsed;
+            gridSettingsNext.Visibility = Visibility.Visible;
+        }
+
+        private void btnPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            gridSettings.Visibility = Visibility.Visible;
+            gridSettingsNext.Visibility = Visibility.Collapsed;
         }
     }
 }
