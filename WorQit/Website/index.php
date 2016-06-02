@@ -70,45 +70,6 @@ if($_SESSION['isloggedin']) {
                             </li>
                             <li>
                                 <a href="index.php#">
-                                    <span class="photo"><img alt="avatar"
-                                                             src="dashgum/Theme/assets/img/ui-zac.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Zac Snider</span>
-                                        <span class="time">Just now</span>
-                                        </span>
-                                        <span class="message">
-                                            Hi mate, how is everything?
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#">
-                                    <span class="photo"><img alt="avatar"
-                                                             src="dashgum/Theme/assets/img/ui-divya.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Divya Manian</span>
-                                        <span class="time">40 mins.</span>
-                                        </span>
-                                        <span class="message">
-                                            Hi, I need your help with this.
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#">
-                                    <span class="photo"><img alt="avatar"
-                                                             src="dashgum/Theme/assets/img/ui-danro.jpg"></span>
-                                        <span class="subject">
-                                        <span class="from">Dan Rogers</span>
-                                        <span class="time">2 hrs.</span>
-                                        </span>
-                                        <span class="message">
-                                            Love your new Dashboard.
-                                        </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#">
                                     <span class="photo"><img alt="avatar" src="dashgum/Theme/assets/img/ui-sherman.jpg"></span>
                                         <span class="subject">
                                         <span class="from">Dj Sherman</span>
@@ -146,11 +107,11 @@ if($_SESSION['isloggedin']) {
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="php/View/profiel.php"><img src="dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
                     <h5 class="centered">
-                        <?php if(array_key_exists("username",$_SESSION['user'])){
-                                echo $_SESSION['user']['username'];
-                            }else{
-                                echo $_SESSION['user'][0]['name'];
-                            }
+                        <?php if($_SESSION['user']->name == null){
+                            echo $_SESSION['user']->username;
+                        }else{
+                            echo $_SESSION['user']->name;
+                        }
                         ?>
                     </h5>
 
@@ -210,33 +171,47 @@ if($_SESSION['isloggedin']) {
 
                         <div class="row mt">
                             <!-- SERVER STATUS PANELS -->
-                            <div class="col-md-4 col-sm-4 mb">
-                                <div class="white-panel pn donut-chart">
-                                    <div class="white-header">
-                                        <h5>SERVER LOAD</h5>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 col-xs-6 goleft">
-                                            <p><i class="fa fa-database"></i> 70%</p>
+                            <a href="php/View/profiel.php">
+                                <div class="col-md-4 col-sm-4 mb">
+                                    <div class="darkblue-panel pn donut-chart">
+                                        <div class="darkblue-header">
+                                            <h5>PROFIEL</h5>
                                         </div>
-                                    </div>
-                                    <canvas id="serverstatus01" height="120" width="120"></canvas>
-                                    <script>
-                                        var doughnutData = [
-                                            {
-                                                value: 70,
-                                                color: "#68dff0"
-                                            },
-                                            {
-                                                value: 30,
-                                                color: "#fdfdfd"
+                                        <?php
+                                        $fieldsFilled=0;
+                                        foreach($_SESSION['user'] as $s){
+                                            if($s === NULL || is_array($s)){
                                             }
-                                        ];
-                                        var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-                                    </script>
-                                </div>
-                                <! --/grey-panel -->
-                            </div><!-- /col-md-4-->
+                                            else{
+                                                $fieldsFilled++;
+                                            }
+                                            $percFilled = 12.5 * $fieldsFilled;
+                                            $percEmpty = 100 - $percFilled;
+                                        }
+                                        ?>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-xs-6 goleft">
+                                                <p style="color: white"><?php echo $percFilled ?>% voltooid</p>
+                                            </div>
+                                        </div>
+                                        <canvas id="serverstatus01" height="120" width="120"></canvas>
+                                        <script>
+                                            var profielData = [
+                                                {
+                                                    value: <?php echo $percFilled ?>,
+                                                    color: "#68dff0"
+                                                },
+                                                {
+                                                    value: <?php echo $percEmpty ?>,
+                                                    color: "#fdfdfd"
+                                                }
+                                            ];
+                                            var profielChart = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(profielData);
+                                        </script>
+                                    </div>
+                                    <! --/grey-panel -->
+                                </div><!-- /col-md-4-->
+                            </a>
 
                         </div><!-- /row -->
                     </div>

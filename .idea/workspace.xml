@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cbc0fb3-133a-4ccc-9756-1435058f0a7c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WorQit/Website/php/Controller/getUser.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/index.php" afterPath="$PROJECT_DIR$/WorQit/Website/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/js/login.js" afterPath="$PROJECT_DIR$/WorQit/Website/js/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/vacancieDetails.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/vacancieDetails.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" afterPath="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" />
     </list>
     <ignored path="Kennismanagement.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,57 +35,64 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="147" column="87" selection-start-line="147" selection-start-column="87" selection-end-line="147" selection-end-column="87" />
+            <state relative-caret-position="338">
+              <caret line="114" column="26" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="false" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1464696357931" expanded="true" signature="5577:5803" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="5637:5777" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="5846:6064" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="5902:6038" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="6107:6326" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="6165:6300" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="6368:6587" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="6426:6561" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="6728:7063" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7135:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7173:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7208:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7262:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7311:7717" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7392:7685" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7443:7595" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7780:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="7965:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="8045:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="8116:8178" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="8983:9276" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="9428:9429" ph="..." />
+                <marker date="1464696357931" expanded="true" signature="12180:13000" ph="{...}" />
+                <marker date="1464696357931" expanded="true" signature="12344:12391" ph="{...}" />
+                <marker date="1464696357931" expanded="true" signature="12441:12988" ph="{...}" />
+                <marker date="1464696357931" expanded="true" signature="12479:12557" ph="{...}" />
+                <marker date="1464696357931" expanded="true" signature="12599:12669" ph="{...}" />
+                <marker date="1464696357931" expanded="true" signature="12693:12795" ph="{&quot;url&quot;: &quot;show_data.php?action=1&quot;...}" />
+                <marker date="1464696357931" expanded="true" signature="12821:12974" ph="[...]" />
+                <marker date="1464696357931" expanded="true" signature="13040:13204" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="berichten.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/berichten.php">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WorQit/Website/dashgum/Theme/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2312">
-              <caret line="141" column="78" selection-start-line="141" selection-start-column="78" selection-end-line="141" selection-end-column="78" />
+            <state relative-caret-position="1">
+              <caret line="407" column="26" selection-start-line="407" selection-start-column="26" selection-end-line="407" selection-end-column="26" />
               <folding>
-                <element signature="e#6#87#0#PHP" expanded="false" />
+                <marker date="1406202396000" expanded="true" signature="32844:32857" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profiel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/profiel.php">
+      <file leaf-file-name="employer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WorQit/Website/js/employer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="129" column="17" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
+            <state relative-caret-position="391">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vacancies.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-              <folding>
-                <element signature="e#6#87#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wijzigProfiel.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="370" column="1" selection-start-line="370" selection-start-column="1" selection-end-line="370" selection-end-column="1" />
-              <folding>
-                <element signature="e#6#70#0#PHP" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -98,8 +110,8 @@
       <file leaf-file-name="addEmployer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+            <state relative-caret-position="440">
+              <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
               </folding>
@@ -110,8 +122,8 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/js/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
+            <state relative-caret-position="306">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -122,8 +134,8 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+            <state relative-caret-position="-228">
+              <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
               </folding>
@@ -155,20 +167,21 @@
         <option value="$PROJECT_DIR$/WorQit/Website/php/vacatures.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/profiel.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/berichten.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/js/employer.js" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/Controller/employer.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/classes/employer.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/employer.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/login.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/js/login.js" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/globals.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/js/login.js" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/Controller/login.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/index.php" />
         <option value="$PROJECT_DIR$/WorQit/Website/php/View/profiel.php" />
-        <option value="$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/View/berichten.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/View/vacancieDetails.php" />
+        <option value="$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php" />
       </list>
     </option>
   </component>
@@ -191,10 +204,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP7" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="9" />
-    <option name="width" value="1378" />
-    <option name="height" value="780" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-129" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -334,15 +347,33 @@
               <option name="myItemId" value="php" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="Kennismanagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Kennismanagement" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WorQit" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Website" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -414,30 +445,30 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48478000" />
+    <option name="totallyTimeSpent" value="55686000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="9" width="1378" height="780" extended-state="1" />
+    <frame x="-1928" y="-129" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24816446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24791667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296146" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39553753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39614242" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -453,26 +484,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/globals.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -640,13 +656,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/dashgum/Theme/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="772">
-          <caret line="733" column="11" selection-start-line="733" selection-start-column="11" selection-end-line="733" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/dashgum/Theme/assets/lineicons/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -692,27 +701,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/employer.php" />
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/js/employer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc;n#addEmployer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/classes/employer.php" />
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/employer.php" />
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/globals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -721,79 +718,153 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/dashgum/Theme/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="989" column="5" selection-start-line="989" selection-start-column="0" selection-end-line="989" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/dashgum/Theme/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1">
+          <caret line="407" column="26" selection-start-line="407" selection-start-column="26" selection-end-line="407" selection-end-column="26" />
+          <folding>
+            <marker date="1406202396000" expanded="true" signature="32844:32857" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
+        <state relative-caret-position="306">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/employer.php" />
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php">
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/addEmployer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/globals.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="440">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/berichten.php">
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/Controller/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2312">
-          <caret line="141" column="78" selection-start-line="141" selection-start-column="78" selection-end-line="141" selection-end-column="78" />
+        <state relative-caret-position="-228">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
           <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorQit/Website/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="147" column="87" selection-start-line="147" selection-start-column="87" selection-end-line="147" selection-end-column="87" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="false" />
+            <element signature="e#6#87#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/profiel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="129" column="17" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="17" />
+        <state relative-caret-position="170">
+          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding>
+            <element signature="e#9635#9676#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/berichten.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2310">
+          <caret line="146" column="27" selection-start-line="146" selection-start-column="27" selection-end-line="146" selection-end-column="27" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/vacancieDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1923">
+          <caret line="101" column="57" selection-start-line="101" selection-start-column="57" selection-end-line="101" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="114" column="26" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="false" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#0;n#div#0;n#a#0;n#div#1;n#div#0;n#div#0;n#section#0;n#section#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1464696357931" expanded="true" signature="5577:5803" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="5637:5777" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="5846:6064" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="5902:6038" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="6107:6326" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="6165:6300" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="6368:6587" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="6426:6561" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="6728:7063" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7135:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7173:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7208:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7262:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7311:7717" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7392:7685" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7443:7595" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7780:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="7965:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="8045:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="8116:8178" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="8983:9276" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="9428:9429" ph="..." />
+            <marker date="1464696357931" expanded="true" signature="12180:13000" ph="{...}" />
+            <marker date="1464696357931" expanded="true" signature="12344:12391" ph="{...}" />
+            <marker date="1464696357931" expanded="true" signature="12441:12988" ph="{...}" />
+            <marker date="1464696357931" expanded="true" signature="12479:12557" ph="{...}" />
+            <marker date="1464696357931" expanded="true" signature="12599:12669" ph="{...}" />
+            <marker date="1464696357931" expanded="true" signature="12693:12795" ph="{&quot;url&quot;: &quot;show_data.php?action=1&quot;...}" />
+            <marker date="1464696357931" expanded="true" signature="12821:12974" ph="[...]" />
+            <marker date="1464696357931" expanded="true" signature="13040:13204" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/vacancies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2243">
+          <caret line="98" column="36" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="36" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WorQit/Website/php/View/wijzigProfiel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="370" column="1" selection-start-line="370" selection-start-column="1" selection-end-line="370" selection-end-column="1" />
+        <state relative-caret-position="2428">
+          <caret line="373" column="1" selection-start-line="373" selection-start-column="1" selection-end-line="373" selection-end-column="1" />
           <folding>
             <element signature="e#6#70#0#PHP" expanded="false" />
+            <element signature="e#9006#9047#0#HTML" expanded="true" />
+            <element signature="e#9321#9362#0#HTML" expanded="true" />
+            <element signature="e#9661#9702#0#HTML" expanded="true" />
+            <element signature="e#9995#10036#0#HTML" expanded="true" />
+            <element signature="e#10106#10139#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorQit/Website/js/employer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

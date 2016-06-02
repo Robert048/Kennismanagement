@@ -26,11 +26,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 $server_output = curl_exec($ch);
 
 curl_close($ch);
-//echo serialize($server_output);
+//$data= unserialize($server_output);
 //echo $server_output;
+$data = json_decode($server_output);
 session_start();
-$_SESSION['user']['username']=$_GET['username'];
-$_SESSION['user']['password']=$_GET['password'];
-$_SESSION['user']['email']=$_GET['email'];
+$_SESSION['user']= $data->employer;
 $_SESSION['isloggedin']= true;
 return $server_output;

@@ -139,7 +139,12 @@ if($_SESSION['isloggedin']) {
             <ul class="sidebar-menu" id="nav-accordion">
 
                 <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered"><?php echo $_SESSION['user'][0]['name']?></h5>
+                <h5 class="centered"><?php if($_SESSION['user']->name == null){
+                        echo $_SESSION['user']->username;
+                    }else{
+                        echo $_SESSION['user']->name;
+                    }
+                    ?></h5>
 
                 <li class="mt">
                     <a href="../../index.php">
