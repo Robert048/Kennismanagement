@@ -75,6 +75,11 @@ namespace WorQit
         {
             Frame.Navigate(typeof(Vacancies));
         }
+
+        private void btnEditProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     public enum DistanceType { Miles, Kilometers };
     /// <summary>  

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -28,18 +28,16 @@ namespace WorQit
                     stringContent.Headers.Add("ID", Login.loggedInUser.ID.ToString());
                     stringContent.Headers.Add("firstName", txtNaam.Text);
                     stringContent.Headers.Add("lastName", txtAchternaam.Text);
-                    stringContent.Headers.Add("industry", txtWerkveld.Text);
-                    stringContent.Headers.Add("specialties", txtSpecialties.Text);
-                    stringContent.Headers.Add("positions", txtPositie.Text);
-                    stringContent.Headers.Add("interests", txtInteresses.Text);
-                    stringContent.Headers.Add("languages", txtTalen.Text);
-                    stringContent.Headers.Add("skills", txtVaardigheden.Text);
-                    stringContent.Headers.Add("educations", txtOpleiding.Text);
-                    stringContent.Headers.Add("volunteer", txtVolunteer.Text); //wat heb je gdn qua vrijwillerswerk
+                    stringContent.Headers.Add("industry", txtWerkveld.Text); //werkveld - branche
+                    stringContent.Headers.Add("positions", txtPositie.Text); // positie - functie
+                    stringContent.Headers.Add("interests", txtInteresses.Text); //interesses - niet voor matchen
+                    stringContent.Headers.Add("languages", txtTalen.Text); // talen - niet matchen
+                    stringContent.Headers.Add("skills", txtVaardigheden.Text); // vaardigheden -  eisen
+                    stringContent.Headers.Add("educations", txtOpleiding.Text); //education
                     stringContent.Headers.Add("dob", txtLeeftijd.Text);
                     stringContent.Headers.Add("location", txtLocatie.Text);
-                    stringContent.Headers.Add("hours", txtUren.Text);
-                    stringContent.Headers.Add("experience", txtErvaring.Text);
+                    stringContent.Headers.Add("hours", txtUren.Text); //hours
+                    stringContent.Headers.Add("experience", txtErvaring.Text); //vorige banen 
 
                     stringContent.Headers.Add("password", txtPassword.Text);
                     stringContent.Headers.Add("oldpassword", Login.loggedInUser.password);
