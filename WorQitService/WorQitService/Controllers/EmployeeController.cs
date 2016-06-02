@@ -8,6 +8,7 @@ using WorQitService;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Collections;
+using System.Globalization;
 
 namespace WorQitService.Controllers
 {
@@ -154,8 +155,13 @@ namespace WorQitService.Controllers
             try
             {
                 var headers = Request.Headers;
-                
                 int ID = (headers.Contains("ID")) ? Int32.Parse(headers.GetValues("ID").First()) : -1;
+
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                Employee emp = wqdb.Employees.First(x => x.ID == ID);
+
+                
                 string firstName = (headers.Contains("firstName")) ? headers.GetValues("firstName").First() : null;
                 string lastName = (headers.Contains("lastName")) ? headers.GetValues("lastName").First() : null;
                 string industry = (headers.Contains("industry")) ? headers.GetValues("industry").First() : null;
@@ -167,18 +173,23 @@ namespace WorQitService.Controllers
                 string educations = (headers.Contains("educations")) ? headers.GetValues("educations").First() : null;
                 string experience = (headers.Contains("experience")) ? headers.GetValues("experience").First() : null; // werkervaring
                 string volunteer = (headers.Contains("volunteer")) ? headers.GetValues("volunteer").First() : null;
-                Nullable< System.DateTime > dob = (headers.Contains("dob") && headers.GetValues("dob").First() != null) ? DateTime.Parse(headers.GetValues("dob").First()) : DateTime.Parse(null);
+                if (headers.Contains("dob") && headers.GetValues("dob").First() != null) {
+
+                    DateTime? dob = DateTime.Parse(headers.GetValues("dob").First().ToString());
+                    //return Json(new { Result = "lolz dob", troep = dob });
+                    emp.dob = (dob != null) ? dob : emp.dob;
+                    
+                }
                 string location = (headers.Contains("location")) ? headers.GetValues("location").First() : null;
-                Nullable< int > hours = (headers.Contains("hours")) ? Int32.Parse(headers.GetValues("hours").First()) : -1;
-                
+                if (headers.Contains("hours")) {
+                    int? hours = int.Parse(headers.GetValues("hours").First());
+                    emp.hours = (hours != null) ? hours : emp.hours;
+                }
                 string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
                 string oldPassword = (headers.Contains("oldPassword")) ? headers.GetValues("oldPassword").First() : null;
                 string email = (headers.Contains("ID")) ? headers.GetValues("ID").First() : null;
 
-                WorQitEntities wqdb = new WorQitEntities();
-                wqdb.Configuration.ProxyCreationEnabled = false;
-               
-                Employee emp = wqdb.Employees.First(x => x.ID == ID);
+                
                 
                 emp.firstName = (firstName != null) ? firstName : emp.firstName;
                 emp.lastName = (lastName != null) ? lastName : emp.lastName;
@@ -190,9 +201,9 @@ namespace WorQitService.Controllers
                 emp.skills = (skills != null) ? skills : emp.skills;
                 emp.educations = (educations != null) ? educations : emp.educations;
                 emp.volunteer = (volunteer != null) ? volunteer : emp.volunteer;
-                emp.dob = (dob != DateTime.Parse(null)) ? dob : emp.dob;
+                emp.experience = (experience != null) ? experience : emp.experience;
                 emp.location = (location != null) ? location : emp.location;
-                emp.hours = (hours != Int32.Parse(null)) ? hours : emp.hours;
+               
                 emp.educations = (educations != null) ? educations : emp.educations;
 
 
