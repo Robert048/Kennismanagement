@@ -16,6 +16,19 @@ namespace WorQit
         public EditProfile()
         {
             this.InitializeComponent();
+            txtNaam.Text = Login.loggedInUser.firstName;
+            txtAchternaam.Text = Login.loggedInUser.lastName;
+            txtWerkveld.Text = Login.loggedInUser.industry;
+            txtPositie.Text = Login.loggedInUser.positions;
+            txtInteresses.Text = Login.loggedInUser.interests;
+            txtTalen.Text = Login.loggedInUser.languages;
+            txtVaardigheden.Text = Login.loggedInUser.skills;
+            txtOpleiding.Text = Login.loggedInUser.educations;
+            txtLeeftijd.Text = Login.loggedInUser.dob.ToString();
+            txtLocatie.Text = Login.loggedInUser.location;
+            txtUren.Text = Login.loggedInUser.hours.ToString();
+            txtErvaring.Text = "TODO"; //model is outdated?
+            txtEmail.Text = Login.loggedInUser.email;
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
@@ -52,6 +65,7 @@ namespace WorQit
                         if (jsonresult["Result"] == "successful")
                         {
                             Login.loggedInUser = jsonresult["User"];
+                            Frame.Navigate(typeof(Main));
                         }
                         else
                         {
