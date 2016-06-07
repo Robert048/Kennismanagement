@@ -66,42 +66,6 @@ if($_SESSION['isloggedin']) {
                         </li>
                         <li>
                             <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-zac.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Zac Snider</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi mate, how is everything?
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-divya.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi, I need your help with this.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-danro.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">
                                 <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
@@ -184,10 +148,66 @@ if($_SESSION['isloggedin']) {
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Blank Page</h3>
+            <h3><i class="fa fa-angle-right"></i> Berichten</h3>
             <div class="row mt">
                 <div class="col-lg-12">
-                    <p>Place your content here.</p>
+                    
+                    <!-- Berichten overzicht -->
+                    <div class="row mt">
+                        <div class="col-md-12">
+                            <div class="white-panel pn">
+                                <div class="panel-heading">
+                                    <div class="pull-left"><h5><i class="fa fa-tasks"></i>Berichten</h5></div>
+                                    <br>
+                                </div>
+
+
+
+
+                                <table id="vacancyTable" class="table table-striped table-advance table-hover">
+                                            <?php
+                                            $vacancies = showVacancies($_SESSION['user']->ID);
+                                            foreach($vacancies as $vacancy) {?>
+                                    <tr class="vacancyRow">
+                                        <td>
+                                            <a href="vacancieDetails.php?<?php echo "ID=".$vacancy->ID?>"><?php echo $vacancy->jobfunction?></a>
+                                        </td>
+                                        <td class=hidden-phone><?php echo $vacancy->description?></td>
+                                        <td>
+                                            <button id="delete" class="btn btn-danger btn-xs" data-levelid="<?php echo $vacancy->ID; ?>" onclick="deleteVacancy()"><i class="fa fa-trash-o "></i></button>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                    </thead>
+                                </table>
+
+
+                                <div class="custom-check goleft mt">
+                                    <table id="berichten" class="table table-hover custom-check">
+                                        <?php
+                                        $vacancies = showVacancies($_SESSION['user']->ID);
+                                        foreach($vacancies as $vacancy) { ?>
+                                            <tr>
+                                                <td>
+                                                    <span class="check"><input type="checkbox" class="checked"></span>
+                                                </td>
+                                                <td><a href="bericht.php">Verzender</a></span></td>
+                                                <td><a href="bericht.php">Titel</a></span></td>
+                                                <td>
+                                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                    </table>
+                                </div><!-- /table-responsive -->
+                            </div><!--/ White-panel -->
+                        </div><! --/col-md-12 -->
+                    </div><! -- row -->
                 </div>
             </div>
 
