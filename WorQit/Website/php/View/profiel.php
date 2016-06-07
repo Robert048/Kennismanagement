@@ -179,6 +179,11 @@ if($_SESSION['isloggedin']) {
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"]->description; ?></textarea></div>
                 </form>
+
+<!--
+                //educations, branche, location
+
+-->
                 <br/> <br/> <br/><br/> <br/> <br/><br/> <br/></br>
                 <div class="col-lg-2">
                     <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
@@ -318,6 +323,6 @@ if($_SESSION['isloggedin']) {
 <?php
     }
     else{
-        header("location: login.php");
+        header("location: ../../login.php");
     }
     ?>
