@@ -44,7 +44,7 @@
                 <RowDefinition Height="57*"/>
             </Grid.RowDefinitions>
             <TextBlock x:Name="txtFunction" TextWrapping="Wrap" Text="" Grid.Column="1" UseLayoutRounding="True" Foreground="#FF195695" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18"/>
-            <TextBlock x:Name="txtBlockDesc" TextWrapping="Wrap" Text="Beschrijving" FontSize="14" Grid.Column="1" Grid.Row="1" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="75,3,75,9.667"/>
+            <TextBlock x:Name="txtBlockDesc" TextWrapping="Wrap" Text="" FontSize="14" Grid.Column="1" Grid.Row="1" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="75,3,75,9.667"/>
             <TextBlock x:Name="textBlock" Grid.Row="2" TextWrapping="Wrap" Text="" FontSize="13" RenderTransformOrigin="0.468,-0.014" Grid.ColumnSpan="4" TextAlignment="Center"/>
             <TextBlock x:Name="textBlock1" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
             <TextBlock x:Name="textBlock2" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>

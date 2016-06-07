@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -55,8 +56,20 @@ namespace WorQit
             }
         }
 
+        public async void finishedMatching()
+        {
+            var dialog = new MessageDialog("Alle vacatures bekeken, ga verder om terug te keren naar het hoofdscherm.");
+            await dialog.ShowAsync();
+        }
+
         public void getCurrentHighestVacancy()
         {
+            txtBlockDesc.Text = "Beschrijving";
+            txtEisen.Text = "Eisen";
+            txtFunction.Text = "Function";
+            txtSalaris.Text = "Salaris";
+            txtUren.Text = "Uren";
+
             currentVacancy = vacancyList[currentVacancyIndex];
             textBlock.Text = currentVacancy.description;
             txtEisen.Text = currentVacancy.requirements;
@@ -131,8 +144,13 @@ namespace WorQit
             {
                 currentVacancyIndex = currentVacancyIndex + 1;
                 getCurrentHighestVacancy();
+                setRating(Login.loggedInUser.ID, currentVacancy.ID, 1);
             }
-            setRating(Login.loggedInUser.ID, currentVacancy.ID, 1);
+            else
+            {
+                finishedMatching();
+            }
+
         }
 
         private void btnDislike_Click(object sender, RoutedEventArgs e)
@@ -141,8 +159,12 @@ namespace WorQit
             {
                 currentVacancyIndex = currentVacancyIndex - 1;
                 getCurrentHighestVacancy();
+                setRating(Login.loggedInUser.ID, currentVacancy.ID, -1);
             }
-            setRating(Login.loggedInUser.ID, currentVacancy.ID, -1);
+            else
+            {
+                finishedMatching();
+            }
         }
     }
 }

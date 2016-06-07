@@ -73,7 +73,7 @@ namespace WorQit
                         }
                         else
                         {
-                            var dialog = new MessageDialog("Verkeerde gebruikersnaam/wachtwoord");
+                            var dialog = new MessageDialog(jsonresult["Result"]);
                             await dialog.ShowAsync();
                         }
                     }
