@@ -5,50 +5,52 @@
  * Date: 26-4-2016
  * Time: 09:40
  */
-?>
+session_start();
+if($_SESSION['isloggedin']) {
+   ?>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
 
-    <title>Dashboard WorQit</title>
+        <title>Dashboard WorQit</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
-    <link href="dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="dashgum/Theme/assets/css/zabuto_calendar.css">
-    <link rel="stylesheet" type="text/css" href="dashgum/Theme/assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="dashgum/Theme/assets/lineicons/style.css">
+        <!-- Bootstrap core CSS -->
+        <link href="dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
+        <!--external css-->
+        <link href="dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="dashgum/Theme/assets/css/zabuto_calendar.css">
+        <link rel="stylesheet" type="text/css" href="dashgum/Theme/assets/js/gritter/css/jquery.gritter.css"/>
+        <link rel="stylesheet" type="text/css" href="dashgum/Theme/assets/lineicons/style.css">
 
-    <!-- Custom styles for this template -->
-    <link href="dashgum/Theme/assets/css/style.css" rel="stylesheet">
-    <link href="dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="dashgum/Theme/assets/css/style.css" rel="stylesheet">
+        <link href="dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
 
-    <script src="dashgum/Theme/assets/js/chart-master/Chart.js"></script>
+        <script src="dashgum/Theme/assets/js/chart-master/Chart.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-  <body>
+    <body>
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-*********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+  *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
             <!--logo start-->
             <a href="index.php" class="logo"><b>WorQit</b></a>
             <!--logo end-->
@@ -68,50 +70,14 @@
                             </li>
                             <li>
                                 <a href="index.php#">
-                                    <span class="photo"><img alt="avatar" src="dashgum/Theme/assets/img/ui-zac.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Zac Snider</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi mate, how is everything?
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#">
-                                    <span class="photo"><img alt="avatar" src="dashgum/Theme/assets/img/ui-divya.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi, I need your help with this.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#">
-                                    <span class="photo"><img alt="avatar" src="dashgum/Theme/assets/img/ui-danro.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#">
                                     <span class="photo"><img alt="avatar" src="dashgum/Theme/assets/img/ui-sherman.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Please, answer asap.
-                                    </span>
+                                        <span class="subject">
+                                        <span class="from">Dj Sherman</span>
+                                        <span class="time">4 hrs.</span>
+                                        </span>
+                                        <span class="message">
+                                            Please, answer asap.
+                                        </span>
                                 </a>
                             </li>
                             <li>
@@ -124,122 +90,146 @@
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.php">Logout</a></li>
-            	</ul>
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" onclick="logout()">Logout</a></li>
+                </ul>
             </div>
         </header>
-      <!--header end-->
+        <!--header end-->
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-*********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              	  <h5 class="centered">Company Name</h5>
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+  *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><a href="php/View/profiel.php"><img src="dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                    <h5 class="centered">
+                        <?php if($_SESSION['user']->name == null){
+                            echo $_SESSION['user']->username;
+                        }else{
+                            echo $_SESSION['user']->name;
+                        }
+                        ?>
+                    </h5>
 
-                  <li class="mt">
-                      <a class="active" href="index.php">
-                          <i class="fa fa-dashboard"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
+                    <li class="mt">
+                        <a class="active" href="index.php">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
 
-                  <li class="sub-menu">
-                      <a href="php/profiel.php">
-                          <i class="fa fa-desktop"></i>
-                          <span>Profiel</span>
-                      </a>
-                  </li>
+                    <li class="sub-menu">
+                        <a href="php/View/profiel.php">
+                            <i class="fa fa-desktop"></i>
+                            <span>Profiel</span>
+                        </a>
+                    </li>
 
-                  <li class="sub-menu">
-                      <a href="php/vacatures.php" >
-                          <i class="fa fa-cogs"></i>
-                          <span>Vacatures</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="php/berichten.php" >
-                          <i class="fa fa-book"></i>
-                          <span>Berichten</span>
-                      </a>
-                  </li>
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+                    <li class="sub-menu">
+                        <a href="php/View/vacancies.php">
+                            <i class="fa fa-cogs"></i>
+                            <span>Vacatures</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="php/View/berichten.php">
+                            <i class="fa fa-book"></i>
+                            <span>Berichten</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-*********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+  *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
 
-              <div class="row">
-                  <div class="col-lg-9 main-chart">
+                <div class="row">
+                    <div class="col-lg-9 main-chart">
 
-                  	<div class="row mtbox">
-                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                  			<div class="box1">
-					  			<span class="li_mail"></span>
-					  			<h3>5</h3>
-                  			</div>
-					  			<p>5 new messages!</p>
-                  		</div>
+                        <div class="row mtbox">
+                            <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                                <div class="box1">
+                                    <span class="li_mail"></span>
+                                    <h3>5</h3>
+                                </div>
+                                <p>5 new messages!</p>
+                            </div>
 
-                  	</div><!-- /row mt -->
+                        </div><!-- /row mt -->
 
 
-                      <div class="row mt">
-                      <!-- SERVER STATUS PANELS -->
-                      	<div class="col-md-4 col-sm-4 mb">
-                      		<div class="white-panel pn donut-chart">
-                      			<div class="white-header">
-						  			<h5>SERVER LOAD</h5>
-                      			</div>
-								<div class="row">
-									<div class="col-sm-6 col-xs-6 goleft">
-										<p><i class="fa fa-database"></i> 70%</p>
-									</div>
-	                      		</div>
-								<canvas id="serverstatus01" height="120" width="120"></canvas>
-								<script>
-									var doughnutData = [
-											{
-                                                value: 70,
-												color:"#68dff0"
-											},
-											{
-                                                value : 30,
-												color : "#fdfdfd"
-											}
-										];
-										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
-								</script>
-	                      	</div><! --/grey-panel -->
-                      	</div><!-- /col-md-4-->
+                        <div class="row mt">
+                            <!-- SERVER STATUS PANELS -->
+                            <a href="php/View/profiel.php">
+                                <div class="col-md-4 col-sm-4 mb">
+                                    <div class="darkblue-panel pn donut-chart">
+                                        <div class="darkblue-header">
+                                            <h5>PROFIEL</h5>
+                                        </div>
+                                        <?php
+                                        $fieldsFilled=0;
+                                        foreach($_SESSION['user'] as $s){
+                                            if($s === NULL || is_array($s)){
+                                            }
+                                            else{
+                                                $fieldsFilled++;
+                                            }
+                                            $percFilled = 12.5 * $fieldsFilled;
+                                            $percEmpty = 100 - $percFilled;
+                                        }
+                                        ?>
+                                        <div class="row">
+                                            <div class="col-sm-6 col-xs-6 goleft">
+                                                <p style="color: white"><?php echo $percFilled ?>% voltooid</p>
+                                            </div>
+                                        </div>
+                                        <canvas id="serverstatus01" height="120" width="120"></canvas>
+                                        <script>
+                                            var profielData = [
+                                                {
+                                                    value: <?php echo $percFilled ?>,
+                                                    color: "#68dff0"
+                                                },
+                                                {
+                                                    value: <?php echo $percEmpty ?>,
+                                                    color: "#fdfdfd"
+                                                }
+                                            ];
+                                            var profielChart = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(profielData);
+                                        </script>
+                                    </div>
+                                    <! --/grey-panel -->
+                                </div><!-- /col-md-4-->
+                            </a>
 
-                    </div><!-- /row -->
-              </div><! --/row -->
-          </section>
-      </section>
+                        </div><!-- /row -->
+                    </div>
+                    <! --/row -->
+            </section>
+        </section>
 
-      <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              <a href="index.php#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                <a href="index.php#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="dashgum/Theme/assets/js/jquery.js"></script>
@@ -259,12 +249,13 @@
 
     <!--script for this page-->
     <script src="dashgum/Theme/assets/js/sparkline-chart.js"></script>
-	<script src="dashgum/Theme/assets/js/zabuto_calendar.js"></script>
+    <script src="dashgum/Theme/assets/js/zabuto_calendar.js"></script>
+    <script src= "js/login.js"></script>
 
 
-	<script type="application/javascript">
-    $(document).ready(function () {
-        $("#date-popover").popover({html: true, trigger: "manual"});
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
             $("#date-popover").hide();
             $("#date-popover").click(function (e) {
                 $(this).hide();
@@ -272,18 +263,18 @@
 
             $("#my-calendar").zabuto_calendar({
                 action: function () {
-            return myDateFunction(this.id, false);
-        },
+                    return myDateFunction(this.id, false);
+                },
                 action_nav: function () {
-            return myNavFunction(this.id);
-        },
+                    return myNavFunction(this.id);
+                },
                 ajax: {
-            url: "show_data.php?action=1",
+                    url: "show_data.php?action=1",
                     modal: true
                 },
                 legend: [
                     {type: "text", label: "Special event", badge: "00"},
-                    {type: "block", label: "Regular event", }
+                    {type: "block", label: "Regular event",}
                 ]
             });
         });
@@ -298,5 +289,11 @@
     </script>
 
 
-  </body>
-</html>
+    </body>
+    </html>
+<?php
+}
+else{
+    header("location: login.php");
+}
+?>

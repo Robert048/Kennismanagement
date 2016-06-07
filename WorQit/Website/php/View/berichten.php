@@ -1,10 +1,13 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Thom
- * Date: 10-5-2016
+ * User: maaike
+ * Date: 28-4-2016
+ * Time: 13:59
  */
-?>
+session_start();
+if($_SESSION['isloggedin']) {
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +18,16 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>WorQit</title>
+    <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
-    <link href="../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="../dashgum/Theme/assets/css/style.css" rel="stylesheet">
-    <link href="../dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
+    <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
+    <link href="../../dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -45,14 +48,14 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="../index.php" class="logo"><b>WorQit</b></a>
+        <a href="../../index.php" class="logo"><b>WorQit</b></a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
             <ul class="nav top-menu">
                 <!-- inbox dropdown start-->
                 <li id="header_inbox_bar" class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="../index.php#">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="../../index.php#">
                         <i class="fa fa-envelope-o"></i>
                         <span class="badge bg-theme">5</span>
                     </a>
@@ -62,8 +65,8 @@
                             <p class="green">You have 5 new messages</p>
                         </li>
                         <li>
-                            <a href="../index.php#">
-                                <span class="photo"><img alt="avatar" src="../dashgum/Theme/assets/img/ui-zac.jpg"></span>
+                            <a href="../../index.php#">
+                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
@@ -74,8 +77,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../index.php#">
-                                <span class="photo"><img alt="avatar" src="../dashgum/Theme/assets/img/ui-divya.jpg"></span>
+                            <a href="../../index.php#">
+                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
@@ -86,8 +89,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../index.php#">
-                                <span class="photo"><img alt="avatar" src="../dashgum/Theme/assets/img/ui-danro.jpg"></span>
+                            <a href="../../index.php#">
+                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
@@ -98,8 +101,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../index.php#">
-                                <span class="photo"><img alt="avatar" src="../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
+                            <a href="../../index.php#">
+                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
@@ -110,7 +113,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../index.php#">See all messages</a>
+                            <a href="../../index.php#">See all messages</a>
                         </li>
                     </ul>
                 </li>
@@ -120,7 +123,7 @@
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="../login.php">Logout</a></li>
+                <li><a class="logout" onclick="logout()">Logout</a></li>
             </ul>
         </div>
     </header>
@@ -135,31 +138,36 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <p class="centered"><a href="profiel.php"><img src="../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered">Bedrijfs naam</h5>
+                <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                <h5 class="centered"><?php if($_SESSION['user']->name == null){
+                        echo $_SESSION['user']->username;
+                    }else{
+                        echo $_SESSION['user']->name;
+                    }
+                    ?></h5>
 
                 <li class="mt">
-                    <a href="../index.php">
+                    <a href="../../index.php">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li class="sub-menu">
-                    <a class="active" href="profiel.php" >
+                    <a href="profiel.php" >
                         <i class="fa fa-desktop"></i>
                         <span>Profiel</span>
                     </a>
                 </li>
 
                 <li class="sub-menu">
-                    <a href="vacatures.php" >
+                    <a href="vacancies.php" >
                         <i class="fa fa-cogs"></i>
                         <span>Vacatures</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="berichten.php" >
+                    <a class="active" href="berichten.php" >
                         <i class="fa fa-book"></i>
                         <span>Berichten</span>
                     </a>
@@ -176,23 +184,10 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Profiel </h3>
+            <h3><i class="fa fa-angle-right"></i> Blank Page</h3>
             <div class="row mt">
-                <div class="col-lg-2">
-                    <p><input type="text" class="form-control" placeholder="naam"></p>
-                </div>
-                <br/>  <br/>  <br/>
-                <div class="col-lg-2">
-                    <p><input type="text" class="form-control" placeholder="locatie"></p>
-                </div>
-                <br/>  <br/>  <br/>
-                <div class="col-lg-4">
-                    <p><textarea style="overflow:auto;resize:none" rows="5" cols="300" class="form-control" placeholder="omschrijving"></textarea></p>
-                </div>
-                <br/>  <br/>  <br/><br/>  <br/>  <br/><br/>  <br/>
-                <div class="col-lg-6">
-                    <div class="col-lg-3"> <p><button value="sla op" formaction="wijzigProfiel.php">Sla op</button></p></div>
-                    <div class="col-lg-3"> <p><button value="Delete">Verwijder</button></p></div>
+                <div class="col-lg-12">
+                    <p>Place your content here.</p>
                 </div>
             </div>
 
@@ -203,7 +198,7 @@
     <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
-            <a href="../dashgum/Theme/blank.html#" class="go-top">
+            <a href="../../dashgum/Theme/blank.html#" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
         </div>
@@ -212,19 +207,20 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="../dashgum/Theme/assets/js/jquery.js"></script>
-<script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
-<script src="../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
-<script class="include" type="text/javascript" src="../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
-<script src="../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="../../dashgum/Theme/assets/js/jquery.js"></script>
+<script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
+<script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script class="include" type="text/javascript" src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
+<script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 
 <!--common script for all pages-->
-<script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
+<script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 
 <!--script for this page-->
+<script src= "../../js/login.js"></script>
 
 <script>
     //custom select box
@@ -237,3 +233,9 @@
 
 </body>
 </html>
+<?php
+}
+else{
+    header("location: ../../login.php");
+}
+?>

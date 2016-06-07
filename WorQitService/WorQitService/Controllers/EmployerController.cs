@@ -7,6 +7,7 @@ using System.Data;
 using System.Web.Http;
 using System.Linq;
 using System;
+using System.Web;
 
 namespace WorQitService.Controllers
 {
@@ -99,9 +100,9 @@ namespace WorQitService.Controllers
             {
                 var headers = Request.Headers;
                 
-                string username = (headers.Contains("username")) ? headers.GetValues("username").First() : null;
-                string email = (headers.Contains("email")) ? headers.GetValues("email").First() : null;
-                string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
+                string username = HttpUtility.UrlDecode((headers.Contains("username")) ? headers.GetValues("username").First() : null);
+                string email = HttpUtility.UrlDecode((headers.Contains("email")) ? headers.GetValues("email").First() : null);
+                string password = HttpUtility.UrlDecode((headers.Contains("password")) ? headers.GetValues("password").First() : null);
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 Employer usernameCheck = null;
@@ -125,7 +126,7 @@ namespace WorQitService.Controllers
                     };
                     wqdb.Employers.Add(employer);
                     wqdb.SaveChanges();
-                    return Json(new { Result = "successful" });
+                    return Json(new { Result = "successful" , employer = employer});
                 }
                 else
                 {
@@ -155,15 +156,15 @@ namespace WorQitService.Controllers
             {
                 var headers = Request.Headers;
                 int ID = (headers.Contains("ID")) ? Int32.Parse(headers.GetValues("ID").First()) : -1;
-                string name = (headers.Contains("firstName")) ? headers.GetValues("firstName").First() : null;
-                string description = (headers.Contains("lastName")) ? headers.GetValues("lastName").First() : null;
+                string name = (headers.Contains("name")) ? headers.GetValues("name").First() : null;
+                string description = (headers.Contains("description")) ? headers.GetValues("description").First() : null;
                 int employeeCount = (headers.Contains("employeeCount")) ? Int32.Parse(headers.GetValues("employeeCount").First()) : -1;
                 
                 string location = (headers.Contains("location")) ? headers.GetValues("location").First() : null;
                 
-                string password = (headers.Contains("industry")) ? headers.GetValues("industry").First() : null;
-                string oldPassword = (headers.Contains("industry")) ? headers.GetValues("industry").First() : null;
-                string email = (headers.Contains("industry")) ? headers.GetValues("industry").First() : null;
+                string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
+                string oldPassword = (headers.Contains("oldPassword")) ? headers.GetValues("oldPassword").First() : null;
+                string email = (headers.Contains("email")) ? headers.GetValues("email").First() : null;
                 
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
