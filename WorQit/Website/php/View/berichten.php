@@ -236,6 +236,6 @@ if($_SESSION['isloggedin']) {
 <?php
 }
 else{
-    header("location: login.php");
+    header("location: ../../login.php");
 }
 ?>

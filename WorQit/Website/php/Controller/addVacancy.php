@@ -5,18 +5,21 @@
  * Date: 18-5-2016
  * Time: 16:58
  */
-
+require_once("../../globals.php");
+session_start();
 
     //extract data from the post
     //set POST variables
     $data = array(
-        'employerID' => 9,
+        'employerID' => urlencode($_SESSION['user']->ID),
         'function' => urlencode($_GET['functie']),
         'description' => urlencode($_GET['description']),
+        'level' => urlencode($_GET['level']),
+        'branche' => urlencode($_GET['branche']),
         'salary' => urlencode($_GET['salary']),
         'hours' => urlencode($_GET['hours']),
         'requirements' => urlencode($_GET['requirements']),
-        'tags' => urlencode($_GET['tags']));
+        'location' => urlencode($_GET['location']));
 
     $postvars = '';
     $count = 1;
@@ -29,7 +32,7 @@
         }
         $count++;
     }
-    $url = 'http://worqit.azurewebsites.net/api/Vacancy/addVacancy?employerID=9&function='.urlencode($_GET['functie']).'&description='.urlencode($_GET['description']).
+    $url = 'http://worqit.azurewebsites.net/api/Vacancy/addVacancy?employerID='.urlencode($_SESSION['user']->ID).'&function='.urlencode($_GET['functie']).'&description='.urlencode($_GET['description']).
             '&salary='.urlencode($_GET['salary']).'&hours='.urlencode($_GET['hours']).'&requirements='.urlencode($_GET['requirements']).'&tags='.urlencode($_GET['tags']);
     $postL = mb_strlen($postvars);
 
@@ -49,10 +52,4 @@
 
     //close connection
     curl_close($ch);
-
-    //echo result to page for js to retrieve
-    $Result = json_decode($result);
-    if($Result->Result == "successful"){
-        echo $data;
-    }
 
