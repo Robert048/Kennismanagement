@@ -1,7 +1,9 @@
 <?php
+//include_once "../../globals.php";
 
 session_start();
-if($_SESSION['isloggedin']) {
+if ($_SESSION['isloggedin']) {
+
 
     include("../Controller/deleteEmployer.php");
     include("../Controller/editEmployer.php");
@@ -157,27 +159,27 @@ if($_SESSION['isloggedin']) {
                     <div id="form2">
                         <div class="row mt">
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION["user"]->name;?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name'] ?>">
                             </div>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION["user"]->employeeCount; ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user'][0]['employeeCount'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION["user"]->location; ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user'][0]['location'] ?>">
                             </div>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION["user"]->username; ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['user'][0]['username'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION["user"]->password; ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user'][0]['password'] ?>">
                             </div>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION["user"]->email; ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user'][0]['email'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
-                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"]->description; ?></textarea></div>
+                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;">Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"][0]["description"]; ?></textarea></div>
                 </form>
 
 <!--
@@ -188,9 +190,6 @@ if($_SESSION['isloggedin']) {
                 <div class="col-lg-2">
                     <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
                     <a data-toggle="modal" class="btn btn-danger btn-xs" href="profiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
-                </div>
-                </div>
-                </div>
                 </div>
             </section>
             <! --/wrapper -->
@@ -226,7 +225,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-4">
-                        <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p>
+                        <p style="font-weight:bold;font-size: 14pt;" >Bedrijfslocatie</p>
                     </div>
                     <br/> <br/>
 
@@ -240,7 +239,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-4">
-                        <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p>
+                        <p style="font-weight:bold;font-size: 14pt;" >Bedrijfsomschrijving</p>
                     </div>
                     <br/> <br/>
 
@@ -255,7 +254,7 @@ if($_SESSION['isloggedin']) {
                     <br/> <br/> <br/><br/> <br/> <br/><br/> <br/>
 
                     <div class="col-lg-6">
-                        <form method="get" action="wijzigProfiel.php">
+                        <form method="get" action="">
                             <button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-pencil"></i></button>
                         </form>
                     </div>
@@ -267,7 +266,7 @@ if($_SESSION['isloggedin']) {
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
-                <a href="../dashgum/Theme/blank.html#" class="go-top">
+                <a href="../../dashgum/Theme/blank.html#" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
@@ -276,18 +275,18 @@ if($_SESSION['isloggedin']) {
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="../dashgum/Theme/assets/js/jquery.js"></script>
-    <script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
+    <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
     <script class="include" type="text/javascript"
-            src="../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+            src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 
     <!--common script for all pages-->
-    <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
+    <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
   <script src= "../../js/login.js"></script>
@@ -319,10 +318,17 @@ if($_SESSION['isloggedin']) {
 
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
-
 <?php
+<<<<<<< HEAD
     }
     else{
         header("location: ../../login.php");
     }
     ?>
+=======
+}
+else{
+    header("location: ../../login.php");
+}
+?>
+>>>>>>> refs/remotes/origin/master
