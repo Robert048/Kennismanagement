@@ -7,7 +7,7 @@
  */
 
 //require_once('functions.php');
-//require_once('globals.php');
+//include_once('globals.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +35,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-	  <!--js file voor login-->
-	  <script src= "js/login.js"></script>
     <![endif]-->
   </head>
 
@@ -49,19 +47,18 @@
 	  <div id="login-page">
 	  	<div class="container" id="login">
 
-		      <form class="form-login" action="index.php">
+		      <form class="form-login">
 		        <h2 class="form-login-heading">log in</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="Username">
+		            <input type="text" id="username" class="form-control" placeholder="Username">
 		            <br>
-		            <input type="password" class="form-control" placeholder="Password">
+		            <input type="password" id="password" class="form-control" placeholder="Password">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.php#forgotPassModal"> Wachtwoord vergeten?</a>
-
 		                </span>
 		            </label>
-		            <button class="btn btn-theme btn-block" id="login_button" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
+		            <button class="btn btn-theme btn-block" id="login_button" type="submit" ><i class="fa fa-lock"></i> LOG IN</button>
 		            <hr>
 		            <div class="registration">
 						Nog geen account?<br/>
@@ -97,7 +94,7 @@
 					<!--signup modal-->
 				  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="signupModal" class="modal fade">
 					  <div class="modal-dialog">
-						  <form class = "form-signup">
+						  <form class = "form-signup" id="newEmployer">
 							  <div class="modal-content">
 								  <div class="modal-header">
 									  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -105,11 +102,11 @@
 								  </div>
 								  <div class="modal-body">
 									  <div class="login-wrap">
-										  <input type="text" class="form-control" placeholder="username">
+										  <input type="text" id='newusername' class="form-control" placeholder="username">
 										  <br>
-										  <input type="text" class="form-control" placeholder="email">
+										  <input type="text" id='newemail' class="form-control" placeholder="email">
 										  <br>
-										  <input type="password" class="form-control" placeholder="Password">
+										  <input type="password" id='newpassword' class="form-control" placeholder="Password">
 										  <br>
 										  <button class="btn btn-theme btn-block" id="signup_button" type="submit"><i class="fa fa-lock"></i> Maak account</button>
 									  </div>
@@ -132,6 +129,8 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="dashgum/Theme/assets/js/jquery.js"></script>
     <script src="dashgum/Theme/assets/js/bootstrap.min.js"></script>
+	  <script src= "js/login.js"></script>
+	  <script src= "js/employer.js"></script>
 
     <!--BACKSTRETCH-->
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
