@@ -21,6 +21,34 @@ namespace WorQitService.Controllers
 
         }
 
+        public object setRating()
+        {
+            try
+            {
+                var headers = Request.Headers;
+                int employeeID = (headers.Contains("employeeID")) ? Int32.Parse(headers.GetValues("employeeID").First()) : -1;
+                int vacancyID = (headers.Contains("vacancyID")) ? Int32.Parse(headers.GetValues("vacancyID").First()) : -1;
+                int rating = (headers.Contains("rating")) ? Int32.Parse(headers.GetValues("rating").First()) : -99;
+
+
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                VacancyEmployee vac = (from VacancyEmployee in wqdb.VacancyEmployees
+                                             where VacancyEmployee.employeeID == employeeID && VacancyEmployee.vacancyID == vacancyID
+                                             select VacancyEmployee).First();
+                vac.rating = rating;
+
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful"});
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            
+            }
+        }
+
         /// <summary>
         /// Get all candidates on a vacancy
         /// </summary>
@@ -54,7 +82,8 @@ namespace WorQitService.Controllers
         /// </summary>
         /// <param>employeeID</param>
         /// <returns>vacancy list</returns>
-        public object geVacanciesByRating(int employeeID)
+        [HttpGet]
+        public object getVacanciesByScore(int ID)
         {
             try
             {
@@ -62,13 +91,13 @@ namespace WorQitService.Controllers
                 WorQitEntities wqdb = new WorQitEntities();
                 wqdb.Configuration.ProxyCreationEnabled = false;
 
-                var vaEmps = new List<Vacancy>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                where VacancyEmployee.employeeID == employeeID && VacancyEmployee.matchingValue  < 0 
-                                                orderby VacancyEmployee.matchingValue
+                var vacancies = new List<Vacancy>(from VacancyEmployee in wqdb.VacancyEmployees
+                                                where VacancyEmployee.employeeID == ID && VacancyEmployee.rating == 0
+                                                orderby VacancyEmployee.matchingValue descending
                                                select VacancyEmployee.Vacancy).ToList();
 
 
-                return Json(new { Result = "successful", Vacancys = vaEmps });
+                return Json(new { Result = "successful", Vacancys = vacancies });
 
             }
             catch (Exception ex)
