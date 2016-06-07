@@ -7,7 +7,10 @@ if ($_SESSION['isloggedin']) {
 
     include("../Controller/deleteEmployer.php");
     include("../Controller/editEmployer.php");
+
+
     ?>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -123,8 +126,6 @@ if ($_SESSION['isloggedin']) {
                     </li>
                     <li class="sub-menu">
                         <a href="vacancies.php">
-                    <li class="sub-menu">
-                        <a href="vacancies.php">
                             <i class="fa fa-cogs"></i>
                             <span>Vacatures</span>
                         </a>
@@ -154,26 +155,6 @@ if ($_SESSION['isloggedin']) {
                     }
                     ?> </h3>
 
-                <div class="row mt">
-                    <div class="col-lg-1">
-                        <p style="font-weight:bold;font-size: 14pt;">Bedrijfsnaam</p>
-                    </div>
-                    <br/> <br/>
-
-                    <div class="col-lg-4">
-                        <p><?php if($_SESSION['user']->name == null){
-                                echo $_SESSION['user']->username;
-                            }else{
-                                echo " ";
-                            }
-                            ?></p>
-                    </div>
-
-                    <br/> <br/>
-
-                    <div class="col-lg-1">
-                        <p style="font-weight:bold;font-size: 14pt;">Medewerkersaantal</p>
-                <h3><i class="fa fa-angle-right"></i> Profiel </h3>
                 <form method="post" action="profiel.php" id="form">
                     <div id="form2">
                         <div class="row mt">
@@ -204,9 +185,6 @@ if ($_SESSION['isloggedin']) {
                 <div class="col-lg-2">
                     <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
                     <a data-toggle="modal" class="btn btn-danger btn-xs" href="profiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
-                </div>
-                </div>
-                </div>
                 </div>
             </section>
             <! --/wrapper -->
@@ -242,7 +220,7 @@ if ($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-4">
-                        <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p>
+                        <p style="font-weight:bold;font-size: 14pt;" >Bedrijfslocatie</p>
                     </div>
                     <br/> <br/>
 
@@ -256,7 +234,7 @@ if ($_SESSION['isloggedin']) {
                     <br/> <br/>
 
                     <div class="col-lg-4">
-                        <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p>
+                        <p style="font-weight:bold;font-size: 14pt;" >Bedrijfsomschrijving</p>
                     </div>
                     <br/> <br/>
 
@@ -271,7 +249,7 @@ if ($_SESSION['isloggedin']) {
                     <br/> <br/> <br/><br/> <br/> <br/><br/> <br/>
 
                     <div class="col-lg-6">
-                        <form method="get" action="wijzigProfiel.php">
+                        <form method="get" action="">
                             <button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-pencil"></i></button>
                         </form>
                     </div>
@@ -283,7 +261,7 @@ if ($_SESSION['isloggedin']) {
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
-                <a href="../dashgum/Theme/blank.html#" class="go-top">
+                <a href="../../dashgum/Theme/blank.html#" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
@@ -292,18 +270,18 @@ if ($_SESSION['isloggedin']) {
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="../dashgum/Theme/assets/js/jquery.js"></script>
-    <script src="../dashgum/Theme/assets/js/bootstrap.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
+    <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
     <script class="include" type="text/javascript"
-            src="../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
-    <script src="../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+            src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
 
     <!--common script for all pages-->
-    <script src="../dashgum/Theme/assets/js/common-scripts.js"></script>
+    <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
   <script src= "../../js/login.js"></script>

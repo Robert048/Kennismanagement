@@ -2,7 +2,7 @@
 session_start();
 if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
-    $allVacances = showVacancies($_SESSION["user"][0]["ID"]);
+    $allVacances = showVacancies($_SESSION["user"]->ID);
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -136,7 +136,7 @@ if($_SESSION['isloggedin']) {
                                 <thead>
                                 <tr>
                                     <th>
-                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"][0]["ID"]){?>
+                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"]->ID){?>
                                 <tr class="vacancyRow">
                                     <th></i> Functie</th>
                                     <th class=hidden-phone><?php echo $vacancy->jobfunction?></th>
@@ -160,6 +160,11 @@ if($_SESSION['isloggedin']) {
                                 <tr>
                                     <th></i> Tags</th>
                                     <th class=hidden-phone><?php echo $vacancy->tags?></th>
+                                </tr>
+                                <tr>
+                                    <th></i> Geliked door:</th>
+                                    <th class=hidden-phone>
+                                        <?php foreach($vacancy->VacancyEmployees as $likedBy) {echo $likedBy;} ?></th>
                                 </tr>
                                 </tr>
                                 <?php
