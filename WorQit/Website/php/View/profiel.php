@@ -1,7 +1,9 @@
 <?php
+//include_once "../../globals.php";
 
 session_start();
-if($_SESSION['isloggedin']) {
+if ($_SESSION['isloggedin']) {
+
 
     include("../Controller/deleteEmployer.php");
     include("../Controller/editEmployer.php");
@@ -176,27 +178,27 @@ if($_SESSION['isloggedin']) {
                     <div id="form2">
                         <div class="row mt">
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name'] ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user'][0]['name'] ?>">
                             </div>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user'][0]['employeeCount'] ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user'][0]['employeeCount'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user'][0]['location'] ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user'][0]['location'] ?>">
                             </div>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['user'][0]['username'] ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['user'][0]['username'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user'][0]['password'] ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user'][0]['password'] ?>">
                             </div>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" ;>email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user'][0]['email'] ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user'][0]['email'] ?>">
                             </div>
                             <br/> <br/> <br/> <br/>
-                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;" ;>Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"][0]["description"]; ?></textarea></div>
+                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;">Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION["user"][0]["description"]; ?></textarea></div>
                 </form>
                 <br/> <br/> <br/><br/> <br/> <br/><br/> <br/></br>
                 <div class="col-lg-2">
@@ -333,10 +335,9 @@ if($_SESSION['isloggedin']) {
 
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
-
 <?php
-    }
-    else{
-        header("location: login.php");
-    }
-    ?>
+}
+else{
+    header("location: ../../login.php");
+}
+?>

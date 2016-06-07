@@ -195,17 +195,22 @@ include ('../Controller/vacancies.php');
                                 <br>
                                 <textarea class="form-control placeholder-no-fix" id= "description" name="description" rows="4" cols="50" placeholder="Omschrijving" maxlength="500" style="resize:none;"></textarea>
                                 <br>
+                                <input type="text" id="branche" name="branche" placeholder="Branche" autocomplete="off" class="form-control placeholder-no-fix">
+                                <br>
+                                <input type="text" id="level" name="level" placeholder="Opleidingsniveau" autocomplete="off" class="form-control placeholder-no-fix">
+                                <br>
                                 <input type="text" id="salary" name="salary" placeholder="Salaris" autocomplete="off" class="form-control placeholder-no-fix">
                                 <br>
                                 <input type="text" id="hours" name="hours" placeholder="Uren" autocomplete="off" class="form-control placeholder-no-fix">
                                 <br>
                                 <input type="text" id="requirements" name="requirements" placeholder="Eisen" autocomplete="off" class="form-control placeholder-no-fix">
                                 <br>
-                                <input type="text" id="tags" name="tags" placeholder="Tags" autocomplete="off" class="form-control placeholder-no-fix">
+                                <input type="text" id="location" name="location" placeholder="Locatie" autocomplete="off" class="form-control placeholder-no-fix">
+                                <br>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-default" type="button">Annuleren</button>
-                                <button class="btn btn-theme" id="newVacancy_button" onclick="addVacancy()" type="button">Verzenden</button>
+                                <button data-dismiss="modal" class="btn btn-theme" id="newVacancy_button" onclick="addVacancy()" type="button">Verzenden</button>
                             </div>
                         </div>
                     </form>
@@ -251,6 +256,6 @@ include ('../Controller/vacancies.php');
 <?php
 }
 else{
-    header("location: login.php");
+    header("location: ../../login.php");
 }
 ?>
