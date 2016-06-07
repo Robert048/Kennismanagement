@@ -219,7 +219,8 @@ include ('../Controller/vacancies.php');
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-center">
-                    <a href="../../dashgum/Theme/blank.html#" class="go-top">
+                    2016- WorQit
+                    <a href="vacancies.php" class="go-top">
                         <i class="fa fa-angle-up"></i>
                     </a>
                 </div>

@@ -218,9 +218,8 @@ if($_SESSION['isloggedin']) {
     <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
-            <a href="../../dashgum/Theme/blank.html#" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
+            2016- WorQit
+            <i class="fa fa-angle-up"></i>
         </div>
     </footer>
     <!--footer end-->
