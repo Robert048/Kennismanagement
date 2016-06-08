@@ -27,7 +27,7 @@ namespace WorQit
             txtLeeftijd.Text = Login.loggedInUser.dob.ToString();
             txtLocatie.Text = Login.loggedInUser.location;
             txtUren.Text = Login.loggedInUser.hours.ToString();
-            txtErvaring.Text = "TODO"; //model is outdated?
+            txtErvaring.Text = Login.loggedInUser.experience;
             txtEmail.Text = Login.loggedInUser.email;
         }
 
