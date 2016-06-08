@@ -27,7 +27,7 @@ namespace WorQit
     public sealed partial class Main : Page
     {
         private List<Vacancy> vacatureLijst { get; set; }
-        private List<Message> berichten;
+        private List<Message> berichten = new List<Message>();
         public static Message currentMessage = new Message();
         //private ServiceReference1.Service1Client client = new Service1Client();
 
@@ -75,21 +75,17 @@ namespace WorQit
 
             using (var client = new System.Net.Http.HttpClient())
             {
-                try
+                var uri = new Uri("http://worqit.azurewebsites.net/api/Message/getOverviewEmployee/" + Login.loggedInUser.ID.ToString());
+                var response = await client.GetAsync(uri);
+                var result = await response.Content.ReadAsStringAsync();
+                var s = JsonConvert.DeserializeObject<RootObject>(result);
+                foreach(var message in s.Messages)
                 {
-                    var uri = new Uri("http://worqit.azurewebsites.net/api/Message/getOverviewEmployee/" + Login.loggedInUser.ID.ToString());
-                    var response = await client.GetAsync(uri);
-                    var result = await response.Content.ReadAsStringAsync();
-                    berichten = JsonConvert.DeserializeObject<List<Message>>(result);
-                    control.ItemsSource = berichten;
-
+                    berichten.Add(message);
                 }
-                catch (Exception ex)
-                {
-                    var dialog = new MessageDialog("Geen connectie" + ex);
-                    await dialog.ShowAsync();
-                }
+                control.ItemsSource = berichten;
             }
+
         }
 
         private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
