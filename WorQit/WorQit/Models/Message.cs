@@ -9,26 +9,21 @@ namespace WorQit.Models
 {
     public class Message
     {
-        [JsonProperty("id")]
         public int ID { get; set; }
-        [JsonProperty("employerID")]
-
-        public Nullable<int> employerID { get; set; }
-        [JsonProperty("employeeID")]
-
-        public Nullable<int> employeeID { get; set; }
-        [JsonProperty("sender")]
-
+        public int employerID { get; set; }
+        public int employeeID { get; set; }
         public string sender { get; set; }
-        [JsonProperty("text")]
-
         public string text { get; set; }
-        [JsonProperty("read")]
-
-        public Nullable<bool> read { get; set; }
-        [JsonProperty("title")]
-
+        public bool? read { get; set; }
         public string title { get; set; }
+        public string date { get; set; }
+        public object Employee { get; set; }
+        public object Employer { get; set; }
+    }
 
+    public class RootObject
+    {
+        public string Result { get; set; }
+        public List<Message> Messages { get; set; }
     }
 }
