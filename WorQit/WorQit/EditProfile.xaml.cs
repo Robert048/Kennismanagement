@@ -9,10 +9,11 @@ using Windows.UI.Xaml.Controls;
 namespace WorQit
 {
     /// <summary>
-    /// Editprofile page
+    /// Pagina om het werknemersprofiel te bewerken.
     /// </summary>
     public sealed partial class EditProfile : Page
     {
+        //vult tekstvelden met de bekende gegevens.
         public EditProfile()
         {
             this.InitializeComponent();
@@ -31,6 +32,11 @@ namespace WorQit
             txtEmail.Text = Login.loggedInUser.email;
         }
 
+        /// <summary>
+        /// methode voor de opslaanknop. maakt verbinding met de API om account te wijzigen en geeft reactie van API weer.
+        /// </summary>
+        /// <param name="sender">button object</param>
+        /// <param name="e"></param>
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
             using (var client = new HttpClient())
@@ -51,7 +57,6 @@ namespace WorQit
                     stringContent.Headers.Add("location", txtLocatie.Text);
                     stringContent.Headers.Add("hours", txtUren.Text); //hours
                     stringContent.Headers.Add("experience", txtErvaring.Text); //vorige banen 
-
                     stringContent.Headers.Add("password", txtPassword.Text);
                     stringContent.Headers.Add("oldpassword", Login.loggedInUser.password);
                     stringContent.Headers.Add("email", txtEmail.Text);
@@ -87,12 +92,22 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// knop voor tweede pagina aan velden voor het profiel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             gridSettings.Visibility = Visibility.Collapsed;
             gridSettingsNext.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// knop om terug naar de eerste pagina te gaan.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
             gridSettings.Visibility = Visibility.Visible;

@@ -1,30 +1,20 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WorQit.Models;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace WorQit
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Pagina voor berichten. 
     /// </summary>
     public sealed partial class Messages : Page
     {
+        //huidige bericht
         Message currentMessage = new Message();
 
         public Messages()
@@ -32,6 +22,10 @@ namespace WorQit
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// methode om parameter op te vragen die is meegestuurd.
+        /// </summary>
+        /// <param name="e">parameters</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is Message)
@@ -44,14 +38,23 @@ namespace WorQit
                 Frame.Navigate(typeof(Main));
             }
         }
+
+        /// <summary>
+        /// methode voor de terugknop, gaat terug naar het hoofdscherm
+        /// </summary>
+        /// <param name="sender">button object</param>
+        /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Main));
         }
 
+        /// <summary>
+        /// methode die verbinding met de API maakt om een antwoord te sturen.
+        /// </summary>
         private async void sendReply()
         {
-            using (var client = new System.Net.Http.HttpClient())
+            using (var client = new HttpClient())
             {
                 try
                 {
@@ -61,7 +64,7 @@ namespace WorQit
                     stringContent.Headers.Add("employeeID", Login.loggedInUser.ID.ToString());
                     stringContent.Headers.Add("sender", "employee");
                     stringContent.Headers.Add("employerID", currentMessage.employerID.ToString());
-                    var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/sendmessage");
+                    var uri = new Uri("http://worqit.azurewebsites.net/api/Message/sendmessage");
                     var response = await client.PostAsync(uri, stringContent);
                     var result = await response.Content.ReadAsStringAsync();
                     var jsonresult = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
@@ -74,6 +77,11 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// methode voor de antwoord knop.
+        /// </summary>
+        /// <param name="sender">button object</param>
+        /// <param name="e"></param>
         private void btnAntwoord_Click(object sender, RoutedEventArgs e)
         {
             sendReply();
