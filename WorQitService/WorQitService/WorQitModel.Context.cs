@@ -29,5 +29,6 @@ namespace WorQitService
         public virtual DbSet<Employer> Employers { get; set; }
         public virtual DbSet<Vacancy> Vacancies { get; set; }
         public virtual DbSet<VacancyEmployee> VacancyEmployees { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
     }
 }

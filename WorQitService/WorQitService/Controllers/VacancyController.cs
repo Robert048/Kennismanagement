@@ -184,9 +184,9 @@ namespace WorQitService.Controllers
         /// <param name="salary"></param>
         /// <param name="hours"></param>
         /// <param name="requirements"></param>
-        /// <param name="tags"></param>
+    
         /// <returns>json sucessfull or failed with error</returns>
-        public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements, string tags)
+        public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements)
         {
             try
             {
@@ -199,8 +199,7 @@ namespace WorQitService.Controllers
                     description = description,
                     salary = salary,
                     hours = hours,
-                    requirements = requirements,
-                    tags = tags
+                    requirements = requirements
                 };
                 wqdb.Vacancies.Add(vacancy);
                 wqdb.SaveChanges();
@@ -241,14 +240,14 @@ namespace WorQitService.Controllers
                 List<VacancyEmployee> vList = wqdb.VacancyEmployees.Where(x => x.vacancyID == v.ID).ToList();
                 foreach (VacancyEmployee ve in vList)
                 {
-                    bedrijfsScore = bedrijfsScore + ve.rating;
+                    bedrijfsScore = ve.rating ?? default(int);
                 }
                 
                 if (bedrijfsScore > -5)
                 {
                     int matchScore = 0;
                     if (employee.industry == v.jobfunction) matchScore = matchScore + 5;
-                    if (employee.location == v.tags) matchScore = matchScore + 4;
+                   
                     if (employee.industry == v.requirements) matchScore = matchScore + 2;
                     var ve = wqdb.VacancyEmployees.Where(x => x.employeeID == employee.ID).Where(x => x.vacancyID == v.ID).FirstOrDefault();
                     if(ve == null)
@@ -264,5 +263,9 @@ namespace WorQitService.Controllers
                 }
             }
         }
+
+       
+
+       
     }
 }
