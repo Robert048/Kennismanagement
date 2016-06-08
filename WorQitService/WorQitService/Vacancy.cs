@@ -21,13 +21,15 @@ namespace WorQitService
         }
     
         public int ID { get; set; }
-        public Nullable<int> employerID { get; set; }
+        public int employerID { get; set; }
         public string jobfunction { get; set; }
         public string description { get; set; }
-        public Nullable<int> salary { get; set; }
-        public Nullable<int> hours { get; set; }
+        public int salary { get; set; }
+        public int hours { get; set; }
         public string requirements { get; set; }
-        public string tags { get; set; }
+        public string branche { get; set; }
+        public string educations { get; set; }
+        public string location { get; set; }
     
         public virtual Employer Employer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

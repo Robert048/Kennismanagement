@@ -12,16 +12,17 @@ namespace WorQitService
     using System;
     using System.Collections.Generic;
     
-    public partial class VacancyEmployee
+    public partial class Message
     {
-        public int matchID { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> employerID { get; set; }
         public Nullable<int> employeeID { get; set; }
-        public Nullable<int> vacancyID { get; set; }
-        public Nullable<int> rating { get; set; }
-        public Nullable<int> matchingValue { get; set; }
-        public Nullable<bool> seen { get; set; }
+        public string sender { get; set; }
+        public string text { get; set; }
+        public Nullable<bool> read { get; set; }
+        public string title { get; set; }
     
         public virtual Employee Employee { get; set; }
-        public virtual Vacancy Vacancy { get; set; }
+        public virtual Employer Employer { get; set; }
     }
 }
