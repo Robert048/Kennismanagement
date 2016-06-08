@@ -39,9 +39,9 @@ if (isset($_POST['submitbutton'])) {
     $_SESSION["user"]->email = $email;
     ?>
     <script>
-        var url = "profiel.php"; //please insert the url of the your current page here, we are assuming the url is 'index.php'
-        $('#form2').load(url + ' #form2'); //note: the space before #div1 is very important
-        $('#sidebar').load(url + ' #sidebar'); //note: the space before #div1 is very important
+        var url = "profiel.php";
+        $('#form2').load(url + ' #form2');
+        $('#sidebar').load(url + ' #sidebar'); 
     </script>
     <?php
 }
