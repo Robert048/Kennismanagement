@@ -38,6 +38,11 @@ namespace WorQit
             getMessages();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            getMessages();
+        }
+
         public async void geoTest()
         {
 
@@ -78,9 +83,18 @@ namespace WorQit
                 var uri = new Uri("http://worqit.azurewebsites.net/api/Message/getOverviewEmployee/" + Login.loggedInUser.ID.ToString());
                 var response = await client.GetAsync(uri);
                 var result = await response.Content.ReadAsStringAsync();
-                var s = JsonConvert.DeserializeObject<RootObject>(result);
-                foreach(var message in s.Messages)
+                var messagesRoot = JsonConvert.DeserializeObject<MessageRootObject>(result);
+                foreach(var message in messagesRoot.Messages)
                 {
+                    if (message.read == true)
+                    {
+                        message.imgPath = "Assets/email-open (1).png";
+                    }
+                    if (message.read == false)
+                    {
+                        message.imgPath = "Assets/email-closed.png";
+                    }
+
                     berichten.Add(message);
                 }
                 control.ItemsSource = berichten;
