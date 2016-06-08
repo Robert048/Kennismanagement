@@ -517,6 +517,13 @@
             <param name="count">number of messages (count == -1 => returns all messages)</param>
             <returns></returns>
         </member>
+        <member name="M:WorQitService.Controllers.MessageController.getMessage(System.Int32)">
+            <summary>
+            gets message by message ID
+            </summary>
+            <param name="ID">message ID</param>
+            <returns></returns>
+        </member>
         <member name="M:WorQitService.Controllers.VacancyController.getAllVacancies">
             <summary>
             Get all vacancys
@@ -573,6 +580,12 @@
             <param name="hours"></param>
             <param name="requirements"></param>
             <returns>json sucessfull or failed with error</returns>
+        </member>
+        <member name="M:WorQitService.Controllers.VacancyController.reactionSeen(System.Int32)">
+            <summary>
+            update seen to true, the like on the vacancy has been seen by the employer
+            </summary>
+            <param name="ID">matchID</param>
         </member>
     </members>
 </doc>

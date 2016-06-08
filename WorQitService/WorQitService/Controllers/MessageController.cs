@@ -141,5 +141,30 @@ namespace WorQitService.Controllers
                 return Json(new { Result = "failed", Error = ex });
             }
         }
+
+        /// <summary>
+        /// gets message by message ID
+        /// </summary>
+        /// <param name="ID">message ID</param>
+        /// <returns></returns>
+        public object getMessage(int ID)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                
+                    Message msg = (from Message in wqdb.Messages
+                                         where Message.ID == ID
+                                         select Message).First();
+                    return Json(new { Result = "successful", Messages = msg });
+               
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
     }
+
 }

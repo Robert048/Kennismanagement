@@ -264,8 +264,32 @@ namespace WorQitService.Controllers
             }
         }
 
-       
+        /// <summary>
+        /// update seen to true, the like on the vacancy has been seen by the employer
+        /// </summary>
+        /// <param name="ID">matchID</param>
+        public object reactionSeen(int ID)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                VacancyEmployee vaemp = (from VacancyEmployee in wqdb.VacancyEmployees
+                               where VacancyEmployee.matchID == ID
+                               select VacancyEmployee).First();
+                vaemp.seen = true;
 
-       
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+
+
+
     }
 }
