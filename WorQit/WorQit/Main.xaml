@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="85*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="txtTitleOpen" Tapped="messageClick" TextWrapping="Wrap" Text="{Binding title}" Grid.Column="1" FontSize="12" VerticalAlignment="Center" TextAlignment="Center" />
-                <Image x:Name="imgMail" Tapped="messageClick" Source="Assets/email-open (1).png"/>
+                <Image x:Name="imgMail" Tapped="messageClick" Source="{Binding imgPath}"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>

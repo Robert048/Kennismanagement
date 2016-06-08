@@ -19,9 +19,10 @@ namespace WorQit.Models
         public string date { get; set; }
         public object Employee { get; set; }
         public object Employer { get; set; }
+        public string imgPath { get; set; }
     }
 
-    public class RootObject
+    public class MessageRootObject
     {
         public string Result { get; set; }
         public List<Message> Messages { get; set; }

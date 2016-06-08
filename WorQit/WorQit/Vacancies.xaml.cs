@@ -41,7 +41,11 @@ namespace WorQit
                 var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getVacanciesByScore/" + 1);
                 var response = await client.GetAsync(uri);
                 var result = await response.Content.ReadAsStringAsync();
-                matchedList = JsonConvert.DeserializeObject<List<Vacancy>>(result);
+                var vacanciesRoot = JsonConvert.DeserializeObject<VacancyRootObject>(result);
+                foreach(var vacancy in vacanciesRoot.Vacancys)
+                {
+                    matchedList.Add(vacancy);
+                }
             }
         }
 
@@ -51,7 +55,7 @@ namespace WorQit
             await dialog.ShowAsync();
         }
 
-        public void getCurrentHighestVacancy()
+        public async Task getCurrentHighestVacancy()
         {
             txtBlockDesc.Text = "Beschrijving";
             txtEisen.Text = "Eisen";
@@ -63,8 +67,8 @@ namespace WorQit
             textBlock.Text = currentVacancy.description;
             txtEisen.Text = currentVacancy.requirements;
             txtFunction.Text = currentVacancy.jobfunction;
-            txtSalaris.Text = currentVacancy.salaray.ToString();
-            txtUren.Text = currentVacancy.salaray.ToString();
+            txtSalaris.Text = currentVacancy.salary.ToString();
+            txtUren.Text = currentVacancy.salary.ToString();
         }
 
         public async void setRating(int empID, int vacID, int rating)
@@ -103,11 +107,9 @@ namespace WorQit
                     {
                         foreach (Vacancy v in vacancyList)
                         {
-                            var uri2 = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setMatchScore?employeeID=" + 1 + "&vacancyID=" + v.ID );
+                            var uri2 = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setMatchScore?employeeID=" + Login.loggedInUser.ID + "&vacancyID=" + v.ID );
                             var response2 = await client.PostAsync(uri2, null);
                         }
-
-                       
                     }
                     catch (Exception ex)
                     {

@@ -32,6 +32,7 @@ namespace WorQit
             {
                 this.DataContext = (Message)e.Parameter;
                 currentMessage = (Message)e.Parameter;
+                setMessageRead();
             }
             else
             {
@@ -39,6 +40,23 @@ namespace WorQit
             }
         }
 
+        private async void setMessageRead()
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var uri = new Uri("http://worqit.azurewebsites.net/api/Message/messageRead/" + currentMessage.ID);
+                    var response = await client.PostAsync(uri, null);
+                    var result = await response.Content.ReadAsStringAsync();
+                    var jsonresult = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
         /// <summary>
         /// methode voor de terugknop, gaat terug naar het hoofdscherm
         /// </summary>
