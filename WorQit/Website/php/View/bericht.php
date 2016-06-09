@@ -5,12 +5,18 @@
  * Date: 7-6-2016
  * Time: 10:23
  */
+<<<<<<< HEAD
 session_start();
+=======
+include_once('../Controller/messages.php');
+
+>>>>>>> refs/remotes/origin/master
 if($_SESSION['isloggedin']) {
     include_once('../Controller/messages.php');
     $messages= unreadMessages();
     $message = getMessage($_GET['ID']);
-
+    updateMessageRead($message);
+    $linkAdres = "berichten.php"
     ?>
 
     <!DOCTYPE html>
@@ -107,14 +113,15 @@ if($_SESSION['isloggedin']) {
         *********************************************************************************************************************************************************** -->
         <!--sidebar start-->
         <aside>
-            <div id="sidebar"  class="nav-collapse ">
+            <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php if($_SESSION['user']->name == null){
+                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
+                                                                   class="img-circle" width="60"></a></p>
+                    <h5 class="centered"><?php if ($_SESSION['user']->name == null) {
                             echo $_SESSION['user']->username;
-                        }else{
+                        } else {
                             echo $_SESSION['user']->name;
                         }
                         ?></h5>
@@ -125,20 +132,22 @@ if($_SESSION['isloggedin']) {
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="mt">
+
+                    <li class="sub-menu">
                         <a href="profiel.php">
                             <i class="fa fa-desktop"></i>
                             <span>Profiel</span>
                         </a>
                     </li>
-                    <li class="mt">
+
+                    <li class="sub-menu">
                         <a href="vacancies.php">
                             <i class="fa fa-cogs"></i>
                             <span>Vacatures</span>
                         </a>
                     </li>
-                    <li class="mt">
-                        <a href="berichten.php">
+                    <li class="sub-menu">
+                        <a class="active" href="berichten.php">
                             <i class="fa fa-book"></i>
                             <span>Berichten</span>
                         </a>
@@ -167,6 +176,7 @@ if($_SESSION['isloggedin']) {
                         </div>
                         <br>
                         <div class="form-panel">
+                           <h2>Antwoord</h2>
                             <form id="sentEmail" class="form-horizontal style-form" method="get">
                                 <div class="form-group">
                                     <div class="col-sm-10">
@@ -189,6 +199,8 @@ if($_SESSION['isloggedin']) {
                         </div>
                     </div>
                 </div>
+                <a type="button" class="btn btn-round btn-danger" href="<?php echo $linkAdres;
+                 ?>"><- Terug</a>
 
             </section><! --/wrapper -->
         </section><!-- /MAIN CONTENT -->

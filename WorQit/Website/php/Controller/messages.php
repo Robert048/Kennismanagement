@@ -68,6 +68,7 @@ function getMessage($id){
 
     return json_decode($content);
 }
+<<<<<<< HEAD
 function unreadMessages(){
     $unread = array();
     $messages= showMessages($_SESSION['user']->ID);
@@ -78,4 +79,25 @@ function unreadMessages(){
         }
     }
     return $unread;
+=======
+
+function updateMessageRead($messageID)
+{
+    $messageID = $_GET["ID"];
+
+    $editVars = array("ID => '$messageID");
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Message/messageRead/".$messageID);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $editVars);
+
+    $headers = array();
+    $headers[] = 'ID:' . $messageID;
+
+    $server_output = curl_exec($ch);
+    curl_close($ch);
+>>>>>>> refs/remotes/origin/master
 }
