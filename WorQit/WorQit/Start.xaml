@@ -59,7 +59,7 @@
                 <Image x:Name="imageUser" Grid.Row="1" Grid.Column="1" Source="Assets/user.png"/>
             </Grid>
         </Button>
-        <Button x:Name="btnFilters" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <Button x:Name="btnFilters" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnFilters_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -89,9 +89,10 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock TextWrapping="Wrap" Text="berichten" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" SelectionChanged="TextBlock_SelectionChanged"/>
                 <Image x:Name="imageInbox" Grid.Row="1" Grid.Column="1" Source="Assets/inbox.png"/>
+                <TextBlock x:Name="txtInbox" TextWrapping="Wrap" Text="" Grid.Column="2" TextAlignment="Right" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Margin="0,0,2,0"/>
             </Grid>
         </Button>
-        <Button x:Name="btnReloadVacancies" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <Button x:Name="btnReloadVacancies" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadVacancies_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>

@@ -12,6 +12,11 @@ namespace WorQit
         {
             this.InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Start));
+        }
     }
 }
 
