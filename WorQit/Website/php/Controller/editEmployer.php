@@ -42,6 +42,9 @@ if (isset($_POST['submitbutton'])) {
         var url = "profiel.php";
         $('#form2').load(url + ' #form2');
         $('#sidebar').load(url + ' #sidebar');
+        document.getElementById("editProfile").innerHTML = "Wijzigingen opgeslagen!";
+
+
     </script>
     <?php
 }

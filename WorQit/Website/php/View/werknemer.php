@@ -12,6 +12,8 @@ if($_SESSION['isloggedin']) {
 
    $linkAdres = "vacancieDetails.php?ID=".$detailID;
     ?>
+
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -132,11 +134,9 @@ if($_SESSION['isloggedin']) {
         foreach ($allCandidates->Users as $user) {
         if ($user->ID == $_GET["ID"])
         {
-
         ?>
         <!--main content start-->
         <section id="main-content">
-
             <section class="wrapper site-min-height">
                 <h3><i class="fa fa-angle-right"></i> Werknemer <?php echo $user->ID; ?></h3>
                 <p id="sendMessage" style="font-size:16px;"></p>
@@ -185,8 +185,7 @@ if($_SESSION['isloggedin']) {
         </section>
         <!-- /MAIN CONTENT -->
         <!--main content end-->
-
-
+        ------------------------------------------------------------
         <!-- Modal -->
         <!--new vacancy modal-->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="stuurBericht"
@@ -219,9 +218,6 @@ if($_SESSION['isloggedin']) {
                 </form>
             </div>
         </div>
-
-
-
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
@@ -263,6 +259,6 @@ if($_SESSION['isloggedin']) {
     include  ('../Controller/sendMessage.php');
 }
 else{
-    header("location: login.php");
+    header("location: ../../login.php");
 }
 ?>
