@@ -8,6 +8,8 @@
 session_start();
 include_once('../Controller/messages.php');
 if($_SESSION['isloggedin']) {
+    include_once('../Controller/messages.php');
+    $messages= unreadMessages();
     ?>
 
     <!DOCTYPE html>
@@ -54,18 +56,38 @@ if($_SESSION['isloggedin']) {
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
             <ul class="nav top-menu">
+                <?php $count = count($messages);?>
                 <!-- inbox dropdown start-->
                 <li id="header_inbox_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="../../index.php#">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-theme">5</span>
+                        <span class="badge bg-theme"><?php echo $count ?></span>
                     </a>
                     <ul class="dropdown-menu extended inbox">
                         <div class="notify-arrow notify-arrow-green"></div>
                         <li>
-                            <p class="green">You have 5 new messages</p>
+                            <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
                         </li>
+                        <?php foreach($messages as $message){?>
+                            <li>
+                                <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
+                                    .$message->employeeID."&vacID=".$message->vacancyID ?>">
+                                <span class="photo"><img alt="avatar"
+                                                         src="../../images/email-closed.png"></span>
+                                        <span class="subject">
+                                        <span class="from"><?php echo $message->employeeID?></span>
+                                        <span class="time"><?php echo $message->date ?></span>
+                                        </span>
+                                        <span class="message">
+                                            <?php echo $message->title?>
+                                        </span>
+                                </a>
+                            </li>
+                        <?php } ?>
                         <li>
+<<<<<<< HEAD
+                            <a href="berichten.php">See all messages</a>
+=======
                             <a href="../../index.php#">
                                 <span class="photo"><img alt="avatar"
                                                          src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
@@ -80,6 +102,7 @@ if($_SESSION['isloggedin']) {
                         </li>
                         <li>
                             <a href="../../index.php#">See all messages</a>
+>>>>>>> refs/remotes/origin/master
                         </li>
                     </ul>
                 </li>
