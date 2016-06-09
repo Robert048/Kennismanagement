@@ -8,8 +8,6 @@ if($_SESSION['isloggedin']) {
 
    // echo var_dump($allCandidates);
     $allVacances = showVacancies($_SESSION["user"]->ID);
-
-
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -130,7 +128,7 @@ if($_SESSION['isloggedin']) {
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-angle-right"></i> Vacature details</h3>
+                <h3></i> Vacature details</h3>
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
@@ -175,10 +173,7 @@ if($_SESSION['isloggedin']) {
                                             echo "Niemand";
                                         } else {
                                             foreach ($allCandidates->Users as $user) {
-                                                echo "<br/>";
-                                                echo "<a href='werknemer.php?ID=".$user->ID."'>$count     $user->location</a>";
-
-
+                                                echo "<a href='werknemer.php?ID=".$user->ID."'>Kandidaat $count uit $user->location</a>";
                                                 echo "<br/>";
                                                 $_SESSION['clicked'] = $_GET["ID"];
                                                 $count++;
@@ -207,7 +202,6 @@ if($_SESSION['isloggedin']) {
         </footer>
         <!--footer end-->
     </section>
-
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
     <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
@@ -216,21 +210,16 @@ if($_SESSION['isloggedin']) {
     <script class="include" type="text/javascript" src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
-
     <!--script for this page-->
     <script src= "../../js/vacature.js"></script>
-
     <script>var base_url = "<?php echo BASE_URL; ?>"</script>
     <script>
         //custom select box
-
         $(function(){
             $('select.styled').customSelect();
         });
-
     </script>
     </body>
     </html>

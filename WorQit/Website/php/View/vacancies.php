@@ -136,7 +136,7 @@ include ('../Controller/vacancies.php');
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper site-min-height">
-                    <h3><i class="fa fa-angle-right"></i> Vacatures</h3>
+                    <h3> Vacatures</h3>
                     <div class="row mt">
                         <div class="col-md-12">
                             <div class="content-panel">
