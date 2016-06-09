@@ -10,19 +10,23 @@ using Windows.Web.Http;
 namespace WorQit
 {
     /// <summary>
-    /// 
+    /// Pagina om een nieuw account aan te maken.
     /// </summary>
     public sealed partial class CreateAccount : Page
     {
-        //private ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
-
         public CreateAccount()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// methode voor registreerknop. maakt verbinding met de API om account te maken en geeft reactie van API weer.
+        /// </summary>
+        /// <param name="sender">button object</param>
+        /// <param name="e"></param>
         private async void registerbtn_Click(object sender, RoutedEventArgs e)
         {
+            //controileer of wachtwoord en gebruikersnaam zijn ingevuld.
             if (!String.IsNullOrWhiteSpace(txtPassword.Password) && !String.IsNullOrWhiteSpace(txtUsername.Text))
             {
                 using (var client = new System.Net.Http.HttpClient())
@@ -59,7 +63,7 @@ namespace WorQit
                     }
                     catch (Exception ex)
                     {
-                        var dialog = new MessageDialog("Geen connectie" + ex);
+                        var dialog = new MessageDialog("Geen connectie " + ex);
                         await dialog.ShowAsync();
                     }
                 }
@@ -71,6 +75,11 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// methode voor de terugknop op de registreerpagina. De app gaat dan terug naar het inlogscherm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bk_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));
