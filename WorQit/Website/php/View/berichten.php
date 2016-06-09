@@ -66,7 +66,7 @@ if($_SESSION['isloggedin']) {
                     <ul class="dropdown-menu extended inbox">
                         <div class="notify-arrow notify-arrow-green"></div>
                         <li>
-                            <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
+                            <p class="green">Er zijn <?php echo $count ?> Nieuwe berichten</p>
                         </li>
                         <?php foreach($messages as $message){?>
                             <li>
@@ -154,7 +154,7 @@ if($_SESSION['isloggedin']) {
     <!--main content start-->
     <section id="main-content">
     <section class="wrapper site-min-height">
-    <h3><i class="fa fa-angle-right"></i> Berichten</h3>
+    <h3>Berichten</h3>
     <div class="row mt">
     <div class="col-lg-12">
 
