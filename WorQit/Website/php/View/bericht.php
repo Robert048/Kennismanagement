@@ -5,9 +5,10 @@
  * Date: 7-6-2016
  * Time: 10:23
  */
-
+include_once('../Controller/messages.php');
 session_start();
 if($_SESSION['isloggedin']) {
+    $message = getMessage($_GET['ID']);
 
     ?>
 
@@ -152,8 +153,22 @@ if($_SESSION['isloggedin']) {
                 <div class="row mt">
                     <div class="col-lg-12">
                         <div class="form-panel">
+                            <div style="border-bottom-width: 2px; border-bottom: solid; border-bottom-color: #68dff0;">
+                                <h4><?php echo $message->Messages->title?></h4>
+                            </div>
+                            <br>
+                                <?php echo $message->Messages->text ?>
+                        </div>
+                        <br>
+                        <div class="form-panel">
                             <form id="sentEmail" class="form-horizontal style-form" method="get">
                                 <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="employeeID" id="employeeID" value="<?php echo $message->Messages->employeeID?>" class="form-control placeholder-no-fix">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="vacatureID" id="vacatureID" value="<?php echo $message->Messages->vacancyID?>" class="form-control placeholder-no-fix">
+                                    </div>
                                     <div class="col-sm-10">
                                         <input type="text" name="onderwerp" id="onderwerp" placeholder="Onderwerp" autocomplete="off" class="form-control placeholder-no-fix">
                                     </div>
@@ -163,7 +178,7 @@ if($_SESSION['isloggedin']) {
                                         <textarea class="form-control placeholder-no-fix" id= "bericht" name="bericht" rows="4" cols="50" placeholder="Bericht" maxlength="500" style="resize:none;"></textarea>
                                     </div>
                                 </div>
-                                <button class="btn btn-theme" id="sentEmail" onclick="sentEmail()" type="button">Verzenden</button>
+                                <button class="btn btn-theme" id="sentEmail" onclick="sentMessage()" type="button">Verzenden</button>
                             </form>
                         </div>
                     </div>
@@ -199,6 +214,7 @@ if($_SESSION['isloggedin']) {
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 
     <!--script for this page-->
+    <script src="../../js/messages.js"></script>
 
     <script>
         //custom select box

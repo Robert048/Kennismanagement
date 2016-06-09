@@ -2,15 +2,15 @@
  * Created by maaike on 7-6-2016.
  */
 
-function sentMessage() {
+function sentMessage(id) {
 
     var request = $.ajax({
         type: "GET",
-        url: '../Controller/addVacancy.php',
-        data: {subject: $('#onderwerp').val(), message: $('#bericht')}
+        url: '../Controller/messages.php',
+        data: {function: 'add', subject: $('#onderwerp').val(), message: $('#bericht').val(), employeeID: $('#employeeID').val()}
     });
     request.success(function() {
-        //header to messages
+        window.location.href = '../View/berichten.php';
     });
     request.fail(function (jqXHR, textStatus) {
         alert("Request failed: " + textStatus);
