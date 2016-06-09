@@ -1,36 +1,26 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using WorQit.Models;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace WorQit
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// pagina voor de vacatures. 
     /// </summary>
     public sealed partial class Vacancies : Page
     {
-        private List<Vacancy> vacancyList;
-        private List<Vacancy> matchedList;
+        //private List<Vacancy> vacancyList;
+        private List<Vacancy> matchedList = new List<Vacancy>();
         private int currentVacancyIndex = 0;
         private Vacancy currentVacancy;
+        private int progressValueUpdate;
 
         public Vacancies()
         {
@@ -41,18 +31,26 @@ namespace WorQit
 
         public async void init()
         {
-            await fillVacancies();
+            await getVacancies();
             getCurrentHighestVacancy();
+            if(matchedList.Count != 0)
+            {
+                setProgress();
+            }
         }
 
-        public async void getVacancy()
+        public async Task getVacancies()
         {
             using (var client = new System.Net.Http.HttpClient())
             {
-                var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getVacanciesByScore/" + 1);
+                var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getVacanciesByScore/" + Login.loggedInUser.ID.ToString());
                 var response = await client.GetAsync(uri);
                 var result = await response.Content.ReadAsStringAsync();
-                matchedList = JsonConvert.DeserializeObject<List<Vacancy>>(result);
+                var vacanciesRoot = JsonConvert.DeserializeObject<VacancyRootObject>(result);
+                foreach(var vacancy in vacanciesRoot.Vacancys)
+                {
+                    matchedList.Add(vacancy);
+                }
             }
         }
 
@@ -60,6 +58,7 @@ namespace WorQit
         {
             var dialog = new MessageDialog("Alle vacatures bekeken, ga verder om terug te keren naar het hoofdscherm.");
             await dialog.ShowAsync();
+            Frame.Navigate(typeof(Main));
         }
 
         public void getCurrentHighestVacancy()
@@ -70,12 +69,27 @@ namespace WorQit
             txtSalaris.Text = "Salaris";
             txtUren.Text = "Uren";
 
-            currentVacancy = vacancyList[currentVacancyIndex];
-            textBlock.Text = currentVacancy.description;
-            txtEisen.Text = currentVacancy.requirements;
-            txtFunction.Text = currentVacancy.jobfunction;
-            txtSalaris.Text = currentVacancy.salaray.ToString();
-            txtUren.Text = currentVacancy.salaray.ToString();
+            if (matchedList.Count != 0)
+            {
+                currentVacancy = matchedList[currentVacancyIndex];
+                textBlock.Text = currentVacancy.description;
+                txtEisen.Text = currentVacancy.requirements;
+                txtFunction.Text = currentVacancy.jobfunction;
+                txtSalaris.Text = currentVacancy.salary.ToString();
+                txtUren.Text = currentVacancy.salary.ToString();
+            }
+            else
+            {
+                warningDone();
+            }
+
+        }
+
+        public async void warningDone()
+        {
+            var dialog = new MessageDialog("Alle beschikbare vacatures zijn al verwerkt. Kom een ander moment terug.");
+            await dialog.ShowAsync();
+            Frame.Navigate(typeof(Start));
         }
 
         public async void setRating(int empID, int vacID, int rating)
@@ -99,52 +113,33 @@ namespace WorQit
             }
         }
 
-        public async Task fillVacancies()
+        public void setProgress()
         {
-            using (var client = new System.Net.Http.HttpClient())
-            {
-                try
-                {
-
-                    var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getAllVacancies");
-                    var response = await client.GetAsync(uri);
-                    var result = await response.Content.ReadAsStringAsync();
-                    vacancyList = JsonConvert.DeserializeObject<List<Vacancy>>(result);
-                    try
-                    {
-                        foreach (Vacancy v in vacancyList)
-                        {
-                            var uri2 = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setMatchScore?employeeID=" + 1 + "&vacancyID=" + v.ID );
-                            var response2 = await client.PostAsync(uri2, null);
-                        }
-
-                       
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-
-                catch (Exception ex)
-                {
-
-                }
-
-            }
+            progressValueUpdate = 100 / matchedList.Count;
         }
 
-        private async void button_Click(object sender, RoutedEventArgs e)
+        public void updateProgress()
+        {
+            prgresVacancies.Value = prgresVacancies.Value + progressValueUpdate;
+        }
+
+   
+
+
+
+        private void button_Click(object sender, RoutedEventArgs e)
         {
         }
 
         private void btnLike_Click(object sender, RoutedEventArgs e)
         {
-            if (currentVacancyIndex != vacancyList.Count())
+            if (currentVacancyIndex != matchedList.Count())
             {
                 currentVacancyIndex = currentVacancyIndex + 1;
                 getCurrentHighestVacancy();
                 setRating(Login.loggedInUser.ID, currentVacancy.ID, 1);
+                updateProgress();
+
             }
             else
             {
@@ -155,11 +150,13 @@ namespace WorQit
 
         private void btnDislike_Click(object sender, RoutedEventArgs e)
         {
-            if (currentVacancyIndex != vacancyList.Count())
+            if (currentVacancyIndex != matchedList.Count())
             {
                 currentVacancyIndex = currentVacancyIndex - 1;
                 getCurrentHighestVacancy();
                 setRating(Login.loggedInUser.ID, currentVacancy.ID, -1);
+                updateProgress();
+
             }
             else
             {

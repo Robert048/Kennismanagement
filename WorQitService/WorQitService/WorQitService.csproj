@@ -211,6 +211,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Message.cs">
+      <DependentUpon>WorQitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vacancy.cs">
       <DependentUpon>WorQitModel.tt</DependentUpon>
