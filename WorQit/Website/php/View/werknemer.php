@@ -138,7 +138,7 @@ if($_SESSION['isloggedin']) {
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-angle-right"></i> Werknemer <?php echo $user->ID; ?></h3>
+                <h3>Werknemer <?php echo $user->ID; ?></h3>
                 <p id="sendMessage" style="font-size:16px;"></p>
                 <div class="row mt">
                     <div class="col-md-12">
@@ -195,7 +195,7 @@ if($_SESSION['isloggedin']) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Nieuwe vacature</h4>
+                            <h4 class="modal-title">Stuur bericht</h4>
                         </div>
                         <div class="modal-body">
                             <p>Vul de volgende velden in om een bericht te sturen.</p>
