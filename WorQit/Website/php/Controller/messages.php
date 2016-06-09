@@ -6,7 +6,6 @@
  * Time: 13:11
  */
 
-require_once("../../globals.php");
 @session_start();
 $function= isset($_GET['function']) ? $_GET['function'] : '';
 
@@ -68,4 +67,15 @@ function getMessage($id){
     curl_close($curl);
 
     return json_decode($content);
+}
+function unreadMessages(){
+    $unread = array();
+    $messages= showMessages($_SESSION['user']->ID);
+    foreach($messages->Messages as $message){
+
+        if($message->read == false){
+            $unread[] = $message;
+        }
+    }
+    return $unread;
 }
