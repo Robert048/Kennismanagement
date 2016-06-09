@@ -195,7 +195,7 @@ if($_SESSION['isloggedin']) {
                                     {
                                         $percFilled = 100;
                                     }
-                                        $percEmpty = 87.5 - $percFilled;
+                                        $percEmpty = 100 - $percFilled;
                                         ?>
 
                                         <div class="row">

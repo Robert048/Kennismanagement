@@ -144,7 +144,7 @@ if ($_SESSION['isloggedin']) {
 
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-angle-right"></i> Profiel van <?php if($_SESSION['user']->name == null){
+                <h3></i> Profiel van <?php if($_SESSION['user']->name == null){
                         echo $_SESSION['user']->username;
                     }else{
                         echo $_SESSION['user']->name;
