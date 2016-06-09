@@ -41,7 +41,7 @@ if (isset($_POST['submitbutton'])) {
     <script>
         var url = "profiel.php";
         $('#form2').load(url + ' #form2');
-        $('#sidebar').load(url + ' #sidebar'); 
+        $('#sidebar').load(url + ' #sidebar');
     </script>
     <?php
 }

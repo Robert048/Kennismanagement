@@ -199,13 +199,11 @@ if($_SESSION['isloggedin']) {
                             <h4 class="modal-title">Nieuwe vacature</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Vul de volgende velden in om een bericht te sturen.</p>  <br/>
-                            Ontvanger: Werknemer <?php echo $_GET["ID"]; ?>
-                            <br/> <br/>
-                            Titel: <input type="text" id="titel" name="titel" placeholder="Vul een titel in"
+                            <p>Vul de volgende velden in om een bericht te sturen.</p>
+                           <input type="text" id="titel" name="titel" placeholder="Vul een titel in"
                                           autocomplete="off" class="form-control placeholder-no-fix">
                             <br/>
-                            Bericht: <textarea class="form-control placeholder-no-fix" id="text" name="text" rows="4"
+                           <textarea class="form-control placeholder-no-fix" id="text" name="text" rows="4"
                                                cols="50" placeholder="Bericht" maxlength="500"
                                                style="resize:none;"></textarea>
 

@@ -12,8 +12,7 @@ session_start();
 //extract data from the post
 
 $password= password_hash($_GET['password'], PASSWORD_DEFAULT);
-$vars = array('employerID =>' . urlencode($_SESSION['user']->ID), 'employeeID =>' . ,
-    'sender=> employer', 'message =>'. urlencode($_GET['message']), 'subject =>'. urlencode($_GET['subject']));
+$vars = array('employerID =>' . urlencode($_SESSION['user']->ID), 'employeeID =>' . 'sender=> employer', 'message =>'. urlencode($_GET['message']), 'subject =>'. urlencode($_GET['subject']));
 
 $headers = array();
 $headers[] = 'employerID:' . urlencode($_SESSION['user']->ID);
