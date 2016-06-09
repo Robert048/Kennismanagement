@@ -78,6 +78,9 @@ if ($_SESSION['isloggedin']) {
                                     </a>
                                 </li>
                             <?php } ?>
+                            <li>
+                                <a href="berichten.php">See all messages</a>
+                            </li>
                         </ul>
                     </li>
                     <!-- inbox dropdown end -->
