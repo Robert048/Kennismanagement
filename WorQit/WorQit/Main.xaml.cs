@@ -34,7 +34,7 @@ namespace WorQit
         public Main()
         {
             this.InitializeComponent();
-            textBlock.Text = "Welcome " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
+            textBlock.Text = "Welkom " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
             getMessages();
         }
 
@@ -127,6 +127,27 @@ namespace WorQit
         {
             Message activity = e.ClickedItem as Message;
             Frame.Navigate(typeof(Messages), activity);
+        }
+
+        private void btnReloadVacancies_Click(object sender, RoutedEventArgs e)
+        {
+            reloadVacancies();
+        }
+
+        private async void reloadVacancies()
+        {
+            using (var client = new HttpClient())
+            {
+                var url = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setScoreForEmployee/" + Login.loggedInUser.ID.ToString());
+                var responseSet = await client.GetAsync(url);
+                var resultSet = await responseSet.Content.ReadAsStringAsync();
+            }
+        }
+
+        private void btnReloadMessages_Click(object sender, RoutedEventArgs e)
+        {
+            getMessages();
+            Frame.Navigate(typeof(Main));
         }
     }
     public enum DistanceType { Miles, Kilometers };
