@@ -34,7 +34,6 @@ namespace WorQit
         public Main()
         {
             this.InitializeComponent();
-            textBlock.Text = "Welkom " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
             getMessages();
         }
 
@@ -104,7 +103,7 @@ namespace WorQit
 
         private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Login));
+            Frame.Navigate(typeof(Start));
         }
 
         private void btnMatch_Click(object sender, RoutedEventArgs e)

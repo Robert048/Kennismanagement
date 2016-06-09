@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -86,7 +87,9 @@ namespace WorQit
                     var response = await client.PostAsync(uri, stringContent);
                     var result = await response.Content.ReadAsStringAsync();
                     var jsonresult = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
-
+                    var dialog = new MessageDialog("Bericht met titel: " + currentMessage.title + " is succesvol verstuurd, ga verder om terug te gaan.");
+                    await dialog.ShowAsync();
+                    Frame.Navigate(typeof(Main));
                 }
                 catch
                 {
