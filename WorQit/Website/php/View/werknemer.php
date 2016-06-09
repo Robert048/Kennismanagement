@@ -4,12 +4,13 @@ if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
     include  ('../Controller/getCandidates.php');
 
-    $allCandidates = getCandidates($_GET["ID"]);
 
-   // echo var_dump($allCandidates);
-    $allVacances = showVacancies($_SESSION["user"]->ID);
+    $detailID = $_SESSION["clicked"];
+    $allCandidates = getCandidates($detailID);
+    //echo var_dump($allCandidates);
 
 
+   $linkAdres = "vacancieDetails.php?ID=".$detailID;
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -20,7 +21,7 @@ if($_SESSION['isloggedin']) {
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Vacaturedetails</title>
+        <title>Werknemer</title>
 
         <!-- Bootstrap core CSS -->
         <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
@@ -127,76 +128,100 @@ if($_SESSION['isloggedin']) {
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
     *********************************************************************************************************************************************************** -->
+        <?php
+        foreach ($allCandidates->Users as $user) {
+        if ($user->ID == $_GET["ID"])
+        {
+
+        ?>
         <!--main content start-->
         <section id="main-content">
+
             <section class="wrapper site-min-height">
-                <h3><i class="fa fa-angle-right"></i> Vacature details</h3>
+                <h3><i class="fa fa-angle-right"></i> Werknemer <?php echo $user->ID; ?></h3>
+                <p id="sendMessage" style="font-size:16px;"></p>
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
                             <div id="head">
                                 <div id="title">
-                                    <h4>Vacatures overzicht</h4>
+                                    <h4>Werknemer <?php echo $user->ID; ?></h4>
+                                </div>
+                                <div id="title" style="float:right;margin-right:20px;">
+                                    <a data-toggle="modal" href="werknemer.php#stuurBericht">
+                                        <button type="button" class="btn btn-round btn-success">Stuur bericht</button>
+                                    </a>
                                 </div>
                             </div>
                             <table id="vacancyTable" class="table table-striped table-advance table-hover">
                                 <thead>
                                 <tr>
                                     <th>
-                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"]->ID){ ?>
                                 <tr class="vacancyRow">
-                                    <th></i> Functie</th>
-                                    <th class=hidden-phone><?php echo $vacancy->jobfunction ?></th>
+                                    <th></i> Locatie</th>
+                                    <th class=hidden-phone><?php echo $user->location; ?></th>
                                 </tr>
                                 <tr>
-                                    <th></i> Omschrijving</th>
-                                    <th class=hidden-phone><?php echo $vacancy->description ?></th>
+                                    <th></i> Interesses</th>
+                                    <th class=hidden-phone><?php echo $user->interests; ?></th>
                                 </tr>
                                 <tr>
-                                    <th></i> Salaris</th>
-                                    <th class=hidden-phone>&euro;<?php echo $vacancy->salary ?>,-</th>
+                                    <th></i> Ervaring</th>
+                                    <th class=hidden-phone><?php echo $user->experience; ?></th>
                                 </tr>
-                                <tr>
-                                    <th></i> Uren</th>
-                                    <th class=hidden-phone><?php echo $vacancy->hours ?> uren</th>
-                                </tr>
-                                <tr>
-                                    <th></i> Eisen</th>
-                                    <th class=hidden-phone><?php echo $vacancy->requirements ?></th>
-                                </tr>
-                                </tr>
-                                <tr>
-                                    <th></i> Geliked door:</th>
-                                    <th class=hidden-phone>
-                                        <?php
-
-                                        $count = 1;
-                                        if (count($allCandidates->Users) == "0") {
-                                            echo "Niemand";
-                                        } else {
-                                            foreach ($allCandidates->Users as $user) {
-                                                echo "<br/>";
-                                                echo "<a href='werknemer.php?ID=".$user->ID."'>$count     $user->location</a>";
-
-
-                                                echo "<br/>";
-                                                $_SESSION['clicked'] = $_GET["ID"];
-                                                $count++;
-                                            }
-                                        }
-                                        }
-                                        ?>
-                                        </th>
                                 </tr>
                                 </thead>
                             </table>
-                    </div><!-- /content-panel -->
-                    </div><!-- /col-md-12 -->
-                </div><br/>
-                <a type="button" class="btn btn-round btn-danger" href="vacancies.php"><- Terug</a>
-            </section><! --/wrapper -->
-        </section><!-- /MAIN CONTENT -->
+                        </div>
+                        <!-- /content-panel -->
+                    </div>
+                    <!-- /col-md-12 -->
+                </div>
+                <br/>
+                <a type="button" class="btn btn-round btn-danger" href="<?php echo $linkAdres;}
+                } ?>"><- Terug</a>
+            </section>
+            <! --/wrapper -->
+        </section>
+        <!-- /MAIN CONTENT -->
         <!--main content end-->
+
+
+        <!-- Modal -->
+        <!--new vacancy modal-->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="stuurBericht"
+             class="modal fade">
+            <div class="modal-dialog">
+                <form class="form-newVacancy" method="post" id="verstuurForm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Nieuwe vacature</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Vul de volgende velden in om een bericht te sturen.</p>
+                           <input type="text" id="titel" name="titel" placeholder="Vul een titel in"
+                                          autocomplete="off" class="form-control placeholder-no-fix">
+                            <br/>
+                           <textarea class="form-control placeholder-no-fix" id="text" name="text" rows="4"
+                                               cols="50" placeholder="Bericht" maxlength="500"
+                                               style="resize:none;"></textarea>
+
+                            <input type="hidden" name="employeeID" value="<?php echo $_GET["ID"] ?>"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Annuleren</button>
+                            <button  class="btn btn-theme" id="verstuurBericht" name="submitbutton" type="submit" value="Submit">Verzenden
+                            </button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
@@ -235,8 +260,9 @@ if($_SESSION['isloggedin']) {
     </body>
     </html>
     <?php
+    include  ('../Controller/sendMessage.php');
 }
 else{
-    header("location: ../../login.php");
+    header("location: login.php");
 }
 ?>
