@@ -59,7 +59,7 @@
             <TextBox x:Name="txtEmail" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
             <TextBlock Grid.Row="6" TextWrapping="Wrap" Text="Password" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
             <TextBox x:Name="txtPassword" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
-            <Button x:Name="btnNext" Content="Volgende" Grid.Column="1" Grid.Row="11" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnNext_Click"/>
+            <Button x:Name="btnNext" Content="Volgende" Grid.Row="11" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnNext_Click" Grid.ColumnSpan="2"/>
         </Grid>
         <Grid x:Name="gridSettingsNext" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="3" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
@@ -90,13 +90,13 @@
             <TextBox x:Name="txtPositie" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
             <TextBlock Grid.Row="5" TextWrapping="Wrap" Text="Interesses" FontSize="12" VerticalAlignment="Center" Margin="0,8.02,0,7.98"/>
             <TextBox x:Name="txtInteresses" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
-            <Button x:Name="btnPrevious" Content="Vorige" Grid.Column="1" Grid.Row="11" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnPrevious_Click"/>
+            <Button x:Name="btnPrevious" Content="Vorige" Grid.Row="11" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="btnPrevious_Click" Grid.ColumnSpan="2"/>
             <TextBlock Grid.Row="6" TextWrapping="Wrap" Text="Ervaring" FontSize="12" VerticalAlignment="Center" Margin="0,8.04,0,7.96"/>
             <TextBox x:Name="txtErvaring" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
             <TextBlock Grid.Row="7" TextWrapping="Wrap" Text="Talen" FontSize="12" VerticalAlignment="Center" Margin="0,8.04,0,7.96"/>
             <TextBox x:Name="txtTalen" Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="" MinWidth="50" FontSize="12"/>
         </Grid>
         <Button x:Name="btnSave" Content="Opslaan" Grid.Column="2" Grid.Row="5" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Click="btnSave_Click" Margin="0,5"/>
-        <ProgressBar x:Name="barProgress" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" MinHeight="10"/>
+        <ProgressBar x:Name="barProgress" Grid.ColumnSpan="4" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" MinHeight="20"/>
     </Grid>
 </Page>

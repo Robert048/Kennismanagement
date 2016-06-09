@@ -89,7 +89,7 @@ namespace WorQit
         {
             var dialog = new MessageDialog("Alle beschikbare vacatures zijn al verwerkt. Kom een ander moment terug.");
             await dialog.ShowAsync();
-            Frame.Navigate(typeof(Main));
+            Frame.Navigate(typeof(Start));
         }
 
         public async void setRating(int empID, int vacID, int rating)

@@ -93,7 +93,7 @@ namespace WorQit
                             var userObject = JsonConvert.SerializeObject(jsonresult);
                             var user = JObject.Parse(userObject).SelectToken("User").ToString();
                             Login.loggedInUser = (JsonConvert.DeserializeObject<Employee>(user)) as Employee;
-                            Frame.Navigate(typeof(Main));
+                            Frame.Navigate(typeof(Start));
                         }
                         else
                         {

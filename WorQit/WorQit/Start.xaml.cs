@@ -47,5 +47,21 @@ namespace WorQit
         {
             Frame.Navigate(typeof(EditProfile));
         }
+
+        private void btnReloadMessages_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Main));
+        }
+
+        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Login.loggedInUser = null;
+            Frame.Navigate(typeof(Login));
+        }
     }
 }

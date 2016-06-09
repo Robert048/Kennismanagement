@@ -52,7 +52,7 @@ namespace WorQit
                                 var responseSet = await client.GetAsync(url);
                                 var resultSet = await responseSet.Content.ReadAsStringAsync();
 
-                            Frame.Navigate(typeof(Main));
+                            Frame.Navigate(typeof(Start));
                         }
                         else
                         {

@@ -26,27 +26,15 @@
             <ColumnDefinition Width="96*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="116*"/>
-            <RowDefinition Height="36*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="36*"/>
-            <RowDefinition Height="322*"/>
-            <RowDefinition Height="40*"/>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="112*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2" Margin="0.333,0,95,0"/>
-        <Button x:Name="btnEditProfile" Content="wijzig profiel" Grid.Row="3" FontSize="12" Background="#FFA3CBE8" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,5" FontWeight="Bold" Style="{StaticResource ButtonStyle}" Click="btnEditProfile_Click" BorderThickness="2" Grid.Column="1"/>
-        <Button x:Name="btnLogout" Content="uitloggen" Grid.Row="6" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5.333,5,95,5" Click="btnSettings_Copy_Click" Style="{StaticResource ButtonStyle}" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="textBlock" Grid.Row="1" TextWrapping="Wrap" Text="Welkom" FontSize="14" Foreground="#FF195695" Grid.ColumnSpan="3" TextAlignment="Center"/>
-        <Button x:Name="btnMatch" Content="match vacatures" Grid.Row="2" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0.333,5,95,5" VerticalAlignment="Stretch" FontWeight="Bold" Style="{StaticResource ButtonStyle}" Click="btnMatch_Click" Grid.ColumnSpan="2"/>
-        <Rectangle Grid.ColumnSpan="3" Fill="#FF195695" Grid.Row="4" Stroke="Black"/>
-        <TextBlock Grid.Row="4" TextWrapping="Wrap" Text="berichten" Grid.Column="1" FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="53.333,8,51.333,8"/>
-        <GridView x:Name="control" ItemClick="control_ItemClick"  Grid.Row="5" ItemsSource="{Binding berichten}" ItemTemplate="{StaticResource berichtTemplate}" Grid.Column="1" Grid.ColumnSpan="2" Margin="0.333,0,95,0"/>
-        <Button x:Name="btnReloadMessages" Grid.Column="2" Grid.Row="3" Style="{StaticResource ButtonStyle}" Padding="5,0" FontSize="12" Click="btnReloadMessages_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5">
-            <TextBlock TextWrapping="Wrap" Text="herlaad berichten" TextAlignment="Center"/>
-        </Button>
-        <Button x:Name="btnReloadVacancies" Grid.Row="3" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="5,0,5,-1" Click="btnReloadVacancies_Click">
-            <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="vacatures ophalen" FontSize="12"/>
-        </Button>
+        <Button x:Name="btnBack" Content="terug" Grid.Row="3" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5.333,5,95,5" Click="btnSettings_Copy_Click" Style="{StaticResource ButtonStyle}" Grid.ColumnSpan="2"/>
+        <Rectangle Grid.ColumnSpan="3" Fill="#FF195695" Grid.Row="1" Stroke="Black"/>
+        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="berichten" Grid.Column="1" FontSize="15" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
+        <GridView x:Name="control" ItemClick="control_ItemClick"  Grid.Row="2" ItemsSource="{Binding berichten}" ItemTemplate="{StaticResource berichtTemplate}" Grid.ColumnSpan="3" Margin="10,0"/>
     </Grid>
 </Page>
