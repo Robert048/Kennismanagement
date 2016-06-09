@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -25,13 +27,19 @@ namespace WorQit
     public sealed partial class Main : Page
     {
         private List<Vacancy> vacatureLijst { get; set; }
+        private List<Message> berichten = new List<Message>();
+        public static Message currentMessage = new Message();
         //private ServiceReference1.Service1Client client = new Service1Client();
 
         public Main()
         {
             this.InitializeComponent();
-            textBlock.Text = "Welcome " + Login.loggedInUser.firstName + " " + Login.loggedInUser.lastName;
+            getMessages();
+        }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            getMessages();
         }
 
         public async void geoTest()
@@ -66,9 +74,36 @@ namespace WorQit
             double distance = test.Distance(sCoord, eCoord, DistanceType.Kilometers);
         }
 
+        private async void getMessages()
+        {
+
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var uri = new Uri("http://worqit.azurewebsites.net/api/Message/getOverviewEmployee/" + Login.loggedInUser.ID.ToString());
+                var response = await client.GetAsync(uri);
+                var result = await response.Content.ReadAsStringAsync();
+                var messagesRoot = JsonConvert.DeserializeObject<MessageRootObject>(result);
+                foreach(var message in messagesRoot.Messages)
+                {
+                    if (message.read == true)
+                    {
+                        message.imgPath = "Assets/email-open (1).png";
+                    }
+                    if (message.read == false)
+                    {
+                        message.imgPath = "Assets/email-closed.png";
+                    }
+
+                    berichten.Add(message);
+                }
+                control.ItemsSource = berichten;
+            }
+
+        }
+
         private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Login));
+            Frame.Navigate(typeof(Start));
         }
 
         private void btnMatch_Click(object sender, RoutedEventArgs e)
@@ -79,6 +114,39 @@ namespace WorQit
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(EditProfile));
+        }
+
+        private void messageClick(object sender, TappedRoutedEventArgs e)
+        {
+            Message selectedMessage = (Message)control.SelectedItem;
+            Frame.Navigate(typeof(Messages), selectedMessage);
+        }
+
+        private void control_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Message activity = e.ClickedItem as Message;
+            Frame.Navigate(typeof(Messages), activity);
+        }
+
+        private void btnReloadVacancies_Click(object sender, RoutedEventArgs e)
+        {
+            reloadVacancies();
+        }
+
+        private async void reloadVacancies()
+        {
+            using (var client = new HttpClient())
+            {
+                var url = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setScoreForEmployee/" + Login.loggedInUser.ID.ToString());
+                var responseSet = await client.GetAsync(url);
+                var resultSet = await responseSet.Content.ReadAsStringAsync();
+            }
+        }
+
+        private void btnReloadMessages_Click(object sender, RoutedEventArgs e)
+        {
+            getMessages();
+            Frame.Navigate(typeof(Main));
         }
     }
     public enum DistanceType { Miles, Kilometers };

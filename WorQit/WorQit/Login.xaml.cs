@@ -3,26 +3,18 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Runtime.Serialization;
-using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
-using Windows.Web.Http;
 using WorQit.Models;
-
-
-
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace WorQit
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Pagina voor het inloggen.
     /// </summary>
     public sealed partial class Login : Page
     {
-        ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        //ingelogde gebruiker object
         public static Employee loggedInUser = new Employee();
 
         public Login()
@@ -31,13 +23,13 @@ namespace WorQit
         }
 
         /// <summary>
-		///  Methode voor button inloggen.
+		/// Methode voor knop om in te loggen.
 		/// </summary>
-		/// <param name="sender"></param>
+		/// <param name="sender">button object</param>
 		/// <param name="e"></param>
         private async void loginbtn_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            using (var client = new System.Net.Http.HttpClient())
+            using (var client = new HttpClient())
             {
                 try
                 {
@@ -52,24 +44,15 @@ namespace WorQit
                     {
                         if (jsonresult["Result"] == "successful")
                         {
-                            //put zooi[gebruiker?] in model
-                            var r = jsonresult;
-                            //int s = r.IndexOf("}");
-                            //r = r.Substring(2, s-2);
-                            
-
-                            //loggedInUser.ID = r["ID"].ToString();
-                            var i = JsonConvert.SerializeObject(r);
-                            //var f = JsonConvert.DeserializeObject(i);
-
-                            var user = JObject.Parse(i).SelectToken("User").ToString();
+                            var userObject = JsonConvert.SerializeObject(jsonresult);
+                            var user = JObject.Parse(userObject).SelectToken("User").ToString();
                             loggedInUser = (JsonConvert.DeserializeObject<List<Employee>>(user))[0] as Employee;
+                            
+                                var url = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setScoreForEmployee/" + loggedInUser.ID.ToString());
+                                var responseSet = await client.GetAsync(url);
+                                var resultSet = await responseSet.Content.ReadAsStringAsync();
 
-
-                            //loggedInUser.ID = f.JsonTo<int>("ID");
-
-                            //loggedInUser = jsonresult["User"];
-                            Frame.Navigate(typeof(Main));
+                            Frame.Navigate(typeof(Start));
                         }
                         else
                         {

@@ -7,35 +7,25 @@ using System.Threading.Tasks;
 
 namespace WorQit.Models
 {
- 
     public class Vacancy
     {
-
         public int ID { get; set; }
-
-        //[JsonProperty("employerID")]
         public int employerID { get; set; }
-
-        //[JsonProperty("jobfunction")]
         public string jobfunction { get; set; }
-
-        //[JsonProperty("description")]
         public string description { get; set; }
-
-        //[JsonProperty("salary")]
-        public int salaray { get; set; }
-
-        //[JsonProperty("hours")]
+        public int salary { get; set; }
         public int hours { get; set; }
-
-        //[JsonProperty("requirements")]
         public string requirements { get; set; }
+        public string branche { get; set; }
+        public string educations { get; set; }
+        public string location { get; set; }
+        public object Employer { get; set; }
+        public List<object> VacancyEmployees { get; set; }
+    }
 
-        //[JsonProperty("tags")]
-        public string tags { get; set; }
-
-        //[JsonProperty("Employee")]
-        public Employee employee { get; set; }
-        
+    public class VacancyRootObject
+    {
+        public string Result { get; set; }
+        public List<Vacancy> Vacancys { get; set; }
     }
 }
