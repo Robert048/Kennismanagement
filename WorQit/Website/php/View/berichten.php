@@ -163,8 +163,10 @@ if($_SESSION['isloggedin']) {
         <div class="pull-left"><h5>Berichten</h5></div>
         <br>
     </div>
+        <div class="content-panel">
     <div class="custom-check goleft mt">
     <table id="berichten" class="table">
+
     <?php
     $messages = showMessages($_SESSION['user']->ID);
     foreach ($messages->Messages as $message) { ?>
@@ -218,6 +220,7 @@ if($_SESSION['isloggedin']) {
                             </div><!--/ White-panel -->
                         </div><! --/col-md-12 -->
                     </div><! -- row -->
+        </div>
                 </div>
             </div>
 
