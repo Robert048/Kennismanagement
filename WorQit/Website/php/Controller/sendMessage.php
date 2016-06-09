@@ -25,16 +25,16 @@ if (isset($_POST["submitbutton"])) {
     $headers[] = 'sender:' . $sender;
     $headers[] = 'title:' . $title;
 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
-    $server_output = curl_exec($ch);
+   $server_output = curl_exec($ch);
 
    curl_close($ch);
 
     return $server_output;
     ?>
-    <script>
-        document.getElementById("sendMessage").innerHTML = "Bericht verzonden!";
-    </script>
+    <Script>
+        document.getElementById("sendMessage").innerHTML = "Wijzigingen opgeslagen!";
+    </Script>
     <?php
 }

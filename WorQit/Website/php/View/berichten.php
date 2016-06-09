@@ -160,30 +160,15 @@ if($_SESSION['isloggedin']) {
 
     <!-- Berichten overzicht -->
     <div class="row mt">
-    <div class="col-md-12">
+
     <div class="white-panel pn">
-    <div class="panel-heading">
-        <div class="pull-left"><h5>Berichten</h5></div>
-        <br>
-    </div>
         <div class="content-panel">
     <div class="custom-check goleft mt">
+        <h4>Vacatures overzicht</h4>
     <table id="berichten" class="table">
-    <thead>
-    <tr>
-        <td>
-        Werknemer
-        </td>
-        <td>
-          Titel
-        </td>
-        <td>
-            Verwijder
-        </td>
-    </tr>
 
-    </thead>
-    <?php
+
+        <?php
     $messages = showMessages($_SESSION['user']->ID);
     foreach ($messages->Messages as $message) { ?>
         <tr>
@@ -238,8 +223,6 @@ if($_SESSION['isloggedin']) {
                     </div><! -- row -->
         </div>
                 </div>
-            </div>
-
         </section><! --/wrapper -->
     </section><!-- /MAIN CONTENT -->
 
