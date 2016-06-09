@@ -84,26 +84,6 @@ if($_SESSION['isloggedin']) {
                                 </a>
                             </li>
                         <?php } ?>
-                        <li>
-<<<<<<< HEAD
-                            <a href="berichten.php">See all messages</a>
-=======
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar"
-                                                         src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Please, answer asap.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">See all messages</a>
->>>>>>> refs/remotes/origin/master
-                        </li>
                     </ul>
                 </li>
                 <!-- inbox dropdown end -->

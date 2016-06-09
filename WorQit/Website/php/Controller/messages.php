@@ -68,18 +68,18 @@ function getMessage($id){
 
     return json_decode($content);
 }
-<<<<<<< HEAD
-function unreadMessages(){
+function unreadMessages()
+{
     $unread = array();
-    $messages= showMessages($_SESSION['user']->ID);
-    foreach($messages->Messages as $message){
+    $messages = showMessages($_SESSION['user']->ID);
+    foreach ($messages->Messages as $message) {
 
-        if($message->read == false){
+        if ($message->read == false) {
             $unread[] = $message;
         }
     }
     return $unread;
-=======
+}
 
 function updateMessageRead($messageID)
 {
@@ -99,5 +99,4 @@ function updateMessageRead($messageID)
 
     $server_output = curl_exec($ch);
     curl_close($ch);
->>>>>>> refs/remotes/origin/master
 }
