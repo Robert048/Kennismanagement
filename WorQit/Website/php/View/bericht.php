@@ -5,12 +5,9 @@
  * Date: 7-6-2016
  * Time: 10:23
  */
-<<<<<<< HEAD
-session_start();
-=======
-include_once('../Controller/messages.php');
 
->>>>>>> refs/remotes/origin/master
+session_start();
+
 if($_SESSION['isloggedin']) {
     include_once('../Controller/messages.php');
     $messages= unreadMessages();
