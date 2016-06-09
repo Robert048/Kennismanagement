@@ -6,6 +6,7 @@
  * Time: 13:59
  */
 session_start();
+include_once('../Controller/messages.php');
 if($_SESSION['isloggedin']) {
     ?>
 
@@ -160,43 +161,43 @@ if($_SESSION['isloggedin']) {
                                     <div class="pull-left"><h5><i class="fa fa-tasks"></i>Berichten</h5></div>
                                     <br>
                                 </div>
-
-
-
-
-                                <table id="vacancyTable" class="table table-striped table-advance table-hover">
-                                            <?php
-                                            $vacancies = showVacancies($_SESSION['user']->ID);
-                                            foreach($vacancies as $vacancy) {?>
-                                    <tr class="vacancyRow">
-                                        <td>
-                                            <a href="vacancieDetails.php?<?php echo "ID=".$vacancy->ID?>"><?php echo $vacancy->jobfunction?></a>
-                                        </td>
-                                        <td class=hidden-phone><?php echo $vacancy->description?></td>
-                                        <td>
-                                            <button id="delete" class="btn btn-danger btn-xs" data-levelid="<?php echo $vacancy->ID; ?>" onclick="deleteVacancy()"><i class="fa fa-trash-o "></i></button>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                    }
-                                    ?>
-                                    </thead>
-                                </table>
-
-
                                 <div class="custom-check goleft mt">
                                     <table id="berichten" class="table table-hover custom-check">
                                         <?php
-                                        $vacancies = showVacancies($_SESSION['user']->ID);
-                                        foreach($vacancies as $vacancy) { ?>
+                                        $messages = showMessages($_SESSION['user']->ID);
+                                        foreach($messages->Messages as $message) { ?>
                                             <tr>
                                                 <td>
-                                                    <span class="check"><input type="checkbox" class="checked"></span>
+                                                    <a href="bericht.php?<?php echo "ID=".$message->ID."&empID=".
+                                                        $message->employeeID."&vacID=".$message->vacancyID ?>">
+                                                        <? if($message->read==false)
+                                                        {?>
+                                                            <b>
+                                                        <?}
+                                                        echo $message->employeeID;
+                                                        if($message->read==false){?>
+                                                            </b>
+                                                        <?}
+                                                        ?>
+                                                    </a>
                                                 </td>
-                                                <td><a href="bericht.php">Verzender</a></span></td>
-                                                <td><a href="bericht.php">Titel</a></span></td>
                                                 <td>
-                                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i>
+                                                    <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
+                                                        .$message->employeeID."&vacID=".$message->vacancyID ?>">
+                                                        <? if($message->read==false){?>
+                                                            <b><?
+                                                        }
+                                                        echo $message->title;
+                                                        if($message->read==false){?>
+                                                            </b>
+                                                        <?}?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <button id="delete" class="btn btn-danger btn-xs"
+                                                            data-levelid="<?php echo $message->ID; ?>"
+                                                            onclick="deleteMessage()">
+                                                        <i class="fa fa-trash-o "></i>
                                                     </button>
                                                 </td>
                                             </tr>
