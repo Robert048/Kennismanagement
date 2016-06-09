@@ -166,7 +166,20 @@ if($_SESSION['isloggedin']) {
         <div class="content-panel">
     <div class="custom-check goleft mt">
     <table id="berichten" class="table">
+    <thead>
+    <tr>
+        <td>
+        Werknemer
+        </td>
+        <td>
+          Titel
+        </td>
+        <td>
+            Verwijder
+        </td>
+    </tr>
 
+    </thead>
     <?php
     $messages = showMessages($_SESSION['user']->ID);
     foreach ($messages->Messages as $message) { ?>
