@@ -1,10 +1,12 @@
-﻿ using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using WorQit.Models;
 
 namespace WorQit
 {
@@ -30,6 +32,25 @@ namespace WorQit
             txtUren.Text = Login.loggedInUser.hours.ToString();
             txtErvaring.Text = Login.loggedInUser.experience;
             txtEmail.Text = Login.loggedInUser.email;
+            setProgress();
+        }
+
+        private void setProgress()
+        {
+            if (Login.loggedInUser.firstName != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.lastName != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.industry != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.positions != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.interests != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.languages != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.skills != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.educations != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.dob != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.location != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.hours != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.experience != null) barProgress.Value = barProgress.Value + 8;
+            if (Login.loggedInUser.email != null) barProgress.Value = barProgress.Value + 8;
+
         }
 
         /// <summary>
@@ -54,7 +75,7 @@ namespace WorQit
                     stringContent.Headers.Add("skills", txtVaardigheden.Text); // vaardigheden -  eisen
                     stringContent.Headers.Add("educations", txtOpleiding.Text); //education
                     stringContent.Headers.Add("dob", txtLeeftijd.Text);
-                    stringContent.Headers.Add("location", txtLocatie.Text);
+                    stringContent.Headers.Add("city", txtLocatie.Text);
                     stringContent.Headers.Add("hours", txtUren.Text); //hours
                     stringContent.Headers.Add("experience", txtErvaring.Text); //vorige banen 
                     stringContent.Headers.Add("password", txtPassword.Text);
@@ -69,7 +90,9 @@ namespace WorQit
                     {
                         if (jsonresult["Result"] == "successful")
                         {
-                            Login.loggedInUser = jsonresult["User"];
+                            var userObject = JsonConvert.SerializeObject(jsonresult);
+                            var user = JObject.Parse(userObject).SelectToken("User").ToString();
+                            Login.loggedInUser = (JsonConvert.DeserializeObject<Employee>(user)) as Employee;
                             Frame.Navigate(typeof(Main));
                         }
                         else
