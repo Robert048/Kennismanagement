@@ -1,14 +1,8 @@
 <?php
 //include_once "../../globals.php";
-
 session_start();
 if ($_SESSION['isloggedin']) {
-
-
     include("../Controller/deleteEmployer.php");
-    include("../Controller/editEmployer.php");
-
-
     ?>
 
     <!DOCTYPE html>
@@ -102,6 +96,7 @@ if ($_SESSION['isloggedin']) {
         <!--sidebar start-->
         <aside>
             <div id="sidebar" class="nav-collapse ">
+
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
@@ -146,6 +141,7 @@ if ($_SESSION['isloggedin']) {
         MAIN CONTENT
     *********************************************************************************************************************************************************** -->
         <!--main content start-->
+
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <h3><i class="fa fa-angle-right"></i> Profiel van <?php if($_SESSION['user']->name == null){
@@ -154,7 +150,7 @@ if ($_SESSION['isloggedin']) {
                         echo $_SESSION['user']->name;
                     }
                     ?> </h3>
-
+                <p id="editProfile" style="font-size:16px;"></p>
                 <form method="post" action="profiel.php" id="form">
                     <div id="form2">
                         <div class="row mt">
@@ -178,6 +174,7 @@ if ($_SESSION['isloggedin']) {
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" >Email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user']->email ?>">
                             </div>
+
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;">Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION['user']->description; ?></textarea></div>
                 </form>
@@ -198,6 +195,7 @@ if ($_SESSION['isloggedin']) {
                         <h4 class="modal-title">Account verwijderen</h4>
                     </div>
                     <div class="modal-footer">
+                        <br/>Weet u zeker dat u het account wilt verwijderen?
                         <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja</button>
                         <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
                         <script>
@@ -206,52 +204,6 @@ if ($_SESSION['isloggedin']) {
                                 $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
                             }
                         </script>
-                    </div>
-                    <br/> <br/>
-
-                    <div class="col-lg-4">
-                        <p><?php if($_SESSION['user']->employeeCount == null){
-                                echo $_SESSION['user']->employeeCount;
-                            }else{
-                                echo " ";
-                            }
-                            ?></p>
-                    </div>
-                    <br/> <br/>
-
-                    <div class="col-lg-4">
-                        <p style="font-weight:bold;font-size: 14pt;" >Bedrijfslocatie</p>
-                    </div>
-                    <br/> <br/>
-
-                    <div class="col-lg-1">
-                        <p><?php if($_SESSION['user']->location == null){
-                                echo $_SESSION['user']->location;
-                            }else{
-                                echo " ";
-                            ?>
-                        </p>
-                    <br/> <br/>
-
-                    <div class="col-lg-4">
-                        <p style="font-weight:bold;font-size: 14pt;" >Bedrijfsomschrijving</p>
-                    </div>
-                    <br/> <br/>
-
-                    <div class="col-lg-6">
-                        <p><?php if($_SESSION['user']->description == null){
-                                echo $_SESSION['user']->description;
-                            }else{
-                                echo " ";
-                            }
-                            ?></p>
-                    </div>
-                    <br/> <br/> <br/><br/> <br/> <br/><br/> <br/>
-
-                    <div class="col-lg-6">
-                        <form method="get" action="">
-                            <button class="btn btn-primary btn-xs" type="submit"><i class="fa fa-pencil"></i></button>
-                        </form>
                     </div>
             </section>
             <! --/wrapper -->
@@ -288,19 +240,12 @@ if ($_SESSION['isloggedin']) {
     
   <script>
         //custom select box
-
         $(function () {
             $('select.styled').customSelect();
         });
-
     </script>
-
     </body>
     </html>
-
-    <?php
-}
-?>
     <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
     <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
@@ -309,15 +254,15 @@ if ($_SESSION['isloggedin']) {
             src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 <?php
-
     }
     else{
         header("location: ../../login.php");
     }
+include("../Controller/editEmployer.php");
+
     ?>
+
 
