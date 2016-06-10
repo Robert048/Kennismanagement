@@ -51,7 +51,16 @@ function showMessages($ID){
     $content = curl_exec($curl);
     curl_close($curl);
 
-    return json_decode($content);
+    $allMessages = json_decode($content);
+    $receivedMessages= array();
+    if(!empty($allMessages->Messages)){
+        foreach($allMessages->Messages as $allMessage){
+            if($allMessage->sender== 'employee'){
+                $receivedMessages[] = $allMessage;
+            }
+        }
+    }
+    return $receivedMessages;
 }
 
 function deleteMessage($id){
@@ -72,10 +81,12 @@ function unreadMessages()
 {
     $unread = array();
     $messages = showMessages($_SESSION['user']->ID);
-    foreach ($messages->Messages as $message) {
+    if(!empty($messages)) {
+        foreach ($messages as $message) {
 
-        if ($message->read == false) {
-            $unread[] = $message;
+            if ($message->read == false) {
+                $unread[] = $message;
+            }
         }
     }
     return $unread;
