@@ -112,7 +112,7 @@ function updateMessageRead($messageID)
     curl_close($ch);
 }
 
-function getLastMessages($employerID, $employeeID, $count)
+function getAllMessages($employerID, $employeeID, $count)
 {
      $curl = curl_init();
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -121,4 +121,19 @@ function getLastMessages($employerID, $employeeID, $count)
     curl_close($curl);
 
     return json_decode($content);
+}
+
+function getLastMessages($employerID, $employeeID, $count, $title){
+
+    $allMessages = getAllMessages($employerID, $employeeID, $count);
+    $messages = array();
+    foreach($allMessages->Messages as $message){
+
+        if($message->title == $title){
+            $messages[] = $message;
+        }
+    }
+    $reverseArray = array_reverse($messages);
+    $lastMessages = array_slice($reverseArray,0,3);
+    return $lastMessages;
 }
