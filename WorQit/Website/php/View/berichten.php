@@ -151,80 +151,72 @@ if($_SESSION['isloggedin']) {
     <!-- **********************************************************************************************************************************************************
     MAIN CONTENT
 *********************************************************************************************************************************************************** -->
-    <!--main content start-->
-    <section id="main-content">
-    <section class="wrapper site-min-height">
-    <h3>Berichten</h3>
-    <div class="row mt">
-    <div class="col-lg-12">
-
-    <!-- Berichten overzicht -->
-    <div class="row mt">
-
-    <div class="white-panel pn">
-        <div class="content-panel">
-    <div class="custom-check goleft mt">
-        <h4>Vacatures overzicht</h4>
-    <table id="berichten" class="table">
-
-
-        <?php
-    $messages = showMessages($_SESSION['user']->ID);
-    foreach ($messages->Messages as $message) { ?>
-        <tr>
-            <td>
-                <a href="bericht.php?<?php echo "ID=" . $message->ID . "&empID=" .
-                    $message->employeeID . "&vacID=" . $message->vacancyID?>">
-                    <?php if ($message->read == false)
-                    {
-                    ?>
-                    <b>
-                        <?php
-                        }
-                        echo $message->employeeID;
-                        if ($message->read == false){
-                        ?>
-                    </b>
-                <?php
-                }
-                ?>
-                </a>
-            </td>
-            <td>
-                <a href="bericht.php?<?php echo "ID=" . $message->ID . "&empID="
-                    . $message->employeeID . "&vacID=" . $message->vacancyID ?>">
-                    <?php if ($message->read == false){ ?>
-                    <b><?php
-                        }
-                        echo $message->title;
-                        if ($message->read == false){
-                        ?>
-                    </b>
-                <?php
-                } ?>
-                </a>
-            </td>
-            <td>
-                <button id="delete" class="btn btn-danger btn-xs"
-                        data-levelid="<?php echo $message->ID; ?>"
-                        onclick="deleteMessage()">
-                    <i class="fa fa-trash-o" style="color:white;"></i>
-                </button>
-            </td>
-        </tr>
-        <?php
-    }
-
-                                        ?>
-                                    </table>
-                                </div><!-- /table-responsive -->
-                            </div><!--/ White-panel -->
-                        </div><! --/col-md-12 -->
-                    </div><! -- row -->
-        </div>
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <h3> Berichten Overzicht</h3>
+                <div class="row mt">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <table id="berichten" class="table table-striped table-advance table-hover">
+                                <thead>
+                                <tr>
+                                    <th><i class="fa fa-user"></i>  Verzender</th>
+                                    <th><i class="fa fa-inbox"></i>  Onderwerp</th>
+                                    <th>
+                                </tr>
+                                <?php
+                                $messages = showMessages($_SESSION['user']->ID);
+                                foreach ($messages as $message) { ?>
+                                <tr class="berichtRow">
+                                    <td>
+                                        <a href="bericht.php?<?php echo "ID=" . $message->ID . "&empID=" .
+                                                        $message->employeeID . "&vacID=" . $message->vacancyID?>">
+                                            <?php if ($message->read == false)
+                                            {
+                                            ?>
+                                                <b>
+                                            <?php
+                                            }
+                                            echo $message->employeeID;
+                                            if ($message->read == false)
+                                            {
+                                            ?>
+                                                <b>
+                                            <?php
+                                            }
+                                            ?>
+                                    </td>
+                                    <td>
+                                        <a href="bericht.php?<?php echo "ID=" . $message->ID . "&empID="
+                                            . $message->employeeID . "&vacID=" . $message->vacancyID ?>">
+                                            <?php if ($message->read == false){ ?>
+                                            <b><?php
+                                                }
+                                                echo $message->title;
+                                                if ($message->read == false){
+                                                ?>
+                                            </b>
+                                        <?php
+                                        } ?>
+                                        </a>
+                                    <td>
+                                        <button id="delete" class="btn btn-danger btn-xs"
+                                                data-levelid="<?php echo $message->ID; ?>"
+                                                onclick="deleteMessage()">
+                                            <i class="fa fa-trash-o" style="color:white;"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                                </thead>
+                            </table>
+                        </div><!-- /content-panel -->
+                    </div><!-- /col-md-12 -->
                 </div>
-        </section><! --/wrapper -->
-    </section><!-- /MAIN CONTENT -->
+            </section><! --/wrapper -->
+        </section><!-- /MAIN CONTENT -->
 
     <!--main content end-->
     <!--footer start-->
