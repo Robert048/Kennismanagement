@@ -111,3 +111,14 @@ function updateMessageRead($messageID)
     $server_output = curl_exec($ch);
     curl_close($ch);
 }
+
+function getLastMessages($employerID, $employeeID, $count)
+{
+     $curl = curl_init();
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_URL, 'http://worqit.azurewebsites.net/api/Message/getLast?employerID='.$employerID.'&employeeID='.$employeeID.'&count='.$count.'');
+    $content = curl_exec($curl);
+    curl_close($curl);
+
+    return json_decode($content);
+}

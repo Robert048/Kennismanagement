@@ -3,18 +3,22 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WorQit"
+    xmlns:converter="using:WorQit.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
+        <converter:DateTimeConverter x:Key="Converter"/>
         <DataTemplate x:Key="berichtTemplate">
-            <Grid Height="33" Width="291" Tapped="messageClick">
+            <Grid Height="33" Width="440" Tapped="messageClick">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="85*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="150*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txtTitleOpen" Tapped="messageClick" TextWrapping="Wrap" Text="{Binding title}" Grid.Column="1" FontSize="12" VerticalAlignment="Center" TextAlignment="Center" />
-                <Image x:Name="imgMail" Tapped="messageClick" Source="{Binding imgPath}"/>
+                <TextBlock x:Name="txtTitleOpen" Tapped="messageClick" TextWrapping="Wrap" Text="{Binding title}" FontSize="12" VerticalAlignment="Center" TextAlignment="Center" Grid.ColumnSpan="2" Margin="58,9,0,8" />
+                <Image x:Name="imgMail" Tapped="messageClick" Source="{Binding imgPath}" Margin="0,0,0.333,0"/>
+                <TextBlock x:Name="txtDate" Grid.Column="2" TextWrapping="Wrap" Text="{Binding Path=date, Converter={StaticResource ResourceKey=Converter}, ConverterParameter=\{dd/MM/yyyy HH:mm\}}" FontSize="12" VerticalAlignment="Center" TextAlignment="Center"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>

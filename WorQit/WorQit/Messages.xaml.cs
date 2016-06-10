@@ -29,10 +29,11 @@ namespace WorQit
         /// <param name="e">parameters</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter is Message)
+            if (e.Parameter is List<Message>)
             {
-                this.DataContext = (Message)e.Parameter;
-                currentMessage = (Message)e.Parameter;
+                List<Message> list = (List<Message>)e.Parameter;
+                this.DataContext = list[0];
+                currentMessage = list[0];
                 setMessageRead();
             }
             else

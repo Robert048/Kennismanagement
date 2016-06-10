@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
     include  ('../Controller/getCandidates.php');
@@ -9,10 +10,10 @@ if($_SESSION['isloggedin']) {
 
     $detailID = $_SESSION["clicked"];
     $allCandidates = getCandidates($detailID);
-    //echo var_dump($allCandidates);
+    // echo var_dump($allCandidates);
 
 
-   $linkAdres = "vacancieDetails.php?ID=".$detailID;
+    $linkAdres = "vacancieDetails.php?ID=".$detailID;
     ?>
 
 
@@ -27,10 +28,11 @@ if($_SESSION['isloggedin']) {
 
         <title>Werknemer</title>
 
+
         <!-- Bootstrap core CSS -->
         <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
         <!--external css-->
-        <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
 
         <!-- Custom styles for this template -->
         <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
@@ -161,7 +163,6 @@ if($_SESSION['isloggedin']) {
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <h3>Werknemer <?php echo $user->ID; ?></h3>
-                <p id="sendMessage" style="font-size:16px;"></p>
                 <div class="row mt">
                     <div class="col-md-12">
                         <div class="content-panel">
@@ -190,6 +191,10 @@ if($_SESSION['isloggedin']) {
                                 <tr>
                                     <th></i> Ervaring</th>
                                     <th class=hidden-phone><?php echo $user->experience; ?></th>
+                                </tr>
+                                <tr>
+                                    <th></i> Opleiding</th>
+                                    <th class=hidden-phone><?php  $user->educations; ?></th>
                                 </tr>
                                 </tr>
                                 </thead>
@@ -221,14 +226,14 @@ if($_SESSION['isloggedin']) {
                         </div>
                         <div class="modal-body">
                             <p>Vul de volgende velden in om een bericht te sturen.</p>
-                           <input type="text" id="titel" name="titel" placeholder="Vul een titel in"
-                                          autocomplete="off" class="form-control placeholder-no-fix">
-                            <br/>
+                            Titel : <?php echo $_SESSION["functie"]; ?>
+                            <br/><br/>
                            <textarea class="form-control placeholder-no-fix" id="text" name="text" rows="4"
-                                               cols="50" placeholder="Bericht" maxlength="500"
-                                               style="resize:none;"></textarea>
+                                     cols="50" placeholder="Bericht" maxlength="500"
+                                     style="resize:none;"></textarea>
 
                             <input type="hidden" name="employeeID" value="<?php echo $_GET["ID"] ?>"/>
+                            <input type="hidden" name="titel" value="<?php echo $_SESSION["functie"];?>"
                         </div>
                         <div class="modal-footer">
                             <button data-dismiss="modal" class="btn btn-default" type="button">Annuleren</button>
@@ -256,15 +261,14 @@ if($_SESSION['isloggedin']) {
     <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script class="include" type="text/javascript" src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script class="include" type="text/javascript"
+            src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
+
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
-
-    <!--script for this page-->
-    <script src= "../../js/vacature.js"></script>
 
     <script>var base_url = "<?php echo BASE_URL; ?>"</script>
     <script>
