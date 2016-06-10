@@ -32,7 +32,9 @@ namespace WorQit
             if (e.Parameter is List<Message>)
             {
                 List<Message> list = (List<Message>)e.Parameter;
-                this.DataContext = list[0];
+                Message bericht = list[0];
+                bericht.text = "Verstuurd door u: \n" + list[0].text + "\nVerstuurd door werkgever: \n" + list[1].text;
+                this.DataContext = bericht;
                 currentMessage = list[0];
                 setMessageRead();
             }
