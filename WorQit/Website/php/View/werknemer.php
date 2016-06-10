@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
     include  ('../Controller/getCandidates.php');
@@ -9,10 +10,10 @@ if($_SESSION['isloggedin']) {
 
     $detailID = $_SESSION["clicked"];
     $allCandidates = getCandidates($detailID);
-    //echo var_dump($allCandidates);
+    // echo var_dump($allCandidates);
 
 
-   $linkAdres = "vacancieDetails.php?ID=".$detailID;
+    $linkAdres = "vacancieDetails.php?ID=".$detailID;
     ?>
 
 
@@ -225,14 +226,14 @@ if($_SESSION['isloggedin']) {
                         </div>
                         <div class="modal-body">
                             <p>Vul de volgende velden in om een bericht te sturen.</p>
-                           <input type="text" id="titel" name="titel" placeholder="Vul een titel in"
-                                          autocomplete="off" class="form-control placeholder-no-fix">
-                            <br/>
+                            Titel : <?php echo $_SESSION["functie"]; ?>
+                            <br/><br/>
                            <textarea class="form-control placeholder-no-fix" id="text" name="text" rows="4"
-                                               cols="50" placeholder="Bericht" maxlength="500"
-                                               style="resize:none;"></textarea>
+                                     cols="50" placeholder="Bericht" maxlength="500"
+                                     style="resize:none;"></textarea>
 
                             <input type="hidden" name="employeeID" value="<?php echo $_GET["ID"] ?>"/>
+                            <input type="hidden" name="titel" value="<?php echo $_SESSION["functie"];?>"
                         </div>
                         <div class="modal-footer">
                             <button data-dismiss="modal" class="btn btn-default" type="button">Annuleren</button>

@@ -190,6 +190,7 @@ if($_SESSION['isloggedin']) {
                                     <th></i> Geliked door:</th>
                                     <th class=hidden-phone>
                                         <?php
+                                        $_SESSION["functie"] = $vacancy->jobfunction;
 
                                         $count = 1;
                                         if (count($allCandidates->Users) == "0") {
