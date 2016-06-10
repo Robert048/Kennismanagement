@@ -94,7 +94,10 @@ namespace WorQit
                         message.imgPath = "Assets/email-closed.png";
                     }
 
-                    berichten.Add(message);
+                    if (message.sender != "employee")
+                    {
+                        berichten.Add(message);
+                    }
                 }
                 control.ItemsSource = berichten;
             }
