@@ -48,9 +48,9 @@ namespace WorQit
                             var user = JObject.Parse(userObject).SelectToken("User").ToString();
                             loggedInUser = (JsonConvert.DeserializeObject<List<Employee>>(user))[0] as Employee;
                             
-                                var url = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setScoreForEmployee/" + loggedInUser.ID.ToString());
-                                var responseSet = await client.GetAsync(url);
-                                var resultSet = await responseSet.Content.ReadAsStringAsync();
+                                //var url = new Uri("http://worqit.azurewebsites.net/api/Vacancy/setScoreForEmployee/" + loggedInUser.ID.ToString());
+                                //var responseSet = await client.PostAsync(url, null);
+                                //var resultSet = await responseSet.Content.ReadAsStringAsync();
 
                             Frame.Navigate(typeof(Start));
                         }

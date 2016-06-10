@@ -8,13 +8,15 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="berichtTemplate">
-            <Grid Height="33" Width="291" Tapped="messageClick">
+            <Grid Height="33" Width="440" Tapped="messageClick">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="85*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="190*"/>
+                    <ColumnDefinition Width="150*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="txtTitleOpen" Tapped="messageClick" TextWrapping="Wrap" Text="{Binding title}" Grid.Column="1" FontSize="12" VerticalAlignment="Center" TextAlignment="Center" />
-                <Image x:Name="imgMail" Tapped="messageClick" Source="{Binding imgPath}"/>
+                <TextBlock x:Name="txtTitleOpen" Tapped="messageClick" TextWrapping="Wrap" Text="{Binding title}" FontSize="12" VerticalAlignment="Center" TextAlignment="Center" Grid.ColumnSpan="2" Margin="58,9,0,8" />
+                <Image x:Name="imgMail" Tapped="messageClick" Source="{Binding imgPath}" Margin="0,0,0.333,0"/>
+                <TextBlock x:Name="txtDate" Grid.Column="2" TextWrapping="Wrap" Text="{Binding date}" FontSize="12" VerticalAlignment="Center" TextAlignment="Center"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
