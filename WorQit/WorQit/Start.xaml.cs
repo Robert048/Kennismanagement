@@ -33,7 +33,6 @@ namespace WorQit
         private List<Message> berichten = new List<Message>();
         public static Message currentMessage = new Message();
         private int unreadMessages = 0;
-        private Task client;
 
         public Start()
         {
@@ -69,7 +68,7 @@ namespace WorQit
                 var messagesRoot = JsonConvert.DeserializeObject<MessageRootObject>(result);
                 foreach (var message in messagesRoot.Messages)
                 {
-                    if (message.read == false)
+                    if (message.read == false && message.sender == "employer")
                     {
                         unreadMessages = unreadMessages + 1;
                     }
