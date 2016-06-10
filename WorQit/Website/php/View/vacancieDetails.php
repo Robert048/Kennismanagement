@@ -6,8 +6,8 @@ if($_SESSION['isloggedin']) {
     include_once('../Controller/messages.php');
     $messages= unreadMessages();
     $message = getMessage($_GET['ID']);
-
     $allCandidates = getCandidates($_GET["ID"]);
+    updateLikeSeen($_GET['ID'], $allCandidates);
 
    // echo var_dump($allCandidates);
     $allVacances = showVacancies($_SESSION["user"]->ID);

@@ -15,7 +15,7 @@ if($_SESSION['isloggedin']) {
     updateMessageRead($message);
     $linkAdres = "berichten.php";
 
-    $lastMessages = getLastMessages($_SESSION["user"]->ID,$_GET["empID"], -1);
+    $lastMessages = getLastMessages($_SESSION["user"]->ID, $_GET["empID"], -1, $message->Messages->title);
    //echo var_dump($lastMessages);
     ?>
 
@@ -164,12 +164,11 @@ if($_SESSION['isloggedin']) {
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3> Berichten</h3>
+                <h3> <?php echo $message->Messages->title; ?></h3>
                 <div class="row mt">
-                    <h1 style="padding-left: 20px;"><?php echo $message->Messages->title; ?></h1>
                     <div class="col-lg-12">
 
-                        <?php foreach($lastMessages->Messages as $lastMessage) if($message->Messages->title == $lastMessage->title){ { ?>
+                        <?php foreach($lastMessages as $lastMessage){  ?>
                             <div class="form-panel">
                                 <div style="border-bottom-width: 2px; border-bottom: solid; border-bottom-color: #68dff0;">
                                     <h4><?php if($lastMessage->sender == "employee" || $lastMessage->sender == "Employee") {
@@ -178,14 +177,15 @@ if($_SESSION['isloggedin']) {
                                         elseif($lastMessage->sender == "employer" || $lastMessage->sender == "Employer" )
                                          {
                                          echo "Verstuurd door werkgever";
-                                          }?></h4>
+                                          }
+                                        ?></h4>
                                 </div>
                                 <br>
                                 <?php echo $lastMessage->text; ?>
                                 <br/>
 
                             </div>
-                        <?php } }?>
+                        <?php }?>
 
                         <br>
                         <div class="form-panel">
