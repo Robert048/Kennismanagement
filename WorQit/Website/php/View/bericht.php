@@ -10,7 +10,7 @@ session_start();
 
 if($_SESSION['isloggedin']) {
     include_once('../Controller/messages.php');
-    $messages= unreadMessages();
+    $unreadMessages= unreadMessages();
     $message = getMessage($_GET['ID']);
     updateMessageRead($message);
     $linkAdres = "berichten.php"
@@ -60,7 +60,7 @@ if($_SESSION['isloggedin']) {
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
-                    <?php $count = count($messages);?>
+                    <?php $count = count($unreadMessages);?>
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="../../index.php#">
@@ -72,18 +72,18 @@ if($_SESSION['isloggedin']) {
                             <li>
                                 <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
                             </li>
-                            <?php foreach($messages as $message){?>
+                            <?php foreach($unreadMessages as $messages){?>
                                 <li>
-                                    <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
-                                        .$message->employeeID."&vacID=".$message->vacancyID ?>">
+                                    <a href="bericht.php?<?php echo "ID=".$messages->ID."&empID="
+                                        .$messages->employeeID."&vacID=".$messages->vacancyID ?>">
                                 <span class="photo"><img alt="avatar"
                                                          src="../../images/email-closed.png"></span>
                                         <span class="subject">
-                                        <span class="from"><?php echo $message->employeeID?></span>
-                                        <span class="time"><?php echo $message->date ?></span>
+                                        <span class="from"><?php echo $messages->employeeID?></span>
+                                        <span class="time"><?php echo $messages->date ?></span>
                                         </span>
                                         <span class="message">
-                                            <?php echo $message->title?>
+                                            <?php echo $messages->title?>
                                         </span>
                                     </a>
                                 </li>

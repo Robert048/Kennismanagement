@@ -11,6 +11,7 @@ if($_SESSION['isloggedin']) {
 include ('../Controller/vacancies.php');
 include_once('../Controller/messages.php');
 $messages= unreadMessages();
+$likes = getAllLikes($_SESSION['user']->ID);
 
 ?>
 
@@ -158,14 +159,11 @@ $messages= unreadMessages();
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper site-min-height">
-                    <h3> Vacatures</h3>
+                    <h3> Vacature Overzicht</h3>
                     <div class="row mt">
                         <div class="col-md-12">
                             <div class="content-panel">
                                 <div id="head">
-                                    <div id="title">
-                                        <h4>Vacatures overzicht</h4>
-                                    </div>
                                     <div id="nwVac">
                                         <a data-toggle="modal" href="vacancies.php#newVacModal">
                                             <button type="button" class="btn btn-round btn-success">Nieuwe vacature</button>
@@ -177,6 +175,7 @@ $messages= unreadMessages();
                                         <tr>
                                             <th><i class="fa fa-bullhorn"></i> Functie</th>
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Omschrijving</th>
+                                            <th><i class="fa fa-heart"></i> Likes</th>
                                             <th>
                                                 <?php
                                                 $vacancies = showVacancies($_SESSION['user']->ID);
@@ -185,7 +184,26 @@ $messages= unreadMessages();
                                                     <td>
                                                         <a href="vacancieDetails.php?<?php echo "ID=".$vacancy->ID?>"><?php echo $vacancy->jobfunction?></a>
                                                     </td>
-                                                    <td class=hidden-phone><?php echo $vacancy->description?></td>
+                                                    <td>
+                                                        <?php
+                                                            if(strlen($vacancy->description)>50){
+                                                                echo substr($vacancy->description, 0, 50)."...";
+                                                            }
+                                                            else{
+                                                                echo $vacancy->description;
+                                                            }?>
+                                                    </td>
+                                                    <td>
+                                                       <?php
+                                                            $likeCount = 0;
+                                                            foreach($likes->Users as $like){
+                                                                if($like->vacancyID==$vacancy->ID){
+                                                                    $likeCount++;
+                                                                }
+                                                            }
+                                                        echo $likeCount;
+                                                       ?>
+                                                    </td>
                                                     <td>
                                                         <button id="delete" class="btn btn-danger btn-xs" data-levelid="<?php echo $vacancy->ID; ?>" onclick="deleteVacancy()"><i class="fa fa-trash-o "></i></button>
                                                     </td>

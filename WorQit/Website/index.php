@@ -6,9 +6,12 @@
  * Time: 09:40
  */
 session_start();
-include_once('php/Controller/messages.php');
-$messages= unreadMessages();
+
 if($_SESSION['isloggedin']) {
+    include_once('php/Controller/messages.php');
+    include_once('php/Controller/vacancies.php');
+    $messages= unreadMessages();
+    $unreadLikes= getUnreadLikes();
 ?>
 
     <!DOCTYPE html>
@@ -160,23 +163,35 @@ if($_SESSION['isloggedin']) {
 *********************************************************************************************************************************************************** -->
     <!--main content start-->
     <section id="main-content">
+        <?php $likeCount= count($unreadLikes); ?>
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-9 main-chart">
                     <div class="row mtbox">
-                        <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-                            <div class="box1">
-                                <span class="li_mail"></span>
-
-                                <h3>5</h3>
+                        <a href="php/View/vacancies.php">
+                            <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                                <div class="box1">
+                                    <span class="li_heart"></span>
+                                    <h3><?php echo $likeCount ?></h3>
+                                </div>
+                                <p><?php echo $likeCount ?> Nieuwe mensen hebben een vacature geliked. Whoohoo!</p>
                             </div>
-                            <p>5 new messages!</p>
-                        </div>
+                        </a>
+                        <a href="php/View/berichten.php">
+                            <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                                <div class="box1">
+                                    <span class="li_mail"></span>
+
+                                    <h3><?php echo $count ?></h3>
+                                </div>
+                                <p><?php echo $count ?> nieuwe berichten!</p>
+                            </div>
+                        </a>
                     </div>
                     <!-- /row mt -->
 
                     <div class="row mt">
-                        <!-- SERVER STATUS PANELS -->
+                        <!-- Profiel status Panel -->
                         <a href="php/View/profiel.php">
                             <div class="col-md-4 col-sm-4 mb">
                                 <div class="darkblue-panel pn donut-chart">
@@ -229,18 +244,34 @@ if($_SESSION['isloggedin']) {
                             </a>
                         </div><!-- /row -->
                     </div>
-                    <! --/row -->
+                    <div class="col-lg-3 ds">
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <! --/row -->
             </section>
         </section>
         <!--main content end-->
         <!--footer start-->
-        <footer class="site-footer">
-            <div class="text-center">
-                <a href="index.php#" class="go-top">
-                    <i class="fa fa-angle-up"></i>
-                </a>
-            </div>
-        </footer>
+    <footer class="site-footer">
+        <div class="text-center">
+            2016- WorQit
+            <a href="index.php" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
         <!--footer end-->
     </section>
 
