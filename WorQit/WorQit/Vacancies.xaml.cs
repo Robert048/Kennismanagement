@@ -26,7 +26,9 @@ namespace WorQit
         {
             this.InitializeComponent();
             txtFunction.Text = "Vacatures ophalen, even geduld alstublieft.";
+
             init();
+
         }
 
         public async void init()
@@ -63,11 +65,7 @@ namespace WorQit
 
         public void getCurrentHighestVacancy()
         {
-            txtBlockDesc.Text = "Beschrijving";
-            txtEisen.Text = "Eisen";
-            txtFunction.Text = "Function";
-            txtSalaris.Text = "Salaris";
-            txtUren.Text = "Uren";
+
 
             if (matchedList.Count != 0)
             {
@@ -162,6 +160,11 @@ namespace WorQit
             {
                 finishedMatching();
             }
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Start));
         }
     }
 }

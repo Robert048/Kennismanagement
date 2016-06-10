@@ -94,7 +94,10 @@ namespace WorQit
                         message.imgPath = "Assets/email-closed.png";
                     }
 
-                    berichten.Add(message);
+                    if (message.sender != "employee")
+                    {
+                        berichten.Add(message);
+                    }
                 }
                 control.ItemsSource = berichten;
             }
@@ -116,10 +119,20 @@ namespace WorQit
             Frame.Navigate(typeof(EditProfile));
         }
 
-        private void messageClick(object sender, TappedRoutedEventArgs e)
+        private async void messageClick(object sender, TappedRoutedEventArgs e)
         {
             Message selectedMessage = (Message)control.SelectedItem;
-            Frame.Navigate(typeof(Messages), selectedMessage);
+            List<Message> selectedMessagesList = new List<Message>();
+            using (var client = new System.Net.Http.HttpClient())
+            {
+                var uri = new Uri("http://worqit.azurewebsites.net/api/Message/getLast?employerID=" + selectedMessage.employerID + "&employeeID=" + selectedMessage.employeeID + "&count=2");
+                var response = await client.GetAsync(uri);
+                var result = await response.Content.ReadAsStringAsync();
+                var messagesRoot = JsonConvert.DeserializeObject<MessageRootObject>(result);
+                selectedMessagesList = messagesRoot.Messages;
+            }
+
+            Frame.Navigate(typeof(Messages), selectedMessagesList);
         }
 
         private void control_ItemClick(object sender, ItemClickEventArgs e)
