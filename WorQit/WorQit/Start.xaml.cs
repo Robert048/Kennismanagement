@@ -65,7 +65,7 @@ namespace WorQit
 
         private void btnReloadMessages_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Main));
+            Frame.Navigate(typeof(Inbox));
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)

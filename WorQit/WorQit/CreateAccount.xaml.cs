@@ -5,7 +5,6 @@ using System.Net.Http;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.Web.Http;
 
 namespace WorQit
 {
@@ -29,7 +28,7 @@ namespace WorQit
             //controileer of wachtwoord en gebruikersnaam zijn ingevuld.
             if (!String.IsNullOrWhiteSpace(txtPassword.Password) && !String.IsNullOrWhiteSpace(txtUsername.Text))
             {
-                using (var client = new System.Net.Http.HttpClient())
+                using (var client = new HttpClient())
                 {
                     try
                     {

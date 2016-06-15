@@ -24,6 +24,7 @@ namespace WorQit
             localSettings.Values["distance"] = txtDistance.Text;
             localSettings.Values["hours"] = txtHours.Text;
             localSettings.Values["salary"] = txtSalary.Text;
+            Frame.Navigate(typeof(Start));
         }
     }
 }

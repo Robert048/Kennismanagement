@@ -18,7 +18,6 @@ namespace WorQit
     /// </summary>
     public sealed partial class Vacancies : Page
     {
-        //private List<Vacancy> vacancyList;
         private List<Vacancy> matchedList = new List<Vacancy>();
         private int currentVacancyIndex = 0;
         private Vacancy currentVacancy;
@@ -61,6 +60,8 @@ namespace WorQit
                 {
 
                 }
+                if (salary == null || salary == "") salary = "0";
+                if (hours == null || hours == "") hours = "0";
                 var uri = new Uri("http://worqit.azurewebsites.net/api/Vacancy/getVacanciesByScore/" + Login.loggedInUser.ID.ToString() + "?salary=" + salary + "&hours=" + hours);
                 var response = await client.GetAsync(uri);
                 var result = await response.Content.ReadAsStringAsync();
@@ -68,7 +69,14 @@ namespace WorQit
                 foreach (var vacancy in vacanciesRoot.Vacancys)
                 {
                     double distance2 = await getDistance(vacancy.location);
-                    if (distance2 <= Double.Parse(distance))
+                    if (distance != null && distance != "")
+                    {
+                        if (distance2 <= Double.Parse(distance))
+                        {
+                            matchedList.Add(vacancy);
+                        }
+                    }
+                    else
                     {
                         matchedList.Add(vacancy);
                     }
@@ -80,7 +88,7 @@ namespace WorQit
         {
             var dialog = new MessageDialog("Alle vacatures bekeken, ga verder om terug te keren naar het hoofdscherm.");
             await dialog.ShowAsync();
-            Frame.Navigate(typeof(Main));
+            Frame.Navigate(typeof(Inbox));
         }
 
         public void getCurrentHighestVacancy()
@@ -90,7 +98,7 @@ namespace WorQit
             if (matchedList.Count != 0)
             {
                 currentVacancy = matchedList[currentVacancyIndex];
-                textBlock.Text = currentVacancy.description;
+                txtBeschrijving.Text = currentVacancy.description;
                 txtEisen.Text = currentVacancy.requirements;
                 txtFunction.Text = currentVacancy.jobfunction;
                 txtSalaris.Text = currentVacancy.salary.ToString();
@@ -140,15 +148,7 @@ namespace WorQit
         {
             prgresVacancies.Value = prgresVacancies.Value + progressValueUpdate;
         }
-
-
-
-
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
+        
         private void btnLike_Click(object sender, RoutedEventArgs e)
         {
             if (currentVacancyIndex != matchedList.Count())
@@ -223,6 +223,7 @@ namespace WorQit
 }
 
 public enum DistanceType { Miles, Kilometers };
+
 /// <summary>
 /// Specifies a Latitude / Longitude point.
 /// </summary>
@@ -231,6 +232,7 @@ public struct Position
     public double Latitude;
     public double Longitude;
 }
+
 public class Haversine
 {
     /// <summary>
