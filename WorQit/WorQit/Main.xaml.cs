@@ -4,11 +4,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-<<<<<<< HEAD
-=======
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
->>>>>>> refs/remotes/origin/Falco
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using WorQit.Models;
@@ -72,7 +67,6 @@ namespace WorQit
         private void btnMatch_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Vacancies));
-<<<<<<< HEAD
         }
 
         private void btnEditProfile_Click(object sender, RoutedEventArgs e)
@@ -108,26 +102,6 @@ namespace WorQit
         }
 
         private async void reloadVacancies()
-=======
-        }
-    }
-    public enum DistanceType { Miles, Kilometers };
-    /// <summary>  
-    /// Specifies a Latitude / Longitude point.  
-    /// </summary>  
-    public struct Position
-    {
-        public double Latitude;
-        public double Longitude;
-    }
-    public class Haversine
-    {
-        /// <summary>  
-        /// Returns the distance in miles or kilometers of any two  
-        /// latitude / longitude points.  
-        /// </summary>  
-        public double Distance(Position pos1, Position pos2, DistanceType type)
->>>>>>> refs/remotes/origin/Falco
         {
             using (var client = new HttpClient())
             {
