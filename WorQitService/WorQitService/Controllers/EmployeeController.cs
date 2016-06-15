@@ -165,14 +165,14 @@ namespace WorQitService.Controllers
                 string firstName = (headers.Contains("firstName")) ? headers.GetValues("firstName").First() : null;
                 string lastName = (headers.Contains("lastName")) ? headers.GetValues("lastName").First() : null;
                 string industry = (headers.Contains("industry")) ? headers.GetValues("industry").First() : null;
-                string specialities = (headers.Contains("specialities")) ? headers.GetValues("specialities").First() : null;
+                
                 string positions = (headers.Contains("positions")) ? headers.GetValues("positions").First() : null;
                 string interests = (headers.Contains("interests")) ? headers.GetValues("interests").First() : null;
                 string languages = (headers.Contains("languages")) ? headers.GetValues("languages").First() : null;
                 string skills = (headers.Contains("skills")) ? headers.GetValues("skills").First() : null;
                 string educations = (headers.Contains("educations")) ? headers.GetValues("educations").First() : null;
                 string experience = (headers.Contains("experience")) ? headers.GetValues("experience").First() : null; // werkervaring
-                string volunteer = (headers.Contains("volunteer")) ? headers.GetValues("volunteer").First() : null;
+                
                 if (headers.Contains("dob") && headers.GetValues("dob").First() != null) {
 
                     DateTime? dob = DateTime.Parse(headers.GetValues("dob").First().ToString());
@@ -194,13 +194,13 @@ namespace WorQitService.Controllers
                 emp.firstName = (firstName != null) ? firstName : emp.firstName;
                 emp.lastName = (lastName != null) ? lastName : emp.lastName;
                 emp.industry = (industry != null) ? industry : emp.industry;
-                emp.specialities = (specialities != null) ? specialities : emp.specialities;
+              
                 emp.positions = (positions != null) ? positions : emp.positions;
                 emp.interests = (interests != null) ? interests : emp.interests;
                 emp.languages = (languages != null) ? languages : emp.languages;
                 emp.skills = (skills != null) ? skills : emp.skills;
                 emp.educations = (educations != null) ? educations : emp.educations;
-                emp.volunteer = (volunteer != null) ? volunteer : emp.volunteer;
+        
                 emp.experience = (experience != null) ? experience : emp.experience;
                 emp.location = (location != null) ? location : emp.location;
                

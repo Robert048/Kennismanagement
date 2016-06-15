@@ -497,6 +497,33 @@
             <param name="password"></param>
             <returns>employee object</returns>
         </member>
+        <member name="M:WorQitService.Controllers.MessageController.sendMessage">
+            <summary>
+            int employeeID, int employerID, string text, string sender, string title
+            </summary>
+        </member>
+        <member name="M:WorQitService.Controllers.MessageController.messageRead(System.Int32)">
+            <summary>
+            update read to true
+            </summary>
+            <param name="ID">message ID</param>
+        </member>
+        <member name="M:WorQitService.Controllers.MessageController.getLast(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            get last messages exchanged between employer and employee
+            </summary>
+            <param name="employerID">employer ID</param>
+            <param name="employeeID">employee ID</param>
+            <param name="count">number of messages (count == -1 => returns all messages)</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.MessageController.getMessage(System.Int32)">
+            <summary>
+            gets message by message ID
+            </summary>
+            <param name="ID">message ID</param>
+            <returns></returns>
+        </member>
         <member name="M:WorQitService.Controllers.VacancyController.getAllVacancies">
             <summary>
             Get all vacancys
@@ -542,7 +569,7 @@
             <param name="location"></param>
             <returns>vacancy list</returns>
         </member>
-        <member name="M:WorQitService.Controllers.VacancyController.addVacancy(System.Int32,System.String,System.String,System.Int32,System.Int32,System.String,System.String)">
+        <member name="M:WorQitService.Controllers.VacancyController.addVacancy(System.Int32,System.String,System.String,System.Int32,System.Int32,System.String)">
             <summary>
             Create new Vacancy
             </summary>
@@ -552,8 +579,13 @@
             <param name="salary"></param>
             <param name="hours"></param>
             <param name="requirements"></param>
-            <param name="tags"></param>
             <returns>json sucessfull or failed with error</returns>
+        </member>
+        <member name="M:WorQitService.Controllers.VacancyController.reactionSeen(System.Int32)">
+            <summary>
+            update seen to true, the like on the vacancy has been seen by the employer
+            </summary>
+            <param name="ID">matchID</param>
         </member>
     </members>
 </doc>
