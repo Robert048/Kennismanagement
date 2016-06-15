@@ -40,7 +40,7 @@ namespace WorQit
             }
             else
             {
-                Frame.Navigate(typeof(Main));
+                Frame.Navigate(typeof(Inbox));
             }
         }
 
@@ -68,7 +68,7 @@ namespace WorQit
         /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Main));
+            Frame.Navigate(typeof(Inbox));
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace WorQit
                     var jsonresult = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
                     var dialog = new MessageDialog("Bericht met titel: " + currentMessage.title + " is succesvol verstuurd, ga verder om terug te gaan.");
                     await dialog.ShowAsync();
-                    Frame.Navigate(typeof(Main));
+                    Frame.Navigate(typeof(Inbox));
                 }
                 catch
                 {
