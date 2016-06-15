@@ -74,6 +74,11 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// gets overview of employee messages
+        /// </summary>
+        /// <param name="ID"> employee id</param>
+        /// <returns></returns>
         public object getOverviewEmployee(int ID)
         {
             try
@@ -91,6 +96,11 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// gets overview of employer messages
+        /// </summary>
+        /// <param name="ID"> employer id</param>
+        /// <returns></returns>
         public object getOverviewEmployer(int ID)
         {
             try

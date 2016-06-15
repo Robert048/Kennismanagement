@@ -54,6 +54,11 @@ namespace WorQitService.Controllers
             }
         }
 
+
+        /// <summary>
+        /// deletes employer
+        /// </summary>
+        /// <returns></returns>
         public object deleteEmployer()
         {
             try
@@ -93,7 +98,10 @@ namespace WorQitService.Controllers
             }
         }
 
-      
+        /// <summary>
+        /// adds employer. Headers: username, email, password
+        /// </summary>
+        /// <returns></returns>
         public object addEmployer()
         {
             try
@@ -150,6 +158,10 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// edit employer
+        /// </summary>
+        /// <returns></returns>
         public object editEmployer()
         {
             try

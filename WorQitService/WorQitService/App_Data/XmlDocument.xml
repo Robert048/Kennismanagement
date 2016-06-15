@@ -537,11 +537,13 @@
             <param>vacancyID</param>
             <returns>vacancy list</returns>
         </member>
-        <member name="M:WorQitService.Controllers.VacancyController.getVacanciesByScore(System.Int32)">
+        <member name="M:WorQitService.Controllers.VacancyController.getVacanciesByScore(System.Int32,System.Int32,System.Int32)">
             <summary>
             Get all vacancys with score
             </summary>
-            <param>employeeID</param>
+            <param name="ID">employeeID</param>
+            <param name="hours">minumum hours</param>
+            <param name="salary">minumum salary</param>
             <returns>vacancy list</returns>
         </member>
         <member name="M:WorQitService.Controllers.VacancyController.getAllVacancyEmployees">
@@ -555,14 +557,6 @@
             Get vacancies from employer
             </summary>
             <param name="ID"></param>
-            <returns>vacancy list</returns>
-        </member>
-        <member name="M:WorQitService.Controllers.VacancyController.getVacancies(System.Int32,System.Int32)">
-            <summary>
-            Get vacancys with specified requirements
-            </summary>
-            <param name="salary"></param>
-            <param name="hours"></param>
             <returns>vacancy list</returns>
         </member>
         <member name="M:WorQitService.Controllers.VacancyController.addVacancy(System.Int32,System.String,System.String,System.Int32,System.Int32,System.String)">
