@@ -173,6 +173,7 @@ namespace WorQitService.Controllers
                 string educations = (headers.Contains("educations")) ? headers.GetValues("educations").First() : null;
                 string experience = (headers.Contains("experience")) ? headers.GetValues("experience").First() : null; // werkervaring
                 
+
                 if (headers.Contains("dob") && headers.GetValues("dob").First() != null) {
 
                     DateTime? dob = DateTime.Parse(headers.GetValues("dob").First().ToString());
@@ -180,14 +181,14 @@ namespace WorQitService.Controllers
                     emp.dob = (dob != null) ? dob : emp.dob;
                     
                 }
-                string location = (headers.Contains("location")) ? headers.GetValues("location").First() : null;
+                string location = (headers.Contains("city")) ? headers.GetValues("city").First() : null;
                 if (headers.Contains("hours")) {
                     int? hours = int.Parse(headers.GetValues("hours").First());
                     emp.hours = (hours != null) ? hours : emp.hours;
                 }
                 string password = (headers.Contains("password")) ? headers.GetValues("password").First() : null;
                 string oldPassword = (headers.Contains("oldPassword")) ? headers.GetValues("oldPassword").First() : null;
-                string email = (headers.Contains("ID")) ? headers.GetValues("ID").First() : null;
+                string email = (headers.Contains("email")) ? headers.GetValues("email").First() : null;
 
                 
                 
