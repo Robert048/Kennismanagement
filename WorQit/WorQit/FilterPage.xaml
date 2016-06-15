@@ -17,28 +17,30 @@
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="169*"/>
         </Grid.RowDefinitions>
+        <Rectangle Fill="#FF195695" Stroke="Black" Grid.Row="1" Grid.ColumnSpan="6"/>
         <Image x:Name="image" Grid.Column="2" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="Filters aanpassen" FontSize="16" Foreground="#FF195695" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="17,6,17,5" Height="21" Width="120"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="max. afstand" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="20" Margin="0,6"/>
-        <TextBox x:Name="txtDistance" Grid.Column="3" Grid.Row="3" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="min. salaris" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,6" Height="20"/>
-        <TextBox x:Name="txtSalary" Grid.Column="3" Grid.Row="4" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
-        <TextBlock Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="min. uren" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,6" Height="20"/>
-        <TextBox x:Name="txtHours" Grid.Column="3" Grid.Row="5" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnBack" Content="terug" Grid.Column="2" Grid.Row="8" Style="{StaticResource ButtonStyle}" Click="btnBack_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,2,0,0"/>
-        <Button x:Name="btnApply" Content="filters toevoegen" Grid.Column="2" Grid.Row="7" Style="{StaticResource ButtonStyle}" Click="btnApply_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,0,0,3"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="filters instellen" FontSize="16" Foreground="White" Margin="0,6,0,5" Height="21" Width="120" Grid.ColumnSpan="4" TextAlignment="Center"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="maximale afstand (km)" VerticalAlignment="Center" Height="20" Margin="0,6" Grid.ColumnSpan="4" Foreground="#FFA3CBE8" TextAlignment="Center"/>
+        <TextBox x:Name="txtDistance" Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="minimale salaris (€ per maand)" Grid.ColumnSpan="4" VerticalAlignment="Center" Margin="0,6" Height="20" Foreground="#FFA3CBE8" TextAlignment="Center"/>
+        <TextBox x:Name="txtSalary" Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="minimale uren (week)" Grid.ColumnSpan="4" VerticalAlignment="Center" Margin="0,6" Height="20" Foreground="#FFA3CBE8" TextAlignment="Center"/>
+        <TextBox x:Name="txtHours" Grid.Column="2" Grid.Row="8" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnBack" Content="terug" Style="{StaticResource backBtn}" Click="btnBack_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Margin="0"/>
+        <Button x:Name="btnApply" Content="filters toevoegen" Grid.Column="2" Grid.Row="10" Style="{StaticResource ButtonStyle}" Click="btnApply_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,0,0,3"/>
     </Grid>
 </Page>

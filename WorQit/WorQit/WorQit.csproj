@@ -139,6 +139,7 @@
     <Content Include="Assets\email-closed.png" />
     <Content Include="Assets\email-open %281%29.png" />
     <Content Include="Assets\inbox.png" />
+    <Content Include="Assets\left-arrow.png" />
     <Content Include="Assets\logo WorQit.png" />
     <Content Include="Assets\logout.png" />
     <Content Include="Assets\matching.png" />
