@@ -557,16 +557,12 @@
             <param name="ID"></param>
             <returns>vacancy list</returns>
         </member>
-        <member name="M:WorQitService.Controllers.VacancyController.getVacancies(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+        <member name="M:WorQitService.Controllers.VacancyController.getVacancies(System.Int32,System.Int32)">
             <summary>
             Get vacancys with specified requirements
             </summary>
-            <param name="function"></param>
             <param name="salary"></param>
             <param name="hours"></param>
-            <param name="requirements"></param>
-            <param name="tags"></param>
-            <param name="location"></param>
             <returns>vacancy list</returns>
         </member>
         <member name="M:WorQitService.Controllers.VacancyController.addVacancy(System.Int32,System.String,System.String,System.Int32,System.Int32,System.String)">

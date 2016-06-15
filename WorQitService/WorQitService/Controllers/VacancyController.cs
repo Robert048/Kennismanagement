@@ -322,9 +322,9 @@ namespace WorQitService.Controllers
             try
             {
                 List<Vacancy> vacancyList = getAllVacancies();
-              //  List<Vacancy> newVaList = vacancyList
+                List<Vacancy> newVaList = vacancyList.GroupBy(i => i.employerID).Select(group => group.First()).ToList();
 
-                foreach (Vacancy v in vacancyList)
+                foreach (Vacancy v in newVaList)
                 {
                     setMatchScore(ID, v.ID);
                 }
@@ -337,21 +337,7 @@ namespace WorQitService.Controllers
             }
         }
 
-
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
-        (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-        {
-            HashSet<TKey> seenKeys = new HashSet<TKey>();
-            foreach (TSource element in source)
-            {
-                if (seenKeys.Add(keySelector(element)))
-                {
-                    yield return element;
-                }
-            }
-        }
-
-
+        
 
     }
 }
