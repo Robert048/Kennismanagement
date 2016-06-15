@@ -587,5 +587,11 @@
             </summary>
             <param name="ID">matchID</param>
         </member>
+        <member name="M:WorQitService.Controllers.VacancyController.setScoreForEmployee(System.Int32)">
+            <summary>
+            sets score of vacancys for employee
+            </summary>
+            <param name="ID">employee ID</param>
+        </member>
     </members>
 </doc>

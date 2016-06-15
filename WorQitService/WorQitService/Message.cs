@@ -22,6 +22,7 @@ namespace WorQitService
         public Nullable<bool> read { get; set; }
         public string title { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        public Nullable<int> vacancyID { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Employer Employer { get; set; }

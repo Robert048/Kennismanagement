@@ -22,6 +22,7 @@ namespace WorQitService.Controllers
 
                 int employeeID = (headers.Contains("employeeID")) ? Int32.Parse(headers.GetValues("employeeID").First()) : -1;
                 int employerID = (headers.Contains("employerID")) ? Int32.Parse(headers.GetValues("employerID").First()) : -1;
+                int vacancyID = (headers.Contains("vacancyID")) ? Int32.Parse(headers.GetValues("vacancyID").First()) : -1;
                 string text = (headers.Contains("text")) ? headers.GetValues("text").First() : null;
                 string sender = (headers.Contains("sender")) ? headers.GetValues("sender").First() : null;
                 string title = (headers.Contains("title")) ? headers.GetValues("title").First() : null;
@@ -35,7 +36,10 @@ namespace WorQitService.Controllers
                     sender = sender,
                     text = text,
                     title = title,
-                    date = DateTime.Now
+                    date = DateTime.Now,
+                    vacancyID = vacancyID,
+                    read = false
+                    
                 };
                 wqdb.Messages.Add(msg);
                 wqdb.SaveChanges();
