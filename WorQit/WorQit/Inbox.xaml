@@ -25,9 +25,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="97*"/>
-            <ColumnDefinition Width="168*"/>
-            <ColumnDefinition Width="96*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="350*"/>
+            <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
@@ -35,8 +35,8 @@
             <RowDefinition Height="112*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2" Margin="0.333,0,95,0"/>
-        <Button x:Name="btnBack" Content="terug" Grid.Row="3" FontSize="12" Background="#FFA3CBE8" Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5.333,5,95,5" Click="btnSettings_Copy_Click" Style="{StaticResource ButtonStyle}" Grid.ColumnSpan="2"/>
+        <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png" Margin="0"/>
+        <Button x:Name="btnBack" Content="terug" FontSize="12" Background="#FFA3CBE8" Foreground="White" Click="btnSettings_Copy_Click" Style="{StaticResource backBtn}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <Rectangle Grid.ColumnSpan="3" Fill="#FF195695" Grid.Row="1" Stroke="Black"/>
         <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="berichten" Grid.Column="1" FontSize="15" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
         <GridView x:Name="control" ItemClick="control_ItemClick"  Grid.Row="2" ItemsSource="{Binding berichten}" ItemTemplate="{StaticResource berichtTemplate}" Grid.ColumnSpan="3" Margin="10,0"/>
