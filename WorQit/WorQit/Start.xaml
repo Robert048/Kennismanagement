@@ -26,8 +26,9 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="70*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="imageWorqit" Grid.Column="2" Source="Assets/logo WorQit.png" Grid.ColumnSpan="3" Margin="0.333,0,45.667,0"/>
-        <Button x:Name="btnMatch" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnMatch_Click">
+        <Rectangle Grid.ColumnSpan="6" Fill="#FF195695" Stroke="Black" Grid.Row="1"/>
+        <Image x:Name="imageWorqit" Grid.Column="2" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2" Margin="0"/>
+        <Button x:Name="btnMatch" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnMatch_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -43,7 +44,7 @@
                 <Image x:Name="imageMatch" Grid.Row="1" Grid.Column="1" Source="Assets/matching.png"/>
             </Grid>
         </Button>
-        <Button x:Name="btnEditProfile" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="-1,0,0,0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnEditProfile_Click">
+        <Button x:Name="btnEditProfile" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnEditProfile_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -59,7 +60,7 @@
                 <Image x:Name="imageUser" Grid.Row="1" Grid.Column="1" Source="Assets/user.png"/>
             </Grid>
         </Button>
-        <Button x:Name="btnFilters" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnFilters_Click">
+        <Button x:Name="btnFilters" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnFilters_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -75,7 +76,7 @@
                 <Image x:Name="imageFilters" Grid.Row="1" Grid.Column="1" Source="Assets/settings.png"/>
             </Grid>
         </Button>
-        <Button x:Name="btnMessages" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadMessages_Click">
+        <Button x:Name="btnMessages" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadMessages_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -92,7 +93,7 @@
                 <TextBlock x:Name="txtInbox" TextWrapping="Wrap" Text="" Grid.Column="2" TextAlignment="Right" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Margin="0,0,2,0"/>
             </Grid>
         </Button>
-        <Button x:Name="btnReloadVacancies" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadVacancies_Click">
+        <Button x:Name="btnReloadVacancies" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadVacancies_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -108,7 +109,7 @@
                 <Image x:Name="imageReloadVacancies" Grid.Row="1" Grid.Column="1" Source="Assets/refresh.png"/>
             </Grid>
         </Button>
-        <Button x:Name="btnLogout" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,-1" Height="89" Width="123.333335876465" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnLogout_Click">
+        <Button x:Name="btnLogout" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnLogout_Click">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -124,6 +125,6 @@
                 <Image x:Name="imageLogout" Grid.Row="1" Grid.Column="1" Source="Assets/logout.png"/>
             </Grid>
         </Button>
-        <TextBlock x:Name="textBlock" Grid.Column="2" TextWrapping="Wrap" Text="welkom" Grid.ColumnSpan="2" Grid.Row="1" Foreground="#FF195695" TextAlignment="Center"/>
+        <TextBlock x:Name="textBlock" Grid.Column="2" TextWrapping="Wrap" Text="welkom" Grid.ColumnSpan="2" Grid.Row="1" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Page>

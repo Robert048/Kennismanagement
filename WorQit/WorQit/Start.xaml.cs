@@ -1,31 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Services.Maps;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using WorQit.Models;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace WorQit
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// 
     /// </summary>
     public sealed partial class Start : Page
     {
@@ -60,7 +47,7 @@ namespace WorQit
         private async Task getUnreadMessages()
         {
 
-            using (var client = new System.Net.Http.HttpClient())
+            using (var client = new HttpClient())
             {
                 var uri = new Uri("http://worqit.azurewebsites.net/api/Message/getOverviewEmployee/" + Login.loggedInUser.ID.ToString());
                 var response = await client.GetAsync(uri);
@@ -74,12 +61,11 @@ namespace WorQit
                     }
                 }
             }
-
         }
 
         private void btnReloadMessages_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Main));
+            Frame.Navigate(typeof(Inbox));
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
