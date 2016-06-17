@@ -19,19 +19,26 @@ namespace WorQit
         public EditProfile()
         {
             this.InitializeComponent();
-            txtNaam.Text = Login.loggedInUser.firstName;
-            txtAchternaam.Text = Login.loggedInUser.lastName;
-            txtWerkveld.Text = Login.loggedInUser.industry;
-            txtPositie.Text = Login.loggedInUser.positions;
-            txtInteresses.Text = Login.loggedInUser.interests;
-            txtTalen.Text = Login.loggedInUser.languages;
-            txtVaardigheden.Text = Login.loggedInUser.skills;
-            txtOpleiding.Text = Login.loggedInUser.educations;
-            txtLeeftijd.Text = Login.loggedInUser.dob.ToString();
-            txtLocatie.Text = Login.loggedInUser.location;
-            txtUren.Text = Login.loggedInUser.hours.ToString();
-            txtErvaring.Text = Login.loggedInUser.experience;
-            txtEmail.Text = Login.loggedInUser.email;
+            try
+            {
+                if (Login.loggedInUser.firstName != null) txtNaam.Text = Login.loggedInUser.firstName;
+                if (Login.loggedInUser.lastName != null) txtAchternaam.Text = Login.loggedInUser.lastName;
+                if (Login.loggedInUser.industry != null) txtWerkveld.Text = Login.loggedInUser.industry;
+                if (Login.loggedInUser.positions != null) txtPositie.Text = Login.loggedInUser.positions;
+                if (Login.loggedInUser.languages != null) txtInteresses.Text = Login.loggedInUser.interests;
+                if (Login.loggedInUser.languages != null) txtTalen.Text = Login.loggedInUser.languages;
+                if (Login.loggedInUser.skills != null) txtVaardigheden.Text = Login.loggedInUser.skills;
+                if (Login.loggedInUser.educations != null) txtOpleiding.Text = Login.loggedInUser.educations;
+                if (Login.loggedInUser.dob != null) txtLeeftijd.Text = Login.loggedInUser.dob.ToString();
+                if (Login.loggedInUser.location != null) txtLocatie.Text = Login.loggedInUser.location;
+                if (Login.loggedInUser.hours != null) txtUren.Text = Login.loggedInUser.hours.ToString();
+                if (Login.loggedInUser.experience != null) txtErvaring.Text = Login.loggedInUser.experience;
+                if (Login.loggedInUser.email != null) txtEmail.Text = Login.loggedInUser.email;
+            }
+            catch (Exception)
+            {
+                
+            }
             setProgress();
         }
 
@@ -135,6 +142,11 @@ namespace WorQit
         {
             gridSettings.Visibility = Visibility.Visible;
             gridSettingsNext.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Start));
         }
     }
 }

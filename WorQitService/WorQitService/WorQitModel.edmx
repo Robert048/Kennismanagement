@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WorQitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WorQitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID" />
@@ -39,8 +39,6 @@
           <Property Name="username" Type="varchar" MaxLength="100" />
           <Property Name="password" Type="varchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Messages">
           <Key>
             <PropertyRef Name="ID" />
@@ -52,6 +50,8 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
           <Property Name="text" Type="varchar" MaxLength="1000" />
           <Property Name="read" Type="bit" />
           <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="vacancyID" Type="int" />
         </EntityType>
         <EntityType Name="Vacancy">
           <Key>
@@ -88,18 +88,6 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
             </Principal>
             <Dependent Role="Messages">
               <PropertyRef Name="employeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Messages_Employer">
-          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
-          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Messages">
-              <PropertyRef Name="employerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -144,25 +132,11 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
         <EntityContainer Name="WorQitModelStoreContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacancy" EntityType="Self.Vacancy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VacancyEmployee" EntityType="Self.VacancyEmployee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Messages" EntityType="Self.Messages" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Messages].[ID] AS [ID], 
-    [Messages].[employerID] AS [employerID], 
-    [Messages].[employeeID] AS [employeeID], 
-    [Messages].[sender] AS [sender], 
-    [Messages].[text] AS [text], 
-    [Messages].[read] AS [read], 
-    [Messages].[title] AS [title]
-    FROM [dbo].[Messages] AS [Messages]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Messages_Employee" Association="Self.FK_Messages_Employee">
             <End Role="Employee" EntitySet="Employee" />
-            <End Role="Messages" EntitySet="Messages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Messages_Employer" Association="Self.FK_Messages_Employer">
-            <End Role="Employer" EntitySet="Employer" />
             <End Role="Messages" EntitySet="Messages" />
           </AssociationSet>
           <AssociationSet Name="FK_Vacancy_Employer" Association="Self.FK_Vacancy_Employer">
@@ -178,8 +152,7 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
             <End Role="VacancyEmployee" EntitySet="VacancyEmployee" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WorQitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -264,6 +237,8 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Messages_Employee" FromRole="Messages" ToRole="Employee" />
           <NavigationProperty Name="Employer" Relationship="Self.FK_Messages_Employer" FromRole="Messages" ToRole="Employer" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="vacancyID" Type="Int32" />
         </EntityType>
         <Association Name="FK_Messages_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
@@ -327,7 +302,7 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WorQitEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WorQitEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="Employers" EntityType="Self.Employer" />
           <EntitySet Name="Vacancies" EntityType="Self.Vacancy" />
@@ -359,7 +334,7 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities1">
+        <EntityContainerMapping StorageEntityContainer="WorQitModelStoreContainer" CdmEntityContainer="WorQitEntities2">
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="WorQitModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
@@ -427,6 +402,8 @@ warning 6002: The table/view 'WorQit.dbo.Messages' does not have a primary key d
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="WorQitModel.Message">
               <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="vacancyID" ColumnName="vacancyID" />
+                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="employerID" ColumnName="employerID" />
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
