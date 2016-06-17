@@ -196,7 +196,7 @@ $likes = getAllLikes($_SESSION['user']->ID);
                                                     <td>
                                                        <?php
                                                             $likeCount = 0;
-                                                            foreach($likes->Users as $like){
+                                                            foreach($likes as $like){
                                                                 if($like->vacancyID==$vacancy->ID){
                                                                     $likeCount++;
                                                                 }
