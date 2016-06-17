@@ -1,0 +1,130 @@
+﻿<Page
+    x:Class="WorQit.Start"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WorQit"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.ColumnSpan="6" Fill="#FF195695" Stroke="Black" Grid.Row="1"/>
+        <Image x:Name="imageWorqit" Grid.Column="2" Source="Assets/logo WorQit.png" Grid.ColumnSpan="2" Margin="0"/>
+        <Button x:Name="btnMatch" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnMatch_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="vacatures zoeken" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+                <Image x:Name="imageMatch" Grid.Row="1" Grid.Column="1" Source="Assets/matching.png"/>
+            </Grid>
+        </Button>
+        <Button x:Name="btnEditProfile" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="2" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnEditProfile_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="profiel wijzigen" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+                <Image x:Name="imageUser" Grid.Row="1" Grid.Column="1" Source="Assets/user.png"/>
+            </Grid>
+        </Button>
+        <Button x:Name="btnFilters" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnFilters_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="filters toepassen" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+                <Image x:Name="imageFilters" Grid.Row="1" Grid.Column="1" Source="Assets/settings.png"/>
+            </Grid>
+        </Button>
+        <Button x:Name="btnMessages" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="3" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadMessages_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="berichten" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" SelectionChanged="TextBlock_SelectionChanged"/>
+                <Image x:Name="imageInbox" Grid.Row="1" Grid.Column="1" Source="Assets/inbox.png"/>
+                <TextBlock x:Name="txtInbox" TextWrapping="Wrap" Text="" Grid.Column="2" TextAlignment="Right" HorizontalAlignment="Right" VerticalAlignment="Top" FontWeight="Bold" Margin="0,0,2,0"/>
+            </Grid>
+        </Button>
+        <Button x:Name="btnReloadVacancies" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnReloadVacancies_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="herlaad vacatures" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+                <Image x:Name="imageReloadVacancies" Grid.Row="1" Grid.Column="1" Source="Assets/refresh.png"/>
+            </Grid>
+        </Button>
+        <Button x:Name="btnLogout" Grid.ColumnSpan="2" Grid.Column="3" Grid.Row="4" Background="#FFA3CBE8" Foreground="White" BorderBrush="#FF195695" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Padding="0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Click="btnLogout_Click">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" Text="uitloggen" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+                <Image x:Name="imageLogout" Grid.Row="1" Grid.Column="1" Source="Assets/logout.png"/>
+            </Grid>
+        </Button>
+        <TextBlock x:Name="textBlock" Grid.Column="2" TextWrapping="Wrap" Text="welkom" Grid.ColumnSpan="2" Grid.Row="1" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Page>

@@ -26,13 +26,15 @@
             <ColumnDefinition Width="350*"/>
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="3" Fill="#FF195695" Grid.Row="1" Stroke="Black"/>
+
         <TextBox x:Name="txtUsername" TextAlignment="Center" TextWrapping="Wrap" Text="" Grid.Column="1" Grid.Row="3" Foreground="#FF195695"/>
         <PasswordBox x:Name="txtPassword" Grid.Row="5" Grid.Column="1" Foreground="#FF195695" PlaceholderText=""/>
-        <Button x:Name="registerbtn" Content="registreer" Click="registerbtn_Click" Grid.Row="8" Grid.Column="1" Background="#FF195695" Foreground="White" HorizontalAlignment="Stretch"/>
+        <Button x:Name="registerbtn" Content="registreer" Click="registerbtn_Click" Grid.Row="8" Grid.Column="1" Background="#FF195695" Foreground="White" HorizontalAlignment="Stretch" Style="{StaticResource ButtonStyle}"/>
         <TextBlock TextWrapping="Wrap" Text="gebruikersnaam" Grid.Row="2" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock TextWrapping="Wrap" Text="wachtwoord" Grid.Row="4" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="backbtn" Content="terug" Grid.Column="1" Grid.Row="9" Click="bk_Click" Background="#FF195695" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="registreer account" FontSize="18.667" Foreground="#FF195695" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="backbtn" Content="terug" Click="bk_Click" Background="#FF195695" Foreground="White" HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{StaticResource backBtn}"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="registreer account" FontSize="18.667" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock TextWrapping="Wrap" Text="e-mailadres" Grid.Row="6" Grid.Column="1" FontSize="14" Foreground="#FFA3CBE8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBox x:Name="txtEmail" TextAlignment="Center" TextWrapping="Wrap" Text="" Grid.Column="1" Grid.Row="7" Foreground="#FF195695"/>
         <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png"/>

@@ -6,7 +6,7 @@ if (isset($_POST['submitbutton'])) {
     $employeeCount = $_POST["employeeCount"];
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $id = $_SESSION["user"][0]["ID"];
+    $id = $_SESSION["user"]->ID;
     $email = $_POST["email"];
 
     $editVars = array("email => '$email', industry  => 'test', username => '$username', password => '$password', id => '$id', name => '$name', location => '$location', description => '$description', employeeCount => $employeeCount");
@@ -30,13 +30,13 @@ if (isset($_POST['submitbutton'])) {
     $server_output = curl_exec($ch);
     curl_close($ch);
 
-    $_SESSION["user"][0]["name"] = $name;
-    $_SESSION["user"][0]["location"] = $location;
-    $_SESSION["user"][0]["description"] = $description;
-    $_SESSION["user"][0]["employeeCount"] = $employeeCount;
-    $_SESSION["user"][0]["password"] = $password;
-    $_SESSION["user"][0]["username"] = $username;
-    $_SESSION["user"][0]["email"] = $email;
+    $_SESSION["user"]->name = $name;
+    $_SESSION["user"]->location = $location;
+    $_SESSION["user"]->description = $description;
+    $_SESSION["user"]->employeeCount = $employeeCount;
+    $_SESSION["user"]->password = $password;
+    $_SESSION["user"]->username = $username;
+    $_SESSION["user"]->email = $email;
     ?>
     <script>
         var url = "profiel.php"; //please insert the url of the your current page here, we are assuming the url is 'index.php'

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\Users\falco hulzebos\documents\visual studio 2015\Projects\WorQit\WorQitService\WorQitService\WorQitModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Hakob\Source\Repos\Kennismanagement\WorQitService\WorQitService\WorQitModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

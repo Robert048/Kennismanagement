@@ -9,8 +9,7 @@ function addVacancy() {
         url: '../Controller/addVacancy.php',
         data: $('#newVacancy').serializeArray()
     });
-    request.done(function () {
-        $('#newVacModal').attr('aria-hidden', 'true');
+    request.success(function() {
         location.reload();
     });
     request.fail(function (jqXHR, textStatus) {
@@ -30,13 +29,16 @@ function deleteVacancy(){
         data: "id="+parameter
     });
     request.done(function () {
-        $(this).closest('tr').find('td').fadeOut( "slow" );
-        //animate({
-        //    backgroundColor: '#FF8585'
-       // }, 1000, function () {
-        //    $(this).fadeOut(1000);
-        //});
-        //location.reload();
+        $('#').live('click', function() {
+            var here = this;
+            $(this).closest('tr').find('td').fadeOut('fast',
+                function(here){
+                    $(here).parents('tr:first').remove();
+                });
+
+            return false;
+        });
+     location.reload();
     });
     request.fail(function (jqXHR, textStatus) {
         alert("Request failed: " + textStatus);

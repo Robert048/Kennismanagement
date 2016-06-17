@@ -2,7 +2,14 @@
 session_start();
 if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
-    $allVacances = showVacancies($_SESSION["user"][0]["ID"]);
+    include  ('../Controller/getCandidates.php');
+
+    $allCandidates = getCandidates($_GET["ID"]);
+
+   // echo var_dump($allCandidates);
+    $allVacances = showVacancies($_SESSION["user"]->ID);
+
+
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -136,18 +143,18 @@ if($_SESSION['isloggedin']) {
                                 <thead>
                                 <tr>
                                     <th>
-                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"][0]["ID"]){?>
+                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"]->ID){ ?>
                                 <tr class="vacancyRow">
                                     <th></i> Functie</th>
-                                    <th class=hidden-phone><?php echo $vacancy->jobfunction?></th>
-                                    </tr>
-                                    <tr>
+                                    <th class=hidden-phone><?php echo $vacancy->jobfunction ?></th>
+                                </tr>
+                                <tr>
                                     <th></i> Omschrijving</th>
-                                    <th class=hidden-phone><?php echo $vacancy->description?></th>
-                                    </tr>
+                                    <th class=hidden-phone><?php echo $vacancy->description ?></th>
+                                </tr>
                                 <tr>
                                     <th></i> Salaris</th>
-                                    <th class=hidden-phone>&euro;<?php echo $vacancy->salary?>,-</th>
+                                    <th class=hidden-phone>&euro;<?php echo $vacancy->salary ?>,-</th>
                                 </tr>
                                 <tr>
                                     <th></i> Uren</th>
@@ -155,16 +162,31 @@ if($_SESSION['isloggedin']) {
                                 </tr>
                                 <tr>
                                     <th></i> Eisen</th>
-                                    <th class=hidden-phone><?php echo $vacancy->requirements?></th>
+                                    <th class=hidden-phone><?php echo $vacancy->requirements ?></th>
+                                </tr>
                                 </tr>
                                 <tr>
-                                    <th></i> Tags</th>
-                                    <th class=hidden-phone><?php echo $vacancy->tags?></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
+                                <tr>
+                                    <th></i> Geliked door:</th>
+                                    <th class=hidden-phone>
+                                        <?php
+                                        $count = 1;
+                                        if (count($allCandidates->Users) == "0") {
+                                            echo "niemand";
+                                        } else {
+                                            foreach ($allCandidates->Users as $user) {
+                                                echo "<br/>";
+                                                echo $count . " " . $user->industry . " | " . $user->interests . " | " . $user->educations;
+                                                echo "<br/>";
+                                            }
+                                        }
+                                        }
+                                        ?>
+                                        </th>
                                 </tr>
-                                <?php
-                                }
-                                ?>
                                 </thead>
                             </table>
                     </div><!-- /content-panel -->
