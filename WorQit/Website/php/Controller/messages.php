@@ -80,16 +80,20 @@ function getMessage($id){
 function unreadMessages()
 {
     $unread = array();
-    $messages = showMessages($_SESSION['user']->ID);
-    if(!empty($messages)) {
-        foreach ($messages as $message) {
+    if ($_SESSION['user'] === null) {
+        return $unread;
+    } else {
+        $messages = showMessages($_SESSION['user']->ID);
+        if (!empty($messages)) {
+            foreach ($messages as $message) {
 
-            if ($message->read == false) {
-                $unread[] = $message;
+                if ($message->read == false) {
+                    $unread[] = $message;
+                }
             }
         }
+        return $unread;
     }
-    return $unread;
 }
 
 function updateMessageRead($messageID)
