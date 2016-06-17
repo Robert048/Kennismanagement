@@ -113,7 +113,6 @@
 									</div>
 								  <div class="modal-footer">
 									  <button data-dismiss="modal" class="btn btn-default" type="button">Annuleren</button>
-									  <button class="btn btn-theme" type="button">Maak account</button>
 								  </div>
 							  </div>
 						  </form>
