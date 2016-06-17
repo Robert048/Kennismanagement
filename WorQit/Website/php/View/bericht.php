@@ -1,17 +1,24 @@
 <?php
-session_start();
-if($_SESSION['isloggedin']) {
-    include  ('../Controller/vacancies.php');
-    include  ('../Controller/getCandidates.php');
-    include_once('../Controller/messages.php');
-    $messages= unreadMessages();
-    $message = getMessage($_GET['ID']);
-    $allCandidates = getCandidates($_GET["ID"]);
-    updateLikeSeen($_GET['ID'], $allCandidates);
+/**
+ * Created by PhpStorm.
+ * User: maaike
+ * Date: 7-6-2016
+ * Time: 10:23
+ */
 
-   // echo var_dump($allCandidates);
-    $allVacances = showVacancies($_SESSION["user"]->ID);
+session_start();
+
+if($_SESSION['isloggedin']) {
+    include_once('../Controller/messages.php');
+    $unreadMessages= unreadMessages();
+    $message = getMessage($_GET['ID']);
+    updateMessageRead($message);
+    $linkAdres = "berichten.php";
+
+    $lastMessages = getLastMessages($_SESSION["user"]->ID, $_GET["empID"], -1, $message->Messages->title);
+   //echo var_dump($lastMessages);
     ?>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -21,7 +28,7 @@ if($_SESSION['isloggedin']) {
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>Vacaturedetails</title>
+        <title>DASHGUM - Bootstrap Admin Template</title>
 
         <!-- Bootstrap core CSS -->
         <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
@@ -40,10 +47,11 @@ if($_SESSION['isloggedin']) {
     </head>
 
     <body>
+
     <section id="container" >
         <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
-    *********************************************************************************************************************************************************** -->
+        *********************************************************************************************************************************************************** -->
         <!--header start-->
         <header class="header black-bg">
             <div class="sidebar-toggle-box">
@@ -55,7 +63,7 @@ if($_SESSION['isloggedin']) {
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
                 <ul class="nav top-menu">
-                    <?php $count = count($messages);?>
+                    <?php $count = count($unreadMessages);?>
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="../../index.php#">
@@ -67,18 +75,18 @@ if($_SESSION['isloggedin']) {
                             <li>
                                 <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
                             </li>
-                            <?php foreach($messages as $message){?>
+                            <?php foreach($unreadMessages as $messages){?>
                                 <li>
-                                    <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
-                                        .$message->employeeID."&vacID=".$message->vacancyID ?>">
+                                    <a href="bericht.php?<?php echo "ID=".$messages->ID."&empID="
+                                        .$messages->employeeID."&vacID=".$messages->vacancyID ?>">
                                 <span class="photo"><img alt="avatar"
                                                          src="../../images/email-closed.png"></span>
                                         <span class="subject">
-                                        <span class="from"><?php echo $message->employeeID?></span>
-                                        <span class="time"><?php echo $message->date ?></span>
+                                        <span class="from"><?php echo $messages->employeeID?></span>
+                                        <span class="time"><?php echo $messages->date ?></span>
                                         </span>
                                         <span class="message">
-                                            <?php echo $message->title?>
+                                            <?php echo $messages->title?>
                                         </span>
                                     </a>
                                 </li>
@@ -94,7 +102,7 @@ if($_SESSION['isloggedin']) {
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="../../login.php">Logout</a></li>
+                    <li><a class="logout" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
         </header>
@@ -102,39 +110,44 @@ if($_SESSION['isloggedin']) {
 
         <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
-    *********************************************************************************************************************************************************** -->
+        *********************************************************************************************************************************************************** -->
         <!--sidebar start-->
         <aside>
-            <div id="sidebar"  class="nav-collapse ">
+            <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                    <h5 class="centered"><?php if($_SESSION['user']->name == null){
+
+                    <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
+                                                                   class="img-circle" width="60"></a></p>
+                    <h5 class="centered"><?php if ($_SESSION['user']->name == null) {
                             echo $_SESSION['user']->username;
-                        }else{
+                        } else {
                             echo $_SESSION['user']->name;
                         }
                         ?></h5>
+
                     <li class="mt">
                         <a href="../../index.php">
                             <i class="fa fa-dashboard"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
+
                     <li class="sub-menu">
-                        <a href="profiel.php" >
+                        <a href="profiel.php">
                             <i class="fa fa-desktop"></i>
                             <span>Profiel</span>
                         </a>
                     </li>
+
                     <li class="sub-menu">
-                        <a class="active" href="vacancies.php" >
+                        <a href="vacancies.php">
                             <i class="fa fa-cogs"></i>
                             <span>Vacatures</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="berichten.php" >
+                        <a class="active" href="berichten.php">
                             <i class="fa fa-book"></i>
                             <span>Berichten</span>
                         </a>
@@ -146,86 +159,78 @@ if($_SESSION['isloggedin']) {
         <!--sidebar end-->
 
         <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-    *********************************************************************************************************************************************************** -->
+  MAIN CONTENT
+  *********************************************************************************************************************************************************** -->
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3></i> Vacature details</h3>
+                <h3> <?php echo $message->Messages->title; ?></h3>
                 <div class="row mt">
-                    <div class="col-md-12">
-                        <div class="content-panel">
-                            <div id="head">
-                                <div id="title">
-                                    <h4>Vacatures overzicht</h4>
-                                </div>
-                            </div>
-                            <table id="vacancyTable" class="table table-striped table-advance table-hover">
-                                <thead>
-                                <tr>
-                                    <th>
-                                        <?php foreach($allVacances as $vacancy)  if ($vacancy->ID == $_GET["ID"] && $vacancy->employerID == $_SESSION["user"]->ID){ ?>
-                                <tr class="vacancyRow">
-                                    <th></i> Functie</th>
-                                    <th class=hidden-phone><?php echo $vacancy->jobfunction ?></th>
-                                </tr>
-                                <tr>
-                                    <th></i> Omschrijving</th>
-                                    <th class=hidden-phone><?php echo $vacancy->description ?></th>
-                                </tr>
-                                <tr>
-                                    <th></i> Salaris</th>
-                                    <th class=hidden-phone>&euro;<?php echo $vacancy->salary ?>,-</th>
-                                </tr>
-                                <tr>
-                                    <th></i> Uren</th>
-                                    <th class=hidden-phone><?php echo $vacancy->hours ?> uren</th>
-                                </tr>
-                                <tr>
-                                    <th></i> Eisen</th>
-                                    <th class=hidden-phone><?php echo $vacancy->requirements ?></th>
-                                </tr>
-                                </tr>
-                                <tr>
-                                    <th></i> Geliked door:</th>
-                                    <th class=hidden-phone>
-                                        <?php
-                                        $_SESSION["functie"] = $vacancy->jobfunction;
+                    <div class="col-lg-12">
 
-                                        $count = 1;
-                                        if (count($allCandidates->Users) == "0") {
-                                            echo "Niemand";
-                                        } else {
-                                            foreach ($allCandidates->Users as $user) {
-                                                echo "<a href='werknemer.php?ID=".$user->ID."'>Kandidaat $count uit $user->location</a>";
-                                                echo "<br/>";
-                                                $_SESSION['clicked'] = $_GET["ID"];
-                                                $count++;
-                                            }
+                        <?php foreach($lastMessages as $lastMessage){  ?>
+                            <div class="form-panel">
+                                <div style="border-bottom-width: 2px; border-bottom: solid; border-bottom-color: #68dff0;">
+                                    <h4><?php if($lastMessage->sender == "employee" || $lastMessage->sender == "Employee") {
+                                            echo "Verstuurd door werknemer";
                                         }
-                                        }
-                                        ?>
-                                        </th>
-                                </tr>
-                                </thead>
-                            </table>
-                    </div><!-- /content-panel -->
-                    </div><!-- /col-md-12 -->
-                </div><br/>
-                <a type="button" class="btn btn-round btn-danger" href="vacancies.php"><- Terug</a>
+                                        elseif($lastMessage->sender == "employer" || $lastMessage->sender == "Employer" )
+                                         {
+                                         echo "Verstuurd door werkgever";
+                                          }
+                                        ?></h4>
+                                </div>
+                                <br>
+                                <?php echo $lastMessage->text; ?>
+                                <br/>
+
+                            </div>
+                        <?php }?>
+
+                        <br>
+                        <div class="form-panel">
+                           <h2>Antwoord</h2>
+                            <form id="sentEmail" class="form-horizontal style-form" method="get">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="employeeID" id="employeeID" value="<?php echo $message->Messages->employeeID?>" class="form-control placeholder-no-fix">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="hidden" name="vacatureID" id="vacatureID" value="<?php echo $message->Messages->vacancyID?>" class="form-control placeholder-no-fix">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="onderwerp" id="onderwerp" placeholder="Onderwerp" autocomplete="off" class="form-control placeholder-no-fix">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control placeholder-no-fix" id= "bericht" name="bericht" rows="4" cols="50" placeholder="Bericht" maxlength="500" style="resize:none;"></textarea>
+                                    </div>
+                                </div>
+                                <button class="btn btn-theme" id="sentEmail" onclick="sentMessage()" type="button">Verzenden</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <a type="button" class="btn btn-round btn-danger" href="<?php echo $linkAdres;
+                 ?>"><- Terug</a>
+
             </section><! --/wrapper -->
         </section><!-- /MAIN CONTENT -->
+
         <!--main content end-->
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
-                <a href="../../dashgum/Theme/blank.html#" class="go-top">
+                2014 - Alvarez.is
+                <a href="blank.html#" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
         </footer>
         <!--footer end-->
     </section>
+
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="../../dashgum/Theme/assets/js/jquery.js"></script>
     <script src="../../dashgum/Theme/assets/js/bootstrap.min.js"></script>
@@ -234,19 +239,26 @@ if($_SESSION['isloggedin']) {
     <script class="include" type="text/javascript" src="../../dashgum/Theme/assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.scrollTo.min.js"></script>
     <script src="../../dashgum/Theme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
+
     <!--script for this page-->
-    <script src= "../../js/vacature.js"></script>
-    <script>var base_url = "<?php echo BASE_URL; ?>"</script>
+    <script src="../../js/messages.js"></script>
+
     <script>
         //custom select box
+
         $(function(){
             $('select.styled').customSelect();
         });
+
     </script>
+
     </body>
     </html>
+
     <?php
 }
 else{

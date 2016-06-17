@@ -6,39 +6,42 @@
  * Time: 13:59
  */
 session_start();
+include_once('../Controller/messages.php');
 if($_SESSION['isloggedin']) {
+    include_once('../Controller/messages.php');
+    $messages= unreadMessages();
     ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - Bootstrap Admin Template</title>
+        <title>Berichten</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
-    <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
+        <!--external css-->
+        <link href="../../dashgum/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
 
-    <!-- Custom styles for this template -->
-    <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
-    <link href="../../dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="../../dashgum/Theme/assets/css/style.css" rel="stylesheet">
+        <link href="../../dashgum/Theme/assets/css/style-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-<body>
+    <body>
 
-<section id="container" >
+    <section id="container" >
     <!-- **********************************************************************************************************************************************************
     TOP BAR CONTENT & NOTIFICATIONS
 *********************************************************************************************************************************************************** -->
@@ -53,68 +56,34 @@ if($_SESSION['isloggedin']) {
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
             <ul class="nav top-menu">
+                <?php $count = count($messages);?>
                 <!-- inbox dropdown start-->
                 <li id="header_inbox_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="../../index.php#">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-theme">5</span>
+                        <span class="badge bg-theme"><?php echo $count ?></span>
                     </a>
                     <ul class="dropdown-menu extended inbox">
                         <div class="notify-arrow notify-arrow-green"></div>
                         <li>
-                            <p class="green">You have 5 new messages</p>
+                            <p class="green">Er zijn <?php echo $count ?> Nieuwe berichten</p>
                         </li>
-                        <li>
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-zac.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Zac Snider</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi mate, how is everything?
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-divya.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi, I need your help with this.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-danro.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">
-                                <span class="photo"><img alt="avatar" src="../../dashgum/Theme/assets/img/ui-sherman.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Please, answer asap.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../index.php#">See all messages</a>
-                        </li>
+                        <?php foreach($messages as $message){?>
+                            <li>
+                                <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
+                                    .$message->employeeID."&vacID=".$message->vacancyID ?>">
+                                <span class="photo"><img alt="avatar"
+                                                         src="../../images/email-closed.png"></span>
+                                        <span class="subject">
+                                        <span class="from"><?php echo $message->employeeID?></span>
+                                        <span class="time"><?php echo $message->date ?></span>
+                                        </span>
+                                        <span class="message">
+                                            <?php echo $message->title?>
+                                        </span>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </li>
                 <!-- inbox dropdown end -->
@@ -134,14 +103,15 @@ if($_SESSION['isloggedin']) {
 *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <aside>
-        <div id="sidebar"  class="nav-collapse ">
+        <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
 
-                <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
-                <h5 class="centered"><?php if($_SESSION['user']->name == null){
+                <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg"
+                                                               class="img-circle" width="60"></a></p>
+                <h5 class="centered"><?php if ($_SESSION['user']->name == null) {
                         echo $_SESSION['user']->username;
-                    }else{
+                    } else {
                         echo $_SESSION['user']->name;
                     }
                     ?></h5>
@@ -154,20 +124,20 @@ if($_SESSION['isloggedin']) {
                 </li>
 
                 <li class="sub-menu">
-                    <a href="profiel.php" >
+                    <a href="profiel.php">
                         <i class="fa fa-desktop"></i>
                         <span>Profiel</span>
                     </a>
                 </li>
 
                 <li class="sub-menu">
-                    <a href="vacancies.php" >
+                    <a href="vacancies.php">
                         <i class="fa fa-cogs"></i>
                         <span>Vacatures</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a class="active" href="berichten.php" >
+                    <a class="active" href="berichten.php">
                         <i class="fa fa-book"></i>
                         <span>Berichten</span>
                     </a>
@@ -181,26 +151,79 @@ if($_SESSION['isloggedin']) {
     <!-- **********************************************************************************************************************************************************
     MAIN CONTENT
 *********************************************************************************************************************************************************** -->
-    <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> Blank Page</h3>
-            <div class="row mt">
-                <div class="col-lg-12">
-                    <p>Place your content here.</p>
+        <section id="main-content">
+            <section class="wrapper site-min-height">
+                <h3> Berichten Overzicht</h3>
+                <div class="row mt">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <table id="berichten" class="table table-striped table-advance table-hover">
+                                <thead>
+                                <tr>
+                                    <th><i class="fa fa-user"></i>  Verzender</th>
+                                    <th><i class="fa fa-inbox"></i>  Onderwerp</th>
+                                    <th>
+                                </tr>
+                                <?php
+                                $messages = showMessages($_SESSION['user']->ID);
+                                foreach ($messages as $message) { ?>
+                                <tr class="berichtRow">
+                                    <td>
+                                        <a href="bericht.php?<?php echo "ID=" . $message->ID . "&empID=" .
+                                                        $message->employeeID . "&vacID=" . $message->vacancyID?>">
+                                            <?php if ($message->read == false)
+                                            {
+                                            ?>
+                                                <b>
+                                            <?php
+                                            }
+                                            echo $message->employeeID;
+                                            if ($message->read == false)
+                                            {
+                                            ?>
+                                                <b>
+                                            <?php
+                                            }
+                                            ?>
+                                    </td>
+                                    <td>
+                                        <a href="bericht.php?<?php echo "ID=" . $message->ID . "&empID="
+                                            . $message->employeeID . "&vacID=" . $message->vacancyID ?>">
+                                            <?php if ($message->read == false){ ?>
+                                            <b><?php
+                                                }
+                                                echo $message->title;
+                                                if ($message->read == false){
+                                                ?>
+                                            </b>
+                                        <?php
+                                        } ?>
+                                        </a>
+                                    <td>
+                                        <button id="delete" class="btn btn-danger btn-xs"
+                                                data-levelid="<?php echo $message->ID; ?>"
+                                                onclick="deleteMessage()">
+                                            <i class="fa fa-trash-o" style="color:white;"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                                </thead>
+                            </table>
+                        </div><!-- /content-panel -->
+                    </div><!-- /col-md-12 -->
                 </div>
-            </div>
-
-        </section><! --/wrapper -->
-    </section><!-- /MAIN CONTENT -->
+            </section><! --/wrapper -->
+        </section><!-- /MAIN CONTENT -->
 
     <!--main content end-->
     <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
-            <a href="../../dashgum/Theme/blank.html#" class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </a>
+            2016- WorQit
+            <i class="fa fa-angle-up"></i>
         </div>
     </footer>
     <!--footer end-->
@@ -238,4 +261,6 @@ if($_SESSION['isloggedin']) {
 else{
     header("location: ../../login.php");
 }
+
 ?>
+

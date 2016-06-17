@@ -9,6 +9,9 @@ session_start();
 if($_SESSION['isloggedin']) {
     
 include ('../Controller/vacancies.php');
+include_once('../Controller/messages.php');
+$messages= unreadMessages();
+$likes = getAllLikes($_SESSION['user']->ID);
 
 ?>
 
@@ -56,20 +59,40 @@ include ('../Controller/vacancies.php');
                 <div class="nav notify-row" id="top_menu">
                     <!--  notification start -->
                     <ul class="nav top-menu">
+                        <?php $count = count($messages);?>
                         <!-- inbox dropdown start-->
                         <li id="header_inbox_bar" class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="../../index.php#">
                                 <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-theme">5</span>
+                                <span class="badge bg-theme"><?php echo $count ?></span>
                             </a>
                             <ul class="dropdown-menu extended inbox">
                                 <div class="notify-arrow notify-arrow-green"></div>
                                 <li>
-                                    <p class="green">You have 5 new messages</p>
-                                </li>                
+                                    <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
+                                </li>
+                                <?php foreach($messages as $message){?>
+                                    <li>
+                                        <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
+                                            .$message->employeeID."&vacID=".$message->vacancyID ?>">
+                                <span class="photo"><img alt="avatar"
+                                                         src="../../images/email-closed.png"></span>
+                                        <span class="subject">
+                                        <span class="from"><?php echo $message->employeeID?></span>
+                                        <span class="time"><?php echo $message->date ?></span>
+                                        </span>
+                                        <span class="message">
+                                            <?php echo $message->title?>
+                                        </span>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <li>
+                                    <a href="berichten.php">See all messages</a>
+                                </li>
                             </ul>
                         </li>
-                    <!-- inbox dropdown end -->
+                        <!-- inbox dropdown end -->
                     </ul>
                 <!--  notification end -->
                 </div>
@@ -136,14 +159,11 @@ include ('../Controller/vacancies.php');
             <!--main content start-->
             <section id="main-content">
                 <section class="wrapper site-min-height">
-                    <h3><i class="fa fa-angle-right"></i> Vacatures</h3>
+                    <h3> Vacature Overzicht</h3>
                     <div class="row mt">
                         <div class="col-md-12">
                             <div class="content-panel">
                                 <div id="head">
-                                    <div id="title">
-                                        <h4>Vacatures overzicht</h4>
-                                    </div>
                                     <div id="nwVac">
                                         <a data-toggle="modal" href="vacancies.php#newVacModal">
                                             <button type="button" class="btn btn-round btn-success">Nieuwe vacature</button>
@@ -155,6 +175,7 @@ include ('../Controller/vacancies.php');
                                         <tr>
                                             <th><i class="fa fa-bullhorn"></i> Functie</th>
                                             <th class="hidden-phone"><i class="fa fa-question-circle"></i> Omschrijving</th>
+                                            <th><i class="fa fa-heart"></i> Likes</th>
                                             <th>
                                                 <?php
                                                 $vacancies = showVacancies($_SESSION['user']->ID);
@@ -163,7 +184,26 @@ include ('../Controller/vacancies.php');
                                                     <td>
                                                         <a href="vacancieDetails.php?<?php echo "ID=".$vacancy->ID?>"><?php echo $vacancy->jobfunction?></a>
                                                     </td>
-                                                    <td class=hidden-phone><?php echo $vacancy->description?></td>
+                                                    <td>
+                                                        <?php
+                                                            if(strlen($vacancy->description)>50){
+                                                                echo substr($vacancy->description, 0, 50)."...";
+                                                            }
+                                                            else{
+                                                                echo $vacancy->description;
+                                                            }?>
+                                                    </td>
+                                                    <td>
+                                                       <?php
+                                                            $likeCount = 0;
+                                                            foreach($likes->Users as $like){
+                                                                if($like->vacancyID==$vacancy->ID){
+                                                                    $likeCount++;
+                                                                }
+                                                            }
+                                                        echo $likeCount;
+                                                       ?>
+                                                    </td>
                                                     <td>
                                                         <button id="delete" class="btn btn-danger btn-xs" data-levelid="<?php echo $vacancy->ID; ?>" onclick="deleteVacancy()"><i class="fa fa-trash-o "></i></button>
                                                     </td>
@@ -219,7 +259,8 @@ include ('../Controller/vacancies.php');
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-center">
-                    <a href="../../dashgum/Theme/blank.html#" class="go-top">
+                    2016- WorQit
+                    <a href="vacancies.php" class="go-top">
                         <i class="fa fa-angle-up"></i>
                     </a>
                 </div>

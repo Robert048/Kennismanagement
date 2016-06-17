@@ -1,10 +1,21 @@
 <?php
 session_start();
-if ($_SESSION['isloggedin']) {
-    include_once("../Controller/deleteEmployer.php");
-    include_once("../Controller/messages.php");
+
+if($_SESSION['isloggedin']) {
+    include  ('../Controller/vacancies.php');
+    include  ('../Controller/getCandidates.php');
+    include_once('../Controller/messages.php');
     $messages= unreadMessages();
+
+
+    $detailID = $_SESSION["clicked"];
+    $allCandidates = getCandidates($detailID);
+    // echo var_dump($allCandidates);
+
+
+    $linkAdres = "vacancieDetails.php?ID=".$detailID;
     ?>
+
 
     <!DOCTYPE html>
     <html lang="en">
@@ -15,7 +26,8 @@ if ($_SESSION['isloggedin']) {
         <meta name="author" content="Dashboard">
         <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-        <title>WorQit</title>
+        <title>Werknemer</title>
+
 
         <!-- Bootstrap core CSS -->
         <link href="../../dashgum/Theme/assets/css/bootstrap.css" rel="stylesheet">
@@ -34,11 +46,10 @@ if ($_SESSION['isloggedin']) {
     </head>
 
     <body>
-
-    <section id="container">
+    <section id="container" >
         <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
-  *********************************************************************************************************************************************************** -->
+    *********************************************************************************************************************************************************** -->
         <!--header start-->
         <header class="header black-bg">
             <div class="sidebar-toggle-box">
@@ -88,20 +99,19 @@ if ($_SESSION['isloggedin']) {
                 <!--  notification end -->
             </div>
             <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" onclick="logout()">Logout</a></li>
-            	</ul>
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="../../login.php">Logout</a></li>
+                </ul>
             </div>
         </header>
         <!--header end-->
+
         <!-- **********************************************************************************************************************************************************
         MAIN SIDEBAR MENU
-  *********************************************************************************************************************************************************** -->
-        <!--sidebar start-->
+    *********************************************************************************************************************************************************** -->
         <!--sidebar start-->
         <aside>
-            <div id="sidebar" class="nav-collapse ">
-
+            <div id="sidebar"  class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href="profiel.php"><img src="../../dashgum/Theme/assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
@@ -110,8 +120,7 @@ if ($_SESSION['isloggedin']) {
                         }else{
                             echo $_SESSION['user']->name;
                         }
-                        ?>
-                    </h5>
+                        ?></h5>
                     <li class="mt">
                         <a href="../../index.php">
                             <i class="fa fa-dashboard"></i>
@@ -119,19 +128,19 @@ if ($_SESSION['isloggedin']) {
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a class="active" href="profiel.php">
+                        <a href="profiel.php" >
                             <i class="fa fa-desktop"></i>
                             <span>Profiel</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="vacancies.php">
+                        <a class="active" href="vacancies.php" >
                             <i class="fa fa-cogs"></i>
                             <span>Vacatures</span>
                         </a>
                     </li>
                     <li class="sub-menu">
-                        <a href="berichten.php">
+                        <a href="berichten.php" >
                             <i class="fa fa-book"></i>
                             <span>Berichten</span>
                         </a>
@@ -145,76 +154,97 @@ if ($_SESSION['isloggedin']) {
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
     *********************************************************************************************************************************************************** -->
+        <?php
+        foreach ($allCandidates->Users as $user) {
+        if ($user->ID == $_GET["ID"])
+        {
+        ?>
         <!--main content start-->
-
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h3></i> Profiel van <?php if($_SESSION['user']->name == null){
-                        echo $_SESSION['user']->username;
-                    }else{
-                        echo $_SESSION['user']->name;
-                    }
-                    ?> </h3>
-                <p id="editProfile" style="font-size:16px;"></p>
-                <form method="post" action="profiel.php" id="form">
-                    <div id="form2">
-                        <div class="row mt">
-                            <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Naam</p> <input type="text" class="form-control" name="name" value="<?php echo $_SESSION['user']->name ?>">
+                <h3>Werknemer <?php echo $user->ID; ?></h3>
+                <div class="row mt">
+                    <div class="col-md-12">
+                        <div class="content-panel">
+                            <div id="head">
+                                <div id="title">
+                                    <h4>Werknemer <?php echo $user->ID; ?></h4>
+                                </div>
+                                <div id="title" style="float:right;margin-right:20px;">
+                                    <a data-toggle="modal" href="werknemer.php#stuurBericht">
+                                        <button type="button" class="btn btn-round btn-success">Stuur bericht</button>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Medewerkers</p> <input type="text" class="form-control" name="employeeCount" value="<?php echo $_SESSION['user']->employeeCount ?>">
-                            </div>
-                            <br/> <br/> <br/> <br/>
-                            <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Bedrijfslocatie</p> <input type="text" class="form-control" name="location" value="<?php echo $_SESSION['user']->location ?>">
-                            </div>
-                            <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Gebruikersnaam</p> <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['user']->username ?>">
-                            </div>
-                            <br/> <br/> <br/> <br/>
-                            <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user']->password ?>">
-                            </div>
-                            <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user']->email ?>">
-                            </div>
-
-                            <br/> <br/> <br/> <br/>
-                            <div class="col-lg-4"><p style="font-weight:bold;font-size: 14pt;">Bedrijfsomschrijving</p> <textarea style="overflow:auto;resize:none" rows="5" cols="300" name="description" class="form-control"><?php echo $_SESSION['user']->description; ?></textarea></div>
-                </form>
-                <br/> <br/> <br/><br/> <br/> <br/><br/> <br/></br>
-                <div class="col-lg-2">
-                    <button class="btn btn-success btn-xs" name="submitbutton" id="submitWijzig""><i class="fa fa-pencil"></i></button>
-                    <a data-toggle="modal" class="btn btn-danger btn-xs" href="profiel.php#deleteAccount"><i class="fa fa-trash-o"></i></a>
+                            <table id="vacancyTable" class="table table-striped table-advance table-hover">
+                                <thead>
+                                <tr>
+                                    <th>
+                                <tr class="vacancyRow">
+                                    <th></i> Locatie</th>
+                                    <th class=hidden-phone><?php echo $user->location; ?></th>
+                                </tr>
+                                <tr>
+                                    <th></i> Interesses</th>
+                                    <th class=hidden-phone><?php echo $user->interests; ?></th>
+                                </tr>
+                                <tr>
+                                    <th></i> Ervaring</th>
+                                    <th class=hidden-phone><?php echo $user->experience; ?></th>
+                                </tr>
+                                <tr>
+                                    <th></i> Opleiding</th>
+                                    <th class=hidden-phone><?php  $user->educations; ?></th>
+                                </tr>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- /content-panel -->
+                    </div>
+                    <!-- /col-md-12 -->
                 </div>
-            </section>
-            <! --/wrapper -->
-        </section>
-        <!-- /MAIN CONTENT -->
-        <div aria-hidden="true" aria-labelledby="myModalLabel" id="deleteAccount" class="modal fade">
-            <div class="modal-dialog">"
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Account verwijderen</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <br/>Weet u zeker dat u het account wilt verwijderen?
-                        <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja</button>
-                        <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
-                        <script>
-                            var box = document.getElementById("bevestigVerwijderen");
-                            box.onclick = function () {
-                                $('#bevestigVerwijderen').attr('data-dismiss', 'modal');
-                            }
-                        </script>
-                    </div>
+                <br/>
+                <a type="button" class="btn btn-round btn-danger" href="<?php echo $linkAdres;}
+                } ?>"><- Terug</a>
             </section>
             <! --/wrapper -->
         </section>
         <!-- /MAIN CONTENT -->
         <!--main content end-->
+        ------------------------------------------------------------
+        <!-- Modal -->
+        <!--new vacancy modal-->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="stuurBericht"
+             class="modal fade">
+            <div class="modal-dialog">
+                <form class="form-newVacancy" method="post" id="verstuurForm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Stuur bericht</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Vul de volgende velden in om een bericht te sturen.</p>
+                            Titel : <?php echo $_SESSION["functie"]; ?>
+                            <br/><br/>
+                           <textarea class="form-control placeholder-no-fix" id="text" name="text" rows="4"
+                                     cols="50" placeholder="Bericht" maxlength="500"
+                                     style="resize:none;"></textarea>
+
+                            <input type="hidden" name="employeeID" value="<?php echo $_GET["ID"] ?>"/>
+                            <input type="hidden" name="titel" value="<?php echo $_SESSION["functie"];?>"
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Annuleren</button>
+                            <button  class="btn btn-theme" id="verstuurBericht" name="submitbutton" type="submit" value="Submit">Verzenden
+                            </button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
@@ -240,24 +270,21 @@ if ($_SESSION['isloggedin']) {
     <!--common script for all pages-->
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
 
-    <!--script for this page-->
-  <script src= "../../js/login.js"></script>
-    
-  <script>
+    <script>var base_url = "<?php echo BASE_URL; ?>"</script>
+    <script>
         //custom select box
-        $(function () {
+
+        $(function(){
             $('select.styled').customSelect();
         });
+
     </script>
     </body>
     </html>
-<?php
-    }
-    else{
-        header("location: ../../login.php");
-    }
-include("../Controller/editEmployer.php");
-
-    ?>
-
-
+    <?php
+    include  ('../Controller/sendMessage.php');
+}
+else{
+    header("location: ../../login.php");
+}
+?>
