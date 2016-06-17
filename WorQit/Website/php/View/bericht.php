@@ -199,7 +199,8 @@ if($_SESSION['isloggedin']) {
                                         <input type="hidden" name="vacatureID" id="vacatureID" value="<?php echo $message->Messages->vacancyID?>" class="form-control placeholder-no-fix">
                                     </div>
                                     <div class="col-sm-10">
-                                        <input type="text" name="onderwerp" id="onderwerp" placeholder="Onderwerp" autocomplete="off" class="form-control placeholder-no-fix">
+                                        Onderwerp : <?php echo $message->Messages->title; ?>
+                                        <input type="hidden" name="onderwerp" id="onderwerp" placeholder="Onderwerp" valuee="<?php echo $message->Messages->title; ?>" autocomplete="off" class="form-control placeholder-no-fix">
                                     </div>
                                 </div>
                                 <div class="form-group">
