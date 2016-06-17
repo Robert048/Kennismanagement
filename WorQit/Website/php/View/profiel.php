@@ -174,7 +174,7 @@ if ($_SESSION['isloggedin']) {
                             </div>
                             <br/> <br/> <br/> <br/>
                             <div class="col-lg-2">
-                                <p style="font-weight:bold;font-size: 14pt;" >Wachtwoord</p> <input type="text" class="form-control" name="password" value="<?php echo $_SESSION['user']->password ?>">
+                                <p style="font-weight:bold;font-size: 14pt;" >Wachtwoord</p> <input type="text" class="form-control" name="password" value="">
                             </div>
                             <div class="col-lg-2">
                                 <p style="font-weight:bold;font-size: 14pt;" >Email</p> <input type="text" class="form-control" name="email" value="<?php echo $_SESSION['user']->email ?>">
@@ -218,7 +218,8 @@ if ($_SESSION['isloggedin']) {
         <!--footer start-->
         <footer class="site-footer">
             <div class="text-center">
-                <a href="../../dashgum/Theme/blank.html#" class="go-top">
+                2016- WorQit
+                <a href="profiel.php" class="go-top">
                     <i class="fa fa-angle-up"></i>
                 </a>
             </div>
