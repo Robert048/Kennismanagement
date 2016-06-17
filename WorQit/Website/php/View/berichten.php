@@ -6,7 +6,6 @@
  * Time: 13:59
  */
 session_start();
-include_once('../Controller/messages.php');
 if($_SESSION['isloggedin']) {
     include_once('../Controller/messages.php');
     $messages= unreadMessages();
