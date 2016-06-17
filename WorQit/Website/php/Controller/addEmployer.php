@@ -19,7 +19,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $headers = array();
 $headers[] = 'username:' . urlencode($_GET['username']);
-$headers[] = 'password:' . urlencode($_GET['password']);
+$headers[] = 'password:' . $password;
 $headers[] = 'email:' . urlencode($_GET['email']);
 
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -33,4 +33,4 @@ $data = json_decode($server_output);
 session_start();
 $_SESSION['user']= $data->employer;
 $_SESSION['isloggedin']= true;
-return $server_output;
+echo $server_output;
