@@ -42,9 +42,6 @@ function login(result){
         request.success(function() {
             window.location.href = 'index.php';
         });
-        request.fail(function(){
-            console.log("LOSER!");
-            });
     }
     else{
         if(data["Error"]== "Verkeerd wachtwoord") {
@@ -95,8 +92,17 @@ function logout(){
     request.success(function() {
         window.location.href = 'login.php';
     });
-    request.fail(function(){
-        console.log("LOSER!");
+}
+function LogOut(){
+    var request = $.ajax({
+        url: '../Controller/login.php',
+        type: "GET",
+        data: {functionname: 'logout'},
+        cache: false
+
+    });
+    request.success(function() {
+        window.location.href = '../../login.php';
     });
 }
 

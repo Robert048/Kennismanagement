@@ -94,7 +94,7 @@ if($_SESSION['isloggedin']) {
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="../../login.php">Logout</a></li>
+                    <li><a class="logout" onclick="LogOut()" ">Logout</a></li>
                 </ul>
             </div>
         </header>
@@ -238,7 +238,7 @@ if($_SESSION['isloggedin']) {
     <script src="../../dashgum/Theme/assets/js/common-scripts.js"></script>
     <!--script for this page-->
     <script src= "../../js/vacature.js"></script>
-    <script>var base_url = "<?php echo BASE_URL; ?>"</script>
+    <script src="../../js/login.js"></script>
     <script>
         //custom select box
         $(function(){
