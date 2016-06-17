@@ -6,6 +6,9 @@
  * Time: 11:29
  */
 
+/*
+ * function to decide if login is successed
+ */
 
     header('Content-Type: application/json');
 
@@ -47,6 +50,10 @@
     echo json_encode($aResult);
     return json_encode($aResult);
 
+
+/*
+ *  function to login to te application, send user to index page when successful
+*/
 function login($data)
 {
 
@@ -73,13 +80,20 @@ function login($data)
 
 }
 
+/*
+ * determine if the login was succesfull or not
+ */
 function loggedin($result){
     $data = json_decode($result);
     session_start();
     $_SESSION['user']= $data->User[0];
     $_SESSION['isloggedin']= true;
-    return "yolo!";
+    return "Succes";
 }
+
+/*
+ * sign logged in user out
+ */
 function logout(){
     session_start();
     session_unset();

@@ -74,6 +74,7 @@ if($_SESSION['isloggedin']) {
                         <li>
                             <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
                         </li>
+                        <!-- loop through the messages and set as notifications -->
                         <?php foreach($messages as $message){?>
                         <li>
                             <a href="php/View/bericht.php?<?php echo "ID=".$message->ID."&empID="

@@ -1,6 +1,7 @@
 <?php
-
-
+/*
+ * Send message from employer to employee
+ */
 if (isset($_POST["submitbutton"])) {
     $employeeID = $_POST["employeeID"];
     $employerID = $_SESSION["user"]->ID;
@@ -8,9 +9,7 @@ if (isset($_POST["submitbutton"])) {
     $sender = "employer";
     $title = $_POST["titel"];
 
-
     $editVars = array("employeeID => '$employeeID', employerID  => '$employerID', text => '$text', sender => '$sender', title => '$title''");
-
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Message/sendMessage");

@@ -1,9 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maaike
- * Date: 20-5-2016
- * Time: 15:05
+/*
+ * function to delete vacancy
  */
 
 $url = 'http://worqit.azurewebsites.net/api/Vacancy/deleteVacancy/'.urlencode($_GET['id']);

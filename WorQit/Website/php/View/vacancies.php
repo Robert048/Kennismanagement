@@ -10,6 +10,8 @@ if($_SESSION['isloggedin']) {
     
 include ('../Controller/vacancies.php');
 include_once('../Controller/messages.php');
+
+// get messages and get likes
 $messages= unreadMessages();
 $likes = getAllLikes($_SESSION['user']->ID);
 

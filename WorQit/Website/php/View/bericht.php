@@ -8,15 +8,18 @@
 
 session_start();
 
+
 if($_SESSION['isloggedin']) {
     include_once('../Controller/messages.php');
+
+    // get messages and set linkadres
     $unreadMessages= unreadMessages();
     $message = getMessage($_GET['ID']);
     updateMessageRead($message);
     $linkAdres = "berichten.php";
 
     $lastMessages = getLastMessages($_SESSION["user"]->ID, $_GET["empID"], -1, $message->Messages->title);
-   //echo var_dump($lastMessages);
+
     ?>
 
     <!DOCTYPE html>

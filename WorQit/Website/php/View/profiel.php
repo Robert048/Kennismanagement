@@ -3,6 +3,8 @@ session_start();
 if ($_SESSION['isloggedin']) {
     include_once("../Controller/deleteEmployer.php");
     include_once("../Controller/messages.php");
+
+    // set messages to contain not read messages
     $messages= unreadMessages();
     ?>
 
@@ -203,6 +205,7 @@ if ($_SESSION['isloggedin']) {
                         <br/>Weet u zeker dat u het account wilt verwijderen?
                         <button class="btn btn-theme" type="button" id="bevestigVerwijderen" onclick="deleteEmployer()">Ja</button>
                         <button data-dismiss="modal" class="btn btn-theme" type="button">Nee</button>
+                       <!-- dissmiss the modal when clicked on "nee" -->
                         <script>
                             var box = document.getElementById("bevestigVerwijderen");
                             box.onclick = function () {

@@ -6,7 +6,9 @@
  * Time: 12:17
  */
 
-
+/*
+ * get all candidates by vacancyID, to see which candidates liked the vacancy
+ */
 function getCandidates($ID){
 
     $curl = curl_init();

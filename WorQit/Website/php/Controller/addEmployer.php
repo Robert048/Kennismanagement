@@ -5,6 +5,9 @@
  * Date: 26-5-2016
  * Time: 12:05
  */
+/*
+ * add employer to the datbase with fields filled in
+ */
 
 $password= password_hash($_GET['password'], PASSWORD_DEFAULT);
 $vars = array('username =>' . urlencode($_GET['username']), 'password =>' . $password,
