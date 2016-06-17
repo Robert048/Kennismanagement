@@ -32,13 +32,15 @@ namespace WorQit
             if (e.Parameter is List<Message>)
             {
                 List<Message> list = (List<Message>)e.Parameter;
-                this.DataContext = list[0];
+                Message bericht = list[0];
+                bericht.text = "Verstuurd door u: \n" + list[0].text + "\nVerstuurd door werkgever: \n" + list[1].text;
+                this.DataContext = bericht;
                 currentMessage = list[0];
                 setMessageRead();
             }
             else
             {
-                Frame.Navigate(typeof(Main));
+                Frame.Navigate(typeof(Inbox));
             }
         }
 
@@ -66,7 +68,7 @@ namespace WorQit
         /// <param name="e"></param>
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Main));
+            Frame.Navigate(typeof(Inbox));
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace WorQit
                     var jsonresult = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
                     var dialog = new MessageDialog("Bericht met titel: " + currentMessage.title + " is succesvol verstuurd, ga verder om terug te gaan.");
                     await dialog.ShowAsync();
-                    Frame.Navigate(typeof(Main));
+                    Frame.Navigate(typeof(Inbox));
                 }
                 catch
                 {
