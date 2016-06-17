@@ -28,7 +28,12 @@ $(document).ready(function() {
 
 function login(result){
 
-    var data =  JSON.parse(result);
+    if(IsJsonString(result)){
+        var data =  JSON.parse(result);
+    }
+    else{
+        var data = result;
+    }
 
     if(data["Result"] == "successful") {
         
@@ -44,7 +49,7 @@ function login(result){
         });
     }
     else{
-        if(data["Error"]== "Verkeerd wachtwoord") {
+        if(data["Error"]== "Verkeerd wachtwoord!") {
             $('#password').css('border-color', '#FA0505').css('border-width', '2px');
         }
         else{
@@ -104,5 +109,13 @@ function LogOut(){
     request.success(function() {
         window.location.href = '../../login.php';
     });
+}
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
 }
 

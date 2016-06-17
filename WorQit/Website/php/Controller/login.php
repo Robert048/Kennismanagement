@@ -57,17 +57,16 @@
 function login($data)
 {
 
-    $vars = array("username => " . urlencode($data[0]), "password => " . urlencode($data[1]));
+    $vars = array("username => " . urlencode($data[0]));
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/logIn");
+    curl_setopt($ch, CURLOPT_URL, "http://worqit.azurewebsites.net/api/Employer/logInWebsite");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);  //Post Fields
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $headers = array();
     $headers[] = 'username:' . urlencode($data[0]);
-    $headers[] = 'password:' . urlencode($data[1]);
 
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
@@ -76,7 +75,20 @@ function login($data)
     curl_close($ch);
     //echo serialize($server_output);
     //echo $server_output;
-    return $server_output;
+
+    $result = json_decode($server_output);
+    if($result->Result== "successful"){
+        $password = $result->User[0]->password;
+        if(password_verify($data[1], $password)){
+            return $server_output;
+        }
+        else{
+            return array('Error'=> "Verkeerd wachtwoord!");
+        }
+    }
+    else {
+        return $server_output;
+    }
 
 }
 
