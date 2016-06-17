@@ -49,9 +49,6 @@ function getUnreadLikes(){
             }
         }
     }
-    else{
-        $unread[] = 0;
-    }
     return $unread;
 }
 
