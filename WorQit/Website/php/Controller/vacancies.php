@@ -43,13 +43,15 @@ function getUnreadLikes(){
     $allLikes= getAllLikes($_SESSION['user']->ID);
     $unread = array();
     if($allLikes != null) {
-        foreach ($allLikes->Users as $like) {
+        foreach ($allLikes as $like) {
             if ($like->seen == false && $like->seen !== null) {
                 $unread[] = $like;
             }
         }
     }
-   
+    else{
+        $unread[] = 0;
+    }
     return $unread;
 }
 
