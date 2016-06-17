@@ -87,7 +87,8 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 List<Message> msg = (from Message in wqdb.Messages
                                where Message.employeeID == ID
-                               select Message).ToList<Message>();
+                                     orderby Message.date descending
+                                     select Message).ToList<Message>();
                 return Json(new { Result = "successful", Messages = msg });
             }
             catch (Exception ex)
@@ -109,6 +110,7 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 List<Message> msg = (from Message in wqdb.Messages
                                      where Message.employerID == ID
+                                     orderby Message.date descending
                                      select Message).ToList<Message>();
                 return Json(new { Result = "successful", Messages = msg });
             }

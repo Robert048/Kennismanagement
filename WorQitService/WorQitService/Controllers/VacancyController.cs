@@ -69,7 +69,7 @@ namespace WorQitService.Controllers
                 foreach(Vacancy va in valist)
                 {
                     var lists = new List<VacancyEmployee>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                  where VacancyEmployee.vacancyID == va.ID 
+                                                  where VacancyEmployee.vacancyID == va.ID && VacancyEmployee.rating == 1
                                                   select VacancyEmployee).ToList();
                     foreach(VacancyEmployee ls in lists)
                     {
@@ -272,10 +272,22 @@ namespace WorQitService.Controllers
                 if (bedrijfsScore > -5)
                 {
                     int matchScore = 0;
-                    if (v.branche.Contains(employee.industry)) matchScore = matchScore + 10;
-                    if (v.jobfunction.Contains(employee.positions)) matchScore = matchScore + 5;
-                    if (v.requirements.Contains(employee.skills)) matchScore = matchScore + 7;
-                    if (v.educations.Contains(employee.educations)) matchScore = matchScore + 9;
+                    if (employee.industry != null)
+                    {
+                        if (v.branche.Contains(employee.industry)) matchScore = matchScore + 10;
+                    }
+                    if (employee.positions != null)
+                    {
+                        if (v.jobfunction.Contains(employee.positions)) matchScore = matchScore + 5;
+                    }
+                    if (employee.skills != null)
+                    {
+                        if (v.requirements.Contains(employee.skills)) matchScore = matchScore + 7;
+                    }
+                    if (employee.educations != null)
+                    {
+                        if (v.educations.Contains(employee.educations)) matchScore = matchScore + 9;
+                    }
 
 
                     var ve = wqdb.VacancyEmployees.Where(x => x.employeeID == employee.ID).Where(x => x.vacancyID == v.ID).FirstOrDefault();
