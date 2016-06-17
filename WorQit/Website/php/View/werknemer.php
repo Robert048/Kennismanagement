@@ -5,14 +5,13 @@ if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
     include  ('../Controller/getCandidates.php');
     include_once('../Controller/messages.php');
+
+    //get messages
     $messages= unreadMessages();
-
-
     $detailID = $_SESSION["clicked"];
+    // get candidates
     $allCandidates = getCandidates($detailID);
-    // echo var_dump($allCandidates);
-
-
+    // set linkadres
     $linkAdres = "vacancieDetails.php?ID=".$detailID;
     ?>
 

@@ -11,12 +11,13 @@ using WorQit.Models;
 namespace WorQit
 {
     /// <summary>
-    ///
+    ///Berichtenpagina
     /// </summary>
     public sealed partial class Inbox : Page
     {
-        private List<Vacancy> vacatureLijst { get; set; }
+        //lijst met berichten
         private List<Message> berichten = new List<Message>();
+        //huidige bericht
         public static Message currentMessage = new Message();
 
         public Inbox()
@@ -30,6 +31,9 @@ namespace WorQit
             getMessages();
         }
 
+        /// <summary>
+        /// berichten ophalen van ingelogde gebruiker
+        /// </summary>
         private async void getMessages()
         {
 
@@ -59,20 +63,6 @@ namespace WorQit
             }
         }
 
-        private void btnSettings_Copy_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Start));
-        }
-
-        private void btnMatch_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Vacancies));
-        }
-
-        private void btnEditProfile_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(EditProfile));
-        }
 
         private async void messageClick(object sender, TappedRoutedEventArgs e)
         {
@@ -115,6 +105,12 @@ namespace WorQit
         {
             getMessages();
             Frame.Navigate(typeof(Inbox));
+        }
+
+
+        private void btnBack(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Start));
         }
     }
 }

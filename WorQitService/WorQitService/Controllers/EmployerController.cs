@@ -54,6 +54,45 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// Log in method for websie
+        /// </summary>
+        /// <param name="userName"></param>
+
+        /// <returns>employee object</returns>
+        public object logInWebsite()
+        {
+            try
+            {
+                var headers = Request.Headers;
+                string userName = (headers.Contains("userName")) ? headers.GetValues("userName").First() : null;
+         
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                var values = from Employer in wqdb.Employers
+                             where Employer.username == userName
+                             select Employer;
+                var valuelist = values.ToList<Employer>();
+                if (valuelist.Exists(x => x.username == userName))
+                {
+                        return Json(new { Result = "successful", User = valuelist });
+                }
+                else
+                {
+                    return Json(new { Result = "failed", Error = "Deze username bestaat niet" });
+                }
+            }
+            catch (System.Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+
+        /// <summary>
+        /// deletes employer
+        /// </summary>
+        /// <returns></returns>
         public object deleteEmployer()
         {
             try
@@ -93,7 +132,10 @@ namespace WorQitService.Controllers
             }
         }
 
-      
+        /// <summary>
+        /// adds employer. Headers: username, email, password
+        /// </summary>
+        /// <returns></returns>
         public object addEmployer()
         {
             try
@@ -150,6 +192,10 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// edit employer
+        /// </summary>
+        /// <returns></returns>
         public object editEmployer()
         {
             try

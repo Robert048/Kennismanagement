@@ -164,6 +164,7 @@ if($_SESSION['isloggedin']) {
                                     <th>
                                 </tr>
                                 <?php
+                                // get messages and loop through
                                 $messages = showMessages($_SESSION['user']->ID);
                                 foreach ($messages as $message) { ?>
                                 <tr class="berichtRow">

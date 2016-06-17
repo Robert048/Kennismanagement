@@ -12,13 +12,13 @@ using WorQit.Models;
 namespace WorQit
 {
     /// <summary>
-    /// 
+    /// Startpagina na inloggen
     /// </summary>
     public sealed partial class Start : Page
     {
-        private List<Vacancy> vacatureLijst { get; set; }
+        //lijst met berichten worden opgehaald bij inloggen
         private List<Message> berichten = new List<Message>();
-        public static Message currentMessage = new Message();
+        //hoeveelheid ongelezen berichten
         private int unreadMessages = 0;
 
         public Start()
@@ -44,6 +44,10 @@ namespace WorQit
             Frame.Navigate(typeof(EditProfile));
         }
 
+        /// <summary>
+        /// Ophalen van huidige ongelezen berichten
+        /// </summary>
+        /// <returns></returns>
         private async Task getUnreadMessages()
         {
 
@@ -68,10 +72,6 @@ namespace WorQit
             Frame.Navigate(typeof(Inbox));
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
@@ -91,6 +91,7 @@ namespace WorQit
             await dialog.ShowAsync();
         }
 
+        //Vacatures herladen wanneer hierom gevraagd wordt
         private async Task setVacatures()
         {
             using (var client = new HttpClient())

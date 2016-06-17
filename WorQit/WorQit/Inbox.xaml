@@ -36,7 +36,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Image x:Name="image" Grid.Column="1" Source="Assets/logo WorQit.png" Margin="0"/>
-        <Button x:Name="btnBack" Content="terug" FontSize="12" Background="#FFA3CBE8" Foreground="White" Click="btnSettings_Copy_Click" Style="{StaticResource backBtn}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Button x:Name="btnBackArrow" Content="terug" FontSize="12" Background="#FFA3CBE8" Foreground="White" Click="btnBack" Style="{StaticResource backBtn}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <Rectangle Grid.ColumnSpan="3" Fill="#FF195695" Grid.Row="1" Stroke="Black"/>
         <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="berichten" Grid.Column="1" FontSize="15" Foreground="White" TextAlignment="Center" VerticalAlignment="Center"/>
         <GridView x:Name="control" ItemClick="control_ItemClick"  Grid.Row="2" ItemsSource="{Binding berichten}" ItemTemplate="{StaticResource berichtTemplate}" Grid.ColumnSpan="3" Margin="10,0"/>

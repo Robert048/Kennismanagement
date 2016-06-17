@@ -1,4 +1,8 @@
 <?php
+/*
+ * Function to add vacancy to the daabase with filled in fields
+ */
+
 /**
  * Created by PhpStorm.
  * User: maaike

@@ -4,12 +4,14 @@ if($_SESSION['isloggedin']) {
     include  ('../Controller/vacancies.php');
     include  ('../Controller/getCandidates.php');
     include_once('../Controller/messages.php');
+
+    // get messages
     $messages= unreadMessages();
     $message = getMessage($_GET['ID']);
     $allCandidates = getCandidates($_GET["ID"]);
+    // update liked seen
     updateLikeSeen($_GET['ID'], $allCandidates);
-
-   // echo var_dump($allCandidates);
+    // get all vacances by userID
     $allVacances = showVacancies($_SESSION["user"]->ID);
     ?>
     <!DOCTYPE html>
@@ -67,6 +69,7 @@ if($_SESSION['isloggedin']) {
                             <li>
                                 <p class="green">Er zijn <?php echo $count ?> nieuwe berichten</p>
                             </li>
+                            <!-- loop through messages -->
                             <?php foreach($messages as $message){?>
                                 <li>
                                     <a href="bericht.php?<?php echo "ID=".$message->ID."&empID="
@@ -191,7 +194,7 @@ if($_SESSION['isloggedin']) {
                                     <th class=hidden-phone>
                                         <?php
                                         $_SESSION["functie"] = $vacancy->jobfunction;
-
+                                        // loop through candidates and echo them
                                         $count = 1;
                                         if (count($allCandidates->Users) == "0") {
                                             echo "Niemand";

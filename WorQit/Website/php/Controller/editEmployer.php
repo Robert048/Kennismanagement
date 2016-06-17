@@ -1,4 +1,8 @@
 <?php
+
+/*
+ * function to edit the employer, new values will be given and the old ones wll be replaced
+ */
 if (isset($_POST['submitbutton'])) {
     $name = $_POST["name"];
     $location = $_POST["location"];
@@ -38,13 +42,12 @@ if (isset($_POST['submitbutton'])) {
     $_SESSION["user"]->username = $username;
     $_SESSION["user"]->email = $email;
     ?>
+    <!-- script to update page form   -->
     <script>
         var url = "profiel.php";
         $('#form2').load(url + ' #form2');
         $('#sidebar').load(url + ' #sidebar');
         document.getElementById("editProfile").innerHTML = "Wijzigingen opgeslagen!";
-
-
     </script>
     <?php
 }

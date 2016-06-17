@@ -1,5 +1,7 @@
 <?php
-
+/*
+ * delete employer from the database
+ */
 function deleteEmployer()
 {
     $ID = $_SESSION["user"][0]["ID"];

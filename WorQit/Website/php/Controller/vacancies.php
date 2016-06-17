@@ -1,11 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maaike
- * Date: 18-5-2016
- * Time: 15:09
+/*
+ * get all vacancies by vacancyID
+ * @param ID
  */
-
 function showVacancies($ID){
 
     $curl = curl_init();
@@ -17,6 +14,9 @@ function showVacancies($ID){
     return json_decode($content);
 }
 
+/*
+ * get all vacancies
+ */
 function getAllVacancies(){
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -28,6 +28,9 @@ function getAllVacancies(){
 
 }
 
+/*
+ * get all likes by vacancyID
+ */
 function getAllLikes($ID){
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -38,6 +41,9 @@ function getAllLikes($ID){
     return json_decode($content);
 }
 
+/*
+ * get all likes that are not seen yet
+ */
 function getUnreadLikes(){
    @session_start();
     $allLikes= getAllLikes($_SESSION['user']->ID);
@@ -52,6 +58,10 @@ function getUnreadLikes(){
     return $unread;
 }
 
+/*
+ * when like is seen, update in the database to seen
+ * replace old values
+ */
 function updateLikeSeen($vacancyID, $allCandidates){
     $unreadLikes = getUnreadLikes();
 

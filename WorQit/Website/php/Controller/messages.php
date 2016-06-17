@@ -15,7 +15,6 @@ function addMessage()
 {
 
 //extract data from the post
-    
     $vars = array('employerID =>' . urlencode($_SESSION['user']->ID),//employeeID
     'sender=> employer', 'message =>' . urlencode($_GET['message']), 'subject =>' . urlencode($_GET['subject']));
 
@@ -37,12 +36,14 @@ function addMessage()
     $server_output = curl_exec($ch);
 
     curl_close($ch);
-//$data= unserialize($server_output);
-//echo $server_output;
     $data = json_decode($server_output);
     return $server_output;
 }
 
+/*
+ * show messages for the employer
+ * fill ID to get messages for that employer
+ */
 function showMessages($ID){
 
     $curl = curl_init();
@@ -63,10 +64,9 @@ function showMessages($ID){
     return $receivedMessages;
 }
 
-function deleteMessage($id){
-    
-}
-
+/*
+ * get Message by message ID
+ */
 function getMessage($id){
 
     $curl = curl_init();
@@ -77,6 +77,10 @@ function getMessage($id){
 
     return json_decode($content);
 }
+
+/*
+ * get messages that are not read, for user signed in
+ */
 function unreadMessages()
 {
     $unread = array();
@@ -96,6 +100,9 @@ function unreadMessages()
     }
 }
 
+/*
+ * when a message is read, update not read to read
+ */
 function updateMessageRead($messageID)
 {
     $messageID = $_GET["ID"];
@@ -116,6 +123,9 @@ function updateMessageRead($messageID)
     curl_close($ch);
 }
 
+/*
+ * get all messages based on employerID, employeeID
+ */
 function getAllMessages($employerID, $employeeID, $count)
 {
      $curl = curl_init();
@@ -127,6 +137,9 @@ function getAllMessages($employerID, $employeeID, $count)
     return json_decode($content);
 }
 
+/*
+ *  get last messages between employer and employee and give in how many you want to get back
+ */
 function getLastMessages($employerID, $employeeID, $count, $title){
 
     $allMessages = getAllMessages($employerID, $employeeID, $count);
