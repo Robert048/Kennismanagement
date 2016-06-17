@@ -1,13 +1,14 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-
 namespace WorQit
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// 
     /// </summary>
     public sealed partial class FilterPage : Page
     {
+        Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
         public FilterPage()
         {
             this.InitializeComponent();
@@ -17,7 +18,13 @@ namespace WorQit
         {
             Frame.Navigate(typeof(Start));
         }
+
+        private void btnApply_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            localSettings.Values["distance"] = txtDistance.Text;
+            localSettings.Values["hours"] = txtHours.Text;
+            localSettings.Values["salary"] = txtSalary.Text;
+            Frame.Navigate(typeof(Start));
+        }
     }
 }
-
-//api/Vacancy/getVacancies?function={function}&salary={salary}&hours={hours}&requirements={requirements}&tags={tags}&location={location}

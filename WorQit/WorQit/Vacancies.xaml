@@ -16,14 +16,15 @@
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="77*"/>
-            <RowDefinition Height="27*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="14*"/>
             <RowDefinition Height="36*"/>
             <RowDefinition Height="429*"/>
             <RowDefinition Height="26*"/>
             <RowDefinition Height="32*"/>
             <RowDefinition Height="13*"/>
         </Grid.RowDefinitions>
+
         <Image x:Name="image" Grid.Column="2" Source="Assets/logo WorQit.png"/>
         <Grid Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="2" Background="White" BorderBrush="#FF195695" BorderThickness="0,3" Margin="0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -45,21 +46,24 @@
                 <RowDefinition Height="49*"/>
                 <RowDefinition Height="57*"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="txtFunction" TextWrapping="Wrap" Text="" UseLayoutRounding="True" Foreground="#FF195695" Grid.ColumnSpan="4" TextAlignment="Center" FontSize="18"/>
-            <TextBlock x:Name="txtBlockDesc" TextWrapping="Wrap" Text="Beschrijving" FontSize="14" Grid.Column="1" Grid.Row="1" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="75,3,75,9.667"/>
-            <TextBlock x:Name="textBlock" Grid.Row="2" TextWrapping="Wrap" Text="" FontSize="13" RenderTransformOrigin="0.468,-0.014" Grid.ColumnSpan="4" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock1" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
-            <TextBlock x:Name="textBlock2" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
-            <TextBlock x:Name="textBlock3" Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
-            <TextBlock x:Name="txtEisen" Grid.Row="4" TextWrapping="Wrap" Text="Eisen" FontSize="13" TextAlignment="Center" Grid.ColumnSpan="4" Foreground="#FF195695"/>
-            <TextBlock x:Name="txtUren" Grid.Row="6" TextWrapping="Wrap" Text="Uren" FontSize="13" RenderTransformOrigin="0.377,-0.961" TextAlignment="Center" Grid.ColumnSpan="4" Foreground="#FF195695"/>
-            <TextBlock x:Name="txtSalaris" Grid.Row="8" TextWrapping="Wrap" Text="Salaris" FontSize="13" TextAlignment="Center" Grid.ColumnSpan="4" Foreground="#FF195695"/>
+
+            <Rectangle Fill="#FF195695" Stroke="Black" Grid.ColumnSpan="4"/>
+
+            <TextBlock x:Name="txtFunction" TextWrapping="Wrap" Text="" UseLayoutRounding="True" Foreground="White" Grid.ColumnSpan="4" TextAlignment="Center" FontSize="18"/>
+            <TextBlock TextWrapping="Wrap" Text="beschrijving" FontSize="14" Grid.Column="1" Grid.Row="1" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="75,3,75,9.667"/>
+            <TextBlock x:Name="txtBeschrijving" Grid.Row="2" TextWrapping="Wrap" Text="" FontSize="13" RenderTransformOrigin="0.468,-0.014" Grid.ColumnSpan="4" TextAlignment="Center"/>
+            <TextBlock Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="eisen" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="uren" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="salaris" Foreground="#FF195695" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock x:Name="txtEisen" Grid.Row="4" TextWrapping="Wrap" Text="" FontSize="13" TextAlignment="Center" Grid.ColumnSpan="4" Foreground="Black"/>
+            <TextBlock x:Name="txtUren" Grid.Row="6" TextWrapping="Wrap" Text="" FontSize="13" RenderTransformOrigin="0.377,-0.961" TextAlignment="Center" Grid.ColumnSpan="4" Foreground="Black"/>
+            <TextBlock x:Name="txtSalaris" Grid.Row="8" TextWrapping="Wrap" Text="" FontSize="13" TextAlignment="Center" Grid.ColumnSpan="4" Foreground="Black"/>
             <Button x:Name="btnLike" Content="Like" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" Background="#FF0AAF37" Foreground="White" FontWeight="ExtraBold" Click="btnLike_Click"/>
             <Button x:Name="btnDislike" Content="Dislike" Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" Background="#FFE0282C" Foreground="White" FontWeight="ExtraBold" Click="btnDislike_Click" />
         </Grid>
-        <ProgressBar x:Name="prgresVacancies" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Stretch"/>
-        <TextBlock x:Name="textBlock4" Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" Text="Voortgang vacatures" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="#FF195695"/>
-        <Button x:Name="button" Content="Button" RenderTransformOrigin="-1.069,-0.077" Style="{StaticResource NavigationBackButtonSmallStyle}" Padding="0" HorizontalAlignment="Stretch" Margin="8,19,11,18" Width="Auto" Grid.ColumnSpan="2" VerticalAlignment="Stretch" Click="button_Click_1"/>
+        <ProgressBar x:Name="prgresVacancies" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Background="#FFA3CBE8" Foreground="#FF195695"/>
+        <TextBlock x:Name="textBlock4" Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" Text="voortgang vacatures" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="#FF195695" Height="16" Margin="26,5,25,5" Width="109"/>
+        <Button x:Name="backButton" Content="Button" RenderTransformOrigin="-1.069,-0.077" Style="{StaticResource backBtn}" Padding="0" HorizontalAlignment="Stretch" Margin="0" Width="Auto" VerticalAlignment="Stretch" Click="button_Click_1" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Page>

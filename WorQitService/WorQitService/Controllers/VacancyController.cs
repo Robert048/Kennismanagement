@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
+
 namespace WorQitService.Controllers
 {
     public class VacancyController : ApiController
@@ -48,6 +49,38 @@ namespace WorQitService.Controllers
             
             }
         }
+
+        public List<VacancyEmployee> getAllLikes(int ID)
+        {
+            try
+            {
+                List<Vacancy> valist = getVacancies(ID);
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                List<VacancyEmployee> vaemps = new List<VacancyEmployee>();
+                foreach(Vacancy va in valist)
+                {
+                    var lists = new List<VacancyEmployee>(from VacancyEmployee in wqdb.VacancyEmployees
+                                                  where VacancyEmployee.vacancyID == ID 
+                                                  select VacancyEmployee).ToList();
+                    foreach(VacancyEmployee ls in lists)
+                    {
+                        vaemps.Add(ls);
+                    }
+                }
+
+
+
+                return vaemps;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+
+            }
+        }
+
 
         /// <summary>
         /// Get all candidates on a vacancy
@@ -138,40 +171,28 @@ namespace WorQitService.Controllers
         /// <summary>
         /// Get vacancys with specified requirements
         /// </summary>
-        /// <param name="function"></param>
+  
         /// <param name="salary"></param>
         /// <param name="hours"></param>
-        /// <param name="requirements"></param>
-        /// <param name="tags"></param>
-        /// <param name="location"></param>
+        
         /// <returns>vacancy list</returns>
-        public List<Vacancy> getVacancies(string function = null, int salary  = 0, int hours = 0 , string requirements = null, string tags = null, string location = null)
+        public List<Vacancy> getVacancies( int salary  = 0, int hours = 0)
         {
             WorQitEntities wqdb = new WorQitEntities();
             wqdb.Configuration.ProxyCreationEnabled = false;
 
             var test = wqdb.Vacancies;
             List<Vacancy> alles = wqdb.Vacancies.ToList();
-            if (function != null)
-            {
-                alles = alles.Where(v => v.jobfunction.Contains(function)).ToList();
-            }
+         
             if (salary != 0)
             {
-                alles = alles.Where(v => v.salary.Equals(salary)).ToList();
+                alles = alles.Where(v => v.salary >= salary).ToList();
             }
             if (hours != 0)
             {
-                alles = alles.Where(v => v.hours.Equals(hours)).ToList();
+                alles = alles.Where(v => v.hours >= hours).ToList();
             }
-            if (requirements != null)
-            {
-                alles = alles.Where(v => v.requirements.Contains(requirements)).ToList();
-            }
-            if (tags != null)
-            {
-                alles = alles.Where(v => v.requirements.Contains(tags)).ToList();
-            }
+           
             return alles;
         }
 
@@ -184,9 +205,9 @@ namespace WorQitService.Controllers
         /// <param name="salary"></param>
         /// <param name="hours"></param>
         /// <param name="requirements"></param>
-        /// <param name="tags"></param>
+    
         /// <returns>json sucessfull or failed with error</returns>
-        public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements, string tags)
+        public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements)
         {
             try
             {
@@ -199,8 +220,7 @@ namespace WorQitService.Controllers
                     description = description,
                     salary = salary,
                     hours = hours,
-                    requirements = requirements,
-                    tags = tags
+                    requirements = requirements
                 };
                 wqdb.Vacancies.Add(vacancy);
                 wqdb.SaveChanges();
@@ -241,14 +261,14 @@ namespace WorQitService.Controllers
                 List<VacancyEmployee> vList = wqdb.VacancyEmployees.Where(x => x.vacancyID == v.ID).ToList();
                 foreach (VacancyEmployee ve in vList)
                 {
-                    bedrijfsScore = bedrijfsScore + ve.rating;
+                    bedrijfsScore = ve.rating ?? default(int);
                 }
                 
                 if (bedrijfsScore > -5)
                 {
                     int matchScore = 0;
                     if (employee.industry == v.jobfunction) matchScore = matchScore + 5;
-                    if (employee.location == v.tags) matchScore = matchScore + 4;
+                   
                     if (employee.industry == v.requirements) matchScore = matchScore + 2;
                     var ve = wqdb.VacancyEmployees.Where(x => x.employeeID == employee.ID).Where(x => x.vacancyID == v.ID).FirstOrDefault();
                     if(ve == null)
@@ -264,5 +284,74 @@ namespace WorQitService.Controllers
                 }
             }
         }
+
+        /// <summary>
+        /// update seen to true, the like on the vacancy has been seen by the employer
+        /// </summary>
+        /// <param name="ID">matchID</param>
+        public object reactionSeen(int ID)
+        {
+            try
+            {
+                WorQitEntities wqdb = new WorQitEntities();
+                wqdb.Configuration.ProxyCreationEnabled = false;
+                VacancyEmployee vaemp = (from VacancyEmployee in wqdb.VacancyEmployees
+                               where VacancyEmployee.matchID == ID
+                               select VacancyEmployee).First();
+                vaemp.seen = true;
+
+                wqdb.SaveChanges();
+                return Json(new { Result = "successful" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed", Error = ex });
+            }
+        }
+
+       
+        
+
+        /// <summary>
+        /// sets score of vacancys for employee
+        /// </summary>
+        /// <param name="ID">employee ID</param>
+        [HttpGet]
+        public object setScoreForEmployee(int ID)
+        {
+            try
+            {
+                List<Vacancy> vacancyList = getAllVacancies();
+              //  List<Vacancy> newVaList = vacancyList
+
+                foreach (Vacancy v in vacancyList)
+                {
+                    setMatchScore(ID, v.ID);
+                }
+
+                return Json(new { Result = "successful" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "failed" });
+            }
+        }
+
+
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
+        (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            HashSet<TKey> seenKeys = new HashSet<TKey>();
+            foreach (TSource element in source)
+            {
+                if (seenKeys.Add(keySelector(element)))
+                {
+                    yield return element;
+                }
+            }
+        }
+
+
+
     }
 }
