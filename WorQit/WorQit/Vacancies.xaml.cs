@@ -18,10 +18,15 @@ namespace WorQit
     /// </summary>
     public sealed partial class Vacancies : Page
     {
+        //gematchde list die wordt ontvangen van de service
         private List<Vacancy> matchedList = new List<Vacancy>();
+        //huidig getoonde vacature index op scherm
         private int currentVacancyIndex = 0;
+        //huidig getoonde vacature op scherm
         private Vacancy currentVacancy;
+        //waarde van progressbar
         private int progressValueUpdate;
+        //instellingen van filters
         Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
         public Vacancies()
@@ -43,6 +48,10 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// Vacatures ophalen die gematched worden in de service
+        /// </summary>
+        /// <returns></returns>
         public async Task getVacancies()
         {
             using (var client = new HttpClient())
@@ -84,6 +93,9 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// melding weergeven wanneer klaar met matching
+        /// </summary>
         public async void finishedMatching()
         {
             var dialog = new MessageDialog("Alle vacatures bekeken, ga verder om terug te keren naar het hoofdscherm.");
@@ -91,10 +103,11 @@ namespace WorQit
             Frame.Navigate(typeof(Inbox));
         }
 
+        /// <summary>
+        /// huidige vacature ophalen
+        /// </summary>
         public void getCurrentHighestVacancy()
         {
-
-
             if (matchedList.Count != 0)
             {
                 currentVacancy = matchedList[currentVacancyIndex];
@@ -111,6 +124,9 @@ namespace WorQit
 
         }
 
+        /// <summary>
+        /// Melding weergeven wanneer er geen vacatures beschikbaar zijn voor matching
+        /// </summary>
         public async void warningDone()
         {
             var dialog = new MessageDialog("Alle beschikbare vacatures zijn al verwerkt. Kom een ander moment terug.");
@@ -118,6 +134,12 @@ namespace WorQit
             Frame.Navigate(typeof(Start));
         }
 
+        /// <summary>
+        /// rating van vacature aanpassen n.a.v. like/dislike
+        /// </summary>
+        /// <param name="empID">employee id van logged in user</param>
+        /// <param name="vacID">de id van de vacature</param>
+        /// <param name="rating">like of dislike, 1 of 0</param>
         public async void setRating(int empID, int vacID, int rating)
         {
             using (var client = new HttpClient())
@@ -139,16 +161,27 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// Progressbar updaten naar hoeveelheid vacatures
+        /// </summary>
         public void setProgress()
         {
             progressValueUpdate = 100 / matchedList.Count;
         }
 
+        /// <summary>
+        /// progressbar updaten wanneer er iets wordt geliked/gedisliked
+        /// </summary>
         public void updateProgress()
         {
             prgresVacancies.Value = prgresVacancies.Value + progressValueUpdate;
         }
         
+        /// <summary>
+        /// Button om te liken
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLike_Click(object sender, RoutedEventArgs e)
         {
             if (currentVacancyIndex != matchedList.Count())
@@ -166,6 +199,11 @@ namespace WorQit
 
         }
 
+        /// <summary>
+        /// Button om te disliken
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDislike_Click(object sender, RoutedEventArgs e)
         {
             if (currentVacancyIndex != matchedList.Count())
@@ -182,11 +220,22 @@ namespace WorQit
             }
         }
 
+        /// <summary>
+        /// Terug knop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Start));
         }
 
+        /// <summary>
+        /// Afstand ophalen tussen werkgever en werknemer
+        /// </summary>
+        /// <param name="locatie">locatie van vacature</param>
+        /// bron : http://www.codecodex.com/wiki/Calculate_distance_between_two_points_on_a_globe#C.23
+        /// <returns>double met afstand</returns>
         public async Task<double> getDistance(string locatie)
         {
 
@@ -226,6 +275,7 @@ public enum DistanceType { Miles, Kilometers };
 
 /// <summary>
 /// Specifies a Latitude / Longitude point.
+/// bron : http://www.codecodex.com/wiki/Calculate_distance_between_two_points_on_a_globe#C.23
 /// </summary>
 public struct Position
 {
@@ -233,6 +283,10 @@ public struct Position
     public double Longitude;
 }
 
+/// <summary>
+/// Bron : http://www.codecodex.com/wiki/Calculate_distance_between_two_points_on_a_globe#C.23
+/// Wiskundige haversine formule om afstand te berekenen tussen coordinaten
+/// </summary>
 public class Haversine
 {
     /// <summary>
