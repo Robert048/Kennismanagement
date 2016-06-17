@@ -22,6 +22,10 @@ namespace WorQitService.Controllers
 
         }
 
+        /// <summary>
+        /// sets rating of vacancyemployee (like / dislike)
+        /// </summary>
+        /// <returns></returns>
         public object setRating()
         {
             try
@@ -49,7 +53,11 @@ namespace WorQitService.Controllers
             
             }
         }
-
+        /// <summary>
+        /// gets all vacancyemployee objects that have been liked
+        /// </summary>
+        /// <param name="ID">employer id</param>
+        /// <returns></returns>
         public List<VacancyEmployee> getAllLikes(int ID)
         {
             try
@@ -61,7 +69,7 @@ namespace WorQitService.Controllers
                 foreach(Vacancy va in valist)
                 {
                     var lists = new List<VacancyEmployee>(from VacancyEmployee in wqdb.VacancyEmployees
-                                                  where VacancyEmployee.vacancyID == ID 
+                                                  where VacancyEmployee.vacancyID == va.ID && VacancyEmployee.rating == 1
                                                   select VacancyEmployee).ToList();
                     foreach(VacancyEmployee ls in lists)
                     {
@@ -113,10 +121,12 @@ namespace WorQitService.Controllers
         /// <summary>
         /// Get all vacancys with score
         /// </summary>
-        /// <param>employeeID</param>
+        /// <param name="ID">employeeID</param>
+        /// <param name="hours">minumum hours</param>
+        /// <param name="salary">minumum salary</param>
         /// <returns>vacancy list</returns>
         [HttpGet]
-        public object getVacanciesByScore(int ID)
+        public object getVacanciesByScore(int ID, int salary = 0, int hours = 0)
         {
             try
             {
@@ -128,7 +138,18 @@ namespace WorQitService.Controllers
                                                 where VacancyEmployee.employeeID == ID && VacancyEmployee.rating == 0
                                                 orderby VacancyEmployee.matchingValue descending
                                                select VacancyEmployee.Vacancy).ToList();
+                
 
+                if (salary != 0)
+                {
+                    vacancies = vacancies.Where(v => v.salary >= salary).ToList();
+                }
+                if (hours != 0)
+                {
+                    vacancies = vacancies.Where(v => v.hours >= hours).ToList();
+                }
+
+               
 
                 return Json(new { Result = "successful", Vacancys = vacancies });
 
@@ -139,6 +160,8 @@ namespace WorQitService.Controllers
                
             }
         }
+
+       
 
         /// <summary>
         /// Get all results from VacancyEmployees
@@ -168,33 +191,6 @@ namespace WorQitService.Controllers
             return list;
         }
 
-        /// <summary>
-        /// Get vacancys with specified requirements
-        /// </summary>
-  
-        /// <param name="salary"></param>
-        /// <param name="hours"></param>
-        
-        /// <returns>vacancy list</returns>
-        public List<Vacancy> getVacancies( int salary  = 0, int hours = 0)
-        {
-            WorQitEntities wqdb = new WorQitEntities();
-            wqdb.Configuration.ProxyCreationEnabled = false;
-
-            var test = wqdb.Vacancies;
-            List<Vacancy> alles = wqdb.Vacancies.ToList();
-         
-            if (salary != 0)
-            {
-                alles = alles.Where(v => v.salary >= salary).ToList();
-            }
-            if (hours != 0)
-            {
-                alles = alles.Where(v => v.hours >= hours).ToList();
-            }
-           
-            return alles;
-        }
 
         /// <summary>
         /// Create new Vacancy
@@ -204,8 +200,7 @@ namespace WorQitService.Controllers
         /// <param name="description"></param>
         /// <param name="salary"></param>
         /// <param name="hours"></param>
-        /// <param name="requirements"></param>
-    
+        /// <param name="requirements"></param>    
         /// <returns>json sucessfull or failed with error</returns>
         public object addVacancy(int employerID, string function, string description, int salary, int hours, string requirements)
         {
@@ -232,6 +227,11 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// deletes vacancy 
+        /// </summary>
+        /// <param name="ID">vacancy id</param>
+        /// <returns></returns>
         public object deleteVacancy(int ID)
         {
             try
@@ -248,7 +248,12 @@ namespace WorQitService.Controllers
             }
         }
 
-        public void setMatchScore(int employeeID, int vacancyID)
+        /// <summary>
+        /// matching algorythm
+        /// </summary>
+        /// <param name="employeeID"></param>
+        /// <param name="vacancyID"></param>
+        private void setMatchScore(int employeeID, int vacancyID)
         {
             int bedrijfsScore = 0;
             WorQitEntities wqdb = new WorQitEntities();
@@ -267,13 +272,28 @@ namespace WorQitService.Controllers
                 if (bedrijfsScore > -5)
                 {
                     int matchScore = 0;
-                    if (employee.industry == v.jobfunction) matchScore = matchScore + 5;
-                   
-                    if (employee.industry == v.requirements) matchScore = matchScore + 2;
+                    if (employee.industry != null)
+                    {
+                        if (v.branche.Contains(employee.industry)) matchScore = matchScore + 10;
+                    }
+                    if (employee.positions != null)
+                    {
+                        if (v.jobfunction.Contains(employee.positions)) matchScore = matchScore + 5;
+                    }
+                    if (employee.skills != null)
+                    {
+                        if (v.requirements.Contains(employee.skills)) matchScore = matchScore + 7;
+                    }
+                    if (employee.educations != null)
+                    {
+                        if (v.educations.Contains(employee.educations)) matchScore = matchScore + 9;
+                    }
+
+
                     var ve = wqdb.VacancyEmployees.Where(x => x.employeeID == employee.ID).Where(x => x.vacancyID == v.ID).FirstOrDefault();
                     if(ve == null)
                     {
-                        VacancyEmployee newVE = new VacancyEmployee() { employeeID = employee.ID, vacancyID = v.ID, matchingValue = matchScore };
+                        VacancyEmployee newVE = new VacancyEmployee() { employeeID = employee.ID, vacancyID = v.ID, matchingValue = matchScore, rating = 0 };
                         wqdb.VacancyEmployees.Add(newVE);
                         wqdb.SaveChanges();
                     }
@@ -322,9 +342,9 @@ namespace WorQitService.Controllers
             try
             {
                 List<Vacancy> vacancyList = getAllVacancies();
-              //  List<Vacancy> newVaList = vacancyList
+                List<Vacancy> newVaList = vacancyList.GroupBy(i => i.employerID).Select(group => group.First()).ToList();
 
-                foreach (Vacancy v in vacancyList)
+                foreach (Vacancy v in newVaList)
                 {
                     setMatchScore(ID, v.ID);
                 }
@@ -338,20 +358,7 @@ namespace WorQitService.Controllers
         }
 
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>
-        (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-        {
-            HashSet<TKey> seenKeys = new HashSet<TKey>();
-            foreach (TSource element in source)
-            {
-                if (seenKeys.Add(keySelector(element)))
-                {
-                    yield return element;
-                }
-            }
-        }
-
-
+     
 
     }
 }

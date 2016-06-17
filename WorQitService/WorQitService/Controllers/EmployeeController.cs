@@ -57,6 +57,12 @@ namespace WorQitService.Controllers
             }
         }
 
+        
+
+        /// <summary>
+        /// deletes employee
+        /// </summary>
+        /// <returns></returns>
         public object deleteEmployee()
         {
             try
@@ -96,6 +102,10 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// adds employee
+        /// </summary>
+        /// <returns></returns>
         public object addEmployee()
         {
             try
@@ -150,6 +160,10 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// edits employee
+        /// </summary>
+        /// <returns></returns>
         public object editEmployee()
         {
             try

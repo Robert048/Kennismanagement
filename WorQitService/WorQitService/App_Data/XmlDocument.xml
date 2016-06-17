@@ -489,6 +489,24 @@
             <param name="password"></param>
             <returns>employee object</returns>
         </member>
+        <member name="M:WorQitService.Controllers.EmployeeController.deleteEmployee">
+            <summary>
+            deletes employee
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.EmployeeController.addEmployee">
+            <summary>
+            adds employee
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.EmployeeController.editEmployee">
+            <summary>
+            edits employee
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:WorQitService.Controllers.EmployerController.logIn">
             <summary>
             Log in method
@@ -496,6 +514,31 @@
             <param name="userName"></param>
             <param name="password"></param>
             <returns>employee object</returns>
+        </member>
+        <member name="M:WorQitService.Controllers.EmployerController.logInWebsite">
+            <summary>
+            Log in method for websie
+            </summary>
+            <param name="userName"></param>
+            <returns>employee object</returns>
+        </member>
+        <member name="M:WorQitService.Controllers.EmployerController.deleteEmployer">
+            <summary>
+            deletes employer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.EmployerController.addEmployer">
+            <summary>
+            adds employer. Headers: username, email, password
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.EmployerController.editEmployer">
+            <summary>
+            edit employer
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:WorQitService.Controllers.MessageController.sendMessage">
             <summary>
@@ -507,6 +550,20 @@
             update read to true
             </summary>
             <param name="ID">message ID</param>
+        </member>
+        <member name="M:WorQitService.Controllers.MessageController.getOverviewEmployee(System.Int32)">
+            <summary>
+            gets overview of employee messages
+            </summary>
+            <param name="ID"> employee id</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.MessageController.getOverviewEmployer(System.Int32)">
+            <summary>
+            gets overview of employer messages
+            </summary>
+            <param name="ID"> employer id</param>
+            <returns></returns>
         </member>
         <member name="M:WorQitService.Controllers.MessageController.getLast(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -530,6 +587,19 @@
             </summary>
             <returns>vacancy list</returns>
         </member>
+        <member name="M:WorQitService.Controllers.VacancyController.setRating">
+            <summary>
+            sets rating of vacancyemployee (like / dislike)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.VacancyController.getAllLikes(System.Int32)">
+            <summary>
+            gets all vacancyemployee objects that have been liked
+            </summary>
+            <param name="ID">employer id</param>
+            <returns></returns>
+        </member>
         <member name="M:WorQitService.Controllers.VacancyController.getCandidates(System.Int32)">
             <summary>
             Get all candidates on a vacancy
@@ -537,11 +607,13 @@
             <param>vacancyID</param>
             <returns>vacancy list</returns>
         </member>
-        <member name="M:WorQitService.Controllers.VacancyController.getVacanciesByScore(System.Int32)">
+        <member name="M:WorQitService.Controllers.VacancyController.getVacanciesByScore(System.Int32,System.Int32,System.Int32)">
             <summary>
             Get all vacancys with score
             </summary>
-            <param>employeeID</param>
+            <param name="ID">employeeID</param>
+            <param name="hours">minumum hours</param>
+            <param name="salary">minumum salary</param>
             <returns>vacancy list</returns>
         </member>
         <member name="M:WorQitService.Controllers.VacancyController.getAllVacancyEmployees">
@@ -557,18 +629,6 @@
             <param name="ID"></param>
             <returns>vacancy list</returns>
         </member>
-        <member name="M:WorQitService.Controllers.VacancyController.getVacancies(System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
-            <summary>
-            Get vacancys with specified requirements
-            </summary>
-            <param name="function"></param>
-            <param name="salary"></param>
-            <param name="hours"></param>
-            <param name="requirements"></param>
-            <param name="tags"></param>
-            <param name="location"></param>
-            <returns>vacancy list</returns>
-        </member>
         <member name="M:WorQitService.Controllers.VacancyController.addVacancy(System.Int32,System.String,System.String,System.Int32,System.Int32,System.String)">
             <summary>
             Create new Vacancy
@@ -578,8 +638,22 @@
             <param name="description"></param>
             <param name="salary"></param>
             <param name="hours"></param>
-            <param name="requirements"></param>
+            <param name="requirements"></param>    
             <returns>json sucessfull or failed with error</returns>
+        </member>
+        <member name="M:WorQitService.Controllers.VacancyController.deleteVacancy(System.Int32)">
+            <summary>
+            deletes vacancy 
+            </summary>
+            <param name="ID">vacancy id</param>
+            <returns></returns>
+        </member>
+        <member name="M:WorQitService.Controllers.VacancyController.setMatchScore(System.Int32,System.Int32)">
+            <summary>
+            matching algorythm
+            </summary>
+            <param name="employeeID"></param>
+            <param name="vacancyID"></param>
         </member>
         <member name="M:WorQitService.Controllers.VacancyController.reactionSeen(System.Int32)">
             <summary>

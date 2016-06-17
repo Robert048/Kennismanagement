@@ -74,6 +74,11 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// gets overview of employee messages
+        /// </summary>
+        /// <param name="ID"> employee id</param>
+        /// <returns></returns>
         public object getOverviewEmployee(int ID)
         {
             try
@@ -82,7 +87,8 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 List<Message> msg = (from Message in wqdb.Messages
                                where Message.employeeID == ID
-                               select Message).ToList<Message>();
+                                     orderby Message.date descending
+                                     select Message).ToList<Message>();
                 return Json(new { Result = "successful", Messages = msg });
             }
             catch (Exception ex)
@@ -91,6 +97,11 @@ namespace WorQitService.Controllers
             }
         }
 
+        /// <summary>
+        /// gets overview of employer messages
+        /// </summary>
+        /// <param name="ID"> employer id</param>
+        /// <returns></returns>
         public object getOverviewEmployer(int ID)
         {
             try
@@ -99,6 +110,7 @@ namespace WorQitService.Controllers
                 wqdb.Configuration.ProxyCreationEnabled = false;
                 List<Message> msg = (from Message in wqdb.Messages
                                      where Message.employerID == ID
+                                     orderby Message.date descending
                                      select Message).ToList<Message>();
                 return Json(new { Result = "successful", Messages = msg });
             }
