@@ -9,8 +9,7 @@
  * add employer to the datbase with fields filled in
  */
 
-$password= password_hash($_GET['password'], PASSWORD_DEFAULT);
-$vars = array('username =>' . urlencode($_GET['username']), 'password =>' . $password,
+$vars = array('username =>' . urlencode($_GET['username']), 'password =>' . urlencode($_GET['password']),
                 'email=>' . urlencode($_GET['email']));
 
 $ch = curl_init();
@@ -22,7 +21,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $headers = array();
 $headers[] = 'username:' . urlencode($_GET['username']);
-$headers[] = 'password:' . $password;
+$headers[] = 'password:' . urlencode($_GET['password']);
 $headers[] = 'email:' . urlencode($_GET['email']);
 
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
