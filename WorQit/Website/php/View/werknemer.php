@@ -194,7 +194,7 @@ if($_SESSION['isloggedin']) {
                                 </tr>
                                 <tr>
                                     <th></i> Opleiding</th>
-                                    <th class=hidden-phone><?php  $user->educations; ?></th>
+                                    <th class=hidden-phone><?php  echo $user->educations; ?></th>
                                 </tr>
                                 </tr>
                                 </thead>
