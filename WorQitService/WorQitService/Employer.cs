@@ -17,7 +17,6 @@ namespace WorQitService
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employer()
         {
-            this.Messages = new HashSet<Message>();
             this.Vacancies = new HashSet<Vacancy>();
         }
     
@@ -30,8 +29,6 @@ namespace WorQitService
         public string username { get; set; }
         public string password { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Message> Messages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vacancy> Vacancies { get; set; }
     }

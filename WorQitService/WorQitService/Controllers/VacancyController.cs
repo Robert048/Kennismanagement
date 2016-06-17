@@ -272,13 +272,16 @@ namespace WorQitService.Controllers
                 if (bedrijfsScore > -5)
                 {
                     int matchScore = 0;
-                    if (employee.industry == v.jobfunction) matchScore = matchScore + 5;
-                   
-                    if (employee.industry == v.requirements) matchScore = matchScore + 2;
+                    if (v.branche.Contains(employee.industry)) matchScore = matchScore + 10;
+                    if (v.jobfunction.Contains(employee.positions)) matchScore = matchScore + 5;
+                    if (v.requirements.Contains(employee.skills)) matchScore = matchScore + 7;
+                    if (v.educations.Contains(employee.educations)) matchScore = matchScore + 9;
+
+
                     var ve = wqdb.VacancyEmployees.Where(x => x.employeeID == employee.ID).Where(x => x.vacancyID == v.ID).FirstOrDefault();
                     if(ve == null)
                     {
-                        VacancyEmployee newVE = new VacancyEmployee() { employeeID = employee.ID, vacancyID = v.ID, matchingValue = matchScore };
+                        VacancyEmployee newVE = new VacancyEmployee() { employeeID = employee.ID, vacancyID = v.ID, matchingValue = matchScore, rating = 0 };
                         wqdb.VacancyEmployees.Add(newVE);
                         wqdb.SaveChanges();
                     }

@@ -57,39 +57,7 @@ namespace WorQitService.Controllers
             }
         }
 
-        /// <summary>
-        /// Log in method for website 
-        /// </summary>
-        /// <param name="userName"></param>
-       
-        /// <returns>employee object</returns>
-        public object logInWebsite()
-        {
-            try
-            {
-                var headers = Request.Headers;
-                string username = (headers.Contains("userName")) ? headers.GetValues("userName").First() : null;
-              
-                WorQitEntities wqdb = new WorQitEntities();
-                wqdb.Configuration.ProxyCreationEnabled = false;
-                var values = from Employee in wqdb.Employees
-                             where Employee.username == username
-                             select Employee;
-                var valuelist = values.ToList<Employee>();
-                if (valuelist.Exists(x => x.username == username))
-                {
-                      return Json(new { Result = "successful", User = valuelist });
-                }
-                else
-                {
-                    return Json(new { Result = "failed", Error = "Deze username bestaat niet" });
-                }
-            }
-            catch (System.Exception ex)
-            {
-                return Json(new { Result = "failed", Error = ex });
-            }
-        }
+        
 
         /// <summary>
         /// deletes employee

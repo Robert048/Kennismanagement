@@ -13,10 +13,10 @@ namespace WorQitService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WorQitEntities1 : DbContext
+    public partial class WorQitEntities : DbContext
     {
-        public WorQitEntities1()
-            : base("name=WorQitEntities1")
+        public WorQitEntities()
+            : base("name=WorQitEntities")
         {
         }
     
@@ -27,8 +27,8 @@ namespace WorQitService
     
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Employer> Employers { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Vacancy> Vacancies { get; set; }
         public virtual DbSet<VacancyEmployee> VacancyEmployees { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
     }
 }
